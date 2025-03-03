@@ -202,5 +202,22 @@ namespace Polarities
             disabledHallowSpread = tag.ContainsKey("disabledHallowSpread");
             disabledEvilSpread = tag.ContainsKey("disabledEvilSpread");
         }
+
+        public static bool timeAccelerate = true;
+        private float timeRateMultiplier;
+        public override void ModifyTimeRate(ref double timeRate, ref double tileUpdateRate, ref double eventUpdateRate)
+        {
+            if (!timeAccelerate)
+            {
+                timeRateMultiplier = 1f;
+            }
+            else
+            {
+                timeRateMultiplier += 1 / 5f;
+            }
+            timeAccelerate = false;
+
+            timeRate *= timeRateMultiplier;
+        }
     }
 }

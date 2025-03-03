@@ -3,13 +3,15 @@
     "",
     "\\Content",
     "\\Content\\Items",
-    "\\Content\\Items\\Consumables\\Summons\\Hardmode",
+    "\\Content\\Items\\Accessories\\PreHardmode",
+    "\\Content\\Items\\Ammo",
+    "\\Content\\Items\\Consumables",
+    "\\Content\\Items\\Consumables\\Summons",
     "\\Content\\Items\\Consumables\\Summons\\PreHardmode",
-    "\\Content\\Items\\Vanity",
-    "\\Content\\NPCs\\Critters",
-    "\\Content\\NPCs\\Critters\\PreHardmode",
-    "\\Core",
-    "\\Localization"
+    "\\Content\\Items\\Weapons",
+    "\\Content\\Items\\Weapons\\Melee",
+    "\\Content\\Items\\Weapons\\Melee\\Flails",
+    "\\Content\\Items\\Weapons\\Melee\\Flails\\PreHardmode"
   ],
   "SelectedNode": "\\Localization\\en-US.hjson",
   "PreviewInSolutionExplorer": false

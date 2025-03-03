@@ -1,0 +1,125 @@
+﻿using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using Terraria.ModLoader;
+
+namespace Polarities.Assets
+{
+    public class Textures : ILoadable
+    {
+        public static Asset<Texture2D> PixelTexture;
+        public static Asset<Texture2D> Glow58;
+        public static Asset<Texture2D> Glow256;
+        public static Asset<Texture2D> Shockwave72;
+        public static Asset<Texture2D> WarpZoom256;
+        public static Asset<Texture2D> Perlin256;
+
+        public void Load(Mod mod)
+        {
+            PixelTexture = ModContent.Request<Texture2D>("Polarities/Assets/Pixel");
+            Glow58 = ModContent.Request<Texture2D>("Polarities/Assets/Glow58");
+            Glow256 = ModContent.Request<Texture2D>("Polarities/Assets/Glow256");
+            Shockwave72 = ModContent.Request<Texture2D>("Polarities/Assets/Shockwave72");
+            WarpZoom256 = ModContent.Request<Texture2D>("Polarities/Assets/WarpZoom256");
+            Perlin256 = ModContent.Request<Texture2D>("Polarities/Assets/Perlin256");
+
+            /*IL.Terraria.Main.UpdateMenu += Main_UpdateMenu;
+		}
+
+        private void Main_UpdateMenu(MonoMod.Cil.ILContext il)
+        {
+            MonoMod.Cil.ILCursor c = new MonoMod.Cil.ILCursor(il);
+
+			c.EmitDelegate<Action>(() =>
+			{
+				if (!(bool)(typeof(ModLoader).GetField("isLoading", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic).GetValue(null)))
+				{
+					String filePath = Main.SavePath + Path.DirectorySeparatorChar + "ModSources/Polarities/Textures/WarpZoom256.png";
+
+					if (!System.IO.File.Exists(filePath))
+					{
+						Terraria.Utilities.UnifiedRandom rand = new Terraria.Utilities.UnifiedRandom(278539);
+						const int textureSize = 256;
+
+						Texture2D texture = new Texture2D(Main.spriteBatch.GraphicsDevice, textureSize, textureSize, false, SurfaceFormat.Color);
+						System.Collections.Generic.List<Color> list = new System.Collections.Generic.List<Color>();
+						for (int i = 0; i < texture.Width; i++)
+						{
+							for (int j = 0; j < texture.Height; j++)
+							{
+								float x = (2 * j / (float)(texture.Width - 1) - 1);
+								float y = (2 * i / (float)(texture.Height - 1) - 1);
+
+                                float baseAlpha = (float)Math.Pow(1 - x * x - y * y, 2);
+                                if (x * x + y * y >= 1) baseAlpha = 0;
+
+                                Color baseColor = new Color((int)(128 + 128 * x), (int)(128 + 128 * y), 128);
+                                int r = (int)baseColor.R;
+								int g = (int)baseColor.G;
+								int b = (int)baseColor.B;
+								int alpha = (int)(255 * baseAlpha);
+
+								list.Add(new Color((int)(r * alpha / 255f), (int)(g * alpha / 255f), (int)(b * alpha / 255f), alpha));
+							}
+						}
+						texture.SetData(list.ToArray());
+						texture.SaveAsPng(new System.IO.FileStream(filePath, System.IO.FileMode.Create), texture.Width, texture.Height);
+					}
+				}
+			});*/
+
+            /*IL.Terraria.Main.UpdateMenu += Main_UpdateMenu;
+		}
+
+        private void Main_UpdateMenu(MonoMod.Cil.ILContext il)
+        {
+            MonoMod.Cil.ILCursor c = new MonoMod.Cil.ILCursor(il);
+
+			c.EmitDelegate<Action>(() =>
+			{
+				if (!(bool)(typeof(ModLoader).GetField("isLoading", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic).GetValue(null)))
+				{
+					String filePath = Main.SavePath + Path.DirectorySeparatorChar + "ModSources/Polarities/Textures/Perlin256.png";
+
+					if (!System.IO.File.Exists(filePath))
+					{
+                        Terraria.Utilities.UnifiedRandom rand = new Terraria.Utilities.UnifiedRandom(278539);
+                        const int textureSize = 256;
+
+                        float[,] fractalNoise = rand.FractalNoise(textureSize, 16);
+
+                        Texture2D texture = new Texture2D(Main.spriteBatch.GraphicsDevice, textureSize, textureSize, false, SurfaceFormat.Color);
+                        System.Collections.Generic.List<Color> list = new System.Collections.Generic.List<Color>();
+                        for (int i = 0; i < texture.Width; i++)
+                        {
+                            for (int j = 0; j < texture.Height; j++)
+                            {
+                                Color baseColor = new Color(new Vector3(fractalNoise[i, j] + 0.5f));
+                                float baseAlpha = 1f;
+
+                                int r = (int)baseColor.R;
+                                int g = (int)baseColor.G;
+                                int b = (int)baseColor.B;
+                                int alpha = (int)(255 * baseAlpha);
+
+                                list.Add(new Color((int)(r * alpha / 255f), (int)(g * alpha / 255f), (int)(b * alpha / 255f), alpha));
+                            }
+                        }
+                        texture.SetData(list.ToArray());
+                        texture.SaveAsPng(new System.IO.FileStream(filePath, System.IO.FileMode.Create), texture.Width, texture.Height);
+                    }
+				}
+			});*/
+        }
+
+        public void Unload()
+        {
+            PixelTexture = null;
+            Glow58 = null;
+            Glow256 = null;
+            Shockwave72 = null;
+            WarpZoom256 = null;
+            Perlin256 = null;
+        }
+    }
+}
+

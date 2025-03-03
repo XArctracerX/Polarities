@@ -9,7 +9,7 @@ namespace Polarities.Global
     {
         public bool CanDrop(DropAttemptInfo info)
         {
-            return true;//info.npc.GetGlobalNPC<PolaritiesNPC>().flawless;
+            return info.npc.GetGlobalNPC<PolaritiesNPC>().flawless;
         }
 
         public bool CanShowItemDropInUI()
@@ -41,7 +41,7 @@ namespace Polarities.Global
         public override ItemDropAttemptResult TryDroppingItem(DropAttemptInfo info)
         {
             ItemDropAttemptResult result;
-            if (info.player.RollLuck(chanceDenominator) < chanceNumerator) //info.npc.GetGlobalNPC<PolaritiesNPC>().flawless ||
+            if (info.npc.GetGlobalNPC<PolaritiesNPC>().flawless || info.player.RollLuck(chanceDenominator) < chanceNumerator)
             {
                 CommonCode.DropItem(info, itemId, info.rng.Next(amountDroppedMinimum, amountDroppedMaximum + 1));
                 result = default(ItemDropAttemptResult);

@@ -2,6 +2,12 @@ Mods: {
 	Polarities: {
 		Tiles.TrophyTile.MapEntry: Trophy Tile
 
+		ItemTooltip: {
+			WarhammerBase: Reduces enemy defense by {DefenseLoss} for {DebuffTime} seconds
+			OrbBase: Summons a channeled minion
+			TooltipFlawless: Flawless
+		}
+
 		Buffs: {
 			GoldfishExplorerPetBuff: {
 				DisplayName: Goldfish Explorer
@@ -11,6 +17,21 @@ Mods: {
 			StormCloudfishPetBuff: {
 				DisplayName: Storm Cloudfish
 				Description: Aww, it's so ferocious
+			}
+
+			StarConstructPetBuff: {
+				DisplayName: Dwarf Star Construct
+				Description: Much more stable than its larger cousin
+			}
+
+			GigabatPetBuff: {
+				DisplayName: Bat Swarm
+				Description: They're itty bitty
+			}
+
+			Pinpointed: {
+				DisplayName: Pinpointed
+				Description: You have been detected, giving enemies a chance to critically hit you
 			}
 		}
 
@@ -26,6 +47,30 @@ Mods: {
 				Tooltip: Boosts mobility in the air
 			}
 
+			CosmicCable: {
+				DisplayName: Cosmic Cable
+				Tooltip: Improves hook stats
+			}
+
+			StarBadge: {
+				DisplayName: Star Badge
+				Tooltip: Doubles mana recieved from mana stars
+			}
+
+			BatSigil: {
+				DisplayName: Bat Sigil
+				Tooltip: Grants more minion slots the lower your health, up to a maximum of 3
+			}
+
+			FeralFang: {
+				DisplayName: Feral Fang
+				Tooltip: 
+					'''
+					Gives Feral Bite and immunity to all debuffs caused by Feral Bite
+					The damage increase from feral bite is reduced to 12%
+					'''
+			}
+
 			//Summon Items
 			AltBiomeMimicSummon: {
 				DisplayName: Weird Key of Night
@@ -37,9 +82,37 @@ Mods: {
 				Tooltip: Flying this kite too high may attract hungry cloud-dwellers.
 			}
 
+			StarConstructSummonItem: {
+				DisplayName: Stellar Remote
+				Tooltip:
+					'''
+					Summons a Dormant Construct when used at night
+					Not consumable
+					'''
+			}
+
+			GigabatSummonItem: {
+				DisplayName: Gigabat Summon Item
+				Tooltip: 
+					'''
+					Summons Gigabat when used in the caverns
+					Not consumable
+					'''
+			}
+
 			//Treasure Bags
 			StormCloudfishBag: {
-				DisplayName: (Treasure Bag) Storm Cloudfish
+				DisplayName: Treasure Bag (Storm Cloudfish)
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			StarConstructBag: {
+				DisplayName: Treasure Bag (Star Construct)
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			GigabatBag: {
+				DisplayName: Treasure Bag (Gigabat)
 				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 			}
 
@@ -62,6 +135,131 @@ Mods: {
 					Summons a storm fry
 					'A tiny start for such a large creature'
 					'''
+			}
+
+			StarConstructPetItem: {
+				DisplayName: Cosmic Communicator
+				Tooltip:
+					'''
+					Summons a dwarf star construct
+					'S.C. phone home'
+					'''
+			}
+
+			GigabatPetItem: {
+				DisplayName: Batty Pen Drive
+				Tooltip: 
+					'''
+					Summons a bat, a kilobat, and a megabat
+					'Mega bitey'
+					'''
+			}
+
+			//Tools
+			StrangeBarometer: {
+				DisplayName: Strange Barometer
+				Tooltip:
+					'''
+					Left click to toggle the rain
+					Right click to toggle the wind
+					'''
+			}
+
+			StrangeClock: {
+				DisplayName: Strange Clock
+				Tooltip: Accelerates time
+			}
+
+			Skyhook: {
+				DisplayName: Skyhook
+				Tooltip:
+					'''
+					Attaches to air instead of solid blocks
+					'Not to be confused with a space elevator'
+					'''
+			}
+
+			Starhook: {
+				DisplayName: Starhook
+				Tooltip: Shoots out four hooks at once
+			}
+
+			//Vanity
+			StormCloudfishMask: {
+				DisplayName: Storm Cloudfish Mask
+				Tooltip: ""
+			}
+
+			StarConstructMask: {
+				DisplayName: Star Construct Mask
+				Tooltip: ""
+			}
+
+			GigabatMask: {
+				DisplayName: Gigabat Mask
+				Tooltip: ""
+			}
+
+			//Weapons
+			EyeOfTheStormfish: {
+				DisplayName: Eye Of The Stormfish
+				Tooltip: Summons a storm vortex around the cursor, which shoots a bolt of lightning at the cursor
+			}
+
+			Stardance: {
+				DisplayName: Stardance
+				Tooltip: Fires a line of homing star lances
+			}
+
+			EchoStaff: {
+				DisplayName: Echo Staff
+				Tooltip: Hitting an enemy grants a temporary 50% boost to critical strike chance against that enemy
+			}
+
+			ChainSaw: {
+				DisplayName: Chain Saw
+				Tooltip: "'Not to be confused with a chainsaw'"
+			}
+
+			Batastrophe: {
+				DisplayName: Batastrophe
+				Tooltip: 
+					'''
+					Spews bats in all directions until your minion cap is filled
+					Ignores up to 15 enemy defense
+					'''
+			}
+
+			//Critter Items
+			CloudCichlidItem: {
+				DisplayName: Cloud Cichlid
+				Tooltip: ""
+			}
+
+			StormcloudCichlidItem: {
+				DisplayName: Stormcloud Cichlid
+				Tooltip: ""
+			}
+
+			//Bars
+			FractalBar: {
+				DisplayName: Fractal Bar
+				Tooltip: ""
+			}
+
+			MantellarBar: {
+				DisplayName: Mantellar Bar
+				Tooltip: "'Do not touch'"
+			}
+
+			SelfsimilarBar: {
+				DisplayName: Selfsimilar Bar
+				Tooltip: ""
+			}
+
+			SunplateBar: {
+				DisplayName: Sunplate Bar
+				Tooltip: ""
 			}
 
 			//Relics
@@ -126,53 +324,53 @@ Mods: {
 				Tooltip: ""
 			}
 
-			//Tools
-			StrangeBarometer: {
-				DisplayName: Strange Barometer
-				Tooltip:
-					'''
-					Left click to toggle the rain
-					Right click to toggle the wind
-					'''
+			//Ammo
+			ChlorophyteDart: {
+				DisplayName: Chlorophyte Dart
+				Tooltip: Sticks to enemies
 			}
 
-			Skyhook: {
-				DisplayName: Skyhook
-				Tooltip:
-					'''
-					Attaches to air instead of solid blocks
-					'Not to be confused with a space elevator'
-					'''
+			VenomDart: {
+				DisplayName: Venom Dart
+				Tooltip: Explodes into a venom cloud
 			}
 
-			//Vanity
-			StormCloudfishMask: {
-				DisplayName: Storm Cloudfish Mask
+			BatArrow: {
+				DisplayName: Bat Arrow
+				Tooltip: "'Contrary to popular belief, fletching bats does not make them faster'"
+			}
+
+			BoneDart: {
+				DisplayName: Bone Dart
+				Tooltip: Flies straight until it hits an enemy
+			}
+
+			BouncyDart: {
+				DisplayName: Bouncy Dart
+				Tooltip: "Bounces up to three times"
+			}
+
+			WoodenDart: {
+				DisplayName: Wooden Dart
 				Tooltip: ""
 			}
 
-			//Weapons
-			EyeOfTheStormfish: {
-				DisplayName: Eye Of The Stormfish
-				Tooltip: Summons a storm vortex around the cursor, which shoots a bolt of lightning at the cursor
-			}
-
-			//Critter Items
-			CloudCichlidItem: {
-				DisplayName: Cloud Cichlid
+			WoodenDartEndless: {
+				DisplayName: Wooden Dart Endless
 				Tooltip: ""
 			}
 
-			StormcloudCichlidItem: {
-				DisplayName: Stormcloud Cichlid
-				Tooltip: ""
-			}
 		}
 
 		NPCs: {
 			StormCloudfish.DisplayName: Storm Cloudfish
 			CloudCichlid.DisplayName: Cloud Cichlid
 			StormcloudCichlid.DisplayName: Stormcloud Cichlid
+			DormantConstruct.DisplayName: Dormant Construct
+			StarConstruct.DisplayName: Star Construct
+			StarConstructClaw.DisplayName: Star Construct Claw
+			Gigabat.DisplayName: Gigabat
+			GigabatMinion.DisplayName: Gigabat Minion
 		}
 
 		Projectiles: {
@@ -189,6 +387,27 @@ Mods: {
 			StormCloudfishLightningBall.DisplayName: Lighting Sphere
 			StormCloudfishRaincloud.DisplayName: Rain
 			StormCloudfishStormcloudOrb.DisplayName: Cloud Orb
+			StarConstructPet.DisplayName: Drawf Star Construct
+			StarhookProjectile.DisplayName: Starhook
+			StardanceProjectile.DisplayName: Stardance Stab
+			StarConstructDash.DisplayName: Stellar Dash
+			StarConstructImpact.DisplayName: Stellar Impact
+			UnfriendlyFallenStar.DisplayName: Falling Star
+			ChlorophyteDartProjectile.DisplayName: Chlorophyte Dart Projectile
+			VenomDartCloud.DisplayName: Venom Dart Cloud
+			VenomDartProjectile.DisplayName: Venom Dart Projectile
+			BatArrowProjectile.DisplayName: Bat Arrow Projectile
+			BoneDartProjectile.DisplayName: Bone Dart Projectile
+			BouncyDartProjectile.DisplayName: Bouncy Dart Projectile
+			WoodenDartProjectile.DisplayName: Wooden Dart Projectile
+			GigabatPetLarge.DisplayName: Gigabat Pet Large
+			GigabatPetMedium.DisplayName: Gigabat Pet Medium
+			GigabatPetSmall.DisplayName: Gigabat Pet Small
+			EchoStaffProjectile.DisplayName: Echo Staff Projectile
+			ChainSawProjectile.DisplayName: Chain Saw Projectile
+			BatastropheMinion.DisplayName: Batastrophe Minion
+			GigabatEcholocation.DisplayName: Gigabat Echolocation
+			Stalactite.DisplayName: Stalactite
 		}
 	}
 }

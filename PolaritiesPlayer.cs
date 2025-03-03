@@ -19,22 +19,35 @@ namespace Polarities
 {
 	public partial class PolaritiesPlayer : ModPlayer
 	{
-		public float manaStarMultiplier;
+        public Dictionary<float, float> screenShakes = new Dictionary<float, float>(); //key is time at which the screenshake ends, value is magnitude
+        private int screenshakeRandomSeed;
+
+        public float hookSpeedMult;
+        public float manaStarMultiplier;
+
 		public bool stormcore;
 		public bool wormScarf;
 
-		//public override void UpdateDead()
-		//{
-			//fractalization = 0;
-		//}
+        public float candyCaneAtlatlBoost;
 
-		public override void ResetEffects()
+        //public override void UpdateDead()
+        //{
+        //fractalization = 0;
+        //}
+
+        public override void ResetEffects()
 		{
-			//reset a bunch of values
-			manaStarMultiplier = 1f;
+            //reset a bunch of values
+            hookSpeedMult = 1f;
+            manaStarMultiplier = 1f;
+
 			stormcore = false;
 			wormScarf = false;
-		}
+
+            if (candyCaneAtlatlBoost > 0) candyCaneAtlatlBoost--;
+
+            screenshakeRandomSeed = Main.rand.Next();
+        }
 
 		public override void PostUpdate()
 		{
@@ -44,14 +57,60 @@ namespace Polarities
 			}
 		}
 
-		//public override void PreUpdateBuffs()
-		//{
-			//UpdateFractalizationTimer();
-		//}
+        public void AddScreenShake(float magnitude, float timeLeft)
+        {
+            if (magnitude > 0 && timeLeft > 0)
+            {
+                float endTime = timeLeft + PolaritiesSystem.timer;
+                if (screenShakes.ContainsKey(endTime))
+                {
+                    screenShakes[endTime] += magnitude / timeLeft;
+                }
+                else
+                {
+                    screenShakes.Add(endTime, magnitude / timeLeft);
+                }
+            }
+        }
 
-		//public int GetFractalization()
-		//{
-			//return fractalization;
-		//}
-	}
+        public override void ModifyScreenPosition()
+        {
+            if (screenShakes.Keys.Count > 0)
+            {
+                List<float> removeTimesLeft = new List<float>();
+
+                Polarities.preGeneratedRand.SetIndex(screenshakeRandomSeed);
+                foreach (float timeLeft in screenShakes.Keys)
+                {
+                    if (timeLeft <= PolaritiesSystem.timer)
+                    {
+                        removeTimesLeft.Add(timeLeft);
+                    }
+                    else
+                    {
+                        Main.screenPosition += new Vector2(Polarities.preGeneratedRand.NextNormallyDistributedFloat(screenShakes[timeLeft] * (timeLeft - PolaritiesSystem.timer)), 0).RotatedBy(Polarities.preGeneratedRand.NextFloat(MathHelper.TwoPi));
+                    }
+                }
+                foreach (float timeLeft in removeTimesLeft) screenShakes.Remove(timeLeft);
+            }
+
+            //to prevent jittering of some things
+            Main.screenPosition.X = (int)Main.screenPosition.X;
+            Main.screenPosition.Y = (int)Main.screenPosition.Y;
+        }
+
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+
+        }
+            //public override void PreUpdateBuffs()
+            //{
+            //UpdateFractalizationTimer();
+            //}
+
+            //public int GetFractalization()
+            //{
+            //return fractalization;
+            //}
+    }
 }
