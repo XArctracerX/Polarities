@@ -48,9 +48,20 @@ namespace Polarities
 
         public bool usesProjectileHitCooldowns = false;
         public int projectileHitCooldownTime = 0;
-        public static Dictionary<int, bool> bestiaryCritter = new Dictionary<int, bool>();
+        public int ignoredDefenseFromCritAmount;
 
+        public float defenseMultiplier;
+
+        public int tentacleClubs;
         public int chlorophyteDarts;
+        public int contagunPhages;
+        public int boneShards;
+
+        public int desiccation;
+        public int incineration;
+        public bool coneVenom;
+
+        public static Dictionary<int, bool> bestiaryCritter = new Dictionary<int, bool>();
 
         public override void Load()
         {
@@ -107,7 +118,7 @@ namespace Polarities
 
         public override void ResetEffects(NPC npc)
         {
-            //defenseMultiplier = 1f;
+            defenseMultiplier = 1f;
             //neutralTakenDamageMultiplier = 1f;
 
             //List<int> removeKeys = new List<int>();
@@ -128,9 +139,10 @@ namespace Polarities
             //tentacleClubs = 0;
             chlorophyteDarts = 0;
             //boneShards = 0;
-            //desiccation = 0;
-            //incineration = 0;
-            //coneVenom = false;
+
+            desiccation = 0;
+            incineration = 0;
+            coneVenom = false;
 
             //whipTagDamage = 0;
 
@@ -140,6 +152,24 @@ namespace Polarities
             //}
             //spiritBite = false;
         }
+
+        public void ModifyDefense(NPC npc, ref int defense)
+        {
+            defense = (int)(defense * defenseMultiplier);
+
+            int hammerDefenseLoss = 0;
+            foreach (int i in hammerTimes.Keys)
+            {
+                if (i > hammerDefenseLoss && hammerTimes[i] > 0) hammerDefenseLoss = i;
+            }
+
+            defense -= hammerDefenseLoss;
+
+            defense -= ignoredDefenseFromCritAmount;
+
+            defense -= boneShards;
+        }
+
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
@@ -198,22 +228,22 @@ namespace Polarities
                     //}
                 //}
             }
-            //if (desiccation > 60 * 10)
-            //{
-                //npc.lifeRegen -= 60;
-                //if (damage < 5)
-                //{
-                    //damage = 5;
-                //}
-            //}
-            //if (coneVenom)
-            //{
-                //npc.lifeRegen -= 140;
-                //if (damage < 12)
-                //{
-                    //damage = 12;
-                //}
-            //}
+            if (desiccation > 60 * 10)
+            {
+                npc.lifeRegen -= 60;
+                if (damage < 5)
+                {
+                    damage = 5;
+                }
+            }
+            if (coneVenom)
+            {
+                npc.lifeRegen -= 140;
+                if (damage < 12)
+                {
+                    damage = 12;
+                }
+            }
             //if (incineration > 0)
             //{
                 //npc.lifeRegen -= incineration * 2;

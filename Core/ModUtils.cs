@@ -44,6 +44,32 @@ namespace Polarities.Core
             return player.GetModPlayer<PolaritiesPlayer>();
         }
 
+        public static int SpawnSentry(this Player player, IEntitySource source, int ownerIndex, int sentryProjectileId, int originalDamageNotScaledByMinionDamage, float KnockBack, bool spawnWithGravity = true, Vector2 offsetFromDefaultPosition = default)
+        {
+            int num5 = (int)(Main.mouseX + Main.screenPosition.X) / 16;
+            int num6 = (int)(Main.mouseY + Main.screenPosition.Y) / 16;
+            if (player.gravDir == -1f)
+            {
+                num6 = (int)(Main.screenPosition.Y + Main.screenHeight - Main.mouseY) / 16;
+            }
+            if (spawnWithGravity)
+            {
+                for (; num6 < Main.maxTilesY - 10 && Main.tile[num5, num6] != null && !WorldGen.SolidTile2(num5, num6) && Main.tile[num5 - 1, num6] != null && !WorldGen.SolidTile2(num5 - 1, num6) && Main.tile[num5 + 1, num6] != null && !WorldGen.SolidTile2(num5 + 1, num6); num6++)
+                {
+                }
+                num6--;
+            }
+            int num7 = Projectile.NewProjectile(source, Main.mouseX + Main.screenPosition.X + offsetFromDefaultPosition.X, num6 * 16 - 24 + offsetFromDefaultPosition.Y, 0f, spawnWithGravity ? 15f : 0f, sentryProjectileId, originalDamageNotScaledByMinionDamage, KnockBack, ownerIndex);
+            Main.projectile[num7].originalDamage = originalDamageNotScaledByMinionDamage;
+            player.UpdateMaxTurrets();
+            return num7;
+        }
+
+        public static bool IsTypeSummon(this Projectile projectile)
+        {
+            return projectile.minion || projectile.sentry || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.DamageType == DamageClass.Summon || projectile.DamageType.GetEffectInheritance(DamageClass.Summon);
+        }
+
         public static Color ColorLerpCycle(float time, float cycleTime, params Color[] colors)
         {
             if (colors.Length == 0) return default(Color);

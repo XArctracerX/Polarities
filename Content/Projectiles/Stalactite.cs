@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Polarities.Content.Items.Weapons.Magic.Staffs.PreHardmode;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -63,7 +64,7 @@ namespace Polarities.Content.Projectiles
             Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             if (Main.rand.NextBool(200))
             {
-                //Item.NewItem(Projectile.GetSource_DropAsItem(), Projectile.Hitbox, ItemType<Speleothem>());
+                Item.NewItem(Projectile.GetSource_DropAsItem(), Projectile.Hitbox, ItemType<Speleothem>());
             }
         }
 

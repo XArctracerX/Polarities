@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Polarities.Assets.Dusts;
-//using Polarities.Items.Placeable.Blocks;
+using Polarities.Content.Items.Placeable.Blocks;
 //using Polarities.Items.Placeable.Blocks.Fractal;
 using System.Collections.Generic;
 using Terraria;
@@ -106,10 +106,10 @@ namespace Polarities.Content.Items.Placeable.Bars
 
         public override void AddRecipes()
         {
-            //CreateRecipe()
-                //.AddIngredient(ItemType<MantellarOre>(), 4)
-                //.AddTile(TileID.AdamantiteForge)
-                //.Register();
+            CreateRecipe()
+                .AddIngredient(ItemType<MantellarOre>(), 4)
+                .AddTile(TileID.AdamantiteForge)
+                .Register();
         }
     }
 

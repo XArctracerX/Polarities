@@ -3,15 +3,13 @@
     "",
     "\\Content",
     "\\Content\\Items",
-    "\\Content\\Items\\Accessories\\PreHardmode",
-    "\\Content\\Items\\Ammo",
-    "\\Content\\Items\\Consumables",
-    "\\Content\\Items\\Consumables\\Summons",
-    "\\Content\\Items\\Consumables\\Summons\\PreHardmode",
     "\\Content\\Items\\Weapons",
-    "\\Content\\Items\\Weapons\\Melee",
-    "\\Content\\Items\\Weapons\\Melee\\Flails",
-    "\\Content\\Items\\Weapons\\Melee\\Flails\\PreHardmode"
+    "\\Content\\Items\\Weapons\\Summon",
+    "\\Content\\Items\\Weapons\\Summon\\Flawless",
+    "\\Content\\Items\\Weapons\\Summon\\Orbs",
+    "\\Content\\Items\\Weapons\\Summon\\Orbs\\PreHardmode",
+    "\\Content\\Items\\Weapons\\Summon\\Sentries\\PreHardmode",
+    "\\Core"
   ],
   "SelectedNode": "\\Localization\\en-US.hjson",
   "PreviewInSolutionExplorer": false

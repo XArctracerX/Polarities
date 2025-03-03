@@ -1,6 +1,14 @@
 Mods: {
 	Polarities: {
-		Tiles.TrophyTile.MapEntry: Trophy Tile
+		Tiles: {
+			TrophyTile.MapEntry: Trophy Tile
+			MantellarOreTile.MapEntry: Mantellar Ore Tile
+			SaltCrystalsTile.MapEntry: Salt Crystals Tile
+			CloudCichlidCageTile.MapEntry: Cloud Cichlid Cage Tile
+			LimestoneChestTile.MapEntry: Limestone Chest Tile
+			SaltChestTile.MapEntry: Salt Chest Tile
+			StormcloudCichlidCageTile.MapEntry: Stormcloud Cichlid Cage Tile
+		}
 
 		ItemTooltip: {
 			WarhammerBase: Reduces enemy defense by {DefenseLoss} for {DebuffTime} seconds
@@ -9,6 +17,7 @@ Mods: {
 		}
 
 		Buffs: {
+			//Pets
 			GoldfishExplorerPetBuff: {
 				DisplayName: Goldfish Explorer
 				Description: To boldly go where no goldfish has gone before
@@ -29,9 +38,31 @@ Mods: {
 				Description: They're itty bitty
 			}
 
+			//Minions
+			WingedStarMinionBuff: {
+				DisplayName: Winged Star Minion Buff
+				Description: The winged star will fight for you
+			}
+
+			ZombatMinionBuff: {
+				DisplayName: Baby Zombat
+				Description: The baby zombats will fight for you
+			}
+
+			//Debuffs/Buffs
 			Pinpointed: {
 				DisplayName: Pinpointed
 				Description: You have been detected, giving enemies a chance to critically hit you
+			}
+
+			Corroding: {
+				DisplayName: Corroding
+				Description: Defense is reduced
+			}
+
+			Desiccating: {
+				DisplayName: Desiccating
+				Description: You are drying out
 			}
 		}
 
@@ -64,7 +95,7 @@ Mods: {
 
 			FeralFang: {
 				DisplayName: Feral Fang
-				Tooltip: 
+				Tooltip:
 					'''
 					Gives Feral Bite and immunity to all debuffs caused by Feral Bite
 					The damage increase from feral bite is reduced to 12%
@@ -93,7 +124,7 @@ Mods: {
 
 			GigabatSummonItem: {
 				DisplayName: Gigabat Summon Item
-				Tooltip: 
+				Tooltip:
 					'''
 					Summons Gigabat when used in the caverns
 					Not consumable
@@ -117,9 +148,19 @@ Mods: {
 			}
 
 			//Materials
+			AlkalineFluid: {
+				DisplayName: Alkaline Fluid
+				Tooltip: ""
+			}
+
 			StormChunk: {
 				DisplayName: Storm Chunk
 				Tooltip: ""
+			}
+
+			Rattle: {
+				DisplayName: Rattle
+				Tooltip: Makes a noise when you shake it
 			}
 
 			//Pet Items
@@ -148,7 +189,7 @@ Mods: {
 
 			GigabatPetItem: {
 				DisplayName: Batty Pen Drive
-				Tooltip: 
+				Tooltip:
 					'''
 					Summons a bat, a kilobat, and a megabat
 					'Mega bitey'
@@ -223,10 +264,248 @@ Mods: {
 
 			Batastrophe: {
 				DisplayName: Batastrophe
-				Tooltip: 
+				Tooltip:
 					'''
 					Spews bats in all directions until your minion cap is filled
 					Ignores up to 15 enemy defense
+					'''
+			}
+
+			SaltKnife: {
+				DisplayName: Salt Knife
+				Tooltip: Stacks up to 5
+			}
+
+			CavernCarver: {
+				DisplayName: Cavern Carver
+				Tooltip: Throws blades which slash at the cursor
+			}
+
+			Starduster: {
+				DisplayName: Starduster
+				Tooltip: Summons blades from the sky
+			}
+
+			Epee: {
+				DisplayName: Epee
+				Tooltip:
+					'''
+					Attack to lunge forwards
+					'My name is {PlayerName}. You killed my father. Prepare to die.'
+					'''
+			}
+
+			NeuralBasher: {
+				DisplayName: Neural Basher
+				Tooltip:
+					'''
+					Shoots a giant neuron
+					Shoots additional giant neurons on enemy hits
+					'''
+			}
+
+			Flywheel: {
+				DisplayName: Flywheel
+				Tooltip: Releases a small shockwave on hitting enemies
+			}
+
+			GlowYo: {
+				DisplayName: Glow-Yo
+				Tooltip: Drips caustic fluids on enemies
+			}
+
+			CandyCaneAtlatl: {
+				DisplayName: Candy Cane Atlatl
+				Tooltip: Hitting enemies increases swing speed and decreases accuracy
+			}
+
+			CausticSlug: {
+				DisplayName: Caustic Slug
+				Tooltip: Shoots corrosive slugs that fall when they reach the cursor
+			}
+
+			CelestialStorm: {
+				DisplayName: Celestial Storm
+				Tooltip:
+					'''
+					Shoots portals which fire darts at the cursor
+					'My god, it's full of darts'
+					'''
+			}
+
+			Ehecatl: {
+				DisplayName: Ehecatl
+				Tooltip: Shoots three darts at once
+			}
+
+			JunglesRage: {
+				DisplayName: Jungles Rage
+				Tooltip: ""
+			}
+
+			PearlwoodAtlatl: {
+				DisplayName: Pearlwood Atlatl
+				Tooltip: ""
+			}
+
+			Axolatl: {
+				DisplayName: Axolatl
+				Tooltip: Sometimes spits bubbles instead of shooting a dart
+			}
+
+			BoneSlinger: {
+				DisplayName: Bone Slinger
+				Tooltip: Shoots an extra bone dart
+			}
+
+			BorealWoodAtlatl: {
+				DisplayName: Boreal Wood Atlatl
+				Tooltip: ""
+			}
+
+			EbonwoodAtlatl: {
+				DisplayName: Ebonwood Atlatl
+				Tooltip: ""
+			}
+
+			MahoganyAtlatl: {
+				DisplayName: Mahogany Atlatl
+				Tooltip: ""
+			}
+
+			PalmWoodAtlatl: {
+				DisplayName: Palm Wood Atlatl
+				Tooltip: ""
+			}
+
+			Ratlatl: {
+				DisplayName: Ratlatl
+				Tooltip: Converts all projectiles to poison darts
+			}
+
+			ShadewoodAtlatl: {
+				DisplayName: Shadewood Atlatl
+				Tooltip: ""
+			}
+
+			ThistleThrower: {
+				DisplayName: Thistle Thrower
+				Tooltip: ""
+			}
+
+			WoodenAtlatl: {
+				DisplayName: Wooden Atlatl
+				Tooltip: ""
+			}
+
+			AlkalineRain: {
+				DisplayName: Alkaline Rain
+				Tooltip: ""
+			}
+
+			CloudflareBow: {
+				DisplayName: Cloudflare Bow
+				Tooltip: Fires arrows from around the player
+			}
+
+			Starbalest: {
+				DisplayName: Starbalest
+				Tooltip:
+					'''
+					Hold to charge
+					Release to fire a barrage of fallen stars
+					'''
+			}
+
+			Eyeruption: {
+				DisplayName: Eyeruption
+				Tooltip: Throws servant eyes into the air to chase your enemies
+			}
+
+			Gelthrower: {
+				DisplayName: Gelthrower
+				Tooltip:
+					'''
+					Shoots bouncing blobs of gel
+					66% chance not to consume ammo
+					'''
+			}
+
+			SaltShaker: {
+				DisplayName: Salt Shaker
+				Tooltip: Ideal for family Thanksgivings
+			}
+
+			Rattlestaff: {
+				DisplayName: Rattlestaff
+				Tooltip: ""
+			}
+
+			Speleothem: {
+				DisplayName: Speleothem
+				Tooltip: Summons spikes of limestone
+			}
+
+			Halocline: {
+				DisplayName: Halocline
+				Tooltip: Shoots a blob of brine that splits into smaller blobs on impact
+			}
+
+			OceanSky: {
+				DisplayName: Ocean Sky
+				Tooltip: Summons a wave of stars from above
+			}
+
+			ConsumptionCannon: {
+				DisplayName: Consumption Cannon
+				Tooltip: Spews worms
+			}
+
+			Flopper: {
+				DisplayName: Flopper
+				Tooltip: Shoots fish
+			}
+
+			WingedStarStaff: {
+				DisplayName: Winged Star Staff
+				Tooltip: Summons a winged star to protect you
+			}
+
+			ZombatStaff: {
+				DisplayName: Zombat Staff
+				Tooltip: Summons baby zombats to protect you
+			}
+
+			BroodStaff: {
+				DisplayName: Brood Staff
+				Tooltip: Summons nestlings
+			}
+
+			MolluscStaff: {
+				DisplayName: Mollusc Staff
+				Tooltip:
+					'''
+					Summons a mussel
+					'Weird flex but okay'
+					'''
+			}
+
+			
+			RoyalOrb: {
+				DisplayName: Royal Orb
+				Tooltip: 
+					'''
+					{$Mods.Polarities.ItemTooltip.OrbBase}
+					Summons a hive bearer which releases smaller bees when your minions hit enemies
+					'''
+			}
+
+			Discorb: {
+				DisplayName: Discorb
+				Tooltip: 
+					'''
+					{$Mods.Polarities.ItemTooltip.OrbBase}
+					Summons a winged disco ball to confuse enemies
 					'''
 			}
 
@@ -347,7 +626,7 @@ Mods: {
 
 			BouncyDart: {
 				DisplayName: Bouncy Dart
-				Tooltip: "Bounces up to three times"
+				Tooltip: Bounces up to three times
 			}
 
 			WoodenDart: {
@@ -360,6 +639,303 @@ Mods: {
 				Tooltip: ""
 			}
 
+			//Blocks
+			GlowingLimestoneBrick: {
+				DisplayName: Glowing Limestone Brick
+				Tooltip: ""
+			}
+
+			HaliteBrick: {
+				DisplayName: Halite Brick
+				Tooltip: ""
+			}
+
+			Limestone: {
+				DisplayName: Limestone
+				Tooltip: ""
+			}
+
+			LimestoneBrick: {
+				DisplayName: Limestone Brick
+				Tooltip: ""
+			}
+
+			MantellarOre: {
+				DisplayName: Mantellar Ore
+				Tooltip: ""
+			}
+
+			RockSalt: {
+				DisplayName: Rock Salt
+				Tooltip: ""
+			}
+
+			Salt: {
+				DisplayName: Salt
+				Tooltip: ""
+			}
+
+			SaltBrick: {
+				DisplayName: Salt Brick
+				Tooltip: ""
+			}
+
+			SaltCrystals: {
+				DisplayName: Salt Crystals
+				Tooltip: "'Yum'"
+			}
+
+			//Furniture
+			CloudCichlidCage: {
+				DisplayName: Cloud Cichlid Cage
+				Tooltip: ""
+			}
+
+			LimestoneBathtub: {
+				DisplayName: Limestone Bathtub
+				Tooltip: ""
+			}
+
+			LimestoneBed: {
+				DisplayName: Limestone Bed
+				Tooltip: ""
+			}
+
+			LimestoneBookcase: {
+				DisplayName: Limestone Bookcase
+				Tooltip: ""
+			}
+
+			LimestoneCandelabra: {
+				DisplayName: Limestone Candelabra
+				Tooltip: ""
+			}
+
+			LimestoneCandle: {
+				DisplayName: Limestone Candle
+				Tooltip: ""
+			}
+
+			LimestoneChair: {
+				DisplayName: Limestone Chair
+				Tooltip: ""
+			}
+
+			LimestoneChandelier: {
+				DisplayName: Limestone Chandelier
+				Tooltip: ""
+			}
+
+			LimestoneChest: {
+				DisplayName: Limestone Chest
+				Tooltip: ""
+			}
+
+			LimestoneClock: {
+				DisplayName: Limestone Clock
+				Tooltip: ""
+			}
+
+			LimestoneDoor: {
+				DisplayName: Limestone Door
+				Tooltip: ""
+			}
+
+			LimestoneDresser: {
+				DisplayName: Limestone Dresser
+				Tooltip: ""
+			}
+
+			LimestoneLamp: {
+				DisplayName: Limestone Lamp
+				Tooltip: ""
+			}
+
+			LimestoneLantern: {
+				DisplayName: Limestone Lantern
+				Tooltip: ""
+			}
+
+			LimestonePiano: {
+				DisplayName: Limestone Piano
+				Tooltip: ""
+			}
+
+			LimestonePlatform: {
+				DisplayName: Limestone Platform
+				Tooltip: ""
+			}
+
+			LimestoneSink: {
+				DisplayName: Limestone Sink
+				Tooltip: ""
+			}
+
+			LimestoneSofa: {
+				DisplayName: Limestone Sofa
+				Tooltip: ""
+			}
+
+			LimestoneTable: {
+				DisplayName: Limestone Table
+				Tooltip: ""
+			}
+
+			LimestoneToilet: {
+				DisplayName: Limestone Toilet
+				Tooltip: ""
+			}
+
+			LimestoneTorch: {
+				DisplayName: Limestone Torch
+				Tooltip: ""
+			}
+
+			LimestoneWorkBench: {
+				DisplayName: Limestone Work Bench
+				Tooltip: ""
+			}
+
+			SaltBathtub: {
+				DisplayName: Salt Bathtub
+				Tooltip: ""
+			}
+
+			SaltBed: {
+				DisplayName: Salt Bed
+				Tooltip: ""
+			}
+
+			SaltBookcase: {
+				DisplayName: Salt Bookcase
+				Tooltip: ""
+			}
+
+			SaltCandelabra: {
+				DisplayName: Salt Candelabra
+				Tooltip: ""
+			}
+
+			SaltCandle: {
+				DisplayName: Salt Candle
+				Tooltip: ""
+			}
+
+			SaltChair: {
+				DisplayName: Salt Chair
+				Tooltip: ""
+			}
+
+			SaltChandelier: {
+				DisplayName: Salt Chandelier
+				Tooltip: ""
+			}
+
+			SaltChest: {
+				DisplayName: Salt Chest
+				Tooltip: ""
+			}
+
+			SaltClock: {
+				DisplayName: Salt Clock
+				Tooltip: ""
+			}
+
+			SaltDoor: {
+				DisplayName: Salt Door
+				Tooltip: ""
+			}
+
+			SaltDresser: {
+				DisplayName: Salt Dresser
+				Tooltip: ""
+			}
+
+			SaltLamp: {
+				DisplayName: Salt Lamp
+				Tooltip: ""
+			}
+
+			SaltLantern: {
+				DisplayName: Salt Lantern
+				Tooltip: ""
+			}
+
+			SaltPiano: {
+				DisplayName: Salt Piano
+				Tooltip: ""
+			}
+
+			SaltPlatform: {
+				DisplayName: Salt Platform
+				Tooltip: ""
+			}
+
+			SaltSink: {
+				DisplayName: Salt Sink
+				Tooltip: ""
+			}
+
+			SaltSofa: {
+				DisplayName: Salt Sofa
+				Tooltip: ""
+			}
+
+			SaltTable: {
+				DisplayName: Salt Table
+				Tooltip: ""
+			}
+
+			SaltToilet: {
+				DisplayName: Salt Toilet
+				Tooltip: ""
+			}
+
+			SaltTorch: {
+				DisplayName: Salt Torch
+				Tooltip: ""
+			}
+
+			SaltWorkBench: {
+				DisplayName: Salt Work Bench
+				Tooltip: ""
+			}
+
+			StormcloudCichlidCage: {
+				DisplayName: Stormcloud Cichlid Cage
+				Tooltip: ""
+			}
+
+			Stromatolight: {
+				DisplayName: Stromatolight
+				Tooltip: ""
+			}
+
+			//Walls
+			LimestoneBrickWall: {
+				DisplayName: Limestone Brick Wall
+				Tooltip: ""
+			}
+
+			LimestoneWall: {
+				DisplayName: Limestone Wall
+				Tooltip: ""
+			}
+
+			RockSaltWall: {
+				DisplayName: Rock Salt Wall
+				Tooltip: ""
+			}
+
+			SaltBrickWall: {
+				DisplayName: Salt Brick Wall
+				Tooltip: ""
+			}
+
+			SaltWall: {
+				DisplayName: Salt Wall
+				Tooltip: ""
+			}
 		}
 
 		NPCs: {
@@ -408,6 +984,38 @@ Mods: {
 			BatastropheMinion.DisplayName: Batastrophe Minion
 			GigabatEcholocation.DisplayName: Gigabat Echolocation
 			Stalactite.DisplayName: Stalactite
+			SaltProjectile.DisplayName: Salt Projectile
+			SaltKnifeProjectile.DisplayName: Salt Knife Projectile
+			CavernCarverProjectile.DisplayName: Cavern Carver Projectile
+			StardusterProjectile.DisplayName: Starduster Projectile
+			StardusterSkyProjectile.DisplayName: Starduster Sky Projectile
+			NeuralBasherProjectile.DisplayName: Neural Basher Projectile
+			FlywheelProjectile.DisplayName: Flywheel Projectile
+			FlywheelWave.DisplayName: Flywheel Wave
+			GlowYoDroplet.DisplayName: Glow Yo Droplet
+			GlowYoProjectile.DisplayName: Glow Yo Projectile
+			CausticSlugProjectile.DisplayName: Caustic Slug Projectile
+			CelestialStormProjectile.DisplayName: Celestial Storm Projectile
+			AxolatlBubble.DisplayName: Axolatl Bubble
+			AlkalineRainProjectile.DisplayName: Alkaline Rain Projectile
+			EyeruptionProjectile.DisplayName: Eyeruption Projectile
+			GelthrowerProjectile.DisplayName: Gelthrower Projectile
+			SaltShakerProjectile.DisplayName: Salt Shaker Projectile
+			RattlestaffProjectile.DisplayName: Rattlestaff Projectile
+			SpeleothemStalactite.DisplayName: Speleothem Stalactite
+			SpeleothemStalagmite.DisplayName: Speleothem Stalagmite
+			HaloclineBubbleLarge.DisplayName: Halocline Bubble Large
+			HaloclineBubbleSmall.DisplayName: Halocline Bubble Small
+			OceanSkyProjectile.DisplayName: Ocean Sky Projectile
+			ConsumptionCannonProjectile.DisplayName: Consumption Cannon Projectile
+			FlopperProjectile.DisplayName: Flopper
+			WingedStarMinion.DisplayName: Winged Star
+			ZombatMinion.DisplayName: Zombat Minion
+			BroodStaffSentry.DisplayName: Nestling
+			MolluscStaffSentry.DisplayName: Mussel
+			MolluscStaffSentryProjectile.DisplayName: Mollusc Staff Sentry Projectile
+			RoyalOrbMinion.DisplayName: Hive Bearer
+			DiscorbMinion.DisplayName: Disco Ball
 		}
 	}
 }
