@@ -1,0 +1,194 @@
+Mods: {
+	Polarities: {
+		Tiles.TrophyTile.MapEntry: Trophy Tile
+
+		Buffs: {
+			GoldfishExplorerPetBuff: {
+				DisplayName: Goldfish Explorer
+				Description: To boldly go where no goldfish has gone before
+			}
+
+			StormCloudfishPetBuff: {
+				DisplayName: Storm Cloudfish
+				Description: Aww, it's so ferocious
+			}
+		}
+
+		Items: {
+			//Accessories
+			Stormcore: {
+				DisplayName: Stormcore
+				Tooltip: Attracts schools of friendly cloudfish while at the surface, gradually filling up your available minion slots
+			}
+
+			StormScales: {
+				DisplayName: Storm Scales
+				Tooltip: Boosts mobility in the air
+			}
+
+			//Summon Items
+			AltBiomeMimicSummon: {
+				DisplayName: Weird Key of Night
+				Tooltip: "'Charged with the essence of strange souls'"
+			}
+
+			StormCloudfishSummonItem: {
+				DisplayName: Worm On A Kite
+				Tooltip: Flying this kite too high may attract hungry cloud-dwellers.
+			}
+
+			//Treasure Bags
+			StormCloudfishBag: {
+				DisplayName: (Treasure Bag) Storm Cloudfish
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			//Materials
+			StormChunk: {
+				DisplayName: Storm Chunk
+				Tooltip: ""
+			}
+
+			//Pet Items
+			GoldfishExplorerPetItem: {
+				DisplayName: Futuristic Bowl
+				Tooltip: Too small to fit on your head, but maybe...
+			}
+
+			StormCloudfishPetItem: {
+				DisplayName: Storm Cloudfish Pet Item
+				Tooltip:
+					'''
+					Summons a storm fry
+					'A tiny start for such a large creature'
+					'''
+			}
+
+			//Relics
+			ConvectiveWandererRelic: {
+				DisplayName: Convective Wanderer Relic
+				Tooltip: ""
+			}
+
+			EsophageRelic: {
+				DisplayName: Esophage Relic
+				Tooltip: ""
+			}
+
+			GigabatRelic: {
+				DisplayName: Gigabat Relic
+				Tooltip: ""
+			}
+
+			StarConstructRelic: {
+				DisplayName: Star Construct Relic
+				Tooltip: ""
+			}
+
+			StormCloudfishRelic: {
+				DisplayName: Storm Cloudfish Relic
+				Tooltip: ""
+			}
+
+			SunPixieRelic: {
+				DisplayName: Sun Pixie Relic
+				Tooltip: ""
+			}
+
+			//Trophies
+			ConvectiveWandererTrophy: {
+				DisplayName: Convective Wanderer Trophy
+				Tooltip: ""
+			}
+
+			EsophageTrophy: {
+				DisplayName: Esophage Trophy
+				Tooltip: ""
+			}
+
+			GigabatTrophy: {
+				DisplayName: Gigabat Trophy
+				Tooltip: ""
+			}
+
+			StarConstructTrophy: {
+				DisplayName: Star Construct Trophy
+				Tooltip: ""
+			}
+
+			StormCloudfishTrophy: {
+				DisplayName: Storm Cloudfish Trophy
+				Tooltip: ""
+			}
+
+			SunPixieTrophy: {
+				DisplayName: Sun Pixie Trophy
+				Tooltip: ""
+			}
+
+			//Tools
+			StrangeBarometer: {
+				DisplayName: Strange Barometer
+				Tooltip:
+					'''
+					Left click to toggle the rain
+					Right click to toggle the wind
+					'''
+			}
+
+			Skyhook: {
+				DisplayName: Skyhook
+				Tooltip:
+					'''
+					Attaches to air instead of solid blocks
+					'Not to be confused with a space elevator'
+					'''
+			}
+
+			//Vanity
+			StormCloudfishMask: {
+				DisplayName: Storm Cloudfish Mask
+				Tooltip: ""
+			}
+
+			//Weapons
+			EyeOfTheStormfish: {
+				DisplayName: Eye Of The Stormfish
+				Tooltip: Summons a storm vortex around the cursor, which shoots a bolt of lightning at the cursor
+			}
+
+			//Critter Items
+			CloudCichlidItem: {
+				DisplayName: Cloud Cichlid
+				Tooltip: ""
+			}
+
+			StormcloudCichlidItem: {
+				DisplayName: Stormcloud Cichlid
+				Tooltip: ""
+			}
+		}
+
+		NPCs: {
+			StormCloudfish.DisplayName: Storm Cloudfish
+			CloudCichlid.DisplayName: Cloud Cichlid
+			StormcloudCichlid.DisplayName: Stormcloud Cichlid
+		}
+
+		Projectiles: {
+			StormcoreMinion.DisplayName: Cloudfish
+			StormCloudfishSummonProjectile.DisplayName: Worm On A Kite
+			GoldfishExplorerPet.DisplayName: Goldfish Explorer
+			StormCloudfishPet.DisplayName: Storm Cloudfish
+			SkyhookProjectile.DisplayName: Skyhook
+			FriendlyLightning.DisplayName: Lightning Arc
+			StormEyeProjectile.DisplayName: Storm Vortex
+			CloudfishRain.DisplayName: Cloudfish Rain
+			StormCloudfishCloudOrb.DisplayName: Cloud Orb
+			StormCloudfishLightningArc.DisplayName: Lighting Arc
+			StormCloudfishLightningBall.DisplayName: Lighting Sphere
+			StormCloudfishRaincloud.DisplayName: Rain
+			StormCloudfishStormcloudOrb.DisplayName: Cloud Orb
+		}
+	}
+}

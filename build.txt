@@ -1,0 +1,3 @@
+displayName = Polarities
+author = Arc
+version = 0.1

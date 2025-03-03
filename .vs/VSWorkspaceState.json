@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Content",
+    "\\Content\\Items",
+    "\\Content\\Items\\Consumables\\Summons\\Hardmode",
+    "\\Content\\Items\\Consumables\\Summons\\PreHardmode",
+    "\\Content\\Items\\Vanity",
+    "\\Content\\NPCs\\Critters",
+    "\\Content\\NPCs\\Critters\\PreHardmode",
+    "\\Core",
+    "\\Localization"
+  ],
+  "SelectedNode": "\\Localization\\en-US.hjson",
+  "PreviewInSolutionExplorer": false
+}

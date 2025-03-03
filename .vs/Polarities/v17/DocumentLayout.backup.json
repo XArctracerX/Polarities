@@ -1,0 +1,574 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Localization\\en-US.hjson||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Localization\\en-US.hjson||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Vanity\\PreHardmode\\StormCloudfishMask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Vanity\\PreHardmode\\StormCloudfishMask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\TreasureBags\\PreHardmode\\StormCloudfishBag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Consumables\\TreasureBags\\PreHardmode\\StormCloudfishBag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish_Head_Boss.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish_Head_Boss.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Weapons\\Magic\\Flawless\\EyeOfTheStormfish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Weapons\\Magic\\Flawless\\EyeOfTheStormfish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\PolaritiesItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Global\\PolaritiesItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\Hardmode\\AltBiomeMimicSummon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Consumables\\Summons\\Hardmode\\AltBiomeMimicSummon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Placeable\\Relics\\RelicTile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Placeable\\Relics\\RelicTile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\PolaritiesNPC.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PolaritiesNPC.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\DropRules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Global\\DropRules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Core\\ModUtils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Core\\ModUtils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\PolaritiesPlayer.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PolaritiesPlayer.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\NPCs\\Critters\\PreHardmode\\CloudCichlid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\NPCs\\Critters\\PreHardmode\\CloudCichlid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PolaritiesOld\\ModUtils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Materials\\PreHardmode\\StormChunk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Materials\\PreHardmode\\StormChunk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\PolaritiesSystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PolaritiesSystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\Rarities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Global\\Rarities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\StrangeBarometer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\StrangeBarometer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\Downloads\\AltBiomeMimicSummon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\IInventoryDrawItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Global\\IInventoryDrawItem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Accessories\\PreHardmode\\Stormcore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Accessories\\PreHardmode\\Stormcore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\HeldItemDrawLayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Global\\HeldItemDrawLayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile_Tail.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile_Tail.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Pets\\PreHardmode\\GoldfishExplorerPet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Pets\\PreHardmode\\GoldfishExplorerPet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Pets\\PreHardmode\\StormCloudfishPet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Pets\\PreHardmode\\StormCloudfishPet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Tools\\Hooks\\PreHardmode\\Skyhook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Tools\\Hooks\\PreHardmode\\Skyhook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Accessories\\PreHardmode\\StormScales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Accessories\\PreHardmode\\StormScales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Placeable\\Trophies\\TrophyTile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Content\\Items\\Placeable\\Trophies\\TrophyTile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "en-US.hjson",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Localization\\en-US.hjson",
+              "RelativeDocumentMoniker": "Localization\\en-US.hjson",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Localization\\en-US.hjson",
+              "RelativeToolTip": "Localization\\en-US.hjson",
+              "ViewState": "AgIAAKUAAAAAAAAAAAAAALYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-03T08:03:32.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StormCloudfish.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish.cs",
+              "RelativeDocumentMoniker": "Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish.cs",
+              "RelativeToolTip": "Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish.cs",
+              "ViewState": "AgIAAMkAAAAAAAAAAAAAAFUAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:23:19.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StormCloudfishSummonItem.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.cs",
+              "RelativeToolTip": "Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA4AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:41:57.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StormCloudfishBag.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\TreasureBags\\PreHardmode\\StormCloudfishBag.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\TreasureBags\\PreHardmode\\StormCloudfishBag.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\TreasureBags\\PreHardmode\\StormCloudfishBag.cs",
+              "RelativeToolTip": "Content\\Items\\Consumables\\TreasureBags\\PreHardmode\\StormCloudfishBag.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:32:24.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StormCloudfishMask.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Vanity\\PreHardmode\\StormCloudfishMask.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Vanity\\PreHardmode\\StormCloudfishMask.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Vanity\\PreHardmode\\StormCloudfishMask.cs",
+              "RelativeToolTip": "Content\\Items\\Vanity\\PreHardmode\\StormCloudfishMask.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:31:37.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "StormCloudfish_Head_Boss.png -  [English (United States)] - PNG [50x38, 32 bit, PNG]",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish_Head_Boss.png",
+              "RelativeDocumentMoniker": "Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish_Head_Boss.png",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish_Head_Boss.png -  [English (United States)] - PNG [50x38, 32 bit, PNG]",
+              "RelativeToolTip": "Content\\NPCs\\Bosses\\PreHardmode\\StormCloudfish\\StormCloudfish_Head_Boss.png -  [English (United States)] - PNG [50x38, 32 bit, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-03-03T08:01:24.841Z",
+              "EditorCaption": " -  [English (United States)] - PNG [50x38, 32 bit, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PolaritiesItem.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\PolaritiesItem.cs",
+              "RelativeDocumentMoniker": "Global\\PolaritiesItem.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\PolaritiesItem.cs",
+              "RelativeToolTip": "Global\\PolaritiesItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:52:00.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AltBiomeMimicSummon.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\Hardmode\\AltBiomeMimicSummon.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\Summons\\Hardmode\\AltBiomeMimicSummon.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\Hardmode\\AltBiomeMimicSummon.cs",
+              "RelativeToolTip": "Content\\Items\\Consumables\\Summons\\Hardmode\\AltBiomeMimicSummon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:55:00.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EyeOfTheStormfish.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Weapons\\Magic\\Flawless\\EyeOfTheStormfish.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Weapons\\Magic\\Flawless\\EyeOfTheStormfish.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Weapons\\Magic\\Flawless\\EyeOfTheStormfish.cs",
+              "RelativeToolTip": "Content\\Items\\Weapons\\Magic\\Flawless\\EyeOfTheStormfish.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:42:42.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RelicTile.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Placeable\\Relics\\RelicTile.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Placeable\\Relics\\RelicTile.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Placeable\\Relics\\RelicTile.cs",
+              "RelativeToolTip": "Content\\Items\\Placeable\\Relics\\RelicTile.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:27:50.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PolaritiesNPC.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\PolaritiesNPC.cs",
+              "RelativeDocumentMoniker": "PolaritiesNPC.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\PolaritiesNPC.cs",
+              "RelativeToolTip": "PolaritiesNPC.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACsAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T07:07:26.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DropRules.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\DropRules.cs",
+              "RelativeDocumentMoniker": "Global\\DropRules.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\DropRules.cs",
+              "RelativeToolTip": "Global\\DropRules.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAB/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T07:07:05.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ModUtils.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Core\\ModUtils.cs",
+              "RelativeDocumentMoniker": "Core\\ModUtils.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Core\\ModUtils.cs",
+              "RelativeToolTip": "Core\\ModUtils.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:57:12.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PolaritiesPlayer.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\PolaritiesPlayer.cs",
+              "RelativeDocumentMoniker": "PolaritiesPlayer.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\PolaritiesPlayer.cs",
+              "RelativeToolTip": "PolaritiesPlayer.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:36:07.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CloudCichlid.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\NPCs\\Critters\\PreHardmode\\CloudCichlid.cs",
+              "RelativeDocumentMoniker": "Content\\NPCs\\Critters\\PreHardmode\\CloudCichlid.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\NPCs\\Critters\\PreHardmode\\CloudCichlid.cs",
+              "RelativeToolTip": "Content\\NPCs\\Critters\\PreHardmode\\CloudCichlid.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T07:02:23.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ModUtils.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PolaritiesOld\\ModUtils.cs",
+              "RelativeDocumentMoniker": "..\\PolaritiesOld\\ModUtils.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PolaritiesOld\\ModUtils.cs",
+              "RelativeToolTip": "..\\PolaritiesOld\\ModUtils.cs",
+              "ViewState": "AgIAAGgBAAAAAAAAAAAAAHIBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T07:09:46.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PolaritiesSystem.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\PolaritiesSystem.cs",
+              "RelativeDocumentMoniker": "PolaritiesSystem.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\PolaritiesSystem.cs",
+              "RelativeToolTip": "PolaritiesSystem.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T07:04:03.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "StormChunk.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Materials\\PreHardmode\\StormChunk.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Materials\\PreHardmode\\StormChunk.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Materials\\PreHardmode\\StormChunk.cs",
+              "RelativeToolTip": "Content\\Items\\Materials\\PreHardmode\\StormChunk.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:33:35.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Rarities.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\Rarities.cs",
+              "RelativeDocumentMoniker": "Global\\Rarities.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\Rarities.cs",
+              "RelativeToolTip": "Global\\Rarities.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:56:16.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "StrangeBarometer.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\StrangeBarometer.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\StrangeBarometer.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\StrangeBarometer.cs",
+              "RelativeToolTip": "Content\\Items\\StrangeBarometer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:47:07.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AltBiomeMimicSummon.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\Downloads\\AltBiomeMimicSummon.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\Downloads\\AltBiomeMimicSummon.cs",
+              "ToolTip": "C:\\Users\\cc\\Downloads\\AltBiomeMimicSummon.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\Downloads\\AltBiomeMimicSummon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:54:52.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IInventoryDrawItem.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\IInventoryDrawItem.cs",
+              "RelativeDocumentMoniker": "Global\\IInventoryDrawItem.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\IInventoryDrawItem.cs",
+              "RelativeToolTip": "Global\\IInventoryDrawItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:53:21.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Stormcore.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Accessories\\PreHardmode\\Stormcore.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Accessories\\PreHardmode\\Stormcore.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Accessories\\PreHardmode\\Stormcore.cs",
+              "RelativeToolTip": "Content\\Items\\Accessories\\PreHardmode\\Stormcore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:30:15.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "HeldItemDrawLayer.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\HeldItemDrawLayer.cs",
+              "RelativeDocumentMoniker": "Global\\HeldItemDrawLayer.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Global\\HeldItemDrawLayer.cs",
+              "RelativeToolTip": "Global\\HeldItemDrawLayer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:51:08.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "StormCloudfishSummonItem.png -  [English (United States)] - PNG [32x32, 32 bit, PNG]",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.png",
+              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.png",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.png -  [English (United States)] - PNG [32x32, 32 bit, PNG]",
+              "RelativeToolTip": "Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonItem.png -  [English (United States)] - PNG [32x32, 32 bit, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-03-03T06:42:04.941Z",
+              "EditorCaption": " -  [English (United States)] - PNG [32x32, 32 bit, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "StormCloudfishSummonProjectile_Tail.png -  [English (United States)] - PNG [24x12, 32 bit, PNG]",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile_Tail.png",
+              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile_Tail.png",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile_Tail.png -  [English (United States)] - PNG [24x12, 32 bit, PNG]",
+              "RelativeToolTip": "Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile_Tail.png -  [English (United States)] - PNG [24x12, 32 bit, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-03-03T06:42:03.932Z",
+              "EditorCaption": " -  [English (United States)] - PNG [24x12, 32 bit, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "StormCloudfishSummonProjectile.png -  [English (United States)] - PNG [272x68, 32 bit, PNG]",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile.png",
+              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile.png",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile.png -  [English (United States)] - PNG [272x68, 32 bit, PNG]",
+              "RelativeToolTip": "Content\\Items\\Consumables\\Summons\\PreHardmode\\StormCloudfishSummonProjectile.png -  [English (United States)] - PNG [272x68, 32 bit, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-03-03T06:42:02.401Z",
+              "EditorCaption": " -  [English (United States)] - PNG [272x68, 32 bit, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "GoldfishExplorerPet.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Pets\\PreHardmode\\GoldfishExplorerPet.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Pets\\PreHardmode\\GoldfishExplorerPet.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Pets\\PreHardmode\\GoldfishExplorerPet.cs",
+              "RelativeToolTip": "Content\\Items\\Pets\\PreHardmode\\GoldfishExplorerPet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:39:48.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Skyhook.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Tools\\Hooks\\PreHardmode\\Skyhook.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Tools\\Hooks\\PreHardmode\\Skyhook.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Tools\\Hooks\\PreHardmode\\Skyhook.cs",
+              "RelativeToolTip": "Content\\Items\\Tools\\Hooks\\PreHardmode\\Skyhook.cs",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAAAAkAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:35:19.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "StormCloudfishPet.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Pets\\PreHardmode\\StormCloudfishPet.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Pets\\PreHardmode\\StormCloudfishPet.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Pets\\PreHardmode\\StormCloudfishPet.cs",
+              "RelativeToolTip": "Content\\Items\\Pets\\PreHardmode\\StormCloudfishPet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:34:27.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "StormScales.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Accessories\\PreHardmode\\StormScales.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Accessories\\PreHardmode\\StormScales.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Accessories\\PreHardmode\\StormScales.cs",
+              "RelativeToolTip": "Content\\Items\\Accessories\\PreHardmode\\StormScales.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAQAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:30:25.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "TrophyTile.cs",
+              "DocumentMoniker": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Placeable\\Trophies\\TrophyTile.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Placeable\\Trophies\\TrophyTile.cs",
+              "ToolTip": "C:\\Users\\cc\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\Polarities\\Content\\Items\\Placeable\\Trophies\\TrophyTile.cs",
+              "RelativeToolTip": "Content\\Items\\Placeable\\Trophies\\TrophyTile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T06:26:59.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
