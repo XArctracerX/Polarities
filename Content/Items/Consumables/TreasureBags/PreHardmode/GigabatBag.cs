@@ -1,7 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat;
-using Polarities.Content.Items.Accessories.PreHardmode;
+using Polarities.Content.Items.Accessories.ExpertMode.PreHardmode;
+using Polarities.Content.Items.Accessories.Combat.Offense.PreHardmode;
 using Polarities.Content.Items.Vanity.PreHardmode;
 using Polarities.Content.Items.Consumables.TreasureBags.PreHardmode;
 using Polarities.Content.Items.Consumables.Summons.PreHardmode;

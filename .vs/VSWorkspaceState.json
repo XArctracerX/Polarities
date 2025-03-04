@@ -3,14 +3,15 @@
     "",
     "\\Content",
     "\\Content\\Items",
+    "\\Content\\Items\\Consumables\\Potions",
+    "\\Content\\Items\\Consumables\\Potions\\Hardmode",
+    "\\Content\\Items\\Placeable\\MusicBoxes",
     "\\Content\\Items\\Weapons",
-    "\\Content\\Items\\Weapons\\Summon",
-    "\\Content\\Items\\Weapons\\Summon\\Flawless",
-    "\\Content\\Items\\Weapons\\Summon\\Orbs",
-    "\\Content\\Items\\Weapons\\Summon\\Orbs\\PreHardmode",
-    "\\Content\\Items\\Weapons\\Summon\\Sentries\\PreHardmode",
-    "\\Core"
+    "\\Content\\Items\\Weapons\\Ranged",
+    "\\Content\\Items\\Weapons\\Ranged\\Atlatls",
+    "\\Content\\Items\\Weapons\\Ranged\\Atlatls\\Hardmode",
+    "\\Localization"
   ],
-  "SelectedNode": "\\Localization\\en-US.hjson",
+  "SelectedNode": "\\Content\\Items\\Weapons\\Ranged\\Atlatls\\AtlatlBase.cs",
   "PreviewInSolutionExplorer": false
 }

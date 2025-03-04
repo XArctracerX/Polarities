@@ -1,7 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Polarities.Content.Items;
-using Polarities.Content.Items.Accessories.PreHardmode;
+using Polarities.Content.Items.Tools.Misc.PreHardmode;
+using Polarities.Content.Items.Accessories.ExpertMode.PreHardmode;
+using Polarities.Content.Items.Accessories.Combat.Offense.PreHardmode;
 using Polarities.Content.Items.Vanity.PreHardmode;
 using Polarities.Content.Items.Tools.Hooks.PreHardmode;
 using Polarities.Content.Items.Materials.PreHardmode;

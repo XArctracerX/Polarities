@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Polarities.Assets.Dusts;
 using Polarities.Content.Items.Placeable.Blocks;
-//using Polarities.Items.Placeable.Blocks.Fractal;
+using Polarities.Content.Items.Placeable.Blocks.Fractal;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -131,10 +131,10 @@ namespace Polarities.Content.Items.Placeable.Bars
 
         public override void AddRecipes()
         {
-            //CreateRecipe()
-                //.AddIngredient(ItemType<FractalOre>(), 4)
-                //.AddTile(TileID.Hellforge)
-                //.Register();
+            CreateRecipe()
+                .AddIngredient(ItemType<FractalOre>(), 4)
+                .AddTile(TileID.Hellforge)
+                .Register();
         }
     }
 
@@ -156,10 +156,10 @@ namespace Polarities.Content.Items.Placeable.Bars
 
         public override void AddRecipes()
         {
-            //CreateRecipe()
-                //.AddIngredient(ItemType<SelfsimilarOre>(), 4)
-                //.AddTile(TileID.AdamantiteForge)
-                //.Register();
+            CreateRecipe()
+                .AddIngredient(ItemType<SelfsimilarOre>(), 4)
+                .AddTile(TileID.AdamantiteForge)
+                .Register();
         }
     }
 }

@@ -1,5 +1,39 @@
 Mods: {
 	Polarities: {
+		ArmorSetBonus: {
+			Halite: {
+				Description:
+					'''
+					Free movement in liquids
+					Immunity to desiccation
+					'''
+				Tooltip: Tooltip
+			}
+
+			Sunplate: {
+				Description: Allows the ability to dash
+				Tooltip: Tooltip
+			}
+
+			Aerogel: {
+				Description:
+					'''
+					Provides a significant boost to movement speed
+					Provides immunity to fire and fire blocks
+					'''
+				Tooltip: Tooltip
+			}
+
+			Stormcloud: {
+				Description:
+					'''
+					Summons clouds to drench your foes
+					Increases your max number of minions
+					'''
+				Tooltip: Tooltip
+			}
+		}
+
 		Tiles: {
 			TrophyTile.MapEntry: Trophy Tile
 			MantellarOreTile.MapEntry: Mantellar Ore Tile
@@ -8,6 +42,23 @@ Mods: {
 			LimestoneChestTile.MapEntry: Limestone Chest Tile
 			SaltChestTile.MapEntry: Salt Chest Tile
 			StormcloudCichlidCageTile.MapEntry: Stormcloud Cichlid Cage Tile
+			DendriticEnergyTile.MapEntry: Dendritic Energy Tile
+			FractalOreTile.MapEntry: Fractal Ore Tile
+			SelfsimilarOreTile.MapEntry: Selfsimilar Ore Tile
+			FractalBiomeChestTile.MapEntry: Fractal Biome Chest Tile
+			FractalChestTile.MapEntry: Fractal Chest Tile
+		}
+
+		WorldGenPass: {
+			AddBiomeChests: Generating more loot
+			AddSkyIslandLoot: Calling stars
+			GenSaltCaves: Precipitating salt
+			SaltCavesRemoveObsidian: Decluttering salt caves
+			SaltCavesLavaReplace: Hydrating salt caves
+			GenLimestoneCaves: Eroding limestone
+			CustomHellGeneration: Making hell more hellish
+			FinalFinalCleanup: Final final cleanup
+			PolaritiesPots: Generating additional pots
 		}
 
 		ItemTooltip: {
@@ -38,6 +89,26 @@ Mods: {
 				Description: They're itty bitty
 			}
 
+			BabySparkCrawlerBuff: {
+				DisplayName: Baby Spark Crawler
+				Description: A baby spark crawler is following you
+			}
+
+			MiniMengerBuff: {
+				DisplayName: Mini Menger
+				Description: A mini menger is following you
+			}
+
+			SunPixiePetBuff: {
+				DisplayName: Winged Everlight
+				Description: Lights up the world like nobody else
+			}
+
+			RocketSnekPetBuff: {
+				DisplayName: Rocket Snek
+				Description: A snek is following you
+			}
+
 			//Minions
 			WingedStarMinionBuff: {
 				DisplayName: Winged Star Minion Buff
@@ -63,6 +134,31 @@ Mods: {
 			Desiccating: {
 				DisplayName: Desiccating
 				Description: You are drying out
+			}
+
+			SunfishBuff: {
+				DisplayName: Sunfish's Protection
+				Description: Increased life regen and decreased enemy spawn rates
+			}
+
+			SeaLilyBuff: {
+				DisplayName: Lily's Blessing
+				Description: Slightly increased life regen and movement speed
+			}
+
+			Turbulence: {
+				DisplayName: Turbulence
+				Description: Mods.Polarities.Buffs.Turbulence.Description
+			}
+
+			PiercingPotionBuff: {
+				DisplayName: Piercing Potion Buff
+				Description: Mods.Polarities.Buffs.PiercingPotionBuff.Description
+			}
+
+			TolerancePotionCooldownBuff: {
+				DisplayName: Tolerance Potion Cooldown Buff
+				Description: Mods.Polarities.Buffs.TolerancePotionCooldownBuff.Description
 			}
 		}
 
@@ -99,6 +195,42 @@ Mods: {
 					'''
 					Gives Feral Bite and immunity to all debuffs caused by Feral Bite
 					The damage increase from feral bite is reduced to 12%
+					'''
+			}
+
+			CorrosivePolish: {
+				DisplayName: Corrosive Polish
+				Tooltip: Warhammers remove 10 more defense for 10 more seconds
+			}
+
+			StarbindCuffs: {
+				DisplayName: Starbind Cuffs
+				Tooltip:
+					'''
+					Increases pickup range for mana stars
+					Restores mana when damaged
+					Increases maximum mana by 20
+					Doubles mana recieved from mana stars
+					'''
+			}
+
+			HopperCrystal: {
+				DisplayName: Hopper Crystal
+				Tooltip:
+					'''
+					Provides a slight boost to jump height and grants auto-jump
+					Boosts horizontal speed when jumping
+					'''
+			}
+
+			SaltatoryLeg: {
+				DisplayName: Saltatory Leg
+				Tooltip:
+					'''
+					Increases jump speed and allows auto-jump
+					Increases fall resistance
+					Boosts horizontal speed when jumping
+					'Weirdly twitchy'
 					'''
 			}
 
@@ -163,6 +295,56 @@ Mods: {
 				Tooltip: Makes a noise when you shake it
 			}
 
+			CongealedBrine: {
+				DisplayName: Congealed Brine
+				Tooltip: ""
+			}
+
+			EvilDNA: {
+				DisplayName: Evil D N A
+				Tooltip: ""
+			}
+
+			FractalResidue: {
+				DisplayName: Fractal Residue
+				Tooltip: "'Covered in winding contours'"
+			}
+
+			LimestoneCarapace: {
+				DisplayName: Limestone Carapace
+				Tooltip: ""
+			}
+
+			Mirrorfish: {
+				DisplayName: Mirrorfish
+				Tooltip: ""
+			}
+
+			SerpentScale: {
+				DisplayName: Serpent Scale
+				Tooltip: ""
+			}
+
+			Tentacle: {
+				DisplayName: Tentacle
+				Tooltip: ""
+			}
+
+			VenomGland: {
+				DisplayName: Venom Gland
+				Tooltip: "'Gross'"
+			}
+
+			WandererPlating: {
+				DisplayName: Wanderer Plating
+				Tooltip: ""
+			}
+
+			BrineShrimp: {
+				DisplayName: Brine Shrimp
+				Tooltip: ""
+			}
+
 			//Pet Items
 			GoldfishExplorerPetItem: {
 				DisplayName: Futuristic Bowl
@@ -196,6 +378,30 @@ Mods: {
 					'''
 			}
 
+			SparkOfSimilarity: {
+				DisplayName: Spark Of Similarity
+				Tooltip: Summons a baby Spark Crawler
+			}
+
+			SunPixiePetItem: {
+				DisplayName: Winged Everlight
+				Tooltip:
+					'''
+					Summons a winged everlight
+					'Imbued with the fury of an average lightbulb'
+					'''
+			}
+
+			RocketSnekPetItem: {
+				DisplayName: Rocket Snek
+				Tooltip: ...
+			}
+
+			MiniMengerItem: {
+				DisplayName: Porous Cuboid
+				Tooltip: Summons a mini menger
+			}
+
 			//Tools
 			StrangeBarometer: {
 				DisplayName: Strange Barometer
@@ -211,6 +417,13 @@ Mods: {
 				Tooltip: Accelerates time
 			}
 
+			//Multi
+			SunplateHamaxe: {
+				DisplayName: Sunplate Hamaxe
+				Tooltip: ""
+			}
+
+			// Hooks
 			Skyhook: {
 				DisplayName: Skyhook
 				Tooltip:
@@ -226,6 +439,17 @@ Mods: {
 			}
 
 			//Vanity
+			SnekHat: {
+				DisplayName: Snek Hat
+				Tooltip: ""
+			}
+
+			SeaSnekHat: {
+				DisplayName: Sea Snek Hat
+				Tooltip: ""
+			}
+
+			//Boss Masks
 			StormCloudfishMask: {
 				DisplayName: Storm Cloudfish Mask
 				Tooltip: ""
@@ -239,6 +463,133 @@ Mods: {
 			GigabatMask: {
 				DisplayName: Gigabat Mask
 				Tooltip: ""
+			}
+
+			ConvectiveWandererMask: {
+				DisplayName: Convective Wanderer Mask
+				Tooltip: ""
+			}
+
+			EsophageMask: {
+				DisplayName: Esophage Mask
+				Tooltip: ""
+			}
+
+			SunPixieMask: {
+				DisplayName: Sun Pixie Mask
+				Tooltip: ""
+			}
+
+			//DevSets
+			BubbyHead: {
+				DisplayName: Bubby's Sniper Mask
+				Tooltip: ""
+			}
+
+			BubbyBody: {
+				DisplayName: Bubby's Cloak of Solitude
+				Tooltip: ""
+			}
+
+			BubbyLegs: {
+				DisplayName: Bubby's Diamond Cutter Cuffs
+				Tooltip: ""
+			}
+
+			BubbyWings: {
+				DisplayName: Bubby's Back-Mounted Hover Wispon
+				Tooltip: ""
+			}
+
+			ElectroManiacHead: {
+				DisplayName: ElectroManiac's Hood
+				Tooltip: ""
+			}
+
+			ElectroManiacBody: {
+				DisplayName: ElectroManiac's Jacket
+				Tooltip: ""
+			}
+
+			ElectroManiacLegs: {
+				DisplayName: ElectroManiac's Jeans
+				Tooltip: ""
+			}
+
+			TuringHead: {
+				DisplayName: Turing's Hermetic Mask
+				Tooltip: ""
+			}
+
+			TuringBody: {
+				DisplayName: Turing's Weighted Armor
+				Tooltip: ""
+			}
+
+			TuringLegs: {
+				DisplayName: Turing's Contact Repulsor
+				Tooltip: ""
+			}
+
+			TuringWings: {
+				DisplayName: Turing's Sonic Escape Device
+				Tooltip: Allows the user to escape from loud situations
+			}
+
+			//Armor
+			HaliteHelmet: {
+				DisplayName: Halite Helmet
+				Tooltip: ""
+			}
+
+			HaliteArmor: {
+				DisplayName: Halite Armor
+				Tooltip: ""
+			}
+
+			HaliteGreaves: {
+				DisplayName: Halite Greaves
+				Tooltip: ""
+			}
+
+			SunplateMask: {
+				DisplayName: Sunplate Mask
+				Tooltip: 3% increased damage
+			}
+
+			SunplateArmor: {
+				DisplayName: Sunplate Armor
+				Tooltip: 3% increased damage
+			}
+
+			SunplateBoots: {
+				DisplayName: Sunplate Boots
+				Tooltip: 3% increased damage
+			}
+
+			AerogelHood: {
+				DisplayName: Aerogel Hood
+				Tooltip: ""
+			}
+
+			AerogelRobe: {
+				DisplayName: Aerogel Robe
+				Tooltip: ""
+			}
+
+			StormcloudMask: {
+				DisplayName: Stormcloud Mask
+				Tooltip: 4% increased minion damage
+			}
+
+			StormcloudArmor: {
+				DisplayName: Stormcloud Armor
+				Tooltip: 4% increased minion damage
+			}
+
+			StormcloudGreaves: {
+				DisplayName: Stormcloud Greaves
+				Tooltip: 10% increased movement speed
 			}
 
 			//Weapons
@@ -490,10 +841,9 @@ Mods: {
 					'''
 			}
 
-			
 			RoyalOrb: {
 				DisplayName: Royal Orb
-				Tooltip: 
+				Tooltip:
 					'''
 					{$Mods.Polarities.ItemTooltip.OrbBase}
 					Summons a hive bearer which releases smaller bees when your minions hit enemies
@@ -502,7 +852,7 @@ Mods: {
 
 			Discorb: {
 				DisplayName: Discorb
-				Tooltip: 
+				Tooltip:
 					'''
 					{$Mods.Polarities.ItemTooltip.OrbBase}
 					Summons a winged disco ball to confuse enemies
@@ -518,6 +868,41 @@ Mods: {
 			StormcloudCichlidItem: {
 				DisplayName: Stormcloud Cichlid
 				Tooltip: ""
+			}
+
+			AmberGemflyItem: {
+				DisplayName: Amber Gemfly
+				Tooltip: May attract bats
+			}
+
+			AmethystGemflyItem: {
+				DisplayName: Amethyst Gemfly
+				Tooltip: May attract bats
+			}
+
+			DiamondGemflyItem: {
+				DisplayName: Diamond Gemfly
+				Tooltip: May attract bats
+			}
+
+			EmeraldGemflyItem: {
+				DisplayName: Emerald Gemfly
+				Tooltip: May attract bats
+			}
+
+			RubyGemflyItem: {
+				DisplayName: Ruby Gemfly
+				Tooltip: May attract bats
+			}
+
+			SapphireGemflyItem: {
+				DisplayName: Sapphire Gemfly
+				Tooltip: May attract bats
+			}
+
+			TopazGemflyItem: {
+				DisplayName: Topaz Gemfly
+				Tooltip: May attract bats
 			}
 
 			//Bars
@@ -911,6 +1296,211 @@ Mods: {
 				Tooltip: ""
 			}
 
+			DendriticEnergy: {
+				DisplayName: Dendritic Energy
+				Tooltip: ""
+			}
+
+			FractalBrick: {
+				DisplayName: Fractal Brick
+				Tooltip: ""
+			}
+
+			FractalBrickWall: {
+				DisplayName: Fractal Brick Wall
+				Tooltip: ""
+			}
+
+			FractalDust: {
+				DisplayName: Fractal Dust
+				Tooltip: ""
+			}
+
+			FractalDuststone: {
+				DisplayName: Fractal Duststone
+				Tooltip: ""
+			}
+
+			FractalDuststoneWall: {
+				DisplayName: Fractal Duststone Wall
+				Tooltip: ""
+			}
+
+			FractalEnergyTrap: {
+				DisplayName: Fractal Energy Trap
+				Tooltip: ""
+			}
+
+			FractalLaserTrap: {
+				DisplayName: Fractal Laser Trap
+				Tooltip: ""
+			}
+
+			FractalMatter: {
+				DisplayName: Fractal Matter
+				Tooltip: ""
+			}
+
+			FractalMatterWall: {
+				DisplayName: Fractal Matter Wall
+				Tooltip: ""
+			}
+
+			FractalOre: {
+				DisplayName: Fractal Ore
+				Tooltip: ""
+			}
+
+			FractalStrands: {
+				DisplayName: Fractal Strands
+				Tooltip: ""
+			}
+
+			FractalStrandsWall: {
+				DisplayName: Fractal Strands Wall
+				Tooltip: ""
+			}
+
+			Fractus: {
+				DisplayName: Fractus
+				Tooltip: ""
+			}
+
+			Lightslate: {
+				DisplayName: Lightslate
+				Tooltip: ""
+			}
+
+			SelfsimilarOre: {
+				DisplayName: Selfsimilar Ore
+				Tooltip: ""
+			}
+
+			FractalAltar: {
+				DisplayName: Fractal Altar
+				Tooltip: ""
+			}
+
+			FractalAssembler: {
+				DisplayName: Fractal Assembler
+				Tooltip: ""
+			}
+
+			FractalBathtub: {
+				DisplayName: Fractal Bathtub
+				Tooltip: ""
+			}
+
+			FractalBed: {
+				DisplayName: Fractal Bed
+				Tooltip: ""
+			}
+
+			FractalBiomeChest: {
+				DisplayName: Fractal Biome Chest
+				Tooltip: ""
+			}
+
+			FractalBookcase: {
+				DisplayName: Fractal Bookcase
+				Tooltip: ""
+			}
+
+			FractalCandelabra: {
+				DisplayName: Fractal Candelabra
+				Tooltip: ""
+			}
+
+			FractalCandle: {
+				DisplayName: Fractal Candle
+				Tooltip: ""
+			}
+
+			FractalChair: {
+				DisplayName: Fractal Chair
+				Tooltip: ""
+			}
+
+			FractalChandelier: {
+				DisplayName: Fractal Chandelier
+				Tooltip: ""
+			}
+
+			FractalChest: {
+				DisplayName: Fractal Chest
+				Tooltip: ""
+			}
+
+			FractalClock: {
+				DisplayName: Fractal Clock
+				Tooltip: ""
+			}
+
+			FractalDoor: {
+				DisplayName: Fractal Door
+				Tooltip: ""
+			}
+
+			FractalDresser: {
+				DisplayName: Fractal Dresser
+				Tooltip: ""
+			}
+
+			FractalLamp: {
+				DisplayName: Fractal Lamp
+				Tooltip: ""
+			}
+
+			FractalLantern: {
+				DisplayName: Fractal Lantern
+				Tooltip: ""
+			}
+
+			FractalPiano: {
+				DisplayName: Fractal Piano
+				Tooltip: ""
+			}
+
+			FractalPlatform: {
+				DisplayName: Fractal Platform
+				Tooltip: ""
+			}
+
+			FractalSink: {
+				DisplayName: Fractal Sink
+				Tooltip: ""
+			}
+
+			FractalSofa: {
+				DisplayName: Fractal Sofa
+				Tooltip: ""
+			}
+
+			FractalTable: {
+				DisplayName: Fractal Table
+				Tooltip: ""
+			}
+
+			FractalToilet: {
+				DisplayName: Fractal Toilet
+				Tooltip: ""
+			}
+
+			FractalTorch: {
+				DisplayName: Fractal Torch
+				Tooltip: ""
+			}
+
+			FractalWorkbench: {
+				DisplayName: Fractal Workbench
+				Tooltip: ""
+			}
+
+			WarpedLandscape: {
+				DisplayName: Warped Landscape
+				Tooltip: "'S. Lunin'"
+			}
+
 			//Walls
 			LimestoneBrickWall: {
 				DisplayName: Limestone Brick Wall
@@ -936,6 +1526,141 @@ Mods: {
 				DisplayName: Salt Wall
 				Tooltip: ""
 			}
+
+			//Music Box
+			ConvectiveWandererMusicBox: {
+				DisplayName: Music Box (Convective Wanderer)
+				Tooltip: ""
+			}
+
+			EclipxieMusicBox: {
+				DisplayName: Music Box (Eclipxie)
+				Tooltip: ""
+			}
+
+			EsophageMusicBox: {
+				DisplayName: Music Box (Esophage)
+				Tooltip: ""
+			}
+
+			FractalDimensionLoadingMusicBox: {
+				DisplayName: Music Box (Fractal Loading)
+				Tooltip: ""
+			}
+
+			FractalDimensionMusicBox: {
+				DisplayName: Music Box (Fractal Dimension)
+				Tooltip: ""
+			}
+
+			GigabatMusicBox: {
+				DisplayName: Music Box (Gigabat)
+				Tooltip: ""
+			}
+
+			HemorrphageMusicBox: {
+				DisplayName: Music Box (Hemorrphage)
+				Tooltip: ""
+			}
+
+			PestilenceMusicBox: {
+				DisplayName: Music Box (Pestilence)
+				Tooltip: ""
+			}
+
+			PolaritiesMusicBox: {
+				DisplayName: Music Box (Polarities)
+				Tooltip: ""
+			}
+
+			RiftDenizenMusicBox: {
+				DisplayName: Music Box (Rift Denizen)
+				Tooltip: ""
+			}
+
+			SentinelP1MusicBox: {
+				DisplayName: Music Box (Selfsimilar Sentinel - Part 1)
+				Tooltip: ""
+			}
+
+			SentinelP2MusicBox: {
+				DisplayName: Music Box (Selfsimilar Sentinel - Part 2)
+				Tooltip: ""
+			}
+
+			StarConstructMusicBox: {
+				DisplayName: Music Box (Star Construct)
+				Tooltip: ""
+			}
+
+			StormCloudfishMusicBox: {
+				DisplayName: Music Box (Storm Cloudfish)
+				Tooltip: ""
+			}
+
+			SunPixieMusicBox: {
+				DisplayName: Music Box (Sun Pixie)
+				Tooltip: ""
+			}
+
+			//Food
+			AlkalineSoup: {
+				DisplayName: Alkaline Soup
+				Tooltip:
+					'''
+					Minor improvements to all stats
+					Slightly corrosive
+					'''
+			}
+
+			KeyLimePie: {
+				DisplayName: Key Lime Pie
+				Tooltip: ""
+			}
+
+			Pretzel: {
+				DisplayName: Pretzel
+				Tooltip: ""
+			}
+
+			FractusFruit: {
+				DisplayName: Fractus Fruit
+				Tooltip:
+					'''
+					Minor improvements to all stats
+					Increases fractalization by 10 seconds when in the fractal dimension
+					'''
+			}
+
+			FractusJuice: {
+				DisplayName: Fractus Juice
+				Tooltip:
+					'''
+					Medium improvements to all stats
+					Increases fractalization by 20 seconds when in the fractal dimension
+					'It'll quench ya!'
+					'''
+			}
+
+			//Potions
+			PiercingPotion: {
+				DisplayName: Piercing Potion
+				Tooltip: Increases armor penetration by 6
+			}
+
+			TolerancePotion: {
+				DisplayName: Tolerance Potion
+				Tooltip: Halves duration of potion sickness when consumed, with a 60 second cooldown
+			}
+
+			TwistedRecallPotion: {
+				DisplayName: Twisted Recall Potion
+				Tooltip:
+					'''
+					Teleports you to the fractal dimension's spawnpoint
+					Removes fractalization from the player, causing fractal enemies to disappear
+					'''
+			}
 		}
 
 		NPCs: {
@@ -947,6 +1672,15 @@ Mods: {
 			StarConstructClaw.DisplayName: Star Construct Claw
 			Gigabat.DisplayName: Gigabat
 			GigabatMinion.DisplayName: Gigabat Minion
+			Sunfish.DisplayName: Sunfish
+			AmberGemfly.DisplayName: Amber Gemfly
+			AmethystGemfly.DisplayName: Amethyst Gemfly
+			DiamondGemfly.DisplayName: Diamond Gemfly
+			EmeraldGemfly.DisplayName: Emerald Gemfly
+			RubyGemfly.DisplayName: Ruby Gemfly
+			SapphireGemfly.DisplayName: Sapphire Gemfly
+			SeaLily.DisplayName: Sea Lily
+			TopazGemfly.DisplayName: Topaz Gemfly
 		}
 
 		Projectiles: {
@@ -1016,6 +1750,33 @@ Mods: {
 			MolluscStaffSentryProjectile.DisplayName: Mollusc Staff Sentry Projectile
 			RoyalOrbMinion.DisplayName: Hive Bearer
 			DiscorbMinion.DisplayName: Disco Ball
+			FractalDustProjectile.DisplayName: Fractal Dust Projectile
+			FractalTrapEnergy.DisplayName: Fractal Trap Energy
+			FractalTrapLaser.DisplayName: Fractal Trap Laser
+			LightslateProjectile.DisplayName: Lightslate Projectile
+			BabySparkCrawler.DisplayName: Baby Spark Crawler
+			MiniMenger.DisplayName: Mini Menger
+			SunPixiePet.DisplayName: Winged Everlight
+			RocketSnekPet.DisplayName: Rocket Snek
+			StormcloudArmorRaincloud.DisplayName: Stormcloud Armor Raincloud
+			StormcloudArmorRaincloudRain.DisplayName: Stormcloud Armor Raincloud Rain
+		}
+
+		Biomes: {
+			LavaOcean: {
+				DisplayName: Lava Ocean
+				TownNPCDialogueName: the Lava Ocean
+			}
+
+			LimestoneCave: {
+				DisplayName: Limestone Cave
+				TownNPCDialogueName: the Limestone Cave
+			}
+
+			SaltCave: {
+				DisplayName: Salt Cave
+				TownNPCDialogueName: the Salt Cave
+			}
 		}
 	}
 }

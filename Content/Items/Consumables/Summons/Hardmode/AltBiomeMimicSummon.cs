@@ -1,4 +1,4 @@
-﻿using Polarities.Content.Items.Materials;
+﻿using Polarities.Content.Items.Materials.Hardmode;
 using Polarities.Global;
 using Terraria;
 using Terraria.ID;
@@ -30,7 +30,7 @@ namespace Polarities.Content.Items.Consumables.Summons.Hardmode
         {
             CreateRecipe()
                 .AddIngredient(ItemID.NightKey)
-                //.AddIngredient(ItemType<EvilDNA>())
+                .AddIngredient(ItemType<EvilDNA>())
                 .Register();
         }
     }
