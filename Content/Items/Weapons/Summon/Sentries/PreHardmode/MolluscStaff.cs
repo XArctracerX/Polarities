@@ -212,7 +212,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Sentries.PreHardmode
 
     public class MolluscStaffSentryProjectile : ModProjectile
     {
-        public override string Texture => "Polarities/Content/NPCs/Enemies/Salt/MusselProjectile";
+        public override string Texture => "Polarities/Content/NPCs/Enemies/SaltCaves/PreHardmode/MusselProjectile";
 
         public override void SetStaticDefaults()
         {

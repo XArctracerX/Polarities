@@ -3,15 +3,14 @@
     "",
     "\\Content",
     "\\Content\\Items",
-    "\\Content\\Items\\Consumables\\Potions",
-    "\\Content\\Items\\Consumables\\Potions\\Hardmode",
-    "\\Content\\Items\\Placeable\\MusicBoxes",
     "\\Content\\Items\\Weapons",
+    "\\Content\\Items\\Weapons\\Melee\\Boomerangs\\Hardmode",
     "\\Content\\Items\\Weapons\\Ranged",
-    "\\Content\\Items\\Weapons\\Ranged\\Atlatls",
-    "\\Content\\Items\\Weapons\\Ranged\\Atlatls\\Hardmode",
+    "\\Content\\Items\\Weapons\\Ranged\\Bows",
+    "\\Content\\Items\\Weapons\\Ranged\\Bows\\Hardmode",
+    "\\Content\\NPCs\\Enemies\\Surface\\PreHardmode",
     "\\Localization"
   ],
-  "SelectedNode": "\\Content\\Items\\Weapons\\Ranged\\Atlatls\\AtlatlBase.cs",
+  "SelectedNode": "\\Localization\\en-US.hjson",
   "PreviewInSolutionExplorer": false
 }

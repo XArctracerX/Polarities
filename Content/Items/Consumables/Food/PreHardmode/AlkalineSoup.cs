@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Polarities.Content.Buffs.Hardmode;
+using Polarities.Content.Buffs.PreHardmode;
 using Polarities.Content.Items.Materials.PreHardmode;
 using Polarities.Content.Items.Placeable.Blocks;
 using Terraria;

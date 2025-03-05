@@ -63,6 +63,9 @@ namespace Polarities
 
         public static Dictionary<int, bool> bestiaryCritter = new Dictionary<int, bool>();
 
+        public static HashSet<int> customSlimes = new HashSet<int>();
+        public static HashSet<int> forceCountForRadar = new HashSet<int>();
+
         public override void Load()
         {
             //Terraria.On_NPC.GetNPCColorTintedByBuffs += NPC_GetNPCColorTintedByBuffs;
@@ -88,6 +91,18 @@ namespace Polarities
             //Terraria.IL_NPC.SpawnNPC += NPC_SpawnNPC;
         }
 
+        public override void Unload()
+        {
+            bestiaryCritter = null;
+            //customNPCCapSlot = null;
+            //customNPCCapSlotCaps = null;
+            customSlimes = null;
+            forceCountForRadar = null;
+            //canSpawnInLava = null;
+
+            //IL_ChooseSpawn -= PolaritiesNPC_IL_ChooseSpawn;
+        }
+
         public override void SetDefaults(NPC npc)
         {
             hammerTimes = new Dictionary<int, int>();
@@ -98,6 +113,53 @@ namespace Polarities
             //npc.buffImmune[BuffType<Incinerating>()] = true;
             //break;
             //}
+        }
+
+        private void Main_DrawInfoAccs(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.After,
+                i => i.MatchLdsfld(typeof(Main).GetField("npc", BindingFlags.Public | BindingFlags.Static)),
+                i => i.MatchLdloc(38),
+                i => i.MatchLdelemRef(),
+                i => i.MatchLdfld(typeof(Entity).GetField("active", BindingFlags.Public | BindingFlags.Instance)),
+                i => i.MatchBrfalse(out _),
+                i => i.MatchLdsfld(typeof(Main).GetField("npc", BindingFlags.Public | BindingFlags.Static)),
+                i => i.MatchLdloc(38),
+                i => i.MatchLdelemRef(),
+                i => i.MatchLdfld(typeof(NPC).GetField("friendly", BindingFlags.Public | BindingFlags.Instance)),
+                i => i.MatchBrtrue(out _),
+                i => i.MatchLdsfld(typeof(Main).GetField("npc", BindingFlags.Public | BindingFlags.Static)),
+                i => i.MatchLdloc(38),
+                i => i.MatchLdelemRef(),
+                i => i.MatchLdfld(typeof(NPC).GetField("damage", BindingFlags.Public | BindingFlags.Instance)),
+                i => i.MatchLdcI4(0),
+                i => i.MatchBle(out _),
+                i => i.MatchLdsfld(typeof(Main).GetField("npc", BindingFlags.Public | BindingFlags.Static)),
+                i => i.MatchLdloc(38),
+                i => i.MatchLdelemRef(),
+                i => i.MatchLdfld(typeof(NPC).GetField("lifeMax", BindingFlags.Public | BindingFlags.Instance)),
+                i => i.MatchLdcI4(5),
+                i => i.MatchBle(out _)
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location");
+                return;
+            }
+
+            ILLabel label = c.DefineLabel();
+            label.Target = c.Next;
+
+            c.Index -= 17;
+
+            c.Emit(OpCodes.Ldloc, 38);
+            c.EmitDelegate<Func<int, bool>>((index) =>
+            {
+                //return true to force counting
+                return forceCountForRadar.Contains(Main.npc[index].type);
+            });
+            c.Emit(OpCodes.Brtrue, label);
         }
 
         private static bool? IsBestiaryCritter(int npcType)

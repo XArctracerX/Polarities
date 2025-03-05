@@ -2,7 +2,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using Polarities.Core;
+using Polarities.Global;
 using Polarities.Content.Biomes;
+using Polarities.Content.NPCs.TownNPCs.PreHardmode;
 //using Polarities.Items;
 using Polarities.Content.Items.Placeable.Blocks;
 using Polarities.Content.Items.Consumables.Summons.PreHardmode;
@@ -416,27 +419,27 @@ namespace Polarities
                 tasks.Insert(dungeonIndex + 2, new PassLegacy("Making Hell More Hellish", CustomHellGeneration));
             }
 
-            //int guideIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Guide"));
-            //if (guideIndex != -1)
-            //{
-                //tasks.Insert(guideIndex + 1, new PassLegacy("More Friends", AddExtraNPCs));
-            //}
+            int guideIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Guide"));
+            if (guideIndex != -1)
+            {
+                tasks.Insert(guideIndex + 1, new PassLegacy("More Friends", AddExtraNPCs));
+            }
         }
 
         //spawn ghostwriter in celebrationmk10 worlds
-        //private void AddExtraNPCs(GenerationProgress progress, GameConfiguration configuration)
-        //{
-            //if (Main.tenthAnniversaryWorld)
-            //{
-                //Point adjustedFloorPosition = (Point)typeof(WorldGen).GetMethod("GetAdjustedFloorPosition", BindingFlags.NonPublic | BindingFlags.Static).Invoke(null, new object[] { Main.spawnTileX + 6, Main.spawnTileY });
-                //int num241 = NPC.NewNPC(new EntitySource_WorldGen(), adjustedFloorPosition.X * 16, adjustedFloorPosition.Y * 16, NPCType<Ghostwriter>());
-                //Main.npc[num241].homeTileX = adjustedFloorPosition.X;
-                //Main.npc[num241].homeTileY = adjustedFloorPosition.Y;
-                //Main.npc[num241].direction = -1;
-                //Main.npc[num241].homeless = true;
-                //BirthdayParty.CelebratingNPCs.Add(num241);
-            //}
-        //}
+        private void AddExtraNPCs(GenerationProgress progress, GameConfiguration configuration)
+        {
+            if (Main.tenthAnniversaryWorld)
+            {
+                Point adjustedFloorPosition = (Point)typeof(WorldGen).GetMethod("GetAdjustedFloorPosition", BindingFlags.NonPublic | BindingFlags.Static).Invoke(null, new object[] { Main.spawnTileX + 6, Main.spawnTileY });
+                int num241 = NPC.NewNPC(new EntitySource_WorldGen(), adjustedFloorPosition.X * 16, adjustedFloorPosition.Y * 16, NPCType<Ghostwriter>());
+                Main.npc[num241].homeTileX = adjustedFloorPosition.X;
+                Main.npc[num241].homeTileY = adjustedFloorPosition.Y;
+                Main.npc[num241].direction = -1;
+                Main.npc[num241].homeless = true;
+                BirthdayParty.CelebratingNPCs.Add(num241);
+            }
+        }
 
         private void AddBiomeChests(GenerationProgress progress, GameConfiguration configuration)
         {
@@ -856,7 +859,7 @@ namespace Polarities
                     float[,] values = new float[maxSize, maxSize];
                     List<Point> edgePoints = new List<Point>();
 
-                    //float[] noise1D = WorldGen.genRand.FractalNoise1D(maxSize, startFactor: 1); //noise for shelf variation
+                    float[] noise1D = WorldGen.genRand.FractalNoise1D(maxSize, startFactor: 1); //noise for shelf variation
 
                     for (int y = 0; y < maxSize; y++)
                     {
@@ -867,8 +870,8 @@ namespace Polarities
                             rowValue += weights[index] / weights[0] * (float)Math.Exp(-Math.Pow(weights[index], -2) * (y + (int)points[0].Y - maxSize / 2 - points[index].Y) * (y + (int)points[0].Y - maxSize / 2 - points[index].Y));
                         }
 
-                        //float yVariation = (float)Math.Sin(y * 0.25f + noise1D[y] * 20f); //varying value between -1 and 1;
-                        //float valueMultiplier = (1 + 3 / rowValue + yVariation) / (2 + 3 / rowValue);
+                        float yVariation = (float)Math.Sin(y * 0.25f + noise1D[y] * 20f); //varying value between -1 and 1;
+                        float valueMultiplier = (1 + 3 / rowValue + yVariation) / (2 + 3 / rowValue);
 
                         for (int x = 0; x < maxSize; x++)
                         {
@@ -884,7 +887,7 @@ namespace Polarities
 
                             //modification to the value for shelf gen
                             values[x, y] -= weights[0] / 5;
-                            //values[x, y] *= valueMultiplier;
+                            values[x, y] *= valueMultiplier;
                             values[x, y] += weights[0] / 5;
 
                             //adjusts the tile at this point based on the value function

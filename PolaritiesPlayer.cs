@@ -4,11 +4,19 @@ using MonoMod.Cil;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Content.Buffs;
+using Polarities.Content.Buffs.PreHardmode;
+using Polarities.Content.Buffs.Hardmode;
+using Polarities.Content.Items.Tools.Books;
+using Polarities.Content.Items.Tools.Books.PreHardmode;
+using Polarities.Content.Items.Tools.Books.Hardmode;
 using Polarities.Content.Items.Armor.Summon.PreHardmode.Stormcloud;
 using Polarities.Content.Items.Accessories.Combat.Offense.PreHardmode;
+using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
 using Polarities.Content.Items.Vanity.DevSets.BubbySet;
 using Polarities.Content.Items.Vanity.DevSets.TuringSet;
 using Polarities.Content.Items.Vanity.DevSets.ElectroManiacSet;
+using Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer;
+using Polarities.Content.Items.Accessories.ExpertMode.Hardmode;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -36,21 +44,50 @@ namespace Polarities
         public float orbMinionSlots;
         public int royalOrbHitCount;
         public Vector2 velocityMultiplier;
-
+        public bool strangeObituary;
+        public float usedBookSlots;
+        public float maxBookSlots;
+        public bool canJumpAgain_Sail_Extra;
+        public bool jumpAgain_Sail_Extra;
+        public bool hasGlide;
+        public int skeletronBookCooldown;
+        public int beeRingTimer;
+        public bool stormcore;
+        public bool stargelAmulet;
+        public bool hopperCrystal;
+        public bool limestoneShield;
+        public int limestoneShieldCooldown;
+        public bool limestoneSetBonus;
+        public int limestoneSetBonusHitCooldown;
+        public bool skeletronBook;
+        public int moonLordLifestealCooldown;
         public int wingTimeBoost;
+        public float critDamageBoostMultiplier;
+        public int ignoreCritDefenseAmount;
+        public bool snakescaleSetBonus;
         public int desiccation;
         public int incineration;
         public int incinerationResistanceTime;
         public bool coneVenom;
         public float runSpeedBoost;
         public float spawnRate;
-
-        public bool stormcore;
-        public bool hopperCrystal;
+        public bool solarEnergizer;
+        public int wyvernsNestDamage;
         public bool wormScarf;
         public Vector3 light;
-
+        public DamageClass convectiveSetBonusType;
+        public int convectiveSetBonusCharge;
+        public StatModifier dartDamage;
+        public bool justHit;
         public float candyCaneAtlatlBoost;
+        public StatModifier nonMagicDamage;
+        public bool hydraHide;
+        public float hydraHideTime = 0;
+        public bool convectiveDash;
+        public int convectiveDashCharge;
+        public Vector2 convectiveDashVelocity = Vector2.Zero;
+        public bool convectiveDashing;
+        public int convectiveDashStartTime;
         public bool stormcloudArmor;
         public int stormcloudArmorCooldown;
         public int tolerancePotionDelayTime = 3600;
@@ -103,23 +140,49 @@ namespace Polarities
             hookSpeedMult = 1f;
             manaStarMultiplier = 1f;
             orbMinionSlots = 1f;
-
+            strangeObituary = false;
+            usedBookSlots = 0f;
+            hasGlide = false;
+            stormcore = false;
+            stargelAmulet = false;
+            hopperCrystal = false;
+            limestoneShield = false;
+            limestoneSetBonus = false;
+            skeletronBook = false;
             wingTimeBoost = 0;
+            critDamageBoostMultiplier = 1f;
+            ignoreCritDefenseAmount = 0;
+            snakescaleSetBonus = false;
             desiccation = 0;
             incineration = 0;
             incinerationResistanceTime = 0;
             coneVenom = false;
             runSpeedBoost = 1f;
             spawnRate = 1f;
-
-            stormcore = false;
-            hopperCrystal = false;
+            solarEnergizer = false;
             wormScarf = false;
+            wyvernsNestDamage = 0;
             light = Vector3.Zero;
+            convectiveSetBonusType = null;
+            dartDamage = StatModifier.Default;
+            justHit = false;
+            nonMagicDamage = StatModifier.Default;
+            hydraHide = false;
+            convectiveDash = false;
             stormcloudArmor = false;
 
+            if (skeletronBookCooldown > 0) skeletronBookCooldown--;
+            if (beeRingTimer > 0) beeRingTimer--;
+            if (limestoneShieldCooldown > 0) limestoneShieldCooldown--;
+            if (limestoneSetBonusHitCooldown > 0) limestoneSetBonusHitCooldown--;
+            if (moonLordLifestealCooldown > 0) moonLordLifestealCooldown--;
             if (candyCaneAtlatlBoost > 0) candyCaneAtlatlBoost--;
             if (stormcloudArmorCooldown > 0) stormcloudArmorCooldown--;
+            if (hydraHideTime > 0)
+            {
+                hydraHideTime--;
+                Player.lifeRegenTime = 120;
+            }
 
             screenshakeRandomSeed = Main.rand.Next();
 
@@ -143,36 +206,43 @@ namespace Polarities
             velocityMultiplier = Vector2.One;
         }
 
+        //this is reset here to ensure books update properly
+        public override void PostUpdateBuffs()
+        {
+            maxBookSlots = 1f;
+        }
+
+
         public override void PostUpdateEquips()
         {
-            //if (Player.HasBuff<GolemBookBuff>() && Player.wingsLogic == 0)
-            //{
-                //Player.noFallDmg = true;
-                //Player.jumpSpeedBoost += 16;
-                //Player.statDefense += 6;
-            //}
+            if (Player.HasBuff<GolemBookBuff>() && Player.wingsLogic == 0)
+            {
+                Player.noFallDmg = true;
+                Player.jumpSpeedBoost += 16;
+                Player.statDefense += 6;
+            }
 
-            //canJumpAgain_Sail_Extra = false;
-            //if (Player.HasBuff(BuffType<KingSlimeBookBuff>()))
-            //{
-                //if (Player.GetJumpState(ExtraJump.TsunamiInABottle).Enabled) { canJumpAgain_Sail_Extra = true; }
-                //Player.GetJumpState(ExtraJump.TsunamiInABottle).Enabled = true/* tModPorter Suggestion: Call Enable() if setting this to true, otherwise call Disable(). */;
-            //}
+            canJumpAgain_Sail_Extra = false;
+            if (Player.HasBuff(BuffType<KingSlimeBookBuff>()))
+            {
+                if (Player.GetJumpState(ExtraJump.TsunamiInABottle).Enabled) { canJumpAgain_Sail_Extra = true; }
+                Player.GetJumpState(ExtraJump.TsunamiInABottle).Enable();
+            }
 
-            //if (stargelAmulet)
-            //{
-                //float amountOfDay;
-                //if (Main.dayTime)
-                //{
-                    //amountOfDay = 1f - (float)Math.Abs(Main.time - Main.dayLength / 2) / (float)Main.dayLength;
-                //}
-                //else
-                //{
-                    //amountOfDay = (float)Math.Abs(Main.time - Main.nightLength / 2) / (float)Main.nightLength;
-                //}
-                //Player.GetDamage(DamageClass.Generic) += 0.12f * amountOfDay;
-                //Player.endurance *= 1 - 0.1f * (1 - amountOfDay);
-            //}
+            if (stargelAmulet)
+            {
+                float amountOfDay;
+                if (Main.dayTime)
+                {
+                    amountOfDay = 1f - (float)Math.Abs(Main.time - Main.dayLength / 2) / (float)Main.dayLength;
+                }
+                else
+                {
+                    amountOfDay = (float)Math.Abs(Main.time - Main.nightLength / 2) / (float)Main.nightLength;
+                }
+                Player.GetDamage(DamageClass.Generic) += 0.12f * amountOfDay;
+                Player.endurance *= 1 - 0.1f * (1 - amountOfDay);
+            }
 
             //wing time boost
             Player.wingTimeMax += wingTimeBoost;
@@ -182,18 +252,141 @@ namespace Polarities
             Player.accRunSpeed *= runSpeedBoost;
 
             //custom slimes
-            //foreach (int i in PolaritiesNPC.customSlimes)
-            //{
-                //Player.npcTypeNoAggro[i] = Player.npcTypeNoAggro[NPCID.BlueSlime];
-            //}
+            foreach (int i in PolaritiesNPC.customSlimes)
+            {
+                Player.npcTypeNoAggro[i] = Player.npcTypeNoAggro[NPCID.BlueSlime];
+            }
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
+            if (!Player.mount.Active)
+            {
+                if (PlayerInput.Triggers.Current.Jump && hasGlide)
+                {
+                    Player.maxFallSpeed = 1f;
+                }
+            }
+
             //target via orbs
             if (PlayerInput.Triggers.JustPressed.MouseRight && (Player.HeldItem.DamageType == DamageClass.Summon || Player.HeldItem.DamageType.GetEffectInheritance(DamageClass.Summon)) && Player.channel)
             {
                 Player.MinionNPCTargetAim(false);
+            }
+
+            if (stargelAmulet)
+            {
+                float amountOfDay;
+                if (Main.dayTime)
+                {
+                    amountOfDay = 1f - (float)Math.Abs(Main.time - Main.dayLength / 2) / (float)Main.dayLength;
+                }
+                else
+                {
+                    amountOfDay = (float)Math.Abs(Main.time - Main.nightLength / 2) / (float)Main.nightLength;
+                }
+                Player.GetDamage(DamageClass.Generic) += 0.12f * amountOfDay;
+                Player.endurance *= 1 - 0.1f * (1 - amountOfDay);
+            }
+
+            //convective dash
+            if (convectiveDash)
+            {
+                if (Polarities.ConvectiveDashHotkey.JustPressed && convectiveDashCharge > 60 && !Player.mount.Active)
+                {
+                    //start dash
+                    convectiveDashCharge -= convectiveDashCharge % 60; //return to last charge level
+
+                    convectiveDashing = true;
+                    convectiveDashVelocity = (Main.MouseWorld - Player.Center).SafeNormalize(Vector2.Zero) * 24;
+                    convectiveDashStartTime = PolaritiesSystem.timer;
+
+                    SoundEngine.PlaySound(SoundID.NPCDeath14, Player.Center);
+
+                    for (int i = 0; i < 24; i++)
+                    {
+                        Vector2 particleSpawnPos = Player.Center + new Vector2(Main.rand.NextFloat(24), 0).RotatedByRandom(MathHelper.TwoPi);
+                        Vector2 particleVelocity = new Vector2(Main.rand.NextFloat(6, 20), 0).RotatedByRandom(MathHelper.TwoPi) - convectiveDashVelocity;
+                        ConvectiveWandererVortexParticle particle = Particle.NewParticle<ConvectiveWandererVortexParticle>(particleSpawnPos, particleVelocity, 0f, 0f, Scale: Main.rand.NextFloat(0.1f, 0.2f), Color: ModUtils.ConvectiveFlameColor(Main.rand.NextFloat(0.2f, 0.4f)));
+                        ParticleLayer.AfterLiquidsAdditive.Add(particle);
+                    }
+                }
+                else if (convectiveDashing && (!Polarities.ConvectiveDashHotkey.Current || Player.mount.Active))
+                {
+                    convectiveDashCharge = 0;
+                    convectiveDashing = false;
+
+                    Player.velocity *= 0.25f;
+                }
+
+                if (convectiveDashing)
+                {
+                    convectiveDashCharge -= 4;
+
+                    if (convectiveDashCharge < 0)
+                    {
+                        convectiveDashCharge = 0;
+                        convectiveDashing = false;
+
+                        Player.velocity *= 0.25f;
+                    }
+                    else
+                    {
+                        Player.velocity = convectiveDashVelocity;
+                        Player.ChangeDir(convectiveDashVelocity.X > 0 ? 1 : -1);
+
+                        //prevent other movement things from interfering
+                        Player.maxFallSpeed = convectiveDashVelocity.Length();
+                        Player.controlDown = false;
+                        Player.controlJump = false;
+                        Player.controlLeft = false;
+                        Player.controlRight = false;
+                        Player.controlUp = false;
+
+                        Vector2 particleSpawnPos = Player.Center + new Vector2(Main.rand.NextFloat(24), 0).RotatedByRandom(MathHelper.TwoPi);
+                        Vector2 particleVelocity = -convectiveDashVelocity.RotatedByRandom(0.1f);
+                        ConvectiveWandererVortexParticle particle = Particle.NewParticle<ConvectiveWandererVortexParticle>(particleSpawnPos, particleVelocity, 0f, 0f, Scale: Main.rand.NextFloat(0.1f, 0.2f), Color: ModUtils.ConvectiveFlameColor(Main.rand.NextFloat(0.2f, 0.4f)));
+                        ParticleLayer.AfterLiquidsAdditive.Add(particle);
+
+                        //ramming! (based on EoC)
+                        Rectangle rectangle = new Rectangle((int)(Player.position.X + Player.velocity.X * 0.5 - 4.0), (int)(Player.position.Y + Player.velocity.Y * 0.5 - 4.0), Player.width + 8, Player.height + 8);
+                        for (int i = 0; i < 200; i++)
+                        {
+                            NPC nPC = Main.npc[i];
+                            if (!nPC.active || nPC.dontTakeDamage || nPC.friendly || nPC.aiStyle == 112 && !(nPC.ai[2] <= 1f) || !Player.CanNPCBeHitByPlayerOrPlayerProjectile(nPC))
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                }
+                else if (convectiveDashCharge < 240)
+                {
+                    if (convectiveDashCharge % 60 == 0)
+                    {
+                        float progress = convectiveDashCharge / 240f;
+                        BuildingEruptionChargingParticle particle = Particle.NewParticle<BuildingEruptionChargingParticle>(Vector2.Zero, Vector2.Zero, 0f, 0f, Scale: 1f, Color: ModUtils.ConvectiveFlameColor(progress * progress * 0.5f));
+                        particle.playerOwner = Player.whoAmI;
+                        ParticleLayer.BeforePlayersAdditive.Add(particle);
+                    }
+
+                    convectiveDashCharge++;
+
+                    if (convectiveDashCharge % 60 == 0)
+                    {
+                        SoundEngine.PlaySound(SoundID.Item114.WithPitchOffset((convectiveDashCharge - 60) / 180f - 0.5f), Player.Center);
+                    }
+                }
+            }
+            else
+            {
+                if (convectiveDashing)
+                {
+                    Player.velocity *= 0.25f;
+                    convectiveDashing = false;
+                }
+
+                if (!convectiveDash) convectiveDashCharge = 0;
             }
         }
 
@@ -208,6 +401,22 @@ namespace Polarities
 			{
 				Main.projectile[Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center.X + 500 * (2 * (float)Main.rand.NextDouble() - 1), Player.Center.Y - 500, 0, 0, ProjectileType<StormcoreMinion>(), 1, Player.GetTotalKnockback(DamageClass.Summon).ApplyTo(0.5f), Player.whoAmI, 0, 0)].originalDamage = 1;
 			}
+
+            if (wyvernsNestDamage > 0)
+            {
+                //sentries don't despawn while using the wyvern's nest
+                for (int i = 0; i < Main.maxProjectiles; i++)
+                {
+                    if (Main.projectile[i].active && Main.projectile[i].owner == Player.whoAmI && Main.projectile[i].sentry)
+                    {
+                        Main.projectile[i].timeLeft = Projectile.SentryLifeTime;
+                    }
+                }
+                for (int i = Player.ownedProjectileCounts[ProjectileType<WyvernsNestMinion>()]; i < Player.maxTurrets; i++)
+                {
+                    Main.projectile[Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, Vector2.Zero, ProjectileType<WyvernsNestMinion>(), wyvernsNestDamage, Player.GetTotalKnockback(DamageClass.Summon).ApplyTo(2f), Player.whoAmI, 0, 0)].originalDamage = 20;
+                }
+            }
 
             if (stormcloudArmor && stormcloudArmorCooldown <= 0 && Player.ownedProjectileCounts[ProjectileType<StormcloudArmorRaincloud>()] < 8)
             {
@@ -236,6 +445,33 @@ namespace Polarities
                     NPC target = Main.npc[targetID];
                     Projectile.NewProjectile(Player.GetSource_FromAI(), new Vector2(target.Center.X, target.position.Y - 128), Vector2.Zero, ProjectileType<StormcloudArmorRaincloud>(), (int)Player.GetTotalDamage(DamageClass.Summon).ApplyTo(8), 0, Player.whoAmI);
                 }
+            }
+
+            if (canJumpAgain_Sail_Extra)
+            {
+                if (Player.justJumped || Player.controlHook || Player.velocity.Y == 0f)
+                {
+                    jumpAgain_Sail_Extra = true;
+                }
+                if (!Player.GetJumpState(ExtraJump.TsunamiInABottle).Available && jumpAgain_Sail_Extra)
+                {
+                    jumpAgain_Sail_Extra = false;
+                    Player.GetJumpState(ExtraJump.TsunamiInABottle).Available = true;
+                }
+            }
+
+            if (Player.HasBuff(BuffType<QueenBeeBookBuff>()) && Player.ownedProjectileCounts[ProjectileType<QueenBeeBookBee>()] + Player.ownedProjectileCounts[ProjectileType<QueenBeeBookBeeLarge>()] < 6 && beeRingTimer == 0)
+            {
+                int buffIndex = Player.FindBuffIndex(BuffType<QueenBeeBookBuff>());
+                if (Player.strongBees && Main.rand.NextBool())
+                {
+                    Projectile.NewProjectile(Player.GetSource_Buff(buffIndex), Main.MouseWorld, Vector2.Zero, ProjectileType<QueenBeeBookBeeLarge>(), 8, 0.5f, Player.whoAmI, Main.rand.NextFloat(0, 2 * MathHelper.Pi));
+                }
+                else
+                {
+                    Projectile.NewProjectile(Player.GetSource_Buff(buffIndex), Main.MouseWorld, Vector2.Zero, ProjectileType<QueenBeeBookBee>(), 5, 0, Player.whoAmI, Main.rand.NextFloat(0, 2 * MathHelper.Pi));
+                }
+                beeRingTimer = 5;
             }
 
             //update bubby vanity wing frames
@@ -331,36 +567,76 @@ namespace Polarities
                 royalOrbHitCount++;
             }
 
-            //if ((proj.sentry || ProjectileID.Sets.SentryShot[proj.type]) && Player.HasBuff(BuffType<BetsyBookBuff>()))
-            //{
-                //target.AddBuff(BuffID.OnFire, 300);
-                //target.AddBuff(BuffID.OnFire3, 300);
-            //}
+            if ((proj.sentry || ProjectileID.Sets.SentryShot[proj.type]) && Player.HasBuff(BuffType<BetsyBookBuff>()))
+            {
+                target.AddBuff(BuffID.OnFire, 300);
+                target.AddBuff(BuffID.OnFire3, 300);
+            }
         }
 
-        //public void OnHitNPCWithAnything(NPC target, int damage, float knockback, bool crit, DamageClass damageClass)
-        //{
+        public void OnHitNPCWithAnything(NPC target, int damage, float knockback, bool crit, DamageClass damageClass)
+        {
         //if (snakescaleSetBonus && crit)
         //{
         //target.AddBuff(BuffID.Venom, 5 * 60);
         //}
 
-        //if (moonLordLifestealCooldown == 0 && Player.HasBuff(BuffType<MoonLordBookBuff>()) && !Player.moonLeech)
-        //{
-        //float baseLifestealAmount = (float)Math.Log(damage * Math.Pow(Main.rand.NextFloat(1f), 4));
-        //if (baseLifestealAmount >= 1)
-        //{
-        //moonLordLifestealCooldown = 10;
-        //Player.statLife += (int)baseLifestealAmount;
-        //Player.HealEffect((int)baseLifestealAmount);
-        //}
-        //}
+            if (moonLordLifestealCooldown == 0 && Player.HasBuff(BuffType<MoonLordBookBuff>()) && !Player.moonLeech)
+            {
+                float baseLifestealAmount = (float)Math.Log(damage * Math.Pow(Main.rand.NextFloat(1f), 4));
+                if (baseLifestealAmount >= 1)
+                {
+                    moonLordLifestealCooldown = 10;
+                    Player.statLife += (int)baseLifestealAmount;
+                    Player.HealEffect((int)baseLifestealAmount);
+                }
+            }
 
-        //if (damageClass != DamageClass.Magic && !damageClass.GetEffectInheritance(DamageClass.Magic) && solarEnergizer)
-        //{
-        //Player.statMana++;
-        //}
-        //}
+            if (damageClass != DamageClass.Magic && !damageClass.GetEffectInheritance(DamageClass.Magic) && solarEnergizer)
+            {
+                Player.statMana++;
+            }
+        }
+
+        public override void OnHurt(Player.HurtInfo info)
+        {
+            //TODO: (MAYBE) Replace with source propagation system once supported/if it doesn't end up being trivially supported, also move terraprisma to be obtained on any flawless run if/when this system is added
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                if (Main.npc[i].active)
+                    Main.npc[i].GetGlobalNPC<PolaritiesNPC>().flawless = false;
+            }
+
+            if (strangeObituary)
+            {
+                Player.KillMe(PlayerDeathReason.ByCustomReason(Language.GetTextValueWith("Mods.Polarities.DeathMessage.StrangeObituary", new { PlayerName = Player.name })), 1.0, 0, false);
+                return;
+            }
+
+            if (Player.HasBuff(BuffType<EyeOfCthulhuBookBuff>()))
+            {
+                Projectile.NewProjectile(Player.GetSource_Buff(Player.FindBuffIndex(BuffType<EyeOfCthulhuBookBuff>())), Player.Center, new Vector2(4, 0).RotatedByRandom(2 * Math.PI), ProjectileType<EyeOfCthulhuBookEye>(), 12, 3, Player.whoAmI);
+            }
+
+            if (skeletronBook && skeletronBookCooldown == 0)
+            {
+                skeletronBookCooldown = 3 * 60 * 60;
+            }
+
+            if (limestoneShield && limestoneShieldCooldown == 0)
+            {
+                limestoneShieldCooldown = 60 * 30;
+            }
+
+            if (limestoneSetBonus)
+            {
+                limestoneSetBonusHitCooldown = 300;
+            }
+
+            hydraHideTime = 120;
+
+            justHit = true;
+        }
 
         //public override void PreUpdateBuffs()
         //{
@@ -428,6 +704,48 @@ namespace Polarities
         private bool CanUseAnyDash()
         {
             return Player.dashType == 0 && !Player.setSolar && !Player.mount.Active;
+        }
+
+        public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Item, consider using ModifyHitNPC instead */
+        {
+            //ModifyHitNPCWithAnything(target, item.DamageType, ref damage, ref knockback, ref crit);
+        }
+
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)/* tModPorter If you don't need the Projectile, consider using ModifyHitNPC instead */
+        {
+            //ModifyHitNPCWithAnything(target, proj.DamageType, ref damage, ref knockback, ref crit);
+        }
+
+        public void ModifyHitNPCWithAnything(NPC target, DamageClass damageType, ref int damage, ref float knockback, ref bool crit)
+        {
+            if (damageType != DamageClass.Magic && damageType.GetModifierInheritance(DamageClass.Magic).damageInheritance == 0f && damageType.GetModifierInheritance(DamageClass.Generic).Equals(StatInheritanceData.Full))
+            {
+                damage = (int)(damage * nonMagicDamage.Additive * nonMagicDamage.Multiplicative);
+            }
+
+            if (target.HasBuff(BuffType<Pinpointed>()) && Main.rand.NextBool()) crit = true;
+
+            target.GetGlobalNPC<PolaritiesNPC>().ignoredDefenseFromCritAmount = 0;
+            if (crit)
+            {
+                damage = Math.Max(damage, (int)(damage * critDamageBoostMultiplier));
+                target.GetGlobalNPC<PolaritiesNPC>().ignoredDefenseFromCritAmount = ignoreCritDefenseAmount;
+            }
+        }
+
+        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
+        {
+            //ModifyHitByAnything(ref damage, ref crit);
+        }
+
+        public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
+        {
+            //ModifyHitByAnything(ref damage, ref crit);
+        }
+
+        public void ModifyHitByAnything(ref int damage, ref bool crit)
+        {
+            if (Player.HasBuff(BuffType<Pinpointed>()) && Main.rand.NextBool()) crit = true;
         }
 
         //public int GetFractalization()

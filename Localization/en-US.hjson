@@ -35,18 +35,19 @@ Mods: {
 		}
 
 		Tiles: {
-			TrophyTile.MapEntry: Trophy Tile
-			MantellarOreTile.MapEntry: Mantellar Ore Tile
-			SaltCrystalsTile.MapEntry: Salt Crystals Tile
-			CloudCichlidCageTile.MapEntry: Cloud Cichlid Cage Tile
-			LimestoneChestTile.MapEntry: Limestone Chest Tile
-			SaltChestTile.MapEntry: Salt Chest Tile
-			StormcloudCichlidCageTile.MapEntry: Stormcloud Cichlid Cage Tile
-			DendriticEnergyTile.MapEntry: Dendritic Energy Tile
-			FractalOreTile.MapEntry: Fractal Ore Tile
-			SelfsimilarOreTile.MapEntry: Selfsimilar Ore Tile
-			FractalBiomeChestTile.MapEntry: Fractal Biome Chest Tile
-			FractalChestTile.MapEntry: Fractal Chest Tile
+			TrophyTile.MapEntry: Trophy
+			MantellarOreTile.MapEntry: Mantellar Ore
+			SaltCrystalsTile.MapEntry: Salt Crystals
+			CloudCichlidCageTile.MapEntry: Cloud Cichlid Cage
+			LimestoneChestTile.MapEntry: Limestone Chest
+			SaltChestTile.MapEntry: Salt Chest
+			StormcloudCichlidCageTile.MapEntry: Stormcloud Cichlid Cage
+			DendriticEnergyTile.MapEntry: Dendritic Energy
+			FractalOreTile.MapEntry: Fractal Ore
+			SelfsimilarOreTile.MapEntry: Selfsimilar Ore
+			FractalBiomeChestTile.MapEntry: Fractal Biome Chest
+			FractalChestTile.MapEntry: Fractal Chest
+			BookTile.MapEntry: Book
 		}
 
 		WorldGenPass: {
@@ -65,6 +66,8 @@ Mods: {
 			WarhammerBase: Reduces enemy defense by {DefenseLoss} for {DebuffTime} seconds
 			OrbBase: Summons a channeled minion
 			TooltipFlawless: Flawless
+			AutomaticPrefix: +Autoswing
+			ManualPrefix: -Autoswing
 		}
 
 		Buffs: {
@@ -148,17 +151,168 @@ Mods: {
 
 			Turbulence: {
 				DisplayName: Turbulence
-				Description: Mods.Polarities.Buffs.Turbulence.Description
+				Description: You are experiencing some turbulence
 			}
 
+			ConeVenom: {
+				DisplayName: Cone Venom
+				Description: ""
+			}
+
+			//Potions
 			PiercingPotionBuff: {
-				DisplayName: Piercing Potion Buff
-				Description: Mods.Polarities.Buffs.PiercingPotionBuff.Description
+				DisplayName: Piercing Potion
+				Description: Armor penetration is increased by 6
 			}
 
 			TolerancePotionCooldownBuff: {
-				DisplayName: Tolerance Potion Cooldown Buff
-				Description: Mods.Polarities.Buffs.TolerancePotionCooldownBuff.Description
+				DisplayName: Tolerance Potion Cooldown
+				Description: Your tolerance is limited
+			}
+
+			//Books
+			BetsyBookBuff: {
+				DisplayName: Betsy Book
+				Description: You have extra sentry slots, and your sentries set enemies alight
+			}
+
+			ConvectiveWandererBookBuff: {
+				DisplayName: Convective Wanderer Book
+				Description: You are immune to fire, lava, and up to 10 seconds of incineration
+			}
+
+			DestroyerBookBuff: {
+				DisplayName: Destroyer Book
+				Description: You have ultimate mining and building abilities
+			}
+
+			DukeFishronBookBuff: {
+				DisplayName: Duke Fishron Book
+				Description: Damage is boosted while near the ocean
+			}
+
+			EmpressOfLightBookBuff: {
+				DisplayName: Empress Of Light Book
+				Description: Your critical strikes are empowered
+			}
+
+			EsophageBookBuff: {
+				DisplayName: Esophage Book
+				Description: Speed and defense increased while on the ground
+			}
+
+			GolemBookBuff: {
+				DisplayName: Golem Book
+				Description: You are immune to fall damage and jump speed and defense are boosted if not wearing wings
+			}
+
+			LunaticCultistBookBuff: {
+				DisplayName: Lunatic Cultist Book
+				Description: Class damage is increased when near the celestial pillar corresponding to that class
+			}
+
+			MoonLordBookBuff: {
+				DisplayName: Moon Lord Book
+				Description: Your attacks have lifesteal
+			}
+
+			PlanteraBookBuff: {
+				DisplayName: Plantera Book
+				Description: You and your hooks have hooks
+			}
+
+			QueenSlimeBookBuff: {
+				DisplayName: Queen Slime Book
+				Description: Flight time is increased
+			}
+
+			SkeletronPrimeBookBuff: {
+				DisplayName: Skeletron Prime Book
+				Description: You have an insane defense bonus for a single hit, with a three minute cooldown
+			}
+
+			SunPixieBookBuff: {
+				DisplayName: Sun Pixie Book
+				Description: You leave behind a solar trail
+			}
+
+			TwinsBookBuff: {
+				DisplayName: Twins Book
+				Description: Right click to zoom
+			}
+
+			BrainOfCthulhuBookBuff: {
+				DisplayName: Brain Of Cthulhu Book
+				Description: Tile and wall placement speed are increased
+			}
+
+			DeerclopsBookBuff: {
+				DisplayName: Deerclops Book
+				Description: You don't starve
+			}
+
+			EaterOfWorldsBookBuff: {
+				DisplayName: Eater Of Worlds Book
+				Description: Mining speed is boosted and tools do more damage
+			}
+
+			EyeOfCthulhuBookBuff: {
+				DisplayName: Eye Of Cthulhu Book
+				Description: Being hit summons demon eyes to protect you
+			}
+
+			GigabatBookBuff: {
+				DisplayName: Gigabat Book
+				Description: You can glide by holding jump and are immune to fall damage
+			}
+
+			KingSlimeBookBuff: {
+				DisplayName: King Slime Book
+				Description: You have a double jump
+			}
+
+			QueenBeeBookBuff: {
+				DisplayName: Queen Bee Book
+				Description: Summons a ring of bees around the cursor
+			}
+
+			SkeletronBookBuff: {
+				DisplayName: Skeletron Book
+				Description: You have a massive defense bonus for a single hit, with a three minute cooldown
+			}
+
+			StarConstructBookBuff: {
+				DisplayName: Star Construct Book
+				Description: Defense is boosted while latched via a hook
+			}
+
+			StormCloudfishBookBuff: {
+				DisplayName: Storm Cloudfish Book
+				Description: Rain is falling from above you
+			}
+
+			StrangeObituaryBuff: {
+				DisplayName: Strange Obituary
+				Description:
+					'''
+					You will die in one hit
+					Does not count as a book buff
+					'''
+			}
+
+			WallOfFleshBookBuff: {
+				DisplayName: Wall Of Flesh Book Buff
+				Description: Max life is boosted
+			}
+
+			ToxicShock: {
+				DisplayName: Toxic Shock
+				Description: Mods.Polarities.Buffs.ToxicShock.Description
+			}
+
+			Incinerating: {
+				DisplayName: Incinerating
+				Description: Mods.Polarities.Buffs.Incinerating.Description
 			}
 		}
 
@@ -232,6 +386,135 @@ Mods: {
 					Boosts horizontal speed when jumping
 					'Weirdly twitchy'
 					'''
+			}
+
+			StargelAmulet: {
+				DisplayName: Stargel Amulet
+				Tooltip:
+					'''
+					Increases your damage resisted and damage dealt depending on the time of day, up to 10% and 12% respectively
+					Damage is increased more during the day and damage resistance is increased more at night
+					'''
+			}
+
+			ReadingGlasses: {
+				DisplayName: Reading Glasses
+				Tooltip: Allows you to have two book buffs at once
+			}
+
+			SpectralLenses: {
+				DisplayName: Spectral Lenses
+				Tooltip: Allows you to have three book buffs at once
+			}
+
+			HydraHide: {
+				DisplayName: Hydra Hide
+				Tooltip: Grants a significant boost to life regeneration for a short time after taking damage
+			}
+
+			LimestoneShield: {
+				DisplayName: Limestone Shield
+				Tooltip:
+					'''
+					You take 33% less damage from a single hit
+					This effect has a 30 second cooldown
+					'''
+			}
+
+			RhyoliteShield: {
+				DisplayName: Rhyolite Shield
+				Tooltip:
+					'''
+					Grants immunity to knockback
+					Grants immunity to fire blocks
+					You take 33% less damage from a single hit
+					This effect has a 30 second cooldown
+					'''
+			}
+
+			CelestialAmulet: {
+				DisplayName: Celestial Amulet
+				Tooltip:
+					'''
+					Increases your damage resisted and damage dealt depending on the time of day, up to 10% and 12% respectively
+					Damage is increased more during the day and damage resistance is increased more at night
+					Minor increase to damage, melee speed, critical strike chance,
+					life regeneration, defense, mining speed, and minion knockback
+					'''
+			}
+
+			ChaosFlower: {
+				DisplayName: Chaos Flower
+				Tooltip: Channeled summoned weapons summon an addition minion
+			}
+
+			RotKnuckles: {
+				DisplayName: Rot Knuckles
+				Tooltip: 5% increased damage and critical strike chance
+			}
+
+			SolarEnergizer: {
+				DisplayName: Solar Energizer
+				Tooltip:
+					'''
+					10% reduced mana usage
+					Hitting enemies with non-magic weapons restores your mana
+					'''
+			}
+
+			SunlightEmblem: {
+				DisplayName: Sunlight Emblem
+				Tooltip:
+					'''
+					15% increased magic damage
+					10% reduced mana usage
+					10% increased non-magic damage while not at full mana
+					Hitting enemies with non-magic weapons restores your mana
+					'''
+			}
+
+			SymbioticSapling: {
+				DisplayName: Symbiotic Sapling
+				Tooltip: Increases summon damage the more distinct types of minions you have
+			}
+
+			WyvernsNest: {
+				DisplayName: Wyvern's Nest
+				Tooltip: Summons Etherian wyverns to help your sentries keep up with you
+			}
+
+			AdaptiveGenes: {
+				DisplayName: Adaptive Genes
+				Tooltip:
+					'''
+					Increases damage and critical strike chance at higher health
+					Increases movement speed and life regeneration at lower health
+					'''
+			}
+
+			BuildingEruption: {
+				DisplayName: Building Eruption
+				Tooltip:
+					'''
+					Press and hold [KEY] to dash in the direction of the cursor
+					This requires some time to fully recharge
+					'''
+			}
+
+			InfestedBrain: {
+				DisplayName: Infested Brain
+				Tooltip:
+					'''
+					Reduces damage taken by 12%
+					Has a chance to create illusions and dodge an attack
+					Temporarily increase critical chance after dodge
+					May confuse nearby enemies after being struck
+					'''
+			}
+
+			MawOfFlesh: {
+				DisplayName: Maw Of Flesh
+				Tooltip: Grants a wall-summoning dash
 			}
 
 			//Summon Items
@@ -857,6 +1140,86 @@ Mods: {
 					{$Mods.Polarities.ItemTooltip.OrbBase}
 					Summons a winged disco ball to confuse enemies
 					'''
+			}
+
+			Lernaean: {
+				DisplayName: Lernaean
+				Tooltip: Summons smaller yoyos to orbit the main yoyo on striking enemies
+			}
+
+			Preserver: {
+				DisplayName: Preserver
+				Tooltip: Sends enemies into toxic shock, briefly stopping them in their tracks
+			}
+
+			CrystalKnife: {
+				DisplayName: Crystal Knife
+				Tooltip: Stacks up to 16
+			}
+
+			TwistedTendril: {
+				DisplayName: Twisted Tendril
+				Tooltip: Stacks up to 3
+			}
+
+			Asthenos: {
+				DisplayName: Asthenos
+				Tooltip: Charge and release to incinerate your enemies
+			}
+
+			LaserCutter: {
+				DisplayName: Laser Cutter
+				Tooltip: "'Where does it end? It doesn't.'"
+			}
+
+			Sunblade: {
+				DisplayName: Sunblade
+				Tooltip: ""
+			}
+
+			ChainLacerator: {
+				DisplayName: Chain Lacerator
+				Tooltip: ""
+			}
+
+			Snakebite: {
+				DisplayName: Snakebite
+				Tooltip: "'Ouch!'"
+			}
+
+			FangtipSpear: {
+				DisplayName: Fangtip Spear
+				Tooltip: Gets stuck in enemies
+			}
+
+			VolcanicPlume: {
+				DisplayName: Volcanic Plume
+				Tooltip: Flies to the cursor and produces and explosion of volcanic fireballs
+			}
+
+			UnfoldingBlossom: {
+				DisplayName: Unfolding Blossom
+				Tooltip: ""
+			}
+
+			HandheldConeShell: {
+				DisplayName: Handheld Cone Shell
+				Tooltip: "'This is a terrible idea'"
+			}
+
+			PainBow: {
+				DisplayName: Pain Bow
+				Tooltip: Shoots a rainbow of arrows
+			}
+
+			PyroclasticOnslaught: {
+				DisplayName: Pyroclastic Onslaught
+				Tooltip: Shoots infernal arrows into the sky to rain upon your enemies
+			}
+
+			ToxicShot: {
+				DisplayName: Toxic Shot
+				Tooltip: Shoots sprays of venom which account for gravity
 			}
 
 			//Critter Items
@@ -1661,6 +2024,137 @@ Mods: {
 					Removes fractalization from the player, causing fractal enemies to disappear
 					'''
 			}
+
+			//Books
+			StrangeObituary: {
+				DisplayName: Strange Obituary
+				Tooltip: Makes you die in one hit\nDoes not count as a book buff
+			}
+
+			BetsyBook: {
+				DisplayName: Fire And More Fire
+				Tooltip: Grants 2 extra sentry slots, and your sentries set enemies on fire
+			}
+
+			ConvectiveWandererBook: {
+				DisplayName: Wander To The Center Of The Earth
+				Tooltip: Grants immunity to fire, lava, and up to 10 seconds of incineration
+			}
+
+			DestroyerBook: {
+				DisplayName: A Fight To Remember
+				Tooltip: Grants ultimate mining and building abilities
+			}
+
+			DukeFishronBook: {
+				DisplayName: Moby Duke
+				Tooltip: Grants a 20% damage boost while near the ocean
+			}
+
+			EmpressOfLightBook: {
+				DisplayName: A Midsummer Nightmare
+				Tooltip: Makes your critical strikes deal 25% extra damage and ignore up to 25 enemy defense
+			}
+
+			EsophageBook: {
+				DisplayName: The Phage Runner
+				Tooltip: Increases speed and defense while on the ground
+			}
+
+			GolemBook: {
+				DisplayName: Rocky With Lasers
+				Tooltip: Grants fall damage immunity, a substantial boost to jump speed, and a slight defense boost if the player is not wearing wings
+			}
+
+			LunaticCultistBook: {
+				DisplayName: The Haunter Of The Stars
+				Tooltip: Increases class damage by 30% when near the corresponding celestial pillar
+			}
+
+			MoonLordBook: {
+				DisplayName: The Call Of The Moon Lord
+				Tooltip: Grants lifesteal
+			}
+
+			PlanteraBook: {
+				DisplayName: The Grape's Wrath
+				Tooltip: Gives you and your hooks plant tentacles
+			}
+
+			QueenSlimeBook: {
+				DisplayName: Doctor Slime
+				Tooltip: Boosts wing time
+			}
+
+			SkeletronPrimeBook: {
+				DisplayName: Skeletron 2: Electric Boogaloo
+				Tooltip: Grants an insane defense boost for a single hit, with a three minute cooldown
+			}
+
+			SunPixieBook: {
+				DisplayName: The Wings On Our Star
+				Tooltip: Causes you to leave behind a solar trail
+			}
+
+			TwinsBook: {
+				DisplayName: Eye Robots
+				Tooltip: Grants a rifle scope effect
+			}
+
+			BrainOfCthulhuBook: {
+				DisplayName: A Terrible Mind
+				Tooltip: Boosts tile and wall placement speed
+			}
+
+			DeerclopsBook: {
+				DisplayName: Theoretical Horticulture
+				Tooltip: Prevents food buffs from running out
+			}
+
+			EaterOfWorldsBook: {
+				DisplayName: The Very Hungry Worm
+				Tooltip: Boosts mining speed and tool damage
+			}
+
+			EyeOfCthulhuBook: {
+				DisplayName: A Throng Of Eyes And Fliers
+				Tooltip: Summons demon eyes to protect you when hit
+			}
+
+			GigabatBook: {
+				DisplayName: Batula
+				Tooltip: Allows you to glide by holding jump and prevents fall damage
+			}
+
+			KingSlimeBook: {
+				DisplayName: The Sliming
+				Tooltip: Grants a double jump
+			}
+
+			QueenBeeBook: {
+				DisplayName: Queen Of The Bees
+				Tooltip: Summons a ring of bees around the cursor
+			}
+
+			SkeletronBook: {
+				DisplayName: Skulduggery Unpleasant
+				Tooltip: Grants a massive defense boost for a single hit, with a three minute cooldown
+			}
+
+			StarConstructBook: {
+				DisplayName: The Construct Out Of Space
+				Tooltip: Boosts defense while latched via a hook
+			}
+
+			StormCloudfishBook: {
+				DisplayName: Maws
+				Tooltip: Makes rain fall above you
+			}
+
+			WallOfFleshBook: {
+				DisplayName: The Perks Of Being A Wall Towers
+				Tooltip: Increases your maximum life by 10%
+			}
 		}
 
 		NPCs: {
@@ -1681,6 +2175,147 @@ Mods: {
 			SapphireGemfly.DisplayName: Sapphire Gemfly
 			SeaLily.DisplayName: Sea Lily
 			TopazGemfly.DisplayName: Topaz Gemfly
+			BrineDweller.DisplayName: Brine Dweller
+			BrineFly.DisplayName: Brine Fly
+			Mussel.DisplayName: Mussel
+			Salthopper.DisplayName: Salthopper
+			Alkalabomination.DisplayName: Alkalabomination
+			Limeshell.DisplayName: Limeshell
+			Slimey.DisplayName: Slimey
+			AlkaliSpirit.DisplayName: Alkali Spirit
+			GlowWorm.DisplayName: Glow Worm
+			StalagBeetle.DisplayName: Stalag Beetle
+			NestGuardian.DisplayName: Nest Guardian
+			Rattler.DisplayName: Rattler
+			Spitter.DisplayName: Spitter
+			GreatStellatedSlime.DisplayName: Great Stellated Slime
+			StellatedSlime.DisplayName: Stellated Slime
+			Zombat.DisplayName: Zombat
+			BatSlime.DisplayName: Bat Slime
+			GraniteStomper.DisplayName: Granite Stomper
+			BloodBat.DisplayName: Blood Bat
+			HydraBody.DisplayName: Hydra Body
+			HydraHead.DisplayName: Hydra Head
+			ConeShell.DisplayName: Cone Shell
+
+			Ghostwriter: {
+				DisplayName: Ghostwriter
+
+				TownNPCMood: {
+					Content: I'm happy, I guess.
+					NoHome: I need somewhere to store my books.
+					FarFromHome: I seem to have wandered off again, I might have a problem.
+					LoveSpace: Without much hustle and bustle around it's easier to focus on my writing.
+					DislikeCrowded: All the noise around here makes it hard to write.
+					HateCrowded: With so many people around I feel almost invisible.
+					LoveBiome: I don't love any biomes, how are you seeing this?
+					LikeBiome: The dry conditions in {BiomeName} are great for my books.
+					DislikeBiome: I feel as if something is judging me in {BiomeName}.
+					HateBiome: I'm normally all for spooky situations, but {BiomeName} is genuinely unsettling.
+					LoveNPC: I love how many haywire contraptions {NPCName} makes for me to write about.
+					LikeNPC: I'd like to think I get {NPCName}.
+					DislikeNPC: "{NPCName} smells like fish, and I didn't even know I had a sense of smell."
+					HateNPC: I don't have a place in {NPCName}'s world, not a fan of that.
+					MehAboutPrincess: I'm not sold on {NPCName}, monarchies are cliche, but they're really hard to hate.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+
+				Census.SpawnCondition: Conditions unknown
+			}
+
+			TownNPCDialogue: {
+				Ghostwriter: {
+					NoHome: I wanna go home.
+					Generic0: My ability to touch things is very inconsistent.
+					Generic1: Do you have any book recommendations? I'm always looking for new things to read.
+					Generic2: I'm here to chronicle your adventures!
+					Generic3: I enjoy exploring and can float through any barrier. You could say I'm a free spirit.
+					Angler: "{NPCName} is such a jerk!"
+					Stylist: "{NPCName} likes me. I think it's because I can eavesdrop on everyone."
+					ArmsDealer: Yippee ki-yay, mother-
+					DD2Bartender: "{NPCName} is from another dimension? Sounds like a crossover to me."
+					Clothier: Give {NPCName} a hug for me, okay?
+					Mechanic: "{NPCName} is officially my mom until my real mom gets back."
+					SantaClaus: I told {NPCName} that I don't celebrate Christmas. He was very understanding.
+					Wizard: I tried to borrow a book from {NPCName} once. It did nothing. I was quite disappointed.
+					GuideHardmode: "{NPCName} and I are a lot alike. Except for the part where I'm a ghost. That's a pretty significant difference."
+					DryadHardmode: "{NPCName} says the Hallow is good and only exists to cleanse imperfection. For someone so old, she's quite naive."
+					Princess: Am I the only person here who doesn't like {NPCName}?
+					Halloween: Boo!
+					XMas: I don't celebrate Christmas, but it's nice to see everyone so happy.
+					EyeOfCthulhu: I see everything... muahaha...
+					Skeletron: The books in the dungeon were mine once, but they've fallen apart in the damp environment.
+					RiftDenizen: I don't know much about what's beyond that rift, so I'll be filling my books on it with wild, unsubstantiated speculation.
+					Twins: My Retinazer/Spazmatism fic is coming along well. Thanks for asking. Why are you turning green?
+					Destroyer: I am become Death, the destroyer of worlds. Oh, it's from something I read.
+					BloodMoon: Everyone seems really on edge. I don't see what the big deal is.
+					PumpkinMoon: Go on, turn those pumpkins into pie!
+					FrostMoon: What in the world is all this?
+					Graveyard: I wonder if one of these graves is mine... no, all of them are yours, aren't they?
+					GraveyardHardcore: I wonder if one of these graves is mine...
+					Rain: I hope I didn't leave any of my books outside.
+					WindyDay: This weather we're having is quite incredible, you could even say it's blowing me away!
+				}
+
+				Guide: {
+					RiftDenizen: That strange rift that showed up... Yeah I got nothing.
+					Extra: ""
+				}
+
+				Dryad: {
+					RiftDenizen: That fractal stuff doesn't seem to be spreading, at least.
+					WorldEvilInvasion: I sense something, a presence I've not felt since...
+					CrimsonInvasion: The crimson is particulary hostile today.
+					CorruptInvasion: The corruption is particulary eerie today.
+					HallowInvasion: The hallow is particularly luminous today.
+				}
+
+				DD2Bartender: {
+					RiftDenizen: Visitors from other worlds, huh? You don't say.
+					Extra: ""
+				}
+
+				Clothier: {
+					Ghostwriter: I can't help but feel like I recognize {NPCName} from somewhere.
+					Extra: ""
+				}
+
+				Mechanic: {
+					PrePolarities: I've had a terribly irresponsible idea for a contraption!
+					Polarities: Those spinny magnet things do not obey the laws of physics at all.
+				}
+
+				Angler: {
+					Rain: You know, the little cloudfish outside are just small fry!
+					Generic: I once hooked a massive cloudfish while flying a kite, you know! Biggest one I ever saw. Carried me for miles.
+					Hardmode: I heard there are these rare mushroom worms that live underground, and fish love them! You should use one as bait and see what bites!
+					Ghostwriter: I tried to stick a fish in {NPCName}'s hair, but it just fell through. Disappointing.
+					RainQuest: All those flying fish remind me of something... oh right, I need you to go get a fish for me!
+				}
+			}
+
+			GuideHelpText: {
+				Ghostwriter: Defeating a powerful foe might attract someone interested in recording your adventures.
+				StormCloudfishSummonItem: Tying some bait to a kite would be a good way to attract flying animals.
+				StarConstructSummonItem: Combining fallen stars with a suitable metal at a demon altar will allow you to send out signals into the cosmos.
+				GigabatSummonItem: Affixing gems to a firefly would be the perfect lure for cave-dwelling bats.
+				SaltCave: Salt biomes may look fun to swim in, but the pools of brine within can dry you to a husk in under a minute. Only specialist life can survive there.
+				LimestoneCave: Limestone caves are full of unstable stalactites and crumbling rocks, and if that's not enough, they're also crawling with caustic animated gloop.
+				StormCloudfish: When you're ready for a fight, attach a worm to a kite made of silk, and let it fly into the upper atmosphere.
+				StarConstruct: Using a stellar remote will summon a powerful foe to fight, but fair warning, you may want to ball up some cotton in your ears.
+				Gigabat: Sparkly gemflies naturally spend most of their time hidden inside gem trees. Catching one and relocating it could attract attention from underground hunters.
+				RiftDenizen: Strange flickers have appeared in the upper atmosphere. I don't know what they are, but they're definitely not of this world.
+				FractalDimension: I don't know what lies beyond that rift, but it emanates an aura of chaos hostile to life as we know it. It's likely very inhospitable, particularly for extended periods.
+				HallowInvasion: The Hallow may seem aggressive now, but, trust me, it can get worse.
+				SunPixie: You should deal with the forces of light sooner rather than later. It may be slow, but their creeping progress risks overwhelming the world given time.
+				WorldEvilInvasion: I've heard tales of a second type of evil, sealed away so deep as to be altogether forgotten.
+				Esophage: You should deal with the forces of darkness sooner rather than later. It may be slow, but their creeping progress risks overwhelming the world given time.
+				ConvectiveWanderer: There is a massive lava ocean in the underworld, filled with unique, molten life. Perhaps you could check it out?
+				Eclipxie: That hallowed star you picked up from the Rapture displays interesting properties when exposed to the strange unlight of a solar eclipse.
+				Hemorrphage: That fleshy capsid you picked up from the Pestilence displays interesting properties when exposed to the menacing aura of a blood moon.
+				Polarities: You've defeated some powerful enemies, and acquired a lot of resources from them, both here, and, apparently, in the fractal world. Combining materials from the two dimensions could yield interesting, if volatile, results.
+			}
 		}
 
 		Projectiles: {
@@ -1760,6 +2395,45 @@ Mods: {
 			RocketSnekPet.DisplayName: Rocket Snek
 			StormcloudArmorRaincloud.DisplayName: Stormcloud Armor Raincloud
 			StormcloudArmorRaincloudRain.DisplayName: Stormcloud Armor Raincloud Rain
+			MusselProjectile.DisplayName: Mussel Projectile
+			LimeshellProjectile.DisplayName: Limeshell Projectile
+			SlimeyProjectile.DisplayName: Slimey Projectile
+			GlowWormDroplet.DisplayName: Glow Worm Droplet
+			StalagBeetleShot.DisplayName: Stalag Beetle Shot
+			NestGuardianEgg.DisplayName: Nest Guardian Egg
+			SpitterVenom.DisplayName: Spitter Venom
+			GreatStellatedSlimeProjectile.DisplayName: Great Stellated Slime Projectile
+			GraniteStomperHomingCrystal.DisplayName: Granite Stomper Homing Crystal
+			GraniteStomperLaser.DisplayName: Granite Stomper Laser
+			HydraVenom.DisplayName: Hydra Venom
+			PlanteraBookHookProjectile.DisplayName: Plantera Book Hook Projectile
+			PlanteraBookProjectile.DisplayName: Plantera Book Projectile
+			SunPixieBookTrail.DisplayName: Sun Pixie Book Trail
+			EyeOfCthulhuBookEye.DisplayName: Eye Of Cthulhu Book Eye
+			QueenBeeBookBee.DisplayName: Queen Bee Book Bee
+			QueenBeeBookBeeLarge.DisplayName: Queen Bee Book Bee Large
+			WyvernsNestMinion.DisplayName: Etherian Wyvern
+			WyvernsNestMinionFireball.DisplayName: Wyvernfire
+			MawOfFleshDashProjectile.DisplayName: Flesh Wall
+			LernaeanOrbiter.DisplayName: Lernaean Orbiter
+			LernaeanProjectile.DisplayName: Lernaean Projectile
+			PreserverProjectile.DisplayName: Preserver Projectile
+			CrystalKnifeProjectile.DisplayName: Crystal Knife Projectile
+			TwistedTendrilProjectile.DisplayName: Twisted Tendril Projectile
+			AsthenosProjectile.DisplayName: Asthenos Projectile
+			LaserCutterProjectile.DisplayName: Laser Cutter Projectile
+			SunbladeProjectile.DisplayName: Sunblade Projectile
+			ChainLaceratorProjectile.DisplayName: Chain Lacerator Projectile
+			SnakebiteProjectile.DisplayName: Snakebite Projectile
+			FangtipSpearProjectile.DisplayName: Fangtip Spear Projectile
+			VolcanicPlumeExplosion.DisplayName: Volcanic Plume Explosion
+			VolcanicPlumeFireball.DisplayName: Volcanic Plume Fireball
+			VolcanicPlumeProjectile.DisplayName: Volcanic Plume Projectile
+			UnfoldingBlossomProjectile.DisplayName: Unfolding Blossom Projectile
+			HandheldConeShellProjectile.DisplayName: Cone Shell Dart
+			PainBowProjectile.DisplayName: Pain Bow Projectile
+			PyroclasticOnslaughtProjectile.DisplayName: Pyroclastic Onslaught Projectile
+			ToxicShotProjectile.DisplayName: Toxic Shot Projectile
 		}
 
 		Biomes: {
@@ -1777,6 +2451,25 @@ Mods: {
 				DisplayName: Salt Cave
 				TownNPCDialogueName: the Salt Cave
 			}
+		}
+
+		Keybinds: {
+			"Convective Set Bonus.DisplayName": Convective Set Bonus
+			"Convective Dash.DisplayName": Convective Dash
+		}
+
+		Conditions: {
+			DownedStormCloudfish: After the Storm Cloudfish is defeated
+			DownedStarConstruct: After the Star Construct is defeated
+			DownedGigabat: After the Gigabat is defeated
+			DownedRiftDenizen: After the Rift Denizen is defeated
+			DownedSunPixie: After the Sun Pixie is defeated
+			DownedEsophage: After the Esophage is defeated
+			DownedConvectiveWanderer: After the Convective Wanderer is defeated
+			DownedSelfsimilarSentinel: After the Selfsimilar Sentinel is defeated
+			DownedEclipxie: After the Eclipxie is defeated
+			DownedHemorrphage: After the Hemorrphage is defeated
+			DownedPolarities: After the Polarities is defeated
 		}
 	}
 }

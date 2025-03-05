@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Polarities.Content.Items.Weapons.Ranged.Atlatls;
-using Polarities.Content.Buffs.Hardmode;
+using Polarities.Content.Buffs.PreHardmode;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;

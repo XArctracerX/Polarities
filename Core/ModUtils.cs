@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using Polarities.Global;
@@ -8,10 +9,13 @@ using Polarities.Global;
 using ReLogic.Content;
 using System;
 using System.Reflection;
+using System.Linq;
+using System.Text;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.Prefixes;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
@@ -157,5 +161,111 @@ namespace Polarities.Core
             }
         }
 
+        //perlin/fractal noise based on this tutorial: https://dens.website/articles/procedural-generation/perlin-noise
+        public static Vector2[,] PerlinBaseVectors(this UnifiedRandom rand, int width, int height)
+        {
+            Vector2[,] output = new Vector2[width, height];
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    output[i, j] = new Vector2(0, 1).RotatedBy(rand.NextFloat(MathHelper.TwoPi));
+                }
+            }
+            return output;
+        }
+
+        public static float PerlinSmoothStep(float amount)
+        {
+            return amount * amount * amount * (amount * (amount * 6 - 15) + 10); ;
+        }
+
+        public static float PerlinSmooth(Vector2 v00, Vector2 v01, Vector2 v10, Vector2 v11, float xAmount, float yAmount)
+        {
+            float d00 = Vector2.Dot(v00, new Vector2(xAmount, yAmount));
+            float d01 = Vector2.Dot(v01, new Vector2(xAmount, yAmount - 1));
+            float d10 = Vector2.Dot(v10, new Vector2(xAmount - 1, yAmount));
+            float d11 = Vector2.Dot(v11, new Vector2(xAmount - 1, yAmount - 1));
+
+            float xLerp = PerlinSmoothStep(xAmount);
+            float yLerp = PerlinSmoothStep(yAmount);
+            return Lerp(Lerp(d00, d01, yLerp), Lerp(d10, d11, yLerp), xLerp);
+        }
+
+        public static float PerlinNoiseValue(Vector2[,] perlinBaseVectors, float xAmount, float yAmount)
+        {
+            int xIndex = (int)(xAmount * perlinBaseVectors.GetLength(0));
+            float residualXAmount = (xAmount * perlinBaseVectors.GetLength(0)) % 1;
+
+            int yIndex = (int)(yAmount * perlinBaseVectors.GetLength(1));
+            float residualYAmount = (yAmount * perlinBaseVectors.GetLength(1)) % 1;
+
+            return PerlinSmooth(perlinBaseVectors[xIndex, yIndex], perlinBaseVectors[xIndex, (yIndex + 1) % perlinBaseVectors.GetLength(1)], perlinBaseVectors[(xIndex + 1) % perlinBaseVectors.GetLength(0), yIndex], perlinBaseVectors[(xIndex + 1) % perlinBaseVectors.GetLength(0), (yIndex + 1) % perlinBaseVectors.GetLength(1)], residualXAmount, residualYAmount) * (float)Math.Sqrt(0.5f);
+        }
+
+        public static float[,] FractalNoise(this UnifiedRandom rand, int size, int startFactor = 1)
+        {
+            int scaleSize = size / startFactor;
+
+            float[,] output = new float[size, size];
+
+            int depth = 0;
+
+            while (scaleSize > 0)
+            {
+                Vector2[,] perlinBaseVectors = rand.PerlinBaseVectors(size / scaleSize, size / scaleSize);
+
+                float amplitude = (float)Math.Pow(0.5f, depth);
+
+                for (int i = 0; i < size; i++)
+                {
+                    for (int j = 0; j < size; j++)
+                    {
+                        output[i, j] += PerlinNoiseValue(perlinBaseVectors, i / (float)size, j / (float)size) * amplitude;
+                    }
+                }
+
+                scaleSize /= 2;
+                depth++;
+            }
+
+            return output;
+        }
+
+        public static float[] FractalNoise1D(this UnifiedRandom rand, int size, int startFactor = 1)
+        {
+            int scaleSize = size / startFactor;
+
+            float[] output = new float[size];
+
+            int depth = 0;
+
+            while (scaleSize > 0)
+            {
+                Vector2[,] perlinBaseVectors = rand.PerlinBaseVectors(size / scaleSize, 1);
+
+                float amplitude = (float)Math.Pow(0.5f, depth);
+
+                for (int i = 0; i < size; i++)
+                {
+                    output[i] += PerlinNoiseValue(perlinBaseVectors, i / (float)size, 0) * amplitude;
+                }
+
+                scaleSize /= 2;
+                depth++;
+            }
+
+            return output;
+        }
+
+
+        public static Color ConvectiveFlameColor(float progress)
+        {
+            float clampedProgress = Math.Clamp(progress, 0, 1);
+            float r = 1.25f - clampedProgress / 2;
+            float g = clampedProgress < 0.5f ? 4 * clampedProgress * (1 - clampedProgress) : 13 / 12f - clampedProgress / 6f;
+            float b = 2 * clampedProgress;
+            return new Color(r, g, b);
+        }
     }
 }
