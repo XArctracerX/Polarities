@@ -143,8 +143,9 @@ namespace Polarities.Content.Items.Weapons.Melee.Broadswords.Hardmode
 
                     if (Projectile.ai[1] == MAX_CHARGE)
                     {
-                        player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(60, SWING_TIME + FADE_TIME - 1);
-
+                        //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(60, SWING_TIME + FADE_TIME - 1);
+                        player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 60;
+                        player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 90; // 1.30 seconds
                         SoundEngine.PlaySound(SoundID.Item45, Projectile.Center);
                     }
                     else

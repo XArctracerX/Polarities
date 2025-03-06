@@ -5,9 +5,8 @@ using Polarities.Content.Items.Materials.Hardmode;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Content.Items.Weapons.Melee.Yoyos.Hardmode;
+using Polarities.Content.Items.Weapons.Summon.Whips.Hardmode;
 //using Polarities.Items.Placeable.Banners;
-//using Polarities.Items.Weapons.Melee;
-//using Polarities.Items.Weapons.Summon.Whips;
 using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
@@ -509,7 +508,7 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
             npcLoot.Add(ItemDropRule.Common(ItemType<VenomGland>(), 25, 1, 3));
             npcLoot.Add(ItemDropRule.Common(ItemType<Lernaean>(), 200));
             npcLoot.Add(ItemDropRule.Common(ItemType<HydraHide>(), 200));
-            //npcLoot.Add(ItemDropRule.Common(ItemType<HeadSplitter>(), 200));
+            npcLoot.Add(ItemDropRule.Common(ItemType<HeadSplitter>(), 200));
         }
 
         public static Asset<Texture2D> ChainTexture;

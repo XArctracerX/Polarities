@@ -112,6 +112,83 @@ namespace Polarities.Core
             return projectile.minion || projectile.sentry || ProjectileID.Sets.MinionShot[projectile.type] || ProjectileID.Sets.SentryShot[projectile.type] || projectile.DamageType == DamageClass.Summon || projectile.DamageType.GetEffectInheritance(DamageClass.Summon);
         }
 
+        private static MethodInfo _AddHappinessReportText;
+
+        public static void AddHappinessReportText(this ShopHelper shopHelper, string textKeyInCategory, object substitutes = null)
+        {
+            _AddHappinessReportText.Invoke(shopHelper, new object[] { textKeyInCategory, substitutes });
+        }
+
+        private static MethodInfo _AI_007_FindGoodRestingSpot;
+        private static MethodInfo _AI_007_TownEntities_IsInAGoodRestingSpot;
+        private static MethodInfo _AI_007_TownEntities_TeleportToHome;
+        private static MethodInfo _AI_007_TownEntities_GetWalkPrediction;
+        private static MethodInfo _AI_007_TryForcingSitting;
+
+        public static void AI_007_FindGoodRestingSpot(this NPC npc, int myTileX, int myTileY, out int floorX, out int floorY)
+        {
+            object[] parameters = new object[] { myTileX, myTileY, null, null };
+            _AI_007_FindGoodRestingSpot.Invoke(npc, parameters);
+
+            floorX = (int)parameters[2];
+            floorY = (int)parameters[3];
+        }
+
+        public static bool AI_007_TownEntities_IsInAGoodRestingSpot(this NPC npc, int tileX, int tileY, int idealRestX, int idealRestY)
+        {
+            return (bool)_AI_007_TownEntities_IsInAGoodRestingSpot.Invoke(npc, new object[] { tileX, tileY, idealRestX, idealRestY });
+        }
+
+        public static void AI_007_TownEntities_TeleportToHome(this NPC npc, int homeFloorX, int homeFloorY)
+        {
+            _AI_007_TownEntities_TeleportToHome.Invoke(npc, new object[] { homeFloorX, homeFloorY });
+        }
+
+        public static void AI_007_TownEntities_GetWalkPrediction(this NPC npc, int myTileX, int homeFloorX, bool canBreathUnderWater, bool currentlyDrowning, int tileX, int tileY, out bool keepwalking, out bool avoidFalling)
+        {
+            object[] parameters = new object[] { myTileX, homeFloorX, canBreathUnderWater, currentlyDrowning, tileX, tileY, null, null };
+            _AI_007_TownEntities_GetWalkPrediction.Invoke(npc, parameters);
+
+            keepwalking = (bool)parameters[6];
+            avoidFalling = (bool)parameters[7];
+        }
+
+        public static void AI_007_TryForcingSitting(this NPC npc, int homeFloorX, int homeFloorY)
+        {
+            _AI_007_TryForcingSitting.Invoke(npc, new object[] { homeFloorX, homeFloorY });
+        }
+
+        public static int BinomialCoefficient(int n, int k)
+        {
+            if (k > n / 2) return BinomialCoefficient(n, n - k);
+            int output = 1;
+            for (int i = 1; i <= k; i++)
+            {
+                output *= n - k + i;
+                output /= i;
+            }
+            return output;
+        }
+
+        //for bestiary compatibility
+        public static void SetBlendState(this NPC npc, SpriteBatch spriteBatch, BlendState blendState)
+        {
+            if (npc.IsABestiaryIconDummy)
+            {
+                RasterizerState priorRrasterizerState = spriteBatch.GraphicsDevice.RasterizerState;
+                Rectangle priorScissorRectangle = spriteBatch.GraphicsDevice.ScissorRectangle;
+                Main.spriteBatch.End();
+                spriteBatch.GraphicsDevice.RasterizerState = priorRrasterizerState;
+                spriteBatch.GraphicsDevice.ScissorRectangle = priorScissorRectangle;
+                Main.spriteBatch.Begin(0, blendState, Main.DefaultSamplerState, DepthStencilState.None, priorRrasterizerState, null, Main.UIScaleMatrix);
+            }
+            else
+            {
+                Main.spriteBatch.End();
+                Main.spriteBatch.Begin(0, blendState, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
+            }
+        }
+
         public static Color ColorLerpCycle(float time, float cycleTime, params Color[] colors)
         {
             if (colors.Length == 0) return default(Color);

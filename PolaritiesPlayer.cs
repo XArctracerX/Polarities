@@ -10,6 +10,7 @@ using Polarities.Content.Items.Tools.Books;
 using Polarities.Content.Items.Tools.Books.PreHardmode;
 using Polarities.Content.Items.Tools.Books.Hardmode;
 using Polarities.Content.Items.Armor.Summon.PreHardmode.Stormcloud;
+using Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.PreHardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
 using Polarities.Content.Items.Vanity.DevSets.BubbySet;
@@ -36,8 +37,11 @@ namespace Polarities
         public int warhammerDefenseBoost = 0;
         public int warhammerTimeBoost = 0;
 
-        public Dictionary<float, float> screenShakes = new Dictionary<float, float>(); //key is time at which the screenshake ends, value is magnitude
-        private int screenshakeRandomSeed;
+        //public Dictionary<float, float> screenShakes = new Dictionary<float, float>(); //key is time at which the screenshake ends, value is magnitude
+        //private int screenshakeRandomSeed;
+
+        public int screenshakeTimer;
+        public int screenshakeMagnitude;
 
         public float hookSpeedMult;
         public float manaStarMultiplier;
@@ -184,7 +188,7 @@ namespace Polarities
                 Player.lifeRegenTime = 120;
             }
 
-            screenshakeRandomSeed = Main.rand.Next();
+            //screenshakeRandomSeed = Main.rand.Next();
 
             dashIndex = 0;
             if (Player.controlRight && Player.releaseRight && Player.doubleTapCardinalTimer[DashRight] < 15)
@@ -501,47 +505,56 @@ namespace Polarities
             Lighting.AddLight(Player.Center, light);
         }
 
-        public void AddScreenShake(float magnitude, float timeLeft)
-        {
-            if (magnitude > 0 && timeLeft > 0)
-            {
-                float endTime = timeLeft + PolaritiesSystem.timer;
-                if (screenShakes.ContainsKey(endTime))
-                {
-                    screenShakes[endTime] += magnitude / timeLeft;
-                }
-                else
-                {
-                    screenShakes.Add(endTime, magnitude / timeLeft);
-                }
-            }
-        }
+        //public void AddScreenShake(float magnitude, float timeLeft)
+        //{
+        //if (magnitude > 0 && timeLeft > 0)
+        //{
+        //float endTime = timeLeft + PolaritiesSystem.timer;
+        //if (screenShakes.ContainsKey(endTime))
+        //{
+        //screenShakes[endTime] += magnitude / timeLeft;
+        //}
+        //else
+        //{
+        //screenShakes.Add(endTime, magnitude / timeLeft);
+        //}
+        //}
+        //}
 
         public override void ModifyScreenPosition()
         {
-            if (screenShakes.Keys.Count > 0)
+            screenshakeTimer--;
+            if (screenshakeTimer > 0)
             {
-                List<float> removeTimesLeft = new List<float>();
-
-                Polarities.preGeneratedRand.SetIndex(screenshakeRandomSeed);
-                foreach (float timeLeft in screenShakes.Keys)
-                {
-                    if (timeLeft <= PolaritiesSystem.timer)
-                    {
-                        removeTimesLeft.Add(timeLeft);
-                    }
-                    else
-                    {
-                        Main.screenPosition += new Vector2(Polarities.preGeneratedRand.NextNormallyDistributedFloat(screenShakes[timeLeft] * (timeLeft - PolaritiesSystem.timer)), 0).RotatedBy(Polarities.preGeneratedRand.NextFloat(MathHelper.TwoPi));
-                    }
-                }
-                foreach (float timeLeft in removeTimesLeft) screenShakes.Remove(timeLeft);
+                Main.screenPosition += new Vector2(Main.rand.Next(screenshakeMagnitude * -1, screenshakeMagnitude + 1), Main.rand.Next(screenshakeMagnitude * -1, screenshakeMagnitude + 1));
             }
-
-            //to prevent jittering of some things
-            Main.screenPosition.X = (int)Main.screenPosition.X;
-            Main.screenPosition.Y = (int)Main.screenPosition.Y;
         }
+
+        //public override void ModifyScreenPosition()
+        //{
+        //if (screenShakes.Keys.Count > 0)
+        //{
+        //List<float> removeTimesLeft = new List<float>();
+
+        //Polarities.preGeneratedRand.SetIndex(screenshakeRandomSeed);
+        //foreach (float timeLeft in screenShakes.Keys)
+        //{
+        //if (timeLeft <= PolaritiesSystem.timer)
+        //{
+        //removeTimesLeft.Add(timeLeft);
+        //}
+        //else
+        //{
+        //Main.screenPosition += new Vector2(Polarities.preGeneratedRand.NextNormallyDistributedFloat(screenShakes[timeLeft] * (timeLeft - PolaritiesSystem.timer)), 0).RotatedBy(Polarities.preGeneratedRand.NextFloat(MathHelper.TwoPi));
+        //}
+        //}
+        //foreach (float timeLeft in removeTimesLeft) screenShakes.Remove(timeLeft);
+        //}
+
+        //to prevent jittering of some things
+        //Main.screenPosition.X = (int)Main.screenPosition.X;
+        //Main.screenPosition.Y = (int)Main.screenPosition.Y;
+        //}
 
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
         {
@@ -862,7 +875,7 @@ namespace Polarities
                                 self.QuickSpawnItem(source, ItemType<BubbyBody>());
                                 self.QuickSpawnItem(source, ItemType<BubbyLegs>());
                                 self.QuickSpawnItem(source, ItemType<BubbyWings>());
-                                //self.QuickSpawnItem(source, ItemType<VariableWispon>());
+                                self.QuickSpawnItem(source, ItemType<VariableWispon>());
                                 break;
                         }
                     }

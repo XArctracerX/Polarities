@@ -29,7 +29,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
         public const string ShopName = "Shop";
         public override void Load()
         {
-            //Terraria.GameContent.Personalities.On_AllPersonalitiesModifier.ModifyShopPrice_Relationships += AllPersonalitiesModifier_ModifyShopPrice_Relationships;
+            Terraria.GameContent.Personalities.On_AllPersonalitiesModifier.ModifyShopPrice_Relationships += AllPersonalitiesModifier_ModifyShopPrice_Relationships;
 
             Terraria.IL_NPC.checkDead += NPC_checkDead;
         }
@@ -59,18 +59,18 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
         }
 
         //makes them not like the princess
-        //private void AllPersonalitiesModifier_ModifyShopPrice_Relationships(Terraria.GameContent.Personalities.On_AllPersonalitiesModifier.orig_ModifyShopPrice_Relationships orig, HelperInfo info, Terraria.GameContent.ShopHelper shopHelperInstance)
-        //{
-            //if (info.npc.type == NPCType<Ghostwriter>())
-            //{
-                //if (info.nearbyNPCsByType[663])
-                //{
-                    //shopHelperInstance.AddHappinessReportText("MehAboutPrincess", new { NPCName = NPC.GetFullnameByID(NPCID.Princess) });
-                //}
-                //return;
-            //}
-            //orig(info, shopHelperInstance);
-        //}
+        private void AllPersonalitiesModifier_ModifyShopPrice_Relationships(Terraria.GameContent.Personalities.On_AllPersonalitiesModifier.orig_ModifyShopPrice_Relationships orig, HelperInfo info, Terraria.GameContent.ShopHelper shopHelperInstance)
+        {
+            if (info.npc.type == NPCType<Ghostwriter>())
+            {
+                if (info.nearbyNPCsByType[663])
+                {
+                    shopHelperInstance.AddHappinessReportText("MehAboutPrincess", new { NPCName = NPC.GetFullnameByID(NPCID.Princess) });
+                }
+                return;
+            }
+            orig(info, shopHelperInstance);
+        }
 
         public override void SetStaticDefaults()
         {

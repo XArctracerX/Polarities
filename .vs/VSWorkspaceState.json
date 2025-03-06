@@ -3,14 +3,14 @@
     "",
     "\\Content",
     "\\Content\\Items",
-    "\\Content\\Items\\Weapons",
-    "\\Content\\Items\\Weapons\\Melee\\Boomerangs\\Hardmode",
-    "\\Content\\Items\\Weapons\\Ranged",
-    "\\Content\\Items\\Weapons\\Ranged\\Bows",
-    "\\Content\\Items\\Weapons\\Ranged\\Bows\\Hardmode",
-    "\\Content\\NPCs\\Enemies\\Surface\\PreHardmode",
-    "\\Localization"
+    "\\Content\\Items\\Weapons\\Magic",
+    "\\Content\\Items\\Weapons\\Magic\\Flawless",
+    "\\Content\\Items\\Weapons\\Magic\\Guns",
+    "\\Content\\Items\\Weapons\\Magic\\Guns\\Hardmode",
+    "\\Content\\Items\\Weapons\\Melee\\Broadswords\\Hardmode",
+    "\\Content\\NPCs\\Bosses\\PreHardmode",
+    "\\Content\\NPCs\\Critters\\Hardmode"
   ],
-  "SelectedNode": "\\Localization\\en-US.hjson",
+  "SelectedNode": "\\Content\\Items\\Consumables",
   "PreviewInSolutionExplorer": false
 }

@@ -48,6 +48,7 @@ Mods: {
 			FractalBiomeChestTile.MapEntry: Fractal Biome Chest
 			FractalChestTile.MapEntry: Fractal Chest
 			BookTile.MapEntry: Book
+			BannerTile.MapEntry: Banner Tile
 		}
 
 		WorldGenPass: {
@@ -68,6 +69,24 @@ Mods: {
 			TooltipFlawless: Flawless
 			AutomaticPrefix: +Autoswing
 			ManualPrefix: -Autoswing
+		}
+
+		Prefix: {
+			AutomaticPrefix: Automatic
+			ManualPrefix: Manual
+			LargeAtlatlPrefix: Large
+			MassiveAtlatlPrefix: Massive
+			DangerousAtlatlPrefix: Dangerous
+			SavageAtlatlPrefix: Savage
+			TinyAtlatlPrefix: Tiny
+			TerribleAtlatlPrefix: Terrible
+			SmallAtlatlPrefix: Small
+			UnhappyAtlatlPrefix: Unhappy
+			BulkyAtlatlPrefix: Bulky
+			ShamefulAtlatlPrefix: Shameful
+			HeavyAtlatlPrefix: Heavy
+			LightAtlatlPrefix: Light
+			LegendaryAtlatlPrefix: Legendary
 		}
 
 		Buffs: {
@@ -123,7 +142,52 @@ Mods: {
 				Description: The baby zombats will fight for you
 			}
 
+			GlobusCrucigerMinionBuff: {
+				DisplayName: Hallowed Statue
+				Description: A hallowed statue protects you
+			}
+
+			BarnsleyFernBuff: {
+				DisplayName: Barnsley Fern
+				Description: The fractal ferns will fight for you
+			}
+
+			EsophminiBuff: {
+				DisplayName: Esophmini
+				Description: The baby Esophage will fight for you
+			}
+
+			LuminousSlimeMinionBuff: {
+				DisplayName: Luminous Slime
+				Description: The luminous slime will fight for you
+			}
+
+			MoltenSpiritMinionBuff: {
+				DisplayName: Molten Spirit
+				Description: The molten spirits will fight for you
+			}
+
+			SaltKillifishMinionBuff: {
+				DisplayName: Salt Killifish
+				Description: The salt killifish will fight for you
+			}
+
+			SolarScarabMinionBuff: {
+				DisplayName: Solar Scarab Minion Buff
+				Description: The solar scarab will fight for you
+			}
+
+			SpiritBottleDebuff: {
+				DisplayName: Spirit Bite
+				Description: ""
+			}
+
 			//Debuffs/Buffs
+			HeadSplitterDebuff: {
+				DisplayName: Head Splitter Debuff
+				Description: ""
+			}
+
 			Pinpointed: {
 				DisplayName: Pinpointed
 				Description: You have been detected, giving enemies a chance to critically hit you
@@ -314,9 +378,20 @@ Mods: {
 				DisplayName: Incinerating
 				Description: Mods.Polarities.Buffs.Incinerating.Description
 			}
+
+			PegasusMountBuff: {
+				DisplayName: Pegasus Mount Buff
+				Description: Mods.Polarities.Buffs.PegasusMountBuff.Description
+			}
 		}
 
 		Items: {
+			//Mounts
+			PegasusMountItem: {
+				DisplayName: Bellerophon's Saddle
+				Tooltip: Summons a rideable pegasus mount
+			}
+
 			//Accessories
 			Stormcore: {
 				DisplayName: Stormcore
@@ -546,6 +621,30 @@ Mods: {
 					'''
 			}
 
+			SunPixieSummonItem: {
+				DisplayName: Hallowed Star
+				Tooltip:
+					'''
+					Summons the Sun Pixie
+					Not consumable
+					'''
+				Extra: It glimmers eerily under the dark sun...
+			}
+
+			WorldEvilInvasionSummonItem: {
+				DisplayName: Putrid Lure
+				Tooltip: Summons the Pestilence when used in the world evil
+			}
+
+			ConvectiveWandererSummonItem: {
+				DisplayName: Seismophone
+				Tooltip:
+					'''
+					Summons a Convective Wanderer when used by the lava ocean
+					Not consumable
+					'''
+			}
+
 			//Treasure Bags
 			StormCloudfishBag: {
 				DisplayName: Treasure Bag (Storm Cloudfish)
@@ -559,6 +658,21 @@ Mods: {
 
 			GigabatBag: {
 				DisplayName: Treasure Bag (Gigabat)
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			SunPixieBag: {
+				DisplayName: Treasure Bag (Sun Pixie)
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			EsophageBag: {
+				DisplayName: Treasure Bag (Esophage)
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			ConvectiveWandererBag: {
+				DisplayName: Treasure Bag (Convective Wanderer)
 				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 			}
 
@@ -700,6 +814,25 @@ Mods: {
 				Tooltip: Accelerates time
 			}
 
+			Everlight: {
+				DisplayName: Everlight
+				Tooltip:
+					'''
+					Illuminates the cursor when held
+					Grants rifle scope effect
+					'''
+			}
+
+			StrangeJewelry: {
+				DisplayName: Strange Jewelry
+				Tooltip: Toggles the Hallow's spread
+			}
+
+			StrangeSamples: {
+				DisplayName: Strange Samples
+				Tooltip: Toggles the world evil's spread
+			}
+
 			//Multi
 			SunplateHamaxe: {
 				DisplayName: Sunplate Hamaxe
@@ -719,6 +852,11 @@ Mods: {
 			Starhook: {
 				DisplayName: Starhook
 				Tooltip: Shoots out four hooks at once
+			}
+
+			PhagefootHook: {
+				DisplayName: Phagefoot Hook
+				Tooltip: ""
 			}
 
 			//Vanity
@@ -1222,7 +1360,236 @@ Mods: {
 				Tooltip: Shoots sprays of venom which account for gravity
 			}
 
+			Contagun: {
+				DisplayName: Contagun
+				Tooltip: Spews toxic fumes and viruses which infect your enemies
+			}
+
+			Draconian: {
+				DisplayName: Draconian
+				Tooltip: Shoots fireballs that explode into bullets
+			}
+
+			Hemiola: {
+				DisplayName: Hemiola
+				Tooltip:
+					'''
+					Shoots both rapid and powerful darts
+					Converts wooden darts into cursed and ichor darts
+					'''
+			}
+
+			VariableWispon: {
+				DisplayName: Variable Wispon
+				Tooltip:
+					'''
+					Right click to switch between three modes
+					Cyan converts bullets into bouncing lasers
+					Pink converts darts into spinning saws that stick to tiles
+					Orange converts rockets into homing energy rockets
+					'''
+			}
+
+			GliderGun: {
+				DisplayName: Glider Gun
+				Tooltip: ""
+			}
+
+			Flarecaller: {
+				DisplayName: Flarecaller
+				Tooltip: Summons a solar flare from the sky
+			}
+
+			DesolateWinds: {
+				DisplayName: Desolate Winds
+				Tooltip: Summons damaging winds from behind the player
+			}
+
+			HadeanUpwelling: {
+				DisplayName: Hadean Upwelling
+				Tooltip: Summons a ring of fire around you, which turns into a directed fireblast
+			}
+
+			HeatFlare: {
+				DisplayName: Heat Flare
+				Tooltip: Creates tendrils of heat
+			}
+
+			NebulaRay: {
+				DisplayName: Nebula Ray
+				Tooltip: "'Cast the light of distant stars upon your enemies'"
+			}
+
+			ShadeStorm: {
+				DisplayName: Shade Storm
+				Tooltip: Shoots erratically curving shadows that tend to move towards enemies
+			}
+
+			Shatterslash: {
+				DisplayName: Shatterslash
+				Tooltip:
+					'''
+					Releases a ring of homing ice shards
+					'Try saying that five times fast'
+					'''
+			}
+
+			BlazingIre: {
+				DisplayName: Blazing Ire
+				Tooltip:
+					'''
+					Left click to use as a javelin, right click to use as a spear
+					Hitting enemies has a chance to summon additional javelins, and this chance is increased on critical strikes
+					'''
+			}
+
+			LifeGrasper: {
+				DisplayName: Life Grasper
+				Tooltip: Summons a circular aura to drain life from enemies
+			}
+
+			Proteolysis: {
+				DisplayName: Proteolysis
+				Tooltip:
+					'''
+					Summons fangs around up to 5 enemies near the cursor
+					Mana cost is proportional to the number of enemies targeted
+					'''
+			}
+
+			SeepingDeath: {
+				DisplayName: Seeping Death
+				Tooltip: Brine Stream
+			}
+
+			StarburstScepter: {
+				DisplayName: Starburst Scepter
+				Tooltip: Creates a starburst at the cursor
+			}
+
+			RayOfSunshine: {
+				DisplayName: Ray Of Sunshine
+				Tooltip: ""
+			}
+
+			ConeGun: {
+				DisplayName: Cone Gun
+				Tooltip:
+					'''
+					Consumes all your mana to shoot a massive high-damage cone
+					Does more damage the more mana you use
+					Not affected by any form of mana cost reduction
+					Damage is decreased significantly if you have mana sickness
+					'''
+			}
+
+			FlailingKraken: {
+				DisplayName: Flailing Kraken
+				Tooltip: Slap your enemies with tentacles
+			}
+
+			WormSpewer: {
+				DisplayName: Worm Spewer
+				Tooltip: Spews worms
+			}
+
+			HeadSplitter: {
+				DisplayName: Head Splitter
+				Tooltip:
+					'''
+					8 summon tag damage
+					Your summons will focus struck enemies
+					Can hit up to three targets at a time for full damage
+					'''
+			}
+
+			AlkalineOrb: {
+				DisplayName: Alkaline Orb
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.OrbBase}
+					Summons a twisted mass of alkaline wraiths which shoots small defense-reducing spirits
+					'''
+			}
+
+			GlobusCruciger: {
+				DisplayName: Globus Cruciger
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.OrbBase}
+					Summons a sword-wielding hallowed statue that provides a slight regen boost when nearby
+					'''
+			}
+
+			SpiritBottle: {
+				DisplayName: Spirit Bottle
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.OrbBase}
+					Summons a pair of spirits to bite enemies, causing your minions to deal up to 20 additional damage to them
+					'''
+			}
+
+			WeaverOrb: {
+				DisplayName: Weaver Orb
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.OrbBase}
+					Summons an orb weaver which spins webs to slow enemies
+					'''
+			}
+
+			PincerStaff: {
+				DisplayName: Pincer Staff
+				Tooltip: Summons a clawed flesh puddle
+			}
+
+			BarnsleyStaff: {
+				DisplayName: Barnsley Staff
+				Tooltip: Summons a fractal fern
+			}
+
+			EsophageousStaff: {
+				DisplayName: Esophageous Staff
+				Tooltip: Summons a baby Esophage to protect you
+			}
+
+			LuminousSlimeStaff: {
+				DisplayName: Luminous Slime Staff
+				Tooltip: Summons a luminous slime to protect you
+			}
+
+			MoltenSpiritStaff: {
+				DisplayName: Molten Spirit Staff
+				Tooltip: Summons a molten spirit to protect you
+			}
+
+			SaltKillifishStaff: {
+				DisplayName: Salt Killifish Staff
+				Tooltip: Summons a salt killifish to protect you
+			}
+
+			SolarScarabStaff: {
+				DisplayName: Solar Scarab Staff
+				Tooltip: Summons a solar scarab to protect you
+			}
+
+			ScouringStaff: {
+				DisplayName: Scouring Staff
+				Tooltip: Summons a friendly scourer
+			}
+
+			Splattergun: {
+				DisplayName: Splattergun
+				Tooltip: Shoots a dense splatter of ichor
+			}
+
 			//Critter Items
+			BabyWandererItem: {
+				DisplayName: Baby Wanderer
+				Tooltip: ""
+			}
+
 			CloudCichlidItem: {
 				DisplayName: Cloud Cichlid
 				Tooltip: ""
@@ -2155,49 +2522,175 @@ Mods: {
 				DisplayName: The Perks Of Being A Wall Towers
 				Tooltip: Increases your maximum life by 10%
 			}
+
+			//Banner
+			AequoreanBanner: {
+				DisplayName: Aequorean Banner
+				Tooltip: ""
+			}
+
+			AlkalabominationBanner: {
+				DisplayName: Alkalabomination Banner
+				Tooltip: ""
+			}
+
+			AlkaliSpiritBanner: {
+				DisplayName: Alkali Spirit Banner
+				Tooltip: ""
+			}
+
+			BatSlimeBanner: {
+				DisplayName: Bat Slime Banner
+				Tooltip: ""
+			}
+
+			BloodBatBanner: {
+				DisplayName: Blood Bat Banner
+				Tooltip: ""
+			}
+
+			BrineDwellerBanner: {
+				DisplayName: Brine Dweller Banner
+				Tooltip: ""
+			}
+
+			BrineFlyBanner: {
+				DisplayName: Brine Fly Banner
+				Tooltip: ""
+			}
+
+			ConeShellBanner: {
+				DisplayName: Cone Shell Banner
+				Tooltip: ""
+			}
+
+			CrimagoBanner: {
+				DisplayName: Crimago Banner
+				Tooltip: ""
+			}
+
+			GlowWormBanner: {
+				DisplayName: Glow Worm Banner
+				Tooltip: ""
+			}
+
+			GraniteStomperBanner: {
+				DisplayName: Granite Stomper Banner
+				Tooltip: ""
+			}
+
+			HydraBanner: {
+				DisplayName: Hydra Banner
+				Tooltip: ""
+			}
+
+			IlluminantScourerBanner: {
+				DisplayName: Illuminant Scourer Banner
+				Tooltip: ""
+			}
+
+			InfernalArrowBanner: {
+				DisplayName: Infernal Arrow Banner
+				Tooltip: ""
+			}
+
+			LightEaterBanner: {
+				DisplayName: Light Eater Banner
+				Tooltip: ""
+			}
+
+			LimeshellBanner: {
+				DisplayName: Limeshell Banner
+				Tooltip: ""
+			}
+
+			MantleOWarBanner: {
+				DisplayName: Mantle O War Banner
+				Tooltip: ""
+			}
+
+			MusselBanner: {
+				DisplayName: Mussel Banner
+				Tooltip: ""
+			}
+
+			NestGuardianBanner: {
+				DisplayName: Nest Guardian Banner
+				Tooltip: ""
+			}
+
+			PainbowBanner: {
+				DisplayName: Painbow Banner
+				Tooltip: ""
+			}
+
+			PegasusBanner: {
+				DisplayName: Pegasus Banner
+				Tooltip: ""
+			}
+
+			RattlerBanner: {
+				DisplayName: Rattler Banner
+				Tooltip: ""
+			}
+
+			SalthopperBanner: {
+				DisplayName: Salthopper Banner
+				Tooltip: ""
+			}
+
+			SlimeyBanner: {
+				DisplayName: Slimey Banner
+				Tooltip: ""
+			}
+
+			SpitterBanner: {
+				DisplayName: Spitter Banner
+				Tooltip: ""
+			}
+
+			StalagBeetleBanner: {
+				DisplayName: Stalag Beetle Banner
+				Tooltip: ""
+			}
+
+			StellatedSlimeBanner: {
+				DisplayName: Stellated Slime Banner
+				Tooltip: ""
+			}
+
+			SunKnightBanner: {
+				DisplayName: Sun Knight Banner
+				Tooltip: ""
+			}
+
+			SunServitorBanner: {
+				DisplayName: Sun Servitor Banner
+				Tooltip: ""
+			}
+
+			TendrilAmalgamBanner: {
+				DisplayName: Tendril Amalgam Banner
+				Tooltip: ""
+			}
+
+			TrailblazerBanner: {
+				DisplayName: Trailblazer Banner
+				Tooltip: ""
+			}
+
+			UraraneidBanner: {
+				DisplayName: Uraraneid Banner
+				Tooltip: ""
+			}
+
+			ZombatBanner: {
+				DisplayName: Zombat Banner
+				Tooltip: ""
+			}
 		}
 
 		NPCs: {
-			StormCloudfish.DisplayName: Storm Cloudfish
-			CloudCichlid.DisplayName: Cloud Cichlid
-			StormcloudCichlid.DisplayName: Stormcloud Cichlid
-			DormantConstruct.DisplayName: Dormant Construct
-			StarConstruct.DisplayName: Star Construct
-			StarConstructClaw.DisplayName: Star Construct Claw
-			Gigabat.DisplayName: Gigabat
-			GigabatMinion.DisplayName: Gigabat Minion
-			Sunfish.DisplayName: Sunfish
-			AmberGemfly.DisplayName: Amber Gemfly
-			AmethystGemfly.DisplayName: Amethyst Gemfly
-			DiamondGemfly.DisplayName: Diamond Gemfly
-			EmeraldGemfly.DisplayName: Emerald Gemfly
-			RubyGemfly.DisplayName: Ruby Gemfly
-			SapphireGemfly.DisplayName: Sapphire Gemfly
-			SeaLily.DisplayName: Sea Lily
-			TopazGemfly.DisplayName: Topaz Gemfly
-			BrineDweller.DisplayName: Brine Dweller
-			BrineFly.DisplayName: Brine Fly
-			Mussel.DisplayName: Mussel
-			Salthopper.DisplayName: Salthopper
-			Alkalabomination.DisplayName: Alkalabomination
-			Limeshell.DisplayName: Limeshell
-			Slimey.DisplayName: Slimey
-			AlkaliSpirit.DisplayName: Alkali Spirit
-			GlowWorm.DisplayName: Glow Worm
-			StalagBeetle.DisplayName: Stalag Beetle
-			NestGuardian.DisplayName: Nest Guardian
-			Rattler.DisplayName: Rattler
-			Spitter.DisplayName: Spitter
-			GreatStellatedSlime.DisplayName: Great Stellated Slime
-			StellatedSlime.DisplayName: Stellated Slime
-			Zombat.DisplayName: Zombat
-			BatSlime.DisplayName: Bat Slime
-			GraniteStomper.DisplayName: Granite Stomper
-			BloodBat.DisplayName: Blood Bat
-			HydraBody.DisplayName: Hydra Body
-			HydraHead.DisplayName: Hydra Head
-			ConeShell.DisplayName: Cone Shell
-
 			Ghostwriter: {
 				DisplayName: Ghostwriter
 
@@ -2316,6 +2809,66 @@ Mods: {
 				Hemorrphage: That fleshy capsid you picked up from the Pestilence displays interesting properties when exposed to the menacing aura of a blood moon.
 				Polarities: You've defeated some powerful enemies, and acquired a lot of resources from them, both here, and, apparently, in the fractal world. Combining materials from the two dimensions could yield interesting, if volatile, results.
 			}
+
+			StormCloudfish.DisplayName: Storm Cloudfish
+			CloudCichlid.DisplayName: Cloud Cichlid
+			StormcloudCichlid.DisplayName: Stormcloud Cichlid
+			DormantConstruct.DisplayName: Dormant Construct
+			StarConstruct.DisplayName: Star Construct
+			StarConstructClaw.DisplayName: Star Construct Claw
+			Gigabat.DisplayName: Gigabat
+			GigabatMinion.DisplayName: Gigabat Minion
+			Sunfish.DisplayName: Sunfish
+			AmberGemfly.DisplayName: Amber Gemfly
+			AmethystGemfly.DisplayName: Amethyst Gemfly
+			DiamondGemfly.DisplayName: Diamond Gemfly
+			EmeraldGemfly.DisplayName: Emerald Gemfly
+			RubyGemfly.DisplayName: Ruby Gemfly
+			SapphireGemfly.DisplayName: Sapphire Gemfly
+			SeaLily.DisplayName: Sea Lily
+			TopazGemfly.DisplayName: Topaz Gemfly
+			BrineDweller.DisplayName: Brine Dweller
+			BrineFly.DisplayName: Brine Fly
+			Mussel.DisplayName: Mussel
+			Salthopper.DisplayName: Salthopper
+			Alkalabomination.DisplayName: Alkalabomination
+			Limeshell.DisplayName: Limeshell
+			Slimey.DisplayName: Slimey
+			AlkaliSpirit.DisplayName: Alkali Spirit
+			GlowWorm.DisplayName: Glow Worm
+			StalagBeetle.DisplayName: Stalag Beetle
+			NestGuardian.DisplayName: Nest Guardian
+			Rattler.DisplayName: Rattler
+			Spitter.DisplayName: Spitter
+			GreatStellatedSlime.DisplayName: Great Stellated Slime
+			StellatedSlime.DisplayName: Stellated Slime
+			Zombat.DisplayName: Zombat
+			BatSlime.DisplayName: Bat Slime
+			GraniteStomper.DisplayName: Granite Stomper
+			BloodBat.DisplayName: Blood Bat
+			HydraBody.DisplayName: Hydra Body
+			HydraHead.DisplayName: Hydra Head
+			ConeShell.DisplayName: Cone Shell
+			FractalFern.DisplayName: Fractal Fern
+			SunPixie.DisplayName: Sun Pixie
+			SunServitor.DisplayName: Sun Servitor
+			Aequorean.DisplayName: Aequorean
+			IlluminantScourer.DisplayName: Illuminant Scourer
+			Painbow.DisplayName: Painbow
+			Pegasus.DisplayName: Pegasus
+			SunKnight.DisplayName: Sun Knight
+			Trailblazer.DisplayName: Trailblazer
+			Esophage.DisplayName: Esophage
+			EsophageClaw.DisplayName: Esophage Claw
+			Crimago.DisplayName: Crimago
+			LightEater.DisplayName: Light Eater
+			RavenousCursed.DisplayName: Ravenous Cursed
+			TendrilAmalgam.DisplayName: Tendril Amalgam
+			Uraraneid.DisplayName: Uraraneid
+			InfernalArrow.DisplayName: Infernal Arrow
+			MantleOWar.DisplayName: Mantle O War
+			ConvectiveWanderer.DisplayName: Convective Wanderer
+			BabyWanderer.DisplayName: Baby Wanderer
 		}
 
 		Projectiles: {
@@ -2434,6 +2987,93 @@ Mods: {
 			PainBowProjectile.DisplayName: Pain Bow Projectile
 			PyroclasticOnslaughtProjectile.DisplayName: Pyroclastic Onslaught Projectile
 			ToxicShotProjectile.DisplayName: Toxic Shot Projectile
+			ContagunProjectile.DisplayName: Contagun Projectile
+			ContagunVirusProjectile.DisplayName: Contagun Virus Projectile
+			DraconianExplosion.DisplayName: Draconian Explosion
+			DraconianFireball.DisplayName: Draconian Fireball
+			VariableWisponLaser.DisplayName: Variable Wispon Laser
+			VariableWisponRocket.DisplayName: Variable Wispon Rocket
+			VariableWisponSawblade.DisplayName: Variable Wispon Sawblade
+			GliderGunProjectile.DisplayName: Glider Gun Projectile
+			FlarecallerFlare.DisplayName: Flarecaller Flare
+			FlarecallerProjectile.DisplayName: Flarecaller Projectile
+			DesolateWindsProjectile.DisplayName: Desolate Winds Projectile
+			HadeanUpwellingMegablast.DisplayName: Hadean Upwelling Megablast
+			HadeanUpwellingProjectile.DisplayName: Hadean Upwelling Projectile
+			HeatFlareProjectile.DisplayName: Heat Flare Projectile
+			NebulaRayProjectile.DisplayName: Nebula Ray Projectile
+			ShadeStormProjectile.DisplayName: Shade Storm Projectile
+			ShatterslashProjectile.DisplayName: Shatterslash Projectile
+			BlazingIreJavelin.DisplayName: Blazing Ire Javelin
+			BlazingIreSpear.DisplayName: Blazing Ire Spear
+			LifeGrasperAura.DisplayName: Life Grasper Aura
+			LifeGrasperAuraRing.DisplayName: Life Grasper Aura Ring
+			ProteolysisProjectile.DisplayName: Proteolysis Projectile
+			SeepingDeathProjectile.DisplayName: Seeping Death Projectile
+			StarburstScepterProjectile.DisplayName: Starburst Scepter Projectile
+			RayOfSunshineProjectile.DisplayName: Ray Of Sunshine Projectile
+			ConeGunProjectile.DisplayName: Cone Gun Projectile
+			FlailingKrakenProjectile.DisplayName: Flailing Kraken Projectile
+			WormSpewerProjectile.DisplayName: Worm Spewer Projectile
+			HeadSplitterProjectile.DisplayName: Head Splitter Projectile
+			AlkalineOrbMinion.DisplayName: Alkaline Orb Minion
+			AlkalineOrbMinionProjectile.DisplayName: Alkaline Orb Minion Projectile
+			GlobusCrucigerMinion.DisplayName: Globus Cruciger Minion
+			GlobusCrucigerMinionBlade.DisplayName: Globus Cruciger Minion Blade
+			GlobusCrucigerMinionBlade2.DisplayName: Globus Cruciger Minion Blade2
+			GlobusCrucigerMinionBlade3.DisplayName: Globus Cruciger Minion Blade3
+			SpiritBottleMinion.DisplayName: Spirit Bottle Minion
+			WeaverOrbMinion.DisplayName: Weaver Orb Minion
+			WeaverOrbMinionWeb.DisplayName: Weaver Orb Minion Web
+			WeaverOrbMinionWebBall.DisplayName: Weaver Orb Minion Web Ball
+			PincerStaffSentry.DisplayName: Pincer Staff Sentry
+			PincerStaffSlash.DisplayName: Pincer Staff Slash
+			BarnsleyFernMinion.DisplayName: Barnsley Fern
+			EsophminiBody.DisplayName: Esophmini Body
+			EsophminiClaw.DisplayName: Esophmini Claw
+			FractalFrondFriendly.DisplayName: Fractal Frond
+			FractalFrond.DisplayName: Fractal Frond
+			IchorDrop.DisplayName: Ichor Drop
+			LuminousSlimeMinion.DisplayName: Luminous Slime
+			MoltenSpiritMinion.DisplayName: Molten Spirit
+			MoltenSpiritMinionExplosion.DisplayName: Molten Spirit Explosion
+			SaltKillifishMinion.DisplayName: Salt Killifish
+			SolarScarabMinion.DisplayName: Solar Scarab
+			SunPixieArena.DisplayName: Sun Pixie Arena
+			SunPixieDeathray.DisplayName: Sun Pixie Deathray
+			SunPixieFlare.DisplayName: Sun Pixie Flare
+			SunPixieOrb.DisplayName: Sun Pixie Orb
+			SunPixieRay.DisplayName: Sun Pixie Ray
+			SunServitorBeam.DisplayName: Sun Servitor Beam
+			IlluminantLaserFriendly.DisplayName: Illuminant Laser Friendly
+			ScouringStaffSentry.DisplayName: Scouring Staff Sentry
+			AequoreanImage.DisplayName: Aequorean Image
+			IlluminantScourerLaser.DisplayName: Illuminant Scourer Laser
+			PainbowHitbox.DisplayName: Painbow Hitbox
+			SunKnightLightsword.DisplayName: Sun Knight Lightsword
+			TrailblazerFlash.DisplayName: Trailblazer Flash
+			TrailblazerHitbox.DisplayName: Trailblazer Hitbox
+			PhagefootProjectile.DisplayName: Phagefoot Projectile
+			CursedFlameExplosion.DisplayName: Cursed Flame Explosion
+			EsophageCapsidPlate.DisplayName: Esophage Capsid Plate
+			EsophageFireball.DisplayName: Esophage Fireball
+			EsophageFleshChunk.DisplayName: Esophage Flesh Chunk
+			EsophageIchorSpray.DisplayName: Esophage Ichor Spray
+			EsophageSlash.DisplayName: Esophage Slash
+			EsophageTendril.DisplayName: Esophage Tendril
+			EsophageTooth.DisplayName: Esophage Tooth
+			CrimagoSlash.DisplayName: Crimago Slash
+			RavenousCursedFlame.DisplayName: Ravenous Cursed Flame
+			RavenousCursedSpark.DisplayName: Ravenous Cursed Spark
+			TendrilAmalgamSpike.DisplayName: Tendril Amalgam Spike
+			MantleOWarLavaProjectile.DisplayName: Mantle O War Lava Projectile
+			MantleOWarNematocyst.DisplayName: Mantle O War Nematocyst
+			ConvectiveWandererAcceleratingShot.DisplayName: Convective Wanderer Accelerating Shot
+			ConvectiveWandererChargedShot.DisplayName: Convective Wanderer Charged Shot
+			ConvectiveWandererFlamePillar.DisplayName: Convective Wanderer Flame Pillar
+			ConvectiveWandererFlamethrower.DisplayName: Convective Wanderer Flamethrower
+			ConvectiveWandererHeatVortex.DisplayName: Convective Wanderer Heat Vortex
+			ConvectiveWandererLingeringDeathray.DisplayName: Convective Wanderer Lingering Deathray
 		}
 
 		Biomes: {
@@ -2444,12 +3084,22 @@ Mods: {
 
 			LimestoneCave: {
 				DisplayName: Limestone Cave
-				TownNPCDialogueName: the Limestone Cave
+				TownNPCDialogueName: a Limestone Cave
 			}
 
 			SaltCave: {
 				DisplayName: Salt Cave
-				TownNPCDialogueName: the Salt Cave
+				TownNPCDialogueName: a Salt Cave
+			}
+
+			HallowInvasion: {
+				DisplayName: The Rapture
+				TownNPCDialogueName: The Rapture
+			}
+
+			WorldEvilInvasion: {
+				DisplayName: The Pestilence
+				TownNPCDialogueName: The Pestilence
 			}
 		}
 
@@ -2470,6 +3120,34 @@ Mods: {
 			DownedEclipxie: After the Eclipxie is defeated
 			DownedHemorrphage: After the Hemorrphage is defeated
 			DownedPolarities: After the Polarities is defeated
+		}
+
+		DeathMessage: {
+			StrangeObituary: "{PlayerName} died for strange reasons."
+			ConeVenom: "{PlayerName} was killed by a snail."
+			Desiccating: "{PlayerName} was mummified."
+			Incinerating: "{PlayerName} went poof."
+		}
+
+		StatusMessage: {
+			StartWind: The wind begins to pick up...
+			StopWind: The wind begins to calm...
+			StartRain: The skies begin to cloud over...
+			StopRain: The skies begin to clear...
+			SpawnHallowInvasion: The world's bright places grow brighter!
+			StartHallowSpread: The Hallow's spread resumes...
+			StopHallowSpread: The Hallow's spread halts...
+			"SpawnWorldEvilInvasion\"": The world's evils seethe with anger!
+			StartEvilSpread: The world evil's spread resumes...
+			StopEvilSpread: The world evil's spread halts...
+			GenMantellarOre: The molten seas tremble...
+		}
+
+		AnglerQuest: {
+			PickledHerring: {
+				Description: So I was exploring one of those salt caves when, get this, I saw a fish jump right into the brine! I kid you not, it turned itself into a pickle! It's a pickled herring! Funniest thing I've ever seen. Go get it for me so I can laugh at it some more!
+				Location: Caught in the Salt Caves.
+			}
 		}
 	}
 }

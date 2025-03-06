@@ -5,6 +5,8 @@ using MonoMod.Cil;
 using MonoMod.RuntimeDetour.HookGen;
 using Polarities.Global;
 using Polarities.Core;
+using Polarities.Content.Biomes;
+using Polarities.Content.Events;
 //using Polarities.Biomes;
 //using Polarities.Biomes.Fractal;
 //using Polarities.Buffs;
@@ -31,12 +33,12 @@ using static Terraria.ModLoader.ModContent;
 
 namespace Polarities
 {
-    //public enum NPCCapSlotID
-    //{
-        //HallowInvasion,
-        //WorldEvilInvasion,
-        //WorldEvilInvasionWorm,
-    //}
+    public enum NPCCapSlotID
+    {
+        HallowInvasion,
+        WorldEvilInvasion,
+        WorldEvilInvasionWorm,
+    }
 
     public class PolaritiesNPC : GlobalNPC
     {
@@ -49,6 +51,7 @@ namespace Polarities
         public bool usesProjectileHitCooldowns = false;
         public int projectileHitCooldownTime = 0;
         public int ignoredDefenseFromCritAmount;
+        public int whipTagDamage;
 
         public float defenseMultiplier;
 
@@ -61,10 +64,24 @@ namespace Polarities
         public int incineration;
         public bool coneVenom;
 
+        public bool spiritBite;
+        public int spiritBiteLevel;
+
         public static Dictionary<int, bool> bestiaryCritter = new Dictionary<int, bool>();
+
+        public static Dictionary<int, int> npcTypeCap = new Dictionary<int, int>();
+
+        public static Dictionary<int, NPCCapSlotID> customNPCCapSlot = new Dictionary<int, NPCCapSlotID>();
+        public static Dictionary<NPCCapSlotID, float> customNPCCapSlotCaps = new Dictionary<NPCCapSlotID, float>
+        {
+            [NPCCapSlotID.HallowInvasion] = 6f,
+            [NPCCapSlotID.WorldEvilInvasion] = 2f,
+            [NPCCapSlotID.WorldEvilInvasionWorm] = 2f,
+        };
 
         public static HashSet<int> customSlimes = new HashSet<int>();
         public static HashSet<int> forceCountForRadar = new HashSet<int>();
+        public static HashSet<int> canSpawnInLava = new HashSet<int>();
 
         public override void Load()
         {
@@ -94,11 +111,11 @@ namespace Polarities
         public override void Unload()
         {
             bestiaryCritter = null;
-            //customNPCCapSlot = null;
-            //customNPCCapSlotCaps = null;
+            customNPCCapSlot = null;
+            customNPCCapSlotCaps = null;
             customSlimes = null;
             forceCountForRadar = null;
-            //canSpawnInLava = null;
+            canSpawnInLava = null;
 
             //IL_ChooseSpawn -= PolaritiesNPC_IL_ChooseSpawn;
         }
@@ -162,6 +179,120 @@ namespace Polarities
             c.Emit(OpCodes.Brtrue, label);
         }
 
+        public static bool lavaSpawnFlag;
+
+        private void PolaritiesNPC_IL_ChooseSpawn(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.After,
+                i => i.MatchLdloc(0),
+                i => i.MatchLdcI4(0),
+                i => i.MatchLdcR4(1),
+                i => i.MatchCallvirt(typeof(IDictionary<int, float>).GetProperty("Item", BindingFlags.Public | BindingFlags.Instance).GetSetMethod())
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location 1");
+                return;
+            }
+
+            //remove vanilla spawns if conditions are met
+            c.Emit(OpCodes.Ldloc, 0);
+            c.Emit(OpCodes.Ldarg, 0);
+            c.EmitDelegate<Action<IDictionary<int, float>, NPCSpawnInfo>>((pool, spawnInfo) =>
+            {
+                //don't remove vanilla spawns from pillars
+                if (spawnInfo.Player.ZoneTowerSolar || spawnInfo.Player.ZoneTowerStardust || spawnInfo.Player.ZoneTowerNebula || spawnInfo.Player.ZoneTowerVortex) return;
+
+                //remove vanilla spawns if in pestilence/rapture/fractal
+                if (spawnInfo.Player.InModBiome(GetInstance<HallowInvasion>()) || spawnInfo.Player.InModBiome(GetInstance<HallowInvasion>())) //|| spawnInfo.Player.InModBiome<FractalBiome>())
+                {
+                    pool.Remove(0);
+                }
+            });
+
+            ILLabel label = null;
+
+            if (!c.TryGotoNext(MoveType.Before,
+                i => i.MatchBleUn(out label),
+                i => i.MatchLdloc(0),
+                i => i.MatchLdloc(4),
+                i => i.MatchCallvirt(typeof(ModNPC).GetProperty("NPC", BindingFlags.Public | BindingFlags.Instance).GetGetMethod()),
+                i => i.MatchLdfld(typeof(NPC).GetField("type", BindingFlags.Public | BindingFlags.Instance)),
+                i => i.MatchLdloc(5),
+                i => i.MatchCallvirt(typeof(IDictionary<int, float>).GetProperty("Item", BindingFlags.Public | BindingFlags.Instance).GetSetMethod())
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location 2");
+                return;
+            }
+
+            c.Index++;
+
+            c.Emit(OpCodes.Ldloc, 0);
+            c.Emit(OpCodes.Ldarg, 0);
+            c.Emit(OpCodes.Ldloc, 4);
+            c.EmitDelegate<Func<IDictionary<int, float>, NPCSpawnInfo, ModNPC, bool>>((pool, spawnInfo, modNPC) =>
+            {
+                //return true to use normal spawn pool finding code, false to use custom code
+                if (spawnInfo.Player.ZoneTowerSolar || spawnInfo.Player.ZoneTowerStardust || spawnInfo.Player.ZoneTowerNebula || spawnInfo.Player.ZoneTowerVortex)
+                {
+                    if (modNPC.Mod == Mod)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (spawnInfo.Player.InModBiome(GetInstance<HallowInvasion>()))
+                    {
+                        //purge invalid rapture spawns
+                        if (!HallowInvasion.ValidNPC(modNPC.Type))
+                        {
+                            return false;
+                        }
+                    }
+                    else if (spawnInfo.Player.InModBiome(GetInstance<WorldEvilInvasion>()))
+                    {
+                        //purge invalid world evil enemy spawns
+                        if (!WorldEvilInvasion.ValidNPC(modNPC.Type))
+                        {
+                            return false;
+                        }
+                    }
+
+                    if (lavaSpawnFlag)
+                    {
+                        //purge invalid lava spawns
+                        if (!canSpawnInLava.Contains(modNPC.Type))
+                        {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            });
+            c.Emit(OpCodes.Brfalse, label);
+
+            //replace vanilla spawns with null if in lava
+            if (!c.TryGotoNext(MoveType.Before,
+                i => i.MatchLdloc(12),
+                i => i.MatchRet()
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location 3");
+                return;
+            }
+
+            c.Index++;
+
+            c.EmitDelegate<Func<int?, int?>>((type) =>
+            {
+                return type != 0 ? type :
+                    lavaSpawnFlag ? null : 0;
+            });
+        }
+
         private static bool? IsBestiaryCritter(int npcType)
         {
             return bestiaryCritter.ContainsKey(npcType) ? bestiaryCritter[npcType] : null;
@@ -197,22 +328,33 @@ namespace Polarities
             //hammerTimes.Remove(i);
             //}
 
-            //contagunPhages = 0;
-            //tentacleClubs = 0;
+            contagunPhages = 0;
+            tentacleClubs = 0;
             chlorophyteDarts = 0;
-            //boneShards = 0;
+            boneShards = 0;
 
             desiccation = 0;
             incineration = 0;
             coneVenom = false;
 
-            //whipTagDamage = 0;
+            whipTagDamage = 0;
 
-            //if (!spiritBite)
-            //{
-                //spiritBiteLevel = 0;
-            //}
-            //spiritBite = false;
+            if (!spiritBite)
+            {
+                spiritBiteLevel = 0;
+            }
+            spiritBite = false;
+        }
+
+        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
+        {
+            if (projectile.IsTypeSummon())
+            {
+                //damage += spiritBiteLevel;
+
+                //TODO: This is inconsistent with vanilla whip tag damage, there will apparently be a better hook for this
+                //damage += whipTagDamage;
+            }
         }
 
         public void ModifyDefense(NPC npc, ref int defense)

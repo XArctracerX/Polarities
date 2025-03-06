@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Polarities.Core;
 using Polarities.Global;
+using Polarities.Content.NPCs.Bosses.Hardmode.SunPixie;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -162,7 +163,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Broadswords.Hardmode
 
                     Vector2 positionOffset = new Vector2(Projectile.scale * 4, 0).RotatedBy(i * MathHelper.TwoPi / numLayers + Projectile.timeLeft * 0.1f);
 
-                    //Main.EntitySpriteDraw(TextureAssets.Projectile[ProjectileType<NPCs.SunPixie.SunPixieDeathray>()].Value, positionOffset + drawCurrentSegmentPos - Main.screenPosition, new Rectangle(0, 0, 12, 12), color * alpha, Projectile.rotation, new Vector2(6, 6), Projectile.scale * scale, SpriteEffects.None, 0);
+                    Main.EntitySpriteDraw(TextureAssets.Projectile[ProjectileType<SunPixieDeathray>()].Value, positionOffset + drawCurrentSegmentPos - Main.screenPosition, new Rectangle(0, 0, 12, 12), color * alpha, Projectile.rotation, new Vector2(6, 6), Projectile.scale * scale, SpriteEffects.None, 0);
                 }
 
                 steps++;

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Polarities.Core;
 using Polarities.Global;
 using Terraria;
@@ -53,8 +53,8 @@ namespace Polarities.Content.NPCs.Enemies.BloodMoon.PreHardmode
             NPC.aiStyle = 14;
             NPC.stairFall = true;
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<BloodBatBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<BloodBatBanner>();
         }
 
         public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */

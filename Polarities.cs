@@ -42,6 +42,8 @@ namespace Polarities
         public static ModKeybind ArmorSetBonusHotkey { get; private set; }
         public static ModKeybind ConvectiveDashHotkey { get; private set; }
 
+        public const string CallShootProjectile = "Polarities/Content/Projectiles/CallShootProjectile";
+
         public override void Load()
         {
             //ModUtils.Load();
