@@ -24,6 +24,6 @@ namespace Polarities.Content.Items.Placeable.Furniture.Fractal
     public class FractalChestTile : ChestTileBase
     {
         public override int MyDustType => ModContent.DustType<FractalMatterDust>();
-        public override int DropItem => ModContent.ItemType<FractalBiomeChest>();
+        public override int DropItem => ModContent.ItemType<FractalChest>();
     }
 }

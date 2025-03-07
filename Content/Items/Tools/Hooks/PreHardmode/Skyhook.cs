@@ -48,7 +48,6 @@ namespace Polarities.Content.Items.Tools.Hooks.PreHardmode
         public override void Unload()
         {
             ChainTexture = null;
-
         }
 
         public override void SetDefaults()

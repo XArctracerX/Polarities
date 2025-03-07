@@ -5,6 +5,7 @@ using MonoMod.Cil;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Content.Biomes;
+using Polarities.Content.Events;
 using Polarities.Content.NPCs.TownNPCs.PreHardmode;
 //using Polarities.Items;
 using Polarities.Content.Items.Placeable.Blocks;
@@ -13,6 +14,7 @@ using Polarities.Content.Items.Placeable.Furniture.Salt;
 using Polarities.Content.Items.Placeable.Walls;
 //using Polarities.NPCs.ConvectiveWanderer;
 using Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen;
+using Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer;
 //using Polarities.NPCs.TownNPCs;
 using System;
 using System.Collections.Generic;
@@ -1742,6 +1744,108 @@ namespace Polarities
         {
             backgroundColor = new Color(backgroundColor.ToVector3() * (1 - modifyBackgroundColor.A / 255f) + modifyBackgroundColor.ToVector3());
             modifyBackgroundColor = Color.Transparent;
+        }
+
+        public override void PostUpdateEverything()
+        {
+            if (NPC.downedMechBossAny && !downedHallowInvasion && Main.invasionType == 0 /*TODO: && !SLWorld.subworld*/ && Main.rand.NextBool(2 * 24 * 60 * 60))
+            {
+                HallowInvasion.StartInvasion();
+            }
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && !downedWorldEvilInvasion && Main.invasionType == 0 /*TODO: && !SLWorld.subworld*/ && Main.rand.NextBool(2 * 24 * 60 * 60))
+            {
+                WorldEvilInvasion.StartInvasion();
+            }
+
+            if (worldEvilInvasion)
+            {
+                WorldEvilInvasion.CheckInvasionProgress();
+                WorldEvilInvasion.UpdateInvasion();
+            }
+            if (esophageSpawnTimer > 0)
+            {
+                WorldEvilInvasion.UpdateEsophageSpawning();
+            }
+            else if (esophageSpawnTimer < 0)
+            {
+                esophageSpawnTimer++;
+            }
+
+            if (convectiveWandererSpawnTimer > 0)
+            {
+                ConvectiveWanderer.UpdateConvectiveWandererSpawning();
+            }
+
+            if (hallowInvasion)
+            {
+                HallowInvasion.CheckInvasionProgress();
+                HallowInvasion.UpdateInvasion();
+            }
+            if (sunPixieSpawnTimer > 0)
+            {
+                HallowInvasion.UpdateSunPixieSpawning();
+            }
+            else if (sunPixieSpawnTimer < 0)
+            {
+                sunPixieSpawnTimer++;
+            }
+
+            timer++;
+        }
+
+        public override void PostDrawInterface(SpriteBatch spriteBatch)
+        {
+            Player player = Main.LocalPlayer;
+
+            Texture2D texture2D4 = TextureAssets.Extra[9].Value;
+            string text7 = "";
+            Color c = Color.White;
+
+            bool isInvasion = false;
+
+            if (worldEvilInvasion && (player.ZoneCorrupt || player.ZoneCrimson) && player.ZoneOverworldHeight)
+            {
+                texture2D4 = WorldEvilInvasion.EventIcon.Value;
+                text7 = Language.GetTextValue("Mods.Polarities.Biomes.WorldEvilInvasion.DisplayName");
+                c = new Color(128, 0, 96);
+                isInvasion = true;
+            }
+            else if (hallowInvasion && player.ZoneHallow && player.ZoneOverworldHeight)
+            {
+                texture2D4 = HallowInvasion.EventIcon.Value;
+                text7 = Language.GetTextValue("Mods.Polarities.Biomes.HallowInvasion.DisplayName");
+                c = new Color(255, 96, 0);
+                isInvasion = true;
+            }
+
+            //custom invasion icons
+            if (Main.invasionProgress == -1)
+            {
+                return;
+            }
+            if (Main.invasionProgressMode == 2 && Main.invasionProgressNearInvasion && Main.invasionProgressDisplayLeft < 160)
+            {
+                Main.invasionProgressDisplayLeft = 160;
+            }
+            if (Main.invasionProgressAlpha <= 0f)
+            {
+                return;
+            }
+            float num18 = 0.5f + Main.invasionProgressAlpha * 0.5f;
+
+            if (isInvasion)
+            {
+                Vector2 value = FontAssets.MouseText.Value.MeasureString(text7);
+                float num13 = 120f;
+                if (value.X > 200f)
+                {
+                    num13 += value.X - 200f;
+                }
+                Rectangle r3 = Utils.CenteredRectangle(new Vector2(Main.screenWidth - num13, Main.screenHeight - 80), (value + new Vector2(texture2D4.Width + 12, 6f)) * num18);
+                Utils.DrawInvBG(spriteBatch, r3, c);
+                spriteBatch.Draw(texture2D4, r3.Left() + Vector2.UnitX * num18 * 8f, null, Color.White * Main.invasionProgressAlpha, 0f, new Vector2(0f, texture2D4.Height / 2), num18 * 0.8f, 0, 0f);
+                Utils.DrawBorderString(spriteBatch, text7, r3.Right() + Vector2.UnitX * num18 * -22f, Color.White * Main.invasionProgressAlpha, num18 * 0.9f, 1f, 0.4f);
+            }
         }
     }
 }

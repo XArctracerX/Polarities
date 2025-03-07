@@ -26,21 +26,17 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 3;
-            //NPCID.Sets.DebuffImmunitySets/* tModPorter Removed: See the porting notes in https://github.com/tModLoader/tModLoader/pull/3453 */[Type] = new NPCDebuffImmunityData()
-           // {
-                //SpecificallyImmuneTo = new int[]
-                //{
-                    //BuffID.Confused,
-                    //BuffID.OnFire,
-                    //BuffID.OnFire3,
-                    //BuffID.Frostburn,
-                    //BuffID.Frostburn2,
-                   // BuffID.CursedInferno,
-                    //BuffID.ShadowFlame,
-                    //BuffID.Poisoned,
-                    //BuffID.Venom,
-                //}
-            //};
+
+            NPC.buffImmune[BuffID.Confused] = true;
+            NPC.buffImmune[BuffID.OnFire] = true;
+            NPC.buffImmune[BuffID.OnFire3] = true;
+            NPC.buffImmune[BuffID.Frostburn] = true;
+            NPC.buffImmune[BuffID.Frostburn2] = true;
+            NPC.buffImmune[BuffID.CursedInferno] = true;
+            NPC.buffImmune[BuffID.ShadowFlame] = true;
+            NPC.buffImmune[BuffID.Poisoned] = true;
+            NPC.buffImmune[BuffID.Venom] = true;
+
             NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Textures/Bestiary/ChaosCrawler", Position = new Vector2(0f, 70f), };
         }
 

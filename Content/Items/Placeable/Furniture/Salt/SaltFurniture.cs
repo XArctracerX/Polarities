@@ -11,34 +11,6 @@ using static Terraria.ModLoader.ModContent;
 
 namespace Polarities.Content.Items.Placeable.Furniture.Salt
 {
-    public class SaltToilet : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-
-        public override void SetDefaults()
-        {
-            Item.CloneDefaults(ItemID.WoodenChair);
-            Item.createTile = ModContent.TileType<SaltToiletTile>();
-            Item.placeStyle = 0;
-        }
-
-        public override void AddRecipes()
-        {
-            CreateRecipe()
-                .AddIngredient(ModContent.ItemType<SaltBrick>(), 6)
-                .AddTile(TileID.Sawmill)
-                .Register();
-        }
-    }
-    public class SaltToiletTile : ToiletTileBase
-    {
-        // public override int MyDustType => DustType<SaltDust>();
-        // public override int DropItem => ItemType<SaltToilet>();
-    }
-
     public class SaltPlatform : PlatformBase
     {
         public override int PlaceTile => TileType<SaltPlatformTile>();
@@ -230,30 +202,6 @@ namespace Polarities.Content.Items.Placeable.Furniture.Salt
         public override int DropItem => ItemType<SaltClock>();
     }
 
-    public class SaltDoor : DoorBase
-    {
-        public override int PlaceTile => TileType<SaltDoorClosed>();
-
-        public override void AddRecipes()
-        {
-            CreateRecipe()
-                .AddIngredient(ItemType<SaltBrick>(), 6)
-                .AddTile(TileID.WorkBenches)
-                .Register();
-        }
-    }
-    public class SaltDoorClosed : DoorClosedBase
-    {
-        public override int MyDustType => DustType<SaltDust>();
-        public override int DropItem => ItemType<SaltDoor>();
-
-        public override int OpenVersion => TileType<SaltDoorOpen>();
-    }
-    public class SaltDoorOpen : DoorOpenBase
-    {
-        public override int ClosedVersion => TileType<SaltDoorClosed>();
-    }
-
     public class SaltDresser : DresserBase
     {
         public override int PlaceTile => TileType<SaltDresserTile>();
@@ -400,31 +348,6 @@ namespace Polarities.Content.Items.Placeable.Furniture.Salt
     {
         public override int MyDustType => DustType<SaltDust>();
         public override int DropItem => ItemType<SaltTable>();
-    }
-
-    public class SaltTorch : TorchBase
-    {
-        public override int PlaceTile => TileType<SaltTorchTile>();
-
-        public override void AddRecipes()
-        {
-            CreateRecipe(3)
-                .AddIngredient(ItemID.Torch, 3)
-                .AddIngredient(ItemType<SaltCrystals>())
-                .Register();
-        }
-    }
-    public class SaltTorchTile : TorchTileBase
-    {
-        public override int MyDustType => DustType<SaltDust>();
-        public override int DropItem => ItemType<SaltTorch>();
-
-        public override Color LightColor => new (244, 245, 199);
-
-        //public override float GetTorchLuck(Player player)
-        //{
-            //return player.InModBiome(GetInstance<SaltCave>()) ? 1f : -1f;
-        //}
     }
 
     public class SaltWorkBench : WorkBenchBase

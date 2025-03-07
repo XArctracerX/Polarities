@@ -25,10 +25,10 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 1;
-            //NPCID.Sets.DebuffImmunitySets/* tModPorter Removed: See the porting notes in https://github.com/tModLoader/tModLoader/pull/3453 */[Type] = new NPCDebuffImmunityData()
-            //{
-                //ImmuneToAllBuffsThatAreNotWhips = true,
-            //};
+
+            NPC.buffImmune[BuffID.Confused] = true;
+            NPC.buffImmune[BuffID.OnFire] = true;
+
             NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Textures/BossChecklist/RiftDenizen", };
         }
 

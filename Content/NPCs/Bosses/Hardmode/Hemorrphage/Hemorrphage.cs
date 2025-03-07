@@ -75,7 +75,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
 
             NPC.buffImmune[BuffID.Confused] = true;
 
-            Music = MusicLoader.GetMusicSlot("Assets/Sounds/Music/Hemorrphage");
+            Music = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/Hemorrphage");
         }
 
         public static void SpawnOn(Player player)

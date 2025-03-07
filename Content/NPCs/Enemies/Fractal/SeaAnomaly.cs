@@ -289,8 +289,8 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
             NPC.buffImmune[BuffID.Poisoned] = true;
             NPC.buffImmune[BuffID.Venom] = true;
 
-            //Banner = NPCType<SeaAnomaly>();
-            //BannerItem = ItemType<SeaAnomalyBanner>();
+            Banner = NPCType<SeaAnomaly>();
+            BannerItem = ItemType<SeaAnomalyBanner>();
 
             NPC.GetGlobalNPC<PolaritiesNPC>().usesProjectileHitCooldowns = true;
             NPC.GetGlobalNPC<PolaritiesNPC>().projectileHitCooldownTime = 10;

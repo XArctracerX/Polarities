@@ -12,14 +12,16 @@ namespace Polarities.Content.Items.Placeable.Furniture.Fractal
     {
         public override void SetStaticDefaults()
         {
-            Item.ResearchUnlockCount = 1;
+            Item.ResearchUnlockCount = 2;
         }
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.WoodenChair);
-            Item.createTile = ModContent.TileType<FractalToiletTile>();
-            Item.placeStyle = 0;
+            Item.DefaultToPlaceableTile(ModContent.TileType<FractalToiletTile>(), 0);
+            Item.width = 16;
+            Item.height = 32;
+            Item.maxStack = Item.CommonMaxStack;
+            Item.value = 1000;
         }
 
         public override void AddRecipes()
@@ -29,12 +31,5 @@ namespace Polarities.Content.Items.Placeable.Furniture.Fractal
                 .AddTile(TileID.Sawmill)
                 .Register();
         }
-    }
-
-    public class FractalToiletTile : ToiletTileBase
-    {
-        // public override int MyDustType => ModContent.DustType<FractalMatterDust>();
-
-        // public override int DropItem => ModContent.ItemType<FractalToilet>();
     }
 }

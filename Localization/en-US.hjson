@@ -724,9 +724,18 @@ Mods: {
 
 			BetsySummonItem: {
 				DisplayName: Infernia Crystal
-				Tooltip: 
+				Tooltip:
 					'''
 					Summons Betsy
+					Not consumable
+					'''
+			}
+
+			RiftDenizenSummon: {
+				DisplayName: Instability
+				Tooltip:
+					'''
+					Summons the Rift Denizen
 					Not consumable
 					'''
 			}
@@ -947,6 +956,11 @@ Mods: {
 
 			PhagefootHook: {
 				DisplayName: Phagefoot Hook
+				Tooltip: ""
+			}
+
+			EndlessHook: {
+				DisplayName: Endless Hook
 				Tooltip: ""
 			}
 
@@ -3332,13 +3346,39 @@ Mods: {
 				Polarities: You've defeated some powerful enemies, and acquired a lot of resources from them, both here, and, apparently, in the fractal world. Combining materials from the two dimensions could yield interesting, if volatile, results.
 			}
 
-			StormCloudfish.DisplayName: Storm Cloudfish
+			StormCloudfish: {
+				DisplayName: Storm Cloudfish
+
+				BossChecklistIntegration: {
+					EntryName: "{$Mods.Polarities.NPCName.StormCloudfish}"
+					SpawnInfo: Fly a [i:5976 as high as you can at the surface.
+				}
+			}
+
 			CloudCichlid.DisplayName: Cloud Cichlid
 			StormcloudCichlid.DisplayName: Stormcloud Cichlid
 			DormantConstruct.DisplayName: Dormant Construct
-			StarConstruct.DisplayName: Star Construct
+
+			StarConstruct: {
+				DisplayName: Star Construct
+
+				BossChecklistIntegration: {
+					EntryName: "{$Mods.Polarities.NPCName.StarConstruct}"
+					SpawnInfo: Wait for a dormant construct to spawn at night while the player has at least 300 maximum life, or use a [i:5975 at the surface.
+				}
+			}
+
 			StarConstructClaw.DisplayName: Star Construct Claw
-			Gigabat.DisplayName: Gigabat
+
+			Gigabat: {
+				DisplayName: Gigabat
+
+				BossChecklistIntegration: {
+					EntryName: "{$Mods.Polarities.NPCName.Gigabat}"
+					SpawnInfo: Release gemflies and wait, or use a [i:5973], while underground.
+				}
+			}
+
 			GigabatMinion.DisplayName: Gigabat Minion
 			Sunfish.DisplayName: Sunfish
 			AmberGemfly.DisplayName: Amber Gemfly
@@ -3372,7 +3412,16 @@ Mods: {
 			HydraHead.DisplayName: Hydra Head
 			ConeShell.DisplayName: Cone Shell
 			FractalFern.DisplayName: Fractal Fern
-			SunPixie.DisplayName: Sun Pixie
+
+			SunPixie: {
+				DisplayName: Sun Pixie
+
+				BossChecklistIntegration: {
+					EntryName: "{$Mods.Polarities.NPCName.SunPixie}"
+					SpawnInfo: Reach the end of the Rapture, or use a [i:5971] anywhere.
+				}
+			}
+
 			SunServitor.DisplayName: Sun Servitor
 			Aequorean.DisplayName: Aequorean
 			IlluminantScourer.DisplayName: Illuminant Scourer
@@ -3380,7 +3429,16 @@ Mods: {
 			Pegasus.DisplayName: Pegasus
 			SunKnight.DisplayName: Sun Knight
 			Trailblazer.DisplayName: Trailblazer
-			Esophage.DisplayName: Esophage
+
+			Esophage: {
+				DisplayName: Esophage
+
+				BossChecklistIntegration: {
+					EntryName: "{$Mods.Polarities.NPCName.Esophage}"
+					SpawnInfo: Reach the end of the Pestilence, or use a [i:5969] anywhere.
+				}
+			}
+
 			EsophageClaw.DisplayName: Esophage Claw
 			Crimago.DisplayName: Crimago
 			LightEater.DisplayName: Light Eater
@@ -3389,7 +3447,16 @@ Mods: {
 			Uraraneid.DisplayName: Uraraneid
 			InfernalArrow.DisplayName: Infernal Arrow
 			MantleOWar.DisplayName: Mantle O War
-			ConvectiveWanderer.DisplayName: Convective Wanderer
+
+			ConvectiveWanderer: {
+				DisplayName: Convective Wanderer
+
+				BossChecklistIntegration: {
+					EntryName: "{$Mods.Polarities.NPCName.ConvectiveWanderer}"
+					SpawnInfo: Kill a baby wanderer, or use a [i:5968], at the lava ocean.
+				}
+			}
+
 			BabyWanderer.DisplayName: Baby Wanderer
 			LivingSpine.DisplayName: Living Spine
 			FlowWorm.DisplayName: Flow Worm
@@ -3430,6 +3497,7 @@ Mods: {
 			MegaMenger.DisplayName: Mega Menger
 			Orthoconic.DisplayName: Orthoconic
 			OrthoconicHitbox.DisplayName: Orthoconic Hitbox
+			Instability.DisplayName: Instability
 		}
 
 		Projectiles: {
@@ -3696,6 +3764,8 @@ Mods: {
 			MegaMengerLaser.DisplayName: Mega Menger Laser
 			OrthoconicEllipse.DisplayName: Orthoconic Ellipse
 			OrthoconicParabola.DisplayName: Orthoconic Parabola
+			RiftDenizenSummonProjectile.DisplayName: Rift Denizen Summon Projectile
+			EndlessHookProjectile.DisplayName: Endless Hook Projectile
 		}
 
 		Biomes: {
@@ -3800,6 +3870,24 @@ Mods: {
 		Misc: {
 			UnboundHotkey: an unbound hotkey
 			Extra: ""
+		}
+
+		BossChecklistIntegration: {
+			Mods: {
+				Polarities: {
+					BiomeName: {
+						HallowInvasion: {
+							EntryName: "{$Mods.Polarities.BiomeName.HallowInvasion}"
+							SpawnInfo: Use a [i:5970], or wait after defeating any mechanical boss.
+						}
+
+						WorldEvilInvasion: {
+							EntryName: "{$Mods.Polarities.BiomeName.WorldEvilInvasion}"
+							SpawnInfo: Use a [i:5972], or wait after defeating every mechanical boss.
+						}
+					}
+				}
+			}
 		}
 	}
 }

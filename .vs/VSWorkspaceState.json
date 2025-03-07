@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Content",
-    "\\Content\\Items\\Tools\\Misc",
-    "\\Content\\Items\\Tools\\Misc\\Hardmode",
-    "\\Content\\Items\\Weapons\\Summon\\Orbs",
-    "\\Content\\Items\\Weapons\\Summon\\Orbs\\Hardmode",
+    "\\Content\\Items",
+    "\\Content\\Items\\Pets",
+    "\\Content\\Items\\Placeable\\MusicBoxes",
+    "\\Content\\Items\\Vanity\\Hardmode",
     "\\Content\\NPCs",
-    "\\Content\\NPCs\\TownNPCs",
-    "\\Content\\NPCs\\TownNPCs\\PreHardmode",
-    "\\Localization"
+    "\\Content\\NPCs\\Bosses",
+    "\\Content\\NPCs\\Bosses\\Hardmode",
+    "\\Content\\NPCs\\Critters\\PreHardmode"
   ],
-  "SelectedNode": "\\Content\\NPCs\\TownNPCs\\PreHardmode\\Ghostwriter_Head.png",
+  "SelectedNode": "\\PolaritiesSystem.cs",
   "PreviewInSolutionExplorer": false
 }

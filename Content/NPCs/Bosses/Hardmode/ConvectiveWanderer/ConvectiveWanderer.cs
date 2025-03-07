@@ -140,19 +140,13 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             //group with other bosses
             NPCID.Sets.BossBestiaryPriority.Add(Type);
 
-            //NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
-            //{
-                //SpecificallyImmuneTo = new int[] {
-                    //BuffID.Confused,
-                    //BuffID.OnFire,
-                    //BuffID.Frostburn,
-                    //BuffID.OnFire3,
-                    //BuffID.ShadowFlame,
-                    //BuffID.CursedInferno,
-                    //BuffType<Incinerating>()
-                //}
-            //};
-            //NPCID.Sets.DebuffImmunitySets/* tModPorter Removed: See the porting notes in https://github.com/tModLoader/tModLoader/pull/3453 */.Add(Type, debuffData);
+            NPC.buffImmune[BuffID.Confused] = true;
+            NPC.buffImmune[BuffID.OnFire] = true;
+            NPC.buffImmune[BuffID.OnFire3] = true;
+            NPC.buffImmune[BuffID.Frostburn] = true;
+            NPC.buffImmune[BuffID.ShadowFlame] = true;
+            NPC.buffImmune[BuffID.CursedInferno] = true;
+            NPC.buffImmune[ModContent.BuffType<Incinerating>()] = true;
 
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
@@ -200,6 +194,8 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             NPC.hide = true;
 
             SpawnModBiomes = new int[1] { GetInstance<LavaOcean>().Type };
+
+            Music = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/EvenDeeperBurns");
 
             numSegments = 40;
             segmentPositions = new Vector2[numSegments * segmentsPerHitbox + segmentsTailTendrils + 3];

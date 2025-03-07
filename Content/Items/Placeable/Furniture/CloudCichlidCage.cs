@@ -41,11 +41,6 @@ namespace Polarities.Content.Items.Placeable.Furniture
                 frame = ++frame % 69;
             }
         }
-
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ItemType<CloudCichlidCage>());
-        }
     }
 
     internal class CloudCichlidCage : ModItem
@@ -101,11 +96,6 @@ namespace Polarities.Content.Items.Placeable.Furniture
                 frameCounter = 0;
                 frame = ++frame % 69;
             }
-        }
-
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
-            Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 32, ItemType<StormcloudCichlidCage>());
         }
     }
 

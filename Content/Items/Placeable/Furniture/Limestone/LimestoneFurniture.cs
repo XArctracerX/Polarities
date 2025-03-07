@@ -11,35 +11,6 @@ using static Terraria.ModLoader.ModContent;
 
 namespace Polarities.Content.Items.Placeable.Furniture.Limestone
 {
-    public class LimestoneToilet : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-
-        public override void SetDefaults()
-        {
-            Item.CloneDefaults(ItemID.WoodenChair);
-            Item.createTile = ModContent.TileType<LimestoneToiletTile>();
-            Item.placeStyle = 0;
-        }
-
-        public override void AddRecipes()
-        {
-            CreateRecipe()
-                .AddIngredient(ModContent.ItemType<LimestoneBrick>(), 6)
-                .AddTile(TileID.Sawmill)
-                .Register();
-        }
-    }
-    public class LimestoneToiletTile : ToiletTileBase
-    {
-        // public override int MyDustType => DustType<LimestoneDust>();
-
-        // public override int DropItem => ItemType<LimestoneToilet>();
-    }
-
     public class LimestonePlatform : PlatformBase
     {
         public override int PlaceTile => TileType<LimestonePlatformTile>();
@@ -232,30 +203,6 @@ namespace Polarities.Content.Items.Placeable.Furniture.Limestone
         public override int DropItem => ItemType<LimestoneClock>();
     }
 
-    public class LimestoneDoor : DoorBase
-    {
-        public override int PlaceTile => TileType<LimestoneDoorClosed>();
-
-        public override void AddRecipes()
-        {
-            CreateRecipe()
-                .AddIngredient(ItemType<LimestoneBrick>(), 6)
-                .AddTile(TileID.WorkBenches)
-                .Register();
-        }
-    }
-    public class LimestoneDoorClosed : DoorClosedBase
-    {
-        public override int MyDustType => DustType<LimestoneDust>();
-        public override int DropItem => ItemType<LimestoneDoor>();
-
-        public override int OpenVersion => TileType<LimestoneDoorOpen>();
-    }
-    public class LimestoneDoorOpen : DoorOpenBase
-    {
-        public override int ClosedVersion => TileType<LimestoneDoorClosed>();
-    }
-
     public class LimestoneDresser : DresserBase
     {
         public override int PlaceTile => TileType<LimestoneDresserTile>();
@@ -393,32 +340,6 @@ namespace Polarities.Content.Items.Placeable.Furniture.Limestone
         public override int DropItem => ItemType<LimestoneTable>();
     }
 
-    public class LimestoneTorch : TorchBase
-    {
-        public override int PlaceTile => TileType<LimestoneTorchTile>();
-
-        public override void AddRecipes()
-        {
-            CreateRecipe(3)
-                .AddIngredient(ItemType<Content.Items.Placeable.Blocks.Limestone>())
-                .AddIngredient(ItemType<AlkalineFluid>())
-                .Register();
-        }
-    }
-    public class LimestoneTorchTile : TorchTileBase
-    {
-        public override int MyDustType => DustType<LimestoneDust>();
-        public override int DropItem => ItemType<LimestoneTorch>();
-
-        public override Color LightColor => new (198, 239, 159);
-        public override bool Flame => false;
-
-        //public override float GetTorchLuck(Player player)
-        //{
-            //return player.InModBiome(GetInstance<LimestoneCave>()) ? 1f : -1f;
-        //}
-    }
-
     public class LimestoneWorkBench : WorkBenchBase
     {
         public override int PlaceTile => TileType<LimestoneWorkBenchTile>();
@@ -430,6 +351,7 @@ namespace Polarities.Content.Items.Placeable.Furniture.Limestone
                 .Register();
         }
     }
+
     public class LimestoneWorkBenchTile : WorkBenchTileBase
     {
         public override int MyDustType => DustType<LimestoneDust>();

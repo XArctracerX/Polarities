@@ -39,8 +39,8 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.value = Item.buyPrice(0, 0, 5, 0);
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<FractalFernBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<FractalFernBanner>();
 
             this.SetModBiome<FractalBiome>();
         }

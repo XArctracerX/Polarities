@@ -17,9 +17,11 @@ namespace Polarities.Content.Items.Placeable.Furniture.Fractal
 
         public override void SetDefaults()
         {
-            Item.CloneDefaults(ItemID.GrandfatherClock);
-            Item.createTile = ModContent.TileType<FractalDoorClosed>();
-            Item.placeStyle = 0;
+            Item.DefaultToPlaceableTile(ModContent.TileType<FractalDoorClosed>(), 0);
+            Item.width = 20;
+            Item.height = 34;
+            Item.maxStack = Item.CommonMaxStack;
+            Item.value = 150;
         }
 
         public override void AddRecipes()
@@ -29,19 +31,5 @@ namespace Polarities.Content.Items.Placeable.Furniture.Fractal
                 .AddTile(TileID.Anvils)
                 .Register();
         }
-    }
-
-    public class FractalDoorClosed : DoorClosedBase
-    {
-        public override int MyDustType => ModContent.DustType<FractalMatterDust>();
-        public override int DropItem => ModContent.ItemType<FractalClock>();
-        public override int OpenVersion => ModContent.TileType<FractalDoorOpen>();
-    }
-
-    public class FractalDoorOpen : DoorOpenBase
-    {
-        public override int MyDustType => ModContent.DustType<FractalMatterDust>();
-        public override int DropItem => ModContent.ItemType<FractalClock>();
-        public override int ClosedVersion => ModContent.TileType<FractalDoorClosed>();
     }
 }
