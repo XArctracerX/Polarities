@@ -9,7 +9,7 @@ using Polarities.Content.Items.Consumables.Food.PreHardmode;
 using Polarities.Content.Items.Materials.PreHardmode;
 using Polarities.Content.Items.Placeable.Blocks;
 using Polarities.Content.Items.Placeable.Walls;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using ReLogic.Content;
 using System;
 using Terraria;
@@ -62,8 +62,8 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
             NPC.behindTiles = true;
             NPC.alpha = 0;
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<GlowWormBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<GlowWormBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<LimestoneCave>().Type };
         }

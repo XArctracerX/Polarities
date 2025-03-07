@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-//using Polarities.Effects;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Content.Projectiles;
@@ -55,8 +54,8 @@ namespace Polarities.Content.NPCs.Enemies.GraniteCaves.Hardmode
             NPC.HitSound = SoundID.NPCHit7;
             NPC.DeathSound = SoundID.NPCDeath6;
 
-            //Banner = Type;
-            //BannerItem = ItemType<GraniteStomperBanner>();
+            Banner = Type;
+            BannerItem = ItemType<GraniteStomperBanner>();
         }
 
         public override void OnSpawn(IEntitySource source)

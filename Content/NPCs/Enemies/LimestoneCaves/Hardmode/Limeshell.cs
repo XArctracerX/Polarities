@@ -8,8 +8,7 @@ using Polarities.Content.Items.Materials.Hardmode;
 using Polarities.Content.Items.Materials.PreHardmode;
 using Polarities.Content.Items.Placeable.Blocks;
 using Polarities.Content.Items.Accessories.Combat.Defense.Hardmode;
-//using Polarities.Items.Placeable.Banners;
-//need to use accessories for stuff
+using Polarities.Content.Items.Placeable.Banners.Items;
 using ReLogic.Content;
 using System;
 using Terraria;
@@ -72,8 +71,8 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
             NPC.noGravity = true;
             NPC.noTileCollide = false;
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<LimeshellBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<LimeshellBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<LimestoneCave>().Type };
         }

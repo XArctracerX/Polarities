@@ -6,7 +6,7 @@ using Polarities.Core;
 using Polarities.Global;
 using Polarities.Content.Items.Weapons.Melee.Yoyos.Hardmode;
 using Polarities.Content.Items.Weapons.Summon.Whips.Hardmode;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
@@ -62,8 +62,8 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
 
             NPC.hide = true;
 
-            //Banner = Type;
-            //BannerItem = ItemType<HydraBanner>();
+            Banner = Type;
+            BannerItem = ItemType<HydraBanner>();
         }
 
         public override void AI()

@@ -7,8 +7,8 @@ using Polarities.Content.Items.Consumables.Food.PreHardmode;
 using Polarities.Content.Items.Materials.Hardmode;
 using Polarities.Content.Items.Materials.PreHardmode;
 using Polarities.Content.Items.Placeable.Blocks;
-//using Polarities.Items.Placeable.Banners;
-//need to use other stuff for drops
+using Polarities.Content.Items.Placeable.Banners.Items;
+using Polarities.Content.Items.Weapons.Ranged.Atlatls.Hardmode;
 using ReLogic.Content;
 using System;
 using System.Collections.Generic;
@@ -60,8 +60,8 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
             NPC.noGravity = false;
             NPC.noTileCollide = false;
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<SlimeyBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<SlimeyBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<LimestoneCave>().Type };
         }
@@ -289,7 +289,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
             npcLoot.Add(ItemDropRule.Common(ItemType<AlkalineFluid>(), 1, 2, 3));
             npcLoot.Add(ItemDropRule.Common(ItemType<Content.Items.Placeable.Blocks.Limestone>(), 1, 3, 6));
             npcLoot.Add(ItemDropRule.Common(ItemType<LimestoneCarapace>(), 1, 1, 2));
-            //npcLoot.Add(ItemDropRule.Common(ItemType<CausticSlug>(), 10));
+            npcLoot.Add(ItemDropRule.Common(ItemType<CausticSlug>(), 10));
             npcLoot.Add(ItemDropRule.Common(ItemType<KeyLimePie>(), 50));
         }
 

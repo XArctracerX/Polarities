@@ -5,6 +5,7 @@ using Polarities.Core;
 using Polarities.Global;
 using Polarities.Content.Items.Vanity.PreHardmode;
 using Polarities.Content.Items.Materials.PreHardmode;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -67,8 +68,8 @@ namespace Polarities.Content.NPCs.Enemies.Desert.PreHardmode
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.value = Item.buyPrice(0, 0, 1, 0);
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<RattlerBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<RattlerBanner>();
         }
 
         public override void AI()

@@ -6,7 +6,7 @@ using Polarities.Content.Biomes;
 using Polarities.Content.Items.Consumables.Food.PreHardmode;
 using Polarities.Content.Items.Materials.PreHardmode;
 using Polarities.Content.Items.Placeable.Blocks;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -57,8 +57,8 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
             NPC.noGravity = true;
             NPC.noTileCollide = true;
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<AlkaliSpiritBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<AlkaliSpiritBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<LimestoneCave>().Type };
         }

@@ -9,7 +9,9 @@ using Polarities.Content.Buffs.Hardmode;
 using Polarities.Content.Items.Tools.Books;
 using Polarities.Content.Items.Tools.Books.PreHardmode;
 using Polarities.Content.Items.Tools.Books.Hardmode;
-using Polarities.Content.Items.Armor.Summon.PreHardmode.Stormcloud;
+using Polarities.Content.Items.Armor.Flawless.MechaMayhemArmor;
+using Polarities.Content.Items.Armor.MultiClass.Hardmode.ConvectiveArmor;
+using Polarities.Content.Items.Armor.Summon.PreHardmode.StormcloudArmor;
 using Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.PreHardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
@@ -95,6 +97,21 @@ namespace Polarities
         public bool stormcloudArmor;
         public int stormcloudArmorCooldown;
         public int tolerancePotionDelayTime = 3600;
+
+        public bool flawlessMechArmorSet;
+        public int flawlessMechSetBonusTime;
+        public int flawlessMechSetBonusCooldown;
+        public bool flawlessMechMask;
+        public int flawlessMechMaskCooldown;
+        public bool flawlessMechChestplate;
+        public bool flawlessMechTail;
+        public int flawlessMechTailCooldown;
+
+        public const int MECH_ARMOR_SET_COOLDOWN = 120;
+        public const int MECH_ARMOR_SET_TIME = 240;
+        public const int MECH_MASK_COOLDOWN = 20;
+        public const int MECH_TAIL_COOLDOWN = 60;
+
 
         //direction of dash
         public int dashDir;
@@ -186,6 +203,30 @@ namespace Polarities
             {
                 hydraHideTime--;
                 Player.lifeRegenTime = 120;
+            }
+
+            //mech flawless stuff
+            flawlessMechArmorSet = false;
+            flawlessMechChestplate = false;
+            flawlessMechMask = false;
+            flawlessMechTail = false;
+            if (flawlessMechMaskCooldown > 0) flawlessMechMaskCooldown--;
+            if (flawlessMechTailCooldown > 0) flawlessMechTailCooldown--;
+            if (flawlessMechSetBonusTime > 0) flawlessMechSetBonusTime--;
+            //only cool this down if the player isn't holding a weapon
+            if (flawlessMechSetBonusCooldown > 0 && Player.HeldItem.damage <= 0 && (Player.HeldItem.DamageType == DamageClass.Default || Player.HeldItem.DamageType == DamageClass.Generic))
+            {
+                flawlessMechSetBonusCooldown--;
+
+                if (flawlessMechSetBonusCooldown == 0)
+                {
+                    SoundEngine.PlaySound(SoundID.Item15, Player.position);
+
+                    for (int i = 0; i < 24; i++)
+                    {
+                        Dust.NewDustPerfect(Player.MountedCenter, 114, new Vector2(4, 0).RotatedBy(MathHelper.TwoPi * i / 24f), Scale: 1f).noGravity = true;
+                    }
+                }
             }
 
             //screenshakeRandomSeed = Main.rand.Next();
@@ -291,6 +332,71 @@ namespace Polarities
                 }
                 Player.GetDamage(DamageClass.Generic) += 0.12f * amountOfDay;
                 Player.endurance *= 1 - 0.1f * (1 - amountOfDay);
+            }
+
+            //convective set bonus
+            if (convectiveSetBonusType != null)
+            {
+                convectiveSetBonusCharge++;
+
+                if (convectiveSetBonusCharge == 600)
+                {
+                    SoundEngine.PlaySound(SoundID.Item15, Player.position);
+
+                    for (int i = 0; i < 24; i++)
+                    {
+                        float speedProgress = Main.rand.NextFloat(1f);
+
+                        ConvectiveWandererVortexParticle particle = Particle.NewParticle<ConvectiveWandererVortexParticle>(Player.MountedCenter, new Vector2(4 + speedProgress * 8, 0).RotatedBy(MathHelper.TwoPi * i / 24f), 0f, 0f, Scale: 0.15f, Color: ModUtils.ConvectiveFlameColor((1 - speedProgress) * (1 - speedProgress) / 2f));
+                        ParticleLayer.BeforePlayersAdditive.Add(particle);
+                    }
+                }
+
+                if (convectiveSetBonusCharge >= 600 && Polarities.ArmorSetBonusHotkey.JustPressed)
+                {
+                    if (convectiveSetBonusType == DamageClass.Melee)
+                    {
+                        Projectile.NewProjectile(Player.GetSource_FromAI(), Player.MountedCenter, Vector2.Zero, ProjectileType<ConvectiveArmorMeleeExplosion>(), (int)Player.GetTotalDamage(DamageClass.Melee).ApplyTo(400), Player.GetTotalKnockback(DamageClass.Melee).ApplyTo(5f), Player.whoAmI);
+                    }
+                    else if (convectiveSetBonusType == DamageClass.Ranged)
+                    {
+                        Projectile.NewProjectile(Player.GetSource_FromAI(), Player.MountedCenter, Main.MouseWorld - Player.MountedCenter, ProjectileType<ConvectiveArmorRangedDeathray>(), (int)Player.GetTotalDamage(DamageClass.Ranged).ApplyTo(300), Player.GetTotalKnockback(DamageClass.Ranged).ApplyTo(5f), Player.whoAmI);
+                    }
+                    else if (convectiveSetBonusType == DamageClass.Magic)
+                    {
+                        SoundEngine.PlaySound(SoundID.Item88, Main.MouseWorld);
+                        for (int i = 0; i < 32; i++)
+                        {
+                            Vector2 offset = new Vector2(Main.rand.NextFloat(1f), 0).RotatedByRandom(MathHelper.TwoPi);
+                            Projectile.NewProjectile(Player.GetSource_FromAI(), Main.MouseWorld + new Vector2(0, 1000), new Vector2(0, -54).RotatedBy(offset.X * 0.2f) * (1 + offset.Y * 0.4f), ProjectileType<ConvectiveArmorMagicEruption>(), (int)Player.GetTotalDamage(DamageClass.Magic).ApplyTo(80), Player.GetTotalKnockback(DamageClass.Magic).ApplyTo(2f), Player.whoAmI);
+                        }
+                    }
+                    else if (convectiveSetBonusType == DamageClass.Summon)
+                    {
+                        SoundEngine.PlaySound(SoundID.NPCDeath14, Player.Center);
+                        for (int i = 0; i < Player.maxMinions; i++)
+                        {
+                            Main.projectile[Projectile.NewProjectile(Player.GetSource_FromAI(), Player.MountedCenter, new Vector2(16, 0).RotatedBy(PolaritiesSystem.timer * 0.05f + MathHelper.TwoPi * i / Player.maxMinions), ProjectileType<ConvectiveArmorSummonVortex>(), 400, Player.GetTotalKnockback(DamageClass.Summon).ApplyTo(3f), Player.whoAmI)].originalDamage = 400;
+                        }
+                    }
+
+                    screenshakeMagnitude = 15;
+                    screenshakeTimer = 30; // half second seconds
+
+                    convectiveSetBonusCharge = 0;
+                }
+            }
+            else
+            {
+                convectiveSetBonusCharge = 0;
+            }
+
+
+            //flawless mech armor set
+            if (PlayerInput.Triggers.Current.MouseRight && flawlessMechArmorSet && flawlessMechSetBonusCooldown == 0)
+            {
+                flawlessMechSetBonusTime = MECH_ARMOR_SET_TIME;
+                flawlessMechSetBonusCooldown = MECH_ARMOR_SET_COOLDOWN + MECH_ARMOR_SET_TIME;
             }
 
             //convective dash
@@ -478,6 +584,64 @@ namespace Polarities
                 beeRingTimer = 5;
             }
 
+            if (Player.controlUseItem)
+            {
+                if (flawlessMechMask || flawlessMechChestplate || flawlessMechTail)
+                {
+                    Player.direction = Main.MouseWorld.X > Player.Center.X ? 1 : -1;
+                }
+
+                //mask has deathrays
+                if (flawlessMechMask && flawlessMechMaskCooldown == 0)
+                {
+                    flawlessMechMaskCooldown = MECH_MASK_COOLDOWN;
+
+                    if (flawlessMechSetBonusTime > 0)
+                    {
+                        flawlessMechMaskCooldown /= 3;
+                    }
+
+                    int baseDamage = 50;
+
+                    Vector2 position = Player.MountedCenter + new Vector2(Player.direction * 4, -11);
+                    Vector2 velocity = (Main.MouseWorld - position).SafeNormalize(new Vector2(0, 1));
+
+                    Projectile.NewProjectile(Player.GetSource_FromAI(), position, velocity, ProjectileType<FlawlessMechMaskDeathray>(), (int)Player.GetTotalDamage(DamageClass.Generic).ApplyTo(baseDamage), 0, Player.whoAmI);
+                }
+                //chestplate has arm swings
+                if (flawlessMechChestplate)
+                {
+                    if (Player.ownedProjectileCounts[ProjectileType<MiniPrimeArmSlash>()] == 0)
+                    {
+                        int baseDamage = 50;
+
+                        Vector2 position = Player.MountedCenter;
+                        Projectile.NewProjectile(Player.GetSource_FromAI(), position, Vector2.Zero, ProjectileType<MiniPrimeArmSlash>(), (int)Player.GetTotalDamage(DamageClass.Generic).ApplyTo(baseDamage), Player.GetTotalKnockback(DamageClass.Generic).ApplyTo(4f), Player.whoAmI);
+                    }
+                }
+                //tail has probes
+                if (flawlessMechTail && flawlessMechTailCooldown == 0)
+                {
+                    flawlessMechTailCooldown = MECH_TAIL_COOLDOWN;
+
+                    if (flawlessMechSetBonusTime > 0)
+                    {
+                        flawlessMechTailCooldown /= 3;
+                    }
+
+                    Vector2 position = Player.MountedCenter;
+                    Vector2 velocity = new Vector2(14, 0).RotatedByRandom(MathHelper.TwoPi);
+                    int baseDamage = 40;
+
+                    Projectile.NewProjectile(Player.GetSource_FromAI(), position, velocity, ProjectileType<MiniProbe>(), (int)Player.GetTotalDamage(DamageClass.Generic).ApplyTo(baseDamage), Player.GetTotalKnockback(DamageClass.Generic).ApplyTo(2f), Player.whoAmI);
+                }
+            }
+
+            if (limestoneSetBonusHitCooldown > 0)
+            {
+                //Player.statDefense = 0;
+            }
+
             //update bubby vanity wing frames
             if (Player.velocity.Y == 0)
             {
@@ -589,10 +753,10 @@ namespace Polarities
 
         public void OnHitNPCWithAnything(NPC target, int damage, float knockback, bool crit, DamageClass damageClass)
         {
-        //if (snakescaleSetBonus && crit)
-        //{
-        //target.AddBuff(BuffID.Venom, 5 * 60);
-        //}
+            if (snakescaleSetBonus && crit)
+            {
+                target.AddBuff(BuffID.Venom, 5 * 60);
+            }
 
             if (moonLordLifestealCooldown == 0 && Player.HasBuff(BuffType<MoonLordBookBuff>()) && !Player.moonLeech)
             {

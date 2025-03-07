@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Assets;
@@ -71,8 +71,8 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
             Music = GetInstance<Content.Events.HallowInvasion>().Music;
             SceneEffectPriority = SceneEffectPriority.Event;
 
-            //Banner = Type;
-            //BannerItem = ItemType<SunServitorBanner>();
+            Banner = Type;
+            BannerItem = ItemType<SunServitorBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<Content.Events.HallowInvasion>().Type };
         }

@@ -1,4 +1,4 @@
-﻿//using Polarities.Items.Placeable.Banners;
+﻿using Polarities.Content.Items.Placeable.Banners.Items;
 using Polarities.Content.Items.Weapons.Melee.Misc;
 using Polarities.Core;
 using Polarities.Global;
@@ -52,8 +52,8 @@ namespace Polarities.Content.NPCs.Enemies.Ocean.Hardmode
             AIType = NPCID.GlowingSnail;
             AnimationType = NPCID.GlowingSnail;
 
-            //Banner = NPCType<ConeShell>();
-            //BannerItem = ItemType<ConeShellBanner>();
+            Banner = NPCType<ConeShell>();
+            BannerItem = ItemType<ConeShellBanner>();
         }
 
         public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */

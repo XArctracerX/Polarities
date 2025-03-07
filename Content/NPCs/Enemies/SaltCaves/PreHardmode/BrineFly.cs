@@ -3,7 +3,7 @@ using Polarities.Global;
 using Polarities.Core;
 using Polarities.Content.Biomes;
 using Polarities.Content.Items.Consumables.Food.PreHardmode;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Polarities.Content.Items.Placeable.Blocks;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -52,8 +52,8 @@ namespace Polarities.Content.NPCs.Enemies.SaltCaves.PreHardmode
 
             NPC.dontCountMe = true;
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<BrineFlyBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<BrineFlyBanner>();
 
             NPC.GetGlobalNPC<PolaritiesNPC>().usesProjectileHitCooldowns = true;
             NPC.GetGlobalNPC<PolaritiesNPC>().projectileHitCooldownTime = 10;

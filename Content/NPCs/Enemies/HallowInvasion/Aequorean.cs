@@ -5,7 +5,7 @@ using Polarities.Core;
 using Polarities.Global;
 using Polarities.Assets;
 using Polarities.Content.Events;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Polarities.Content.Items.Weapons.Summon.Minions.Hardmode;
 using ReLogic.Content;
 using System;
@@ -76,8 +76,8 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
             Music = GetInstance<Content.Events.HallowInvasion>().Music;
             SceneEffectPriority = SceneEffectPriority.Event;
 
-            //Banner = Type;
-            //BannerItem = ItemType<AequoreanBanner>();
+            Banner = Type;
+            BannerItem = ItemType<AequoreanBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<Content.Events.HallowInvasion>().Type };
         }

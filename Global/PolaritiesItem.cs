@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Polarities.Content.Items.Consumables.Summons.Hardmode;
-//using Polarities.Items.Weapons.Ranged.Atlatls;
+using Polarities.Content.Items.Weapons.Ranged.Atlatls.Hardmode;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -231,14 +231,14 @@ namespace Polarities.Global
             }
         }
 
-        //public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
-        //{
+        public override void ModifyItemLoot(Item item, ItemLoot itemLoot)
+        {
             // In addition to this code, we also do similar code in Common/GlobalNPCs/ExampleNPCLoot.cs to edit the boss loot for non-expert drops. Remember to do both if your edits should affect non-expert drops as well.
-            //if (item.type == ItemID.PlanteraBossBag)
-            //{
-                //itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<JunglesRage>(), 4));
-            //}
-        //}
+            if (item.type == ItemID.PlanteraBossBag)
+            {
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<JunglesRage>(), 4));
+            }
+        }
     }
 }
 

@@ -4,7 +4,7 @@ using Polarities.Content.Buffs.Hardmode;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Assets;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Polarities.Content.Items.Placeable.Blocks;
 using System;
 using System.Collections.Generic;
@@ -76,8 +76,8 @@ namespace Polarities.Content.NPCs.Enemies.LavaOcean
 
             NPC.hide = true;
 
-            //Banner = Type;
-            //BannerItem = ItemType<MantleOWarBanner>();
+            Banner = Type;
+            BannerItem = ItemType<MantleOWarBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<Content.Biomes.LavaOcean>().Type };
 

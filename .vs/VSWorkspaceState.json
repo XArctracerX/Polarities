@@ -3,14 +3,14 @@
     "",
     "\\Content",
     "\\Content\\Items",
-    "\\Content\\Items\\Weapons\\Magic",
+    "\\Content\\Items\\Consumables",
+    "\\Content\\Items\\Consumables\\Summons",
     "\\Content\\Items\\Weapons\\Magic\\Flawless",
-    "\\Content\\Items\\Weapons\\Magic\\Guns",
-    "\\Content\\Items\\Weapons\\Magic\\Guns\\Hardmode",
-    "\\Content\\Items\\Weapons\\Melee\\Broadswords\\Hardmode",
-    "\\Content\\NPCs\\Bosses\\PreHardmode",
-    "\\Content\\NPCs\\Critters\\Hardmode"
+    "\\Content\\NPCs",
+    "\\Content\\NPCs\\Bosses",
+    "\\Content\\NPCs\\Bosses\\Hardmode",
+    "\\Content\\NPCs\\Bosses\\Hardmode\\Hemorrphage"
   ],
-  "SelectedNode": "\\Content\\Items\\Consumables",
+  "SelectedNode": "\\Content\\NPCs\\Bosses\\Hardmode\\Hemorrphage\\Hemorrphage.cs",
   "PreviewInSolutionExplorer": false
 }

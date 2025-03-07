@@ -5,7 +5,7 @@ using Polarities.Core;
 using Polarities.Global;
 using Polarities.Assets;
 using Polarities.Content.Events;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -75,8 +75,8 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
             Music = GetInstance<Content.Events.HallowInvasion>().Music;
             SceneEffectPriority = SceneEffectPriority.Event;
 
-            //Banner = Type;
-            //BannerItem = ItemType<PegasusBanner>();
+            Banner = Type;
+            BannerItem = ItemType<PegasusBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<Content.Events.HallowInvasion>().Type };
         }

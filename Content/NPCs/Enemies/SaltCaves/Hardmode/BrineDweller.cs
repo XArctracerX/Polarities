@@ -7,7 +7,7 @@ using Polarities.Content.Buffs.PreHardmode;
 using Polarities.Content.Items.Consumables.Food.PreHardmode;
 using Polarities.Content.Items.Placeable.Blocks;
 using Polarities.Content.Items.Materials.Hardmode;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using System;
 using Terraria;
 using Terraria.GameContent;
@@ -54,8 +54,8 @@ namespace Polarities.Content.NPCs.Enemies.SaltCaves.Hardmode
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.value = Item.buyPrice(silver: 10);
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<BrineDwellerBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<BrineDwellerBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<SaltCave>().Type };
         }

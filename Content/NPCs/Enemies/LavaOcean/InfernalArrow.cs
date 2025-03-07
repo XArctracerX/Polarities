@@ -3,7 +3,7 @@ using Polarities.Content.Buffs.Hardmode;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Assets;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -73,8 +73,8 @@ namespace Polarities.Content.NPCs.Enemies.LavaOcean
             NPC.HitSound = SoundID.NPCHit4;
             NPC.DeathSound = SoundID.NPCDeath6;
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<InfernalArrowBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<InfernalArrowBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<Content.Biomes.LavaOcean>().Type };
 

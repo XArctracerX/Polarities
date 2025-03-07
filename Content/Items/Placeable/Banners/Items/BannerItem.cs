@@ -184,4 +184,34 @@ namespace Polarities.Content.Items.Placeable.Banners.Items
     {
         protected override int Tile => ModContent.TileType<MantleOWarBannerTile>();
     }
+
+    public class KrakenBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<KrakenBannerTile>();
+    }
+
+    public class SeaSerpentBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<SeaSerpentBannerTile>();
+    }
+
+    public class LivingSpineBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<LivingSpineBannerTile>();
+    }
+
+    public class RavenousCursedBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<RavenousCursedBannerTile>();
+    }
+
+    public class FlowWormBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<FlowWormBannerTile>();
+    }
+
+    public class GraniteCrawlerBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<GraniteCrawlerBannerTile>();
+    }
 }

@@ -5,7 +5,7 @@ using Polarities.Content.Buffs.PreHardmode;
 using Polarities.Content.Items.Consumables.Food.PreHardmode;
 using Polarities.Content.Items.Placeable.Blocks;
 using Polarities.Content.Items.Accessories.Movement.PreHardmode;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using System;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -48,8 +48,8 @@ namespace Polarities.Content.NPCs.Enemies.SaltCaves.PreHardmode
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.value = Item.buyPrice(0, 0, 5, 0);
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<SalthopperBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<SalthopperBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<SaltCave>().Type };
         }

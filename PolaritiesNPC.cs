@@ -7,19 +7,16 @@ using Polarities.Global;
 using Polarities.Core;
 using Polarities.Content.Biomes;
 using Polarities.Content.Events;
-//using Polarities.Biomes;
-//using Polarities.Biomes.Fractal;
-//using Polarities.Buffs;
-//using Polarities.Items;
-//using Polarities.Items.Accessories;
-//using Polarities.Items.Armor.MechaMayhemArmor;
-//using Polarities.Items.Books;
-//using Polarities.Items.Weapons.Magic;
-//using Polarities.Items.Weapons.Melee;
-//using Polarities.Items.Weapons.Melee.Warhammers;
-//using Polarities.Items.Weapons.Ranged;
-//using Polarities.Items.Weapons.Ranged.Atlatls;
-//using Polarities.Items.Weapons.Summon.Orbs;
+using Polarities.Content.Items.Consumables.Summons.Hardmode;
+using Polarities.Content.Items.Weapons.Ranged.Atlatls.Hardmode;
+using Polarities.Content.Items.Weapons.Ranged.Flawless;
+using Polarities.Content.Items.Weapons.Melee.Flawless;
+using Polarities.Content.Items.Weapons.Magic.Flawless;
+using Polarities.Content.Items.Weapons.Summon.Flawless;
+using Polarities.Content.Items.Armor.Flawless.MechaMayhemArmor;
+using Polarities.Content.Items.Accessories.Movement.Hardmode;
+using Polarities.Content.NPCs.TownNPCs.PreHardmode;
+using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -66,6 +63,9 @@ namespace Polarities
 
         public bool spiritBite;
         public int spiritBiteLevel;
+
+        //vanilla NPC.takenDamageMultiplier doesn't have any effect when less than 1, so we do this instead
+        public float neutralTakenDamageMultiplier = 1f;
 
         public static Dictionary<int, bool> bestiaryCritter = new Dictionary<int, bool>();
 
@@ -312,21 +312,21 @@ namespace Polarities
         public override void ResetEffects(NPC npc)
         {
             defenseMultiplier = 1f;
-            //neutralTakenDamageMultiplier = 1f;
+            neutralTakenDamageMultiplier = 1f;
 
-            //List<int> removeKeys = new List<int>();
-            //foreach (int i in hammerTimes.Keys)
-            //{
-            //hammerTimes[i]--;
-            //if (hammerTimes[i] <= 0)
-            //{
-            //removeKeys.Add(i);
-            //}
-            //}
-            //foreach (int i in removeKeys)
-            //{
-            //hammerTimes.Remove(i);
-            //}
+            List<int> removeKeys = new List<int>();
+            foreach (int i in hammerTimes.Keys)
+            {
+                hammerTimes[i]--;
+                if (hammerTimes[i] <= 0)
+                {
+                    removeKeys.Add(i);
+                }
+            }
+            foreach (int i in removeKeys)
+            {
+                hammerTimes.Remove(i);
+            }
 
             contagunPhages = 0;
             tentacleClubs = 0;
@@ -448,31 +448,395 @@ namespace Polarities
                     damage = 12;
                 }
             }
-            //if (incineration > 0)
-            //{
-                //npc.lifeRegen -= incineration * 2;
-                //if (damage < incineration / 6)
-                //{
-                    //damage = incineration / 6;
-                //}
-            //}
+            if (incineration > 0)
+            {
+                npc.lifeRegen -= incineration * 2;
+                if (damage < incineration / 6)
+                {
+                    damage = incineration / 6;
+                }
+            }
 
-            //if (contagunPhages > 10)
-            //{
-                //SoundEngine.PlaySound(SoundID.Item17, npc.Center);
-                //for (int i = 0; i < Main.maxProjectiles; i++)
-                //{
-                    //if (Main.projectile[i].active && Main.projectile[i].type == ProjectileType<ContagunVirusProjectile>() && Main.projectile[i].ai[0] == npc.whoAmI + 1)
-                    //{
-                        //Main.projectile[i].ai[0] = 0;
-                        //Main.projectile[i].velocity = new Vector2(10, 0).RotatedByRandom(MathHelper.TwoPi) * Main.rand.NextFloat(0.5f, 2f);
+            if (contagunPhages > 10)
+            {
+                SoundEngine.PlaySound(SoundID.Item17, npc.Center);
+                for (int i = 0; i < Main.maxProjectiles; i++)
+                {
+                    if (Main.projectile[i].active && Main.projectile[i].type == ProjectileType<ContagunVirusProjectile>() && Main.projectile[i].ai[0] == npc.whoAmI + 1)
+                    {
+                        Main.projectile[i].ai[0] = 0;
+                        Main.projectile[i].velocity = new Vector2(10, 0).RotatedByRandom(MathHelper.TwoPi) * Main.rand.NextFloat(0.5f, 2f);
 
-                        //Projectile.NewProjectile(Main.projectile[i].GetSource_FromAI(), Main.projectile[i].Center, new Vector2(Main.rand.NextFloat(5f)).RotatedByRandom(MathHelper.TwoPi), ProjectileType<ContagunProjectile>(), Main.projectile[i].damage, Main.projectile[i].knockBack, Main.projectile[i].owner, ai0: Main.rand.NextFloat(MathHelper.TwoPi), ai1: 240f);
-                    //}
-                //}
-            //}
+                        Projectile.NewProjectile(Main.projectile[i].GetSource_FromAI(), Main.projectile[i].Center, new Vector2(Main.rand.NextFloat(5f)).RotatedByRandom(MathHelper.TwoPi), ProjectileType<ContagunProjectile>(), Main.projectile[i].damage, Main.projectile[i].knockBack, Main.projectile[i].owner, ai0: Main.rand.NextFloat(MathHelper.TwoPi), ai1: 240f);
+                    }
+                }
+            }
 
             //UpdateCustomSoulDrain(npc);
+        }
+
+        public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+            if (Polarities.customNPCGlowMasks.ContainsKey(npc.type))
+            {
+                float num246 = Main.NPCAddHeight(npc);
+                SpriteEffects spriteEffects = 0;
+                if (npc.spriteDirection == 1)
+                {
+                    spriteEffects = (SpriteEffects)1;
+                }
+                Vector2 halfSize = new Vector2(Polarities.customNPCGlowMasks[npc.type].Width() / 2, Polarities.customNPCGlowMasks[npc.type].Height() / Main.npcFrameCount[npc.type] / 2);
+
+                Color color = npc.GetAlpha(npc.GetNPCColorTintedByBuffs(Color.White));
+
+                spriteBatch.Draw(Polarities.customNPCGlowMasks[npc.type].Value, npc.Bottom - screenPos + new Vector2(-Polarities.customNPCGlowMasks[npc.type].Width() * npc.scale / 2f + halfSize.X * npc.scale, -Polarities.customNPCGlowMasks[npc.type].Height() * npc.scale / Main.npcFrameCount[npc.type] + 4f + halfSize.Y * npc.scale + num246 + npc.gfxOffY), (Rectangle?)npc.frame, color, npc.rotation, halfSize, npc.scale, spriteEffects, 0f);
+            }
+        }
+
+        public override bool CanHitNPC(NPC npc, NPC target)/* tModPorter Suggestion: Return true instead of null */
+        {
+            if (target.type == NPCType<Ghostwriter>() && !(npc.type == NPCID.Wraith || npc.type == NPCID.Ghost || npc.type == NPCID.Reaper || npc.type == NPCID.Poltergeist || npc.type == NPCID.DungeonSpirit))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override void BuffTownNPC(ref float damageMult, ref int defense)
+        {
+            if (PolaritiesSystem.downedStormCloudfish)
+            {
+                damageMult += 0.1f;
+                defense += 3;
+            }
+            if (PolaritiesSystem.downedStarConstruct)
+            {
+                damageMult += 0.1f;
+                defense += 3;
+            }
+            if (PolaritiesSystem.downedGigabat)
+            {
+                damageMult += 0.1f;
+                defense += 3;
+            }
+            if (PolaritiesSystem.downedRiftDenizen)
+            {
+                damageMult += 0.1f;
+                defense += 3;
+            }
+
+            if (PolaritiesSystem.downedSunPixie)
+            {
+                damageMult += 0.15f;
+                defense += 6;
+            }
+            if (PolaritiesSystem.downedEsophage)
+            {
+                damageMult += 0.15f;
+                defense += 6;
+            }
+            if (PolaritiesSystem.downedSelfsimilarSentinel)
+            {
+                damageMult += 0.15f;
+                defense += 6;
+            }
+            if (PolaritiesSystem.downedEclipxie)
+            {
+                damageMult += 0.15f;
+                defense += 6;
+            }
+            if (PolaritiesSystem.downedHemorrphage)
+            {
+                damageMult += 0.15f;
+                defense += 6;
+            }
+
+            if (PolaritiesSystem.downedPolarities)
+            {
+                damageMult += 0.15f;
+                defense += 10;
+            }
+            if (NPC.downedMoonlord)
+            {
+                damageMult += 0.15f;
+                defense += 10;
+            }
+        }
+
+        public override void OnKill(NPC npc)
+        {
+            switch (npc.type)
+            {
+                case NPCID.EaterofWorldsBody:
+                case NPCID.EaterofWorldsHead:
+                case NPCID.EaterofWorldsTail:
+                    if (npc.boss)
+                    {
+                        if (!PolaritiesSystem.downedEaterOfWorlds)
+                        {
+                            PolaritiesSystem.downedEaterOfWorlds = true;
+                        }
+                    }
+                    break;
+                case NPCID.BrainofCthulhu:
+                    if (!PolaritiesSystem.downedBrainOfCthulhu)
+                    {
+                        PolaritiesSystem.downedBrainOfCthulhu = true;
+                    }
+                    break;
+            }
+        }
+
+        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        {
+            if (HallowInvasion.ValidNPC(npc.type))
+            {
+                npcLoot.Add(ItemDropRule.ByCondition(new SunPixieSummonItemDropCondition(), ItemType<SunPixieSummonItem>()));
+            }
+            if (WorldEvilInvasion.ValidNPC(npc.type))
+            {
+                npcLoot.Add(ItemDropRule.ByCondition(new EsophageSummonItemDropCondition(), ItemType<EsophageSummonItem>()));
+            }
+
+            if (customSlimes.Contains(npc.type))
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ItemID.SlimeStaff, 10000, 7000));
+            }
+
+            switch (npc.type)
+            {
+                case NPCID.GraniteFlyer:
+                case NPCID.GraniteGolem:
+                    //TODO: npcLoot.Add(ItemDropRule.Common(ItemType<BlueQuartz>(), 2, 1, 2));
+                    break;
+
+                //bosses (mostly flawless stuff)
+                case NPCID.KingSlime:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<Gelthrower>()));
+                    break;
+                case NPCID.EyeofCthulhu:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<Eyeruption>()));
+                    break;
+                case NPCID.EaterofWorldsBody:
+                case NPCID.EaterofWorldsHead:
+                case NPCID.EaterofWorldsTail:
+                    {
+                        LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new Conditions.LegacyHack_IsABoss());
+                        leadingConditionRule.OnSuccess(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<ConsumptionCannon>()));
+                        npcLoot.Add(leadingConditionRule);
+                    }
+                    break;
+                case NPCID.BrainofCthulhu:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<NeuralBasher>()));
+                    break;
+                case NPCID.QueenBee:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<RoyalOrb>()));
+                    break;
+                case NPCID.SkeletronHead:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<BonyBackhand>()));
+                    break;
+                case NPCID.WallofFlesh:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<MawOfFlesh>()));
+                    break;
+                case NPCID.TheDestroyer:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<FlawlessMechTail>()));
+                    break;
+                case NPCID.Retinazer:
+                case NPCID.Spazmatism:
+                    {
+                        LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new Conditions.MissingTwin());
+                        leadingConditionRule.OnSuccess(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<FlawlessMechMask>()));
+                        npcLoot.Add(leadingConditionRule);
+                    }
+                    break;
+                case NPCID.SkeletronPrime:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<FlawlessMechChestplate>()));
+                    break;
+                case NPCID.Plantera:
+                    {
+                        npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<UnfoldingBlossom>()));
+
+                        LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new Conditions.NotExpert());
+                        leadingConditionRule.OnSuccess(ItemDropRule.Common(ItemType<JunglesRage>(), 4));
+                    }
+                    break;
+                case NPCID.Everscream:
+                    {
+                        //adds the candy cane atlatl
+                        List<IItemDropRule> everscreamLoot = npcLoot.Get(includeGlobalDrops: false);
+                        for (int index = 0; index < everscreamLoot.Count; index++)
+                        {
+                            IItemDropRule rule = everscreamLoot[index];
+                            if (rule is LeadingConditionRule leadingConditionRule && leadingConditionRule.condition is Conditions.FrostMoonDropGatingChance)
+                            {
+                                foreach (IItemDropRuleChainAttempt tryAttempt in rule.ChainedRules)
+                                {
+                                    if (tryAttempt is TryIfSucceeded chain && chain.RuleToChain is CommonDrop rule2)
+                                    {
+                                        foreach (IItemDropRuleChainAttempt tryAttempt2 in rule2.ChainedRules)
+                                        {
+                                            if (tryAttempt2 is TryIfFailedRandomRoll chain2 && chain2.RuleToChain is OneFromOptionsDropRule rule3)
+                                            {
+                                                Array.Resize(ref rule3.dropIds, rule3.dropIds.Length + 1);
+                                                rule3.dropIds[rule3.dropIds.Length - 1] = ItemType<CandyCaneAtlatl>();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case NPCID.DD2Betsy:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<WyvernsNest>()));
+                    break;
+            }
+
+            //replace trophies and master pets
+            List<IItemDropRule> originalLoot = npcLoot.Get(includeGlobalDrops: false);
+            for (int index = 0; index < originalLoot.Count; index++)
+            {
+                IItemDropRule rule = originalLoot[index];
+
+                //why can we not just insert things
+                void RuleReplace(IItemDropRule newRule)
+                {
+                    npcLoot.Add(newRule);
+                    npcLoot.Remove(rule);
+
+                    List<IItemDropRule> currentLoot = npcLoot.Get(includeGlobalDrops: false);
+
+                    for (int i = index; i < currentLoot.Count - 1; i++)
+                    {
+                        npcLoot.Remove(currentLoot[i]);
+                        npcLoot.Add(currentLoot[i]);
+                    }
+                }
+
+                void ChainedRuleReplace(IItemDropRule baseRule, IItemDropRuleChainAttempt oldTryAttempt, IItemDropRule newRule)
+                {
+                    baseRule.ChainedRules.Remove(oldTryAttempt);
+                    baseRule.OnSuccess(newRule);
+
+                    IItemDropRuleChainAttempt[] currentLoot = new IItemDropRuleChainAttempt[baseRule.ChainedRules.Count];
+                    baseRule.ChainedRules.CopyTo(currentLoot);
+
+                    for (int i = index; i < currentLoot.Length - 1; i++)
+                    {
+                        baseRule.ChainedRules.Remove(currentLoot[i]);
+                        baseRule.ChainedRules.Add(currentLoot[i]);
+                    }
+                }
+
+                //in vanilla, Conditions.LegacyHack_IsABoss is used only for trophies and for the eater of worlds
+                if (rule is ItemDropWithConditionRule trophyDrop && trophyDrop.condition is Conditions.LegacyHack_IsABoss && trophyDrop.chanceDenominator == 10 && trophyDrop.chanceNumerator == 1 && trophyDrop.amountDroppedMinimum == 1 && trophyDrop.amountDroppedMaximum == 1)
+                {
+                    //replace with a better trophy rule
+                    RuleReplace(new FlawlessOrRandomDropRule(trophyDrop.itemId, 10, 1, 1, 1, new Conditions.LegacyHack_IsABoss()));
+                }
+                //in vanilla, DropBasedOnMasterMode is only used for master mode pets
+                //This does not work for eater of worlds, the twins, and the pumpkin/frost moons, as their master mode pet drops have conditions, so we handle those separately
+                else if (rule is DropBasedOnMasterMode masterPetDrop && masterPetDrop.ruleForDefault is DropNothing && masterPetDrop.ruleForMasterMode is DropPerPlayerOnThePlayer perPlayerDrop && perPlayerDrop.chanceDenominator == 4 && perPlayerDrop.chanceNumerator == 1 && perPlayerDrop.amountDroppedMaximum == 1 && perPlayerDrop.amountDroppedMinimum == 1)
+                {
+                    //replace with a better master pet rule
+                    RuleReplace(ModUtils.MasterModeDropOnAllPlayersOrFlawless(perPlayerDrop.itemId, 4, 1, 1, 1));
+                }
+                //EoW master mode pet
+                else if (npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.EaterofWorldsTail)
+                {
+                    if (rule is LeadingConditionRule leadingConditionRule && leadingConditionRule.condition is Conditions.LegacyHack_IsABoss)
+                    {
+                        List<IItemDropRuleChainAttempt> replaceRules = new List<IItemDropRuleChainAttempt>();
+                        List<IItemDropRule> newRules = new List<IItemDropRule>();
+                        foreach (IItemDropRuleChainAttempt tryAttempt in rule.ChainedRules)
+                        {
+                            if (tryAttempt is TryIfSucceeded rule2 && rule2.RuleToChain is DropBasedOnMasterMode masterPetDrop2 && masterPetDrop2.ruleForDefault is DropNothing && masterPetDrop2.ruleForMasterMode is DropPerPlayerOnThePlayer perPlayerDrop2 && perPlayerDrop2.chanceDenominator == 4 && perPlayerDrop2.chanceNumerator == 1 && perPlayerDrop2.amountDroppedMaximum == 1 && perPlayerDrop2.amountDroppedMinimum == 1)
+                            {
+                                //replace with a better master pet rule
+                                newRules.Add(ModUtils.MasterModeDropOnAllPlayersOrFlawless(perPlayerDrop2.itemId, 4, 1, 1, 1));
+                                replaceRules.Add(tryAttempt);
+                            }
+                        }
+                        for (int i = 0; i < replaceRules.Count; i++)
+                        {
+                            ChainedRuleReplace(rule, replaceRules[i], newRules[i]);
+                        }
+                    }
+                }
+                //Twins master mode pet
+                else if (npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism)
+                {
+                    if (rule is LeadingConditionRule leadingConditionRule && leadingConditionRule.condition is Conditions.MissingTwin)
+                    {
+                        List<IItemDropRuleChainAttempt> replaceRules = new List<IItemDropRuleChainAttempt>();
+                        List<IItemDropRule> newRules = new List<IItemDropRule>();
+                        foreach (IItemDropRuleChainAttempt tryAttempt in rule.ChainedRules)
+                        {
+                            if (tryAttempt is TryIfSucceeded rule2 && rule2.RuleToChain is DropBasedOnMasterMode masterPetDrop2 && masterPetDrop2.ruleForDefault is DropNothing && masterPetDrop2.ruleForMasterMode is DropPerPlayerOnThePlayer perPlayerDrop2 && perPlayerDrop2.chanceDenominator == 4 && perPlayerDrop2.chanceNumerator == 1 && perPlayerDrop2.amountDroppedMaximum == 1 && perPlayerDrop2.amountDroppedMinimum == 1)
+                            {
+                                //replace with a better master pet rule
+                                newRules.Add(ModUtils.MasterModeDropOnAllPlayersOrFlawless(perPlayerDrop2.itemId, 4, 1, 1, 1));
+                                replaceRules.Add(tryAttempt);
+                            }
+                        }
+                        for (int i = 0; i < replaceRules.Count; i++)
+                        {
+                            ChainedRuleReplace(rule, replaceRules[i], newRules[i]);
+                        }
+                    }
+                }
+                //Pumpkin moon master mode pet
+                else if (npc.type == NPCID.MourningWood || npc.type == NPCID.Pumpking)
+                {
+                    if (rule is LeadingConditionRule leadingConditionRule && leadingConditionRule.condition is Conditions.PumpkinMoonDropGatingChance)
+                    {
+                        List<IItemDropRuleChainAttempt> replaceRules = new List<IItemDropRuleChainAttempt>();
+                        List<IItemDropRule> newRules = new List<IItemDropRule>();
+                        foreach (IItemDropRuleChainAttempt tryAttempt in rule.ChainedRules)
+                        {
+                            if (tryAttempt is TryIfSucceeded rule2 && rule2.RuleToChain is DropBasedOnMasterMode masterPetDrop2 && masterPetDrop2.ruleForDefault is DropNothing && masterPetDrop2.ruleForMasterMode is DropPerPlayerOnThePlayer perPlayerDrop2 && perPlayerDrop2.chanceDenominator == 4 && perPlayerDrop2.chanceNumerator == 1 && perPlayerDrop2.amountDroppedMaximum == 1 && perPlayerDrop2.amountDroppedMinimum == 1)
+                            {
+                                //replace with a better master pet rule
+                                newRules.Add(ModUtils.MasterModeDropOnAllPlayersOrFlawless(perPlayerDrop2.itemId, 4, 1, 1, 1));
+                                replaceRules.Add(tryAttempt);
+                            }
+                        }
+                        for (int i = 0; i < replaceRules.Count; i++)
+                        {
+                            ChainedRuleReplace(rule, replaceRules[i], newRules[i]);
+                        }
+                    }
+                }
+                //Frost moon master mode pet
+                else if (npc.type == NPCID.Everscream || npc.type == NPCID.SantaNK1 || npc.type == NPCID.IceQueen)
+                {
+                    if (rule is LeadingConditionRule leadingConditionRule && leadingConditionRule.condition is Conditions.FrostMoonDropGatingChance)
+                    {
+                        List<IItemDropRuleChainAttempt> replaceRules = new List<IItemDropRuleChainAttempt>();
+                        List<IItemDropRule> newRules = new List<IItemDropRule>();
+                        foreach (IItemDropRuleChainAttempt tryAttempt in rule.ChainedRules)
+                        {
+                            if (tryAttempt is TryIfSucceeded rule2 && rule2.RuleToChain is DropBasedOnMasterMode masterPetDrop2 && masterPetDrop2.ruleForDefault is DropNothing && masterPetDrop2.ruleForMasterMode is DropPerPlayerOnThePlayer perPlayerDrop2 && perPlayerDrop2.chanceDenominator == 4 && perPlayerDrop2.chanceNumerator == 1 && perPlayerDrop2.amountDroppedMaximum == 1 && perPlayerDrop2.amountDroppedMinimum == 1)
+                            {
+                                //replace with a better master pet rule
+                                newRules.Add(ModUtils.MasterModeDropOnAllPlayersOrFlawless(perPlayerDrop2.itemId, 4, 1, 1, 1));
+                                replaceRules.Add(tryAttempt);
+                            }
+                        }
+                        for (int i = 0; i < replaceRules.Count; i++)
+                        {
+                            ChainedRuleReplace(rule, replaceRules[i], newRules[i]);
+                        }
+                    }
+                }
+            }
+        }
+
+        public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
+        {
+            //they updated something about damage so this never works now
+            //damage *= neutralTakenDamageMultiplier;
+            //return true;
         }
     }
 }

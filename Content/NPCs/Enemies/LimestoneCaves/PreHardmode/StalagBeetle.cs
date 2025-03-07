@@ -7,7 +7,8 @@ using Polarities.Content.Biomes;
 using Polarities.Content.Items.Consumables.Food.PreHardmode;
 using Polarities.Content.Items.Materials.PreHardmode;
 using Polarities.Content.Items.Placeable.Blocks;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
+using Polarities.Content.Items.Armor.Classless.PreHardmode.Pieces;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Bestiary;
@@ -50,8 +51,8 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
             NPC.HitSound = SoundID.NPCHit2;
             NPC.DeathSound = SoundID.NPCDeath1;
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<StalagBeetleBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<StalagBeetleBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<LimestoneCave>().Type };
         }
@@ -140,7 +141,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //npcLoot.Add(ItemDropRule.Common(ItemType<StalagBeetleHead>(), 20));
+            npcLoot.Add(ItemDropRule.Common(ItemType<StalagBeetleHead>(), 20));
             npcLoot.Add(ItemDropRule.Common(ItemType<Content.Items.Placeable.Blocks.Limestone>(), 1, 2, 4));
             npcLoot.Add(ItemDropRule.Common(ItemType<KeyLimePie>(), 50));
         }

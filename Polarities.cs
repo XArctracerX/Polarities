@@ -65,18 +65,18 @@ namespace Polarities
             //NPCs.StormCloudfish.StormCloudfish.secondStageHeadSlot = ModContent.GetModBossHeadSlot(texture);
 
             //shaders
-            //Ref<Effect> miscEffectsRef = new Ref<Effect>(Assets.Request<Effect>("Effects/MiscEffects", AssetRequestMode.ImmediateLoad).Value);
-            //Ref<Effect> filtersRef = new Ref<Effect>(Assets.Request<Effect>("Effects/Filters", AssetRequestMode.ImmediateLoad).Value);
+            Ref<Effect> miscEffectsRef = new Ref<Effect>(Assets.Request<Effect>("Global/MiscEffects", AssetRequestMode.ImmediateLoad).Value);
+            Ref<Effect> filtersRef = new Ref<Effect>(Assets.Request<Effect>("Global/Filters", AssetRequestMode.ImmediateLoad).Value);
 
             //Filters.Scene["Polarities:ScreenWarp"] = new Filter(new ScreenShaderData(filtersRef, "ScreenWarpPass"), EffectPriority.VeryHigh);
             //Filters.Scene["Polarities:ScreenWarp"].Load();
 
-            //GameShaders.Misc["Polarities:TriangleFade"] = new MiscShaderData(miscEffectsRef, "TriangleFadePass"); //currently unused
-            //GameShaders.Misc["Polarities:WarpZoomRipple"] = new MiscShaderData(miscEffectsRef, "WarpZoomRipplePass");
-            //GameShaders.Misc["Polarities:EclipxieSun"] = new MiscShaderData(miscEffectsRef, "EclipxieSunPass");
-            //GameShaders.Misc["Polarities:RadialOverlay"] = new MiscShaderData(miscEffectsRef, "RadialOverlayPass");
-            //GameShaders.Misc["Polarities:DrawAsSphere"] = new MiscShaderData(miscEffectsRef, "DrawAsSpherePass");
-            //GameShaders.Misc["Polarities:DrawWavy"] = new MiscShaderData(miscEffectsRef, "DrawWavyPass");
+            GameShaders.Misc["Polarities:TriangleFade"] = new MiscShaderData(miscEffectsRef, "TriangleFadePass"); //currently unused
+            GameShaders.Misc["Polarities:WarpZoomRipple"] = new MiscShaderData(miscEffectsRef, "WarpZoomRipplePass");
+            GameShaders.Misc["Polarities:EclipxieSun"] = new MiscShaderData(miscEffectsRef, "EclipxieSunPass");
+            GameShaders.Misc["Polarities:RadialOverlay"] = new MiscShaderData(miscEffectsRef, "RadialOverlayPass");
+            GameShaders.Misc["Polarities:DrawAsSphere"] = new MiscShaderData(miscEffectsRef, "DrawAsSpherePass");
+            GameShaders.Misc["Polarities:DrawWavy"] = new MiscShaderData(miscEffectsRef, "DrawWavyPass");
         }
 
         public override void Unload()

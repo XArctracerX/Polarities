@@ -6,9 +6,9 @@ using Polarities.Content.Items.Consumables.Food.PreHardmode;
 using Polarities.Content.Items.Materials.Hardmode;
 using Polarities.Content.Items.Materials.PreHardmode;
 using Polarities.Content.Items.Placeable.Blocks;
+using Polarities.Content.Items.Weapons.Summon.Orbs.Hardmode;
 using Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode;
-//using Polarities.Items.Placeable.Banners;
-//need to use orbs for stuff
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -59,8 +59,8 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
             NPC.noGravity = true;
             NPC.noTileCollide = true;
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<AlkalabominationBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<AlkalabominationBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<LimestoneCave>().Type };
         }
@@ -180,7 +180,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ItemType<AlkalineFluid>(), 1, 2, 5));
-            //npcLoot.Add(ItemDropRule.Common(ItemType<AlkalineOrb>(), 10));
+            npcLoot.Add(ItemDropRule.Common(ItemType<AlkalineOrb>(), 10));
             npcLoot.Add(ItemDropRule.Common(ItemType<KeyLimePie>(), 50));
         }
     }

@@ -156,7 +156,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Guns.Hardmode
             float bezierProgress = 0;
             float bezierIncrement = 6;
 
-            //Texture2D texture = Content.NPCs.Enemies.Ocean.Hardmode.KrakenTentacle.ChainTexture.Value;
+            Texture2D texture = Content.NPCs.Enemies.Ocean.Hardmode.KrakenTentacle.ChainTexture.Value;
             Vector2 textureCenter = new(4, 4);
 
             float rotation;
@@ -177,7 +177,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Guns.Hardmode
 
                 Vector2 drawPos = (oldPos + newPos) / 2;
 
-                //Main.EntitySpriteDraw(texture, drawPos - Main.screenPosition, new Rectangle(0, 0, 8, 8), Lighting.GetColor((int)drawPos.X / 16, (int)drawPos.Y / 16), rotation, textureCenter, Projectile.scale, Projectile.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipVertically, 0);
+                Main.EntitySpriteDraw(texture, drawPos - Main.screenPosition, new Rectangle(0, 0, 8, 8), Lighting.GetColor((int)drawPos.X / 16, (int)drawPos.Y / 16), rotation, textureCenter, Projectile.scale, Projectile.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipVertically, 0);
             }
 
             return true;

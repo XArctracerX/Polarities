@@ -1,5 +1,5 @@
 ﻿using Polarities.Content.Items.Consumables.Summons.PreHardmode;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Polarities.Core;
 using Polarities.Global;
 using System;
@@ -51,8 +51,8 @@ namespace Polarities.Content.NPCs.Enemies.Underground.PreHardmode
             NPC.DeathSound = SoundID.NPCDeath4;
             NPC.value = Item.buyPrice(silver: 10);
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<BatSlimeBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<BatSlimeBanner>();
         }
 
         public override bool PreAI()

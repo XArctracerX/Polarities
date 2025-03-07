@@ -6,6 +6,7 @@ using Polarities.Core;
 using Polarities.Global;
 using Polarities.Assets;
 using Polarities.Content.NPCs.Enemies.GraniteCaves.Hardmode;
+using Polarities.Content.NPCs.Enemies.GraniteCaves.PreHardmode;
 using Polarities.Content.NPCs.Enemies.HallowInvasion;
 using Polarities.Content.NPCs.Enemies.LavaOcean;
 using Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode;
@@ -276,6 +277,42 @@ namespace Polarities.Content.Items.Placeable.Banners.Tiles
         protected override Color MapColor => Color.SandyBrown;
     }
 
+    public class KrakenBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<Kraken>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class SeaSerpentBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<SeaSerpent>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class LivingSpineBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<LivingSpine>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class RavenousCursedBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<RavenousCursed>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class FlowWormBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<FlowWorm>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class GraniteCrawlerBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<GraniteCrawler>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
     //public class TurbulenceSparkBanner : BannerBase { public override int BannerIndex => 42; public override int NPCType => NPCType<TurbulenceSpark>(); }
     //public class SparkCrawlerBanner : BannerBase { public override int BannerIndex => 15; public override int NPCType => NPCType<SparkCrawler>(); }
     //public class ShockflakeBanner : BannerBase { public override int BannerIndex => 36; public override int NPCType => NPCType<Shockflake>(); }
@@ -291,11 +328,4 @@ namespace Polarities.Content.Items.Placeable.Banners.Tiles
     //public class ChaosCrawlerBanner : BannerBase { public override int BannerIndex => 38; public override int NPCType => NPCType<ChaosCrawler>(); }
     //public class BisectorBanner : BannerBase { public override int BannerIndex => 37; public override int NPCType => NPCType<BisectorHead>(); }
     //public class AmphisbaenaBanner : BannerBase { public override int BannerIndex => 24; public override int NPCType => NPCType<Amphisbaena>(); }
-    //public class KrakenBanner : BannerBase { public override int BannerIndex => 13; public override int NPCType => NPCType<Kraken>(); }
-    //public class SeaSerpentBanner : BannerBase { public override int BannerIndex => 14; public override int NPCType => NPCType<SeaSerpent>(); }
-    //public class LivingSpineBanner : BannerBase { public override int BannerIndex => 30; public override int NPCType => NPCType<LivingSpine>(); }
-    //public class RavenousCursedBanner : BannerBase { public override int BannerIndex => 31; public override int NPCType => NPCType<RavenousCursed>(); }
-    //public class FlowWormBanner : BannerBase { public override int BannerIndex => 34; public override int NPCType => NPCType<FlowWorm>(); }
-    //public class GraniteCrawlerBanner : BannerBase { public override int BannerIndex => 51; public override int NPCType => NPCType<GraniteCrawler>(); }
-
 }

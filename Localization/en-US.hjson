@@ -32,6 +32,60 @@ Mods: {
 					'''
 				Tooltip: Tooltip
 			}
+
+			Limestone: {
+				Description:
+					'''
+					Summons clouds to drench your foes
+					Increases your max number of minions
+					'''
+				Tooltip: Tooltip
+			}
+
+			MechaMayhem: {
+				Description:
+					'''
+					Right click to enter a temporary state of mecha mayhem, buffing your armor's attacks
+					This has a short cooldown, but the cooldown does not progress while holding a weapon
+					'''
+				Tooltip: Tooltip
+			}
+
+			Convective: {
+				Melee:
+					'''
+					17% increased melee damage
+					5% increased melee speed
+					Press {Hotkey} to create a massive explosion, with a 10 second cooldown
+					'''
+				Ranged:
+					'''
+					17% increased ranged damage
+					5% increased ranged critical strike chance
+					Press {Hotkey} to fire a superheated beam, with a 10 second cooldown
+					'''
+				Magic:
+					'''
+					17% increased magic damage
+					Increases max mana by 60
+					Press {Hotkey} to create an eruption from below the cursor, with a 10 second cooldown
+					'''
+				Summon:
+					'''
+					17% increased summon damage
+					Increases your max number of minions
+					Press {Hotkey} to summon convective vortices to attack enemies, with a 10 second cooldown
+					'''
+			}
+
+			Snakescale: {
+				Description:
+					'''
+					Free movement in liquids
+					Critical hits deal extra damage and inflict venom
+					'''
+				Tooltip: Tooltip
+			}
 		}
 
 		Tiles: {
@@ -645,6 +699,21 @@ Mods: {
 					'''
 			}
 
+			EsophageSummonItem: {
+				DisplayName: Fleshy Capsid
+				Tooltip:
+					'''
+					Summons the Esophage
+					Not consumable
+					'''
+				Extra: It oozes blood under the red moon...
+			}
+
+			HallowInvasionSummonItem: {
+				DisplayName: Holy Light
+				Tooltip: Summons the Rapture when used in the hallow
+			}
+
 			//Treasure Bags
 			StormCloudfishBag: {
 				DisplayName: Treasure Bag (Storm Cloudfish)
@@ -1000,17 +1069,127 @@ Mods: {
 
 			StormcloudMask: {
 				DisplayName: Stormcloud Mask
-				Tooltip: 4% increased minion damage
+				Tooltip: 4% increased summon damage
 			}
 
 			StormcloudArmor: {
 				DisplayName: Stormcloud Armor
-				Tooltip: 4% increased minion damage
+				Tooltip: 4% increased summon damage
 			}
 
 			StormcloudGreaves: {
 				DisplayName: Stormcloud Greaves
 				Tooltip: 10% increased movement speed
+			}
+
+			LimestoneHelmet: {
+				DisplayName: Limestone Helmet
+				Tooltip: 3% increased critical strike chance
+			}
+
+			LimestoneChestplate: {
+				DisplayName: Limestone Chestplate
+				Tooltip: 3% increased critical strike chance
+			}
+
+			LimestoneGreaves: {
+				DisplayName: Limestone Greaves
+				Tooltip: 3% increased critical strike chance
+			}
+
+			StalagBeetleHead: {
+				DisplayName: Stalag Beetle Head
+				Tooltip: "'Hard to see in'"
+			}
+
+			ShroomiteDartHelmet: {
+				DisplayName: Shroomite Dart Helmet
+				Tooltip:
+					'''
+					15% increased dart damage
+					5% increased ranged critical strike chance
+					'''
+			}
+
+			FlawlessMechMask: {
+				DisplayName: Laser Lens
+				Tooltip:
+					'''
+					3% increased movement speed
+					3% reduced damage taken
+					Shoots lasers at the cursor when you attack
+					'''
+			}
+
+			FlawlessMechChestplate: {
+				DisplayName: Arm-Ageddon
+				Tooltip:
+					'''
+					6% reduced damage taken
+					Swings at the cursor when you attack
+					'''
+			}
+
+			FlawlessMechTail: {
+				DisplayName: Earthshaker
+				Tooltip:
+					'''
+					6% increased movement speed
+					Releases probes that target the cursor when you attack
+					'''
+			}
+
+			ConvectiveHelmetMagic: {
+				DisplayName: Convective Helmet Magic
+				Tooltip: 6% increased magic damage and critical strike chance
+			}
+
+			ConvectiveHelmetMelee: {
+				DisplayName: Convective Helmet Melee
+				Tooltip: 6% increased melee damage and critical strike chance
+			}
+
+			ConvectiveHelmetRanged: {
+				DisplayName: Convective Helmet Ranged
+				Tooltip: 6% increased ranged damage and critical strike chance
+			}
+
+			ConvectiveHelmetSummon: {
+				DisplayName: Convective Helmet Summon
+				Tooltip:
+					'''
+					6% increased summon damage
+					Increases your max number of minions
+					'''
+			}
+
+			ConvectiveArmor: {
+				DisplayName: Convective Armor
+				Tooltip: 6% increased damage and critical strike chance
+			}
+
+			ConvectiveLeggings: {
+				DisplayName: Convective Leggings
+				Tooltip: 10% increased movement speed
+			}
+
+			SnakescaleMask: {
+				DisplayName: Snakescale Mask
+				Tooltip: 8% increased critical strike chance
+			}
+
+			SnakescaleArmor: {
+				DisplayName: Snakescale Armor
+				Tooltip: 5% increased damage
+			}
+
+			SnakescaleGreaves: {
+				DisplayName: Snakescale Greaves
+				Tooltip:
+					'''
+					10% increased movement speed
+					Grants the ability to swim
+					'''
 			}
 
 			//Weapons
@@ -1582,6 +1761,196 @@ Mods: {
 			Splattergun: {
 				DisplayName: Splattergun
 				Tooltip: Shoots a dense splatter of ichor
+			}
+
+			WoodenWarhammer: {
+				DisplayName: Wooden Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			Warhammerhead: {
+				DisplayName: Warhammerhead
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			BorealWoodWarhammer: {
+				DisplayName: Boreal Wood Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			EbonwoodWarhammer: {
+				DisplayName: Ebonwood Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			MahoganyWarhammer: {
+				DisplayName: Mahogany Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			PalmWoodWarhammer: {
+				DisplayName: Palm Wood Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			ShadewoodWarhammer: {
+				DisplayName: Shadewood Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			CopperWarhammer: {
+				DisplayName: Copper Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			CrimtaneWarhammer: {
+				DisplayName: Heart Beater
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			DemoniteWarhammer: {
+				DisplayName: Soul Crusher
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			GoldWarhammer: {
+				DisplayName: Gold Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			Impactor: {
+				DisplayName: Impactor
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.WarhammerBase}
+					Explodes on hitting enemies or tiles
+					'''
+			}
+
+			IronWarhammer: {
+				DisplayName: Iron Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			LeadWarhammer: {
+				DisplayName: Lead Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			PlatinumWarhammer: {
+				DisplayName: Platinum Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			SilverWarhammer: {
+				DisplayName: Silver Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			SkullMelter: {
+				DisplayName: Skull Melter
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.WarhammerBase}
+					Sets enemies on fire
+					Right click to use as a spear
+					'''
+			}
+
+			TinWarhammer: {
+				DisplayName: Tin Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			TungstenWarhammer: {
+				DisplayName: Tungsten Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			HaliteWarhammer: {
+				DisplayName: Halite Warhammer
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.WarhammerBase}
+					Desiccates enemies for 5 seconds
+					'''
+			}
+
+			BonyBackhand: {
+				DisplayName: Bony Backhand
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.WarhammerBase}
+					Releases bone shards on enemy hits, which stick to enemies, reducing their defense and dealing damage
+					'''
+			}
+
+			AdamantiteWarhammer: {
+				DisplayName: Adamantite Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			CobaltWarhammer: {
+				DisplayName: Cobalt Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			MythrilWarhammer: {
+				DisplayName: Mythril Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			OrichalcumWarhammer: {
+				DisplayName: Orichalcum Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			PalladiumWarhammer: {
+				DisplayName: Palladium Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			SeismicStriker: {
+				DisplayName: Seismic Striker
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.WarhammerBase}
+					Incinerates enemies and produces pillars of fire on impact with tiles
+					Right click to use as a flamethrower spear
+					'''
+			}
+
+			TitaniumWarhammer: {
+				DisplayName: Titanium Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			Ukonvasara: {
+				DisplayName: Ukonvasara
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			Nemesis: {
+				DisplayName: Nemesis
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.WarhammerBase}
+					Right click or hit things to rain projectiles from the sky
+					'''
+			}
+
+			TentacleClub: {
+				DisplayName: Tentacle Club
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.WarhammerBase}
+					Right click to use as a javelin
+					'''
+			}
+
+			PearlwoodWarhammer: {
+				DisplayName: Pearlwood Warhammer
+				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
 			}
 
 			//Critter Items
@@ -2688,6 +3057,36 @@ Mods: {
 				DisplayName: Zombat Banner
 				Tooltip: ""
 			}
+
+			FlowWormBanner: {
+				DisplayName: Flow Worm Banner
+				Tooltip: ""
+			}
+
+			GraniteCrawlerBanner: {
+				DisplayName: Granite Crawler Banner
+				Tooltip: ""
+			}
+
+			KrakenBanner: {
+				DisplayName: Kraken Banner
+				Tooltip: ""
+			}
+
+			LivingSpineBanner: {
+				DisplayName: Living Spine Banner
+				Tooltip: ""
+			}
+
+			RavenousCursedBanner: {
+				DisplayName: Ravenous Cursed Banner
+				Tooltip: ""
+			}
+
+			SeaSerpentBanner: {
+				DisplayName: Sea Serpent Banner
+				Tooltip: ""
+			}
 		}
 
 		NPCs: {
@@ -2869,6 +3268,18 @@ Mods: {
 			MantleOWar.DisplayName: Mantle O War
 			ConvectiveWanderer.DisplayName: Convective Wanderer
 			BabyWanderer.DisplayName: Baby Wanderer
+			LivingSpine.DisplayName: Living Spine
+			FlowWorm.DisplayName: Flow Worm
+			GraniteCrawler.DisplayName: Granite Crawler
+			Kraken.DisplayName: Kraken
+			KrakenTentacle.DisplayName: Kraken Tentacle
+			SeaSerpent.DisplayName: Sea Serpent
+			Eclipxie.DisplayName: Eclipxie
+			LunaButterfly.DisplayName: Luna Butterfly
+			SolMoth.DisplayName: Sol Moth
+			Hemorrphage.DisplayName: Hemorrphage
+			HemorrphageLeg.DisplayName: Hemorrphage Leg
+			HemorrphageTentacle.DisplayName: Hemorrphage Tentacle
 		}
 
 		Projectiles: {
@@ -3074,6 +3485,38 @@ Mods: {
 			ConvectiveWandererFlamethrower.DisplayName: Convective Wanderer Flamethrower
 			ConvectiveWandererHeatVortex.DisplayName: Convective Wanderer Heat Vortex
 			ConvectiveWandererLingeringDeathray.DisplayName: Convective Wanderer Lingering Deathray
+			KrakenInk.DisplayName: Kraken Ink
+			EclipxieMeteor.DisplayName: Eclipxie Meteor
+			EclipxieOrbiter.DisplayName: Eclipxie Orbiter
+			EclipxieRay.DisplayName: Eclipxie Ray
+			EclipxieRaysBig.DisplayName: Eclipxie Rays Big
+			EclipxieRayStar.DisplayName: Eclipxie Ray Star
+			FlawlessMechMaskDeathray.DisplayName: Flawless Mech Mask Deathray
+			MiniPrimeArmSlash.DisplayName: Mini Prime Arm Slash
+			MiniProbe.DisplayName: Mini Probe
+			MiniProbeLaser.DisplayName: Mini Probe Laser
+			ConvectiveArmorMagicEruption.DisplayName: Convective Armor Magic Eruption
+			ConvectiveArmorMeleeExplosion.DisplayName: Convective Armor Melee Explosion
+			ConvectiveArmorRangedDeathray.DisplayName: Convective Armor Ranged Deathray
+			ConvectiveArmorSummonVortex.DisplayName: Convective Armor Summon Vortex
+			ImpactorExplosion.DisplayName: Impactor Explosion
+			SkullMelterProjectile.DisplayName: Skull Melter Projectile
+			BonyBackhandShard.DisplayName: Bony Backhand Shard
+			AdamantiteWarhammerProjectile.DisplayName: Adamantite Warhammer Projectile
+			CobaltWarhammerProjectile.DisplayName: Cobalt Warhammer Projectile
+			MythrilWarhammerProjectile.DisplayName: Mythril Warhammer Projectile
+			OrichalcumWarhammerProjectile.DisplayName: Orichalcum Warhammer Projectile
+			PalladiumWarhammerProjectile.DisplayName: Palladium Warhammer Projectile
+			SeismicStrikerFlamePillar.DisplayName: Seismic Striker Flame Pillar
+			SeismicStrikerProjectile.DisplayName: Seismic Striker Projectile
+			TitaniumWarhammerProjectile.DisplayName: Titanium Warhammer Projectile
+			UkonvasaraProjectile.DisplayName: Ukonvasara Projectile
+			NemesisProjectile.DisplayName: Nemesis Projectile
+			TentacleClubProjectile.DisplayName: Tentacle Club Projectile
+			BloodVomit.DisplayName: Blood Vomit
+			CirclingBloodShot.DisplayName: Circling Blood Shot
+			HomingClot.DisplayName: Homing Clot
+			Platelet.DisplayName: Platelet
 		}
 
 		Biomes: {
@@ -3137,7 +3580,7 @@ Mods: {
 			SpawnHallowInvasion: The world's bright places grow brighter!
 			StartHallowSpread: The Hallow's spread resumes...
 			StopHallowSpread: The Hallow's spread halts...
-			"SpawnWorldEvilInvasion\"": The world's evils seethe with anger!
+			SpawnWorldEvilInvasion: The world's evils seethe with anger!
 			StartEvilSpread: The world evil's spread resumes...
 			StopEvilSpread: The world evil's spread halts...
 			GenMantellarOre: The molten seas tremble...
@@ -3148,6 +3591,11 @@ Mods: {
 				Description: So I was exploring one of those salt caves when, get this, I saw a fish jump right into the brine! I kid you not, it turned itself into a pickle! It's a pickled herring! Funniest thing I've ever seen. Go get it for me so I can laugh at it some more!
 				Location: Caught in the Salt Caves.
 			}
+		}
+
+		Misc: {
+			UnboundHotkey: an unbound hotkey
+			Extra: ""
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Assets;
@@ -74,8 +74,8 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
             Music = GetInstance<Content.Events.WorldEvilInvasion>().Music;
             SceneEffectPriority = SceneEffectPriority.Event;
 
-            //Banner = Type;
-            //BannerItem = ItemType<LightEaterBanner>();
+            Banner = Type;
+            BannerItem = ItemType<LightEaterBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<Content.Events.WorldEvilInvasion>().Type };
         }

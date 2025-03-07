@@ -33,6 +33,8 @@ namespace Polarities.Content.Items.Accessories.ExpertMode.Hardmode
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            //string hotkey = Polarities.ArmorSetBonusHotkey.GetAssignedKeys().ToArray().Length > 0 ? Polarities.ArmorSetBonusHotkey.GetAssignedKeys()[0] : Language.GetTextValue("Mods.Polarities.Misc.UnboundHotkey");
+            //player.setBonus = Language.GetTextValueWith("Mods.Polarities.ArmorSetBonus.Convective.Summon", new { Hotkey = hotkey });
             player.GetModPlayer<PolaritiesPlayer>().convectiveDash = true;
         }
     }

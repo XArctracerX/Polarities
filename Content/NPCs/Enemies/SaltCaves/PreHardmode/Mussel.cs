@@ -3,7 +3,7 @@ using Polarities.Global;
 using Polarities.Core;
 using Polarities.Content.Biomes;
 using Polarities.Content.Items.Consumables.Food.PreHardmode;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Polarities.Content.Items.Placeable.Blocks;
 using Polarities.Content.Items.Weapons.Summon.Sentries.PreHardmode;
 using System;
@@ -46,8 +46,8 @@ namespace Polarities.Content.NPCs.Enemies.SaltCaves.PreHardmode
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.value = Item.buyPrice(0, 0, 5, 0);
 
-            //Banner = NPC.type;
-            //BannerItem = ItemType<MusselBanner>();
+            Banner = NPC.type;
+            BannerItem = ItemType<MusselBanner>();
 
             SpawnModBiomes = new int[1] { GetInstance<SaltCave>().Type };
         }
