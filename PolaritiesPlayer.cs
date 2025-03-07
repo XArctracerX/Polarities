@@ -45,6 +45,9 @@ namespace Polarities
         public int screenshakeTimer;
         public int screenshakeMagnitude;
 
+        public int selfsimilarHits;
+        public int selfsimilarHitTimer;
+
         public float hookSpeedMult;
         public float manaStarMultiplier;
         public float orbMinionSlots;
@@ -137,13 +140,22 @@ namespace Polarities
         public int bubbyWingFrameCounter;
         public int bubbyWingFrame;
 
-        //public override void UpdateDead()
-        //{
-        //fractalization = 0;
-        //}
+        public override void UpdateDead()
+        {
+            fractalization = 0;
+        }
 
         public override void ResetEffects()
 		{
+            if (selfsimilarHitTimer > 0)
+            {
+                selfsimilarHitTimer--;
+            }
+            else
+            {
+                selfsimilarHits = 0;
+            }
+
             //update old positions, velocities, etc.
             for (int i = trailCacheLength - 1; i > 0; i--)
             {
@@ -815,10 +827,10 @@ namespace Polarities
             justHit = true;
         }
 
-        //public override void PreUpdateBuffs()
-        //{
-        //UpdateFractalizationTimer();
-        //}
+        public override void PreUpdateBuffs()
+        {
+            UpdateFractalizationTimer();
+        }
 
         public override void PreUpdateMovement()
         {
@@ -925,10 +937,10 @@ namespace Polarities
             if (Player.HasBuff(BuffType<Pinpointed>()) && Main.rand.NextBool()) crit = true;
         }
 
-        //public int GetFractalization()
-        //{
-        //return fractalization;
-        //}
+        public int GetFractalization()
+        {
+            return fractalization;
+        }
 
         public override void UpdateBadLifeRegen()
         {

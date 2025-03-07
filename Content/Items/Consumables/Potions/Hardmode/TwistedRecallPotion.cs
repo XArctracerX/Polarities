@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Polarities.Content.Items.Materials.Hardmode;
 using Polarities.Content.Items.Placeable.Blocks.Fractal;
+using Polarities.Content.Buffs.Hardmode;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -49,7 +50,7 @@ namespace Polarities.Content.Items.Consumables.Potions.Hardmode
                     Spawn(player);
                     //FractalSubworld.ResetDimension();
                     //if (player.HasBuff(BuffType<FractalSubworldDebuff>()))
-                    //    player.DelBuff(player.FindBuffIndex(BuffType<FractalSubworldDebuff>()));
+                        //player.DelBuff(player.FindBuffIndex(BuffType<FractalSubworldDebuff>()));
                     //player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffTimer = 0;
 
                     player.immune = flag27;
@@ -79,10 +80,10 @@ namespace Polarities.Content.Items.Consumables.Potions.Hardmode
 
         private void Spawn(Player player)
         {
-            //if (!FractalSubworld.Active)
-            //{
-                //FractalSubworld.DoEnter();
-            //}
+            if (!FractalSubworld.Active)
+            {
+                FractalSubworld.DoEnter();
+            }
             //Main.InitLifeBytes();
             if (player.whoAmI == Main.myPlayer)
             {

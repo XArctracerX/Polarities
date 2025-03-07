@@ -98,17 +98,17 @@ namespace Polarities.Content.Items.Placeable.Furniture.Fractal
             player.cursorItemIconID = ModContent.ItemType<FractalAltar>();
         }
 
-        //public override bool RightClick(int i, int j)
-        //{
-            //if (FractalSubworld.Active)
-            //{
-                //FractalSubworld.DoExit();
-            //}
-            //else
-            //{
-                //FractalSubworld.DoEnter();
-            //}
-            //return true;
-        //}
+        public override bool RightClick(int i, int j)
+        {
+            if (FractalSubworld.Active)
+            {
+                FractalSubworld.DoExit();
+            }
+            else
+            {
+                FractalSubworld.DoEnter();
+            }
+            return true;
+        }
     }
 }

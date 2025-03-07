@@ -97,5 +97,14 @@ namespace Polarities
             ArmorSetBonusHotkey = null;
             ConvectiveDashHotkey = null;
         }
+
+        internal static SoundStyle GetSounds(string name, int num, float volume = 1f, float pitch = 0f, float variance = 0f)
+        {
+            return new SoundStyle("Polarities/Assets/Sounds" + name, 0, num) { Volume = volume, Pitch = pitch, PitchVariance = variance, };
+        }
+        internal static SoundStyle GetSound(string name, float volume = 1f, float pitch = 0f, float variance = 0f)
+        {
+            return new SoundStyle("Polarities/Assets/Sounds/" + name) { Volume = volume, Pitch = pitch, PitchVariance = variance, };
+        }
     }
 }

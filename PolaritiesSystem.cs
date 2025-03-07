@@ -12,7 +12,7 @@ using Polarities.Content.Items.Consumables.Summons.PreHardmode;
 using Polarities.Content.Items.Placeable.Furniture.Salt;
 using Polarities.Content.Items.Placeable.Walls;
 //using Polarities.NPCs.ConvectiveWanderer;
-//using Polarities.NPCs.RiftDenizen;
+using Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen;
 //using Polarities.NPCs.TownNPCs;
 using System;
 using System.Collections.Generic;
@@ -41,7 +41,7 @@ namespace Polarities
 
         public override void Load()
         {
-            //SkyManager.Instance["Polarities: Rift Denizen"] = new RiftDenizenSky();
+            SkyManager.Instance["Polarities: Rift Denizen"] = new RiftDenizenSky();
 
             sentinelCaves = new List<Vector2>();
             Terraria.On_Main.CacheProjDraws += Main_CacheProjDraws;
@@ -1693,6 +1693,33 @@ namespace Polarities
             timeAccelerate = false;
 
             timeRate *= timeRateMultiplier;
+        }
+
+        public override void PreUpdateWorld()
+        {
+            if (SkyManager.Instance["Polarities: Rift Denizen"].IsActive() && !NPC.AnyNPCs(ModContent.NPCType<RiftDenizen>()))
+                SkyManager.Instance["Polarities: Rift Denizen"].Deactivate();
+            LoopedSound.UpdateLoopedSounds();
+            if (FractalSubworld.subworldSyncedData != null) // Dunno if this works in multiplayer, probably not
+            {
+                FractalSubworld.LoadUniversalData();
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    NetMessage.SendData(MessageID.WorldData);
+                }
+            }
+            if (FractalSubworld.Active)
+            {
+                Main.dayTime = true;
+                Main.time = Main.dayLength / 2f;
+                Main.windSpeedCurrent = 0f;
+                Main.windSpeedTarget = 0f;
+                Main.raining = false;
+                Main.slimeRain = false;
+                Main.invasionType = 0;
+                Main.invasionSize = 0;
+                Main.invasionSizeStart = 0;
+            }
         }
 
         public static bool ranGemflyAmbience;

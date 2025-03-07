@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-//using Polarities.Content.NPCs.Enemies.Fractal;
-//using Polarities.Content.NPCs.Enemies.Fractal.PostSentinel;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Assets;
@@ -22,6 +20,8 @@ using Polarities.Content.NPCs.Enemies.Surface.Hardmode;
 using Polarities.Content.NPCs.Enemies.Underground.PreHardmode;
 using Polarities.Content.NPCs.Enemies.Ocean.Hardmode;
 using Polarities.Content.NPCs.Enemies.BloodMoon.PreHardmode;
+using Polarities.Content.NPCs.Enemies.Fractal;
+using Polarities.Content.NPCs.Enemies.Fractal.PostSentinel;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -313,19 +313,93 @@ namespace Polarities.Content.Items.Placeable.Banners.Tiles
         protected override Color MapColor => Color.SandyBrown;
     }
 
-    //public class TurbulenceSparkBanner : BannerBase { public override int BannerIndex => 42; public override int NPCType => NPCType<TurbulenceSpark>(); }
-    //public class SparkCrawlerBanner : BannerBase { public override int BannerIndex => 15; public override int NPCType => NPCType<SparkCrawler>(); }
-    //public class ShockflakeBanner : BannerBase { public override int BannerIndex => 36; public override int NPCType => NPCType<Shockflake>(); }
-    //public class SeaAnomalyBanner : BannerBase { public override int BannerIndex => 39; public override int NPCType => NPCType<SeaAnomaly>(); }
-    //public class OrthoconicBanner : BannerBase { public override int BannerIndex => 32; public override int NPCType => NPCType<Orthoconic>(); }
-    //public class MegaMengerBanner : BannerBase { public override int BannerIndex => 21; public override int NPCType => NPCType<MegaMenger>(); }
-    //public class FractalSpiritBanner : BannerBase { public override int BannerIndex => 23; public override int NPCType => NPCType<FractalSpirit>(); }
-    //public class FractalSlimeBanner : BannerBase { public override int BannerIndex => 40; public override int NPCType => NPCType<FractalSlimeSmall>(); }
-    //public class FractalPointBanner : BannerBase { public override int BannerIndex => 25; public override int NPCType => NPCType<FractalPoint>(); }
-    //public class FractalFernBanner : BannerBase { public override int BannerIndex => 16; public override int NPCType => NPCType<FractalFern>(); }
-    //public class EuryopterBanner : BannerBase { public override int BannerIndex => 17; public override int NPCType => NPCType<Euryopter>(); }
-    //public class DustSpriteBanner : BannerBase { public override int BannerIndex => 41; public override int NPCType => NPCType<DustSprite>(); }
-    //public class ChaosCrawlerBanner : BannerBase { public override int BannerIndex => 38; public override int NPCType => NPCType<ChaosCrawler>(); }
-    //public class BisectorBanner : BannerBase { public override int BannerIndex => 37; public override int NPCType => NPCType<BisectorHead>(); }
-    //public class AmphisbaenaBanner : BannerBase { public override int BannerIndex => 24; public override int NPCType => NPCType<Amphisbaena>(); }
+    public class TurbulenceSparkBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<TurbulenceSpark>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class SparkCrawlerBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<SparkCrawler>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class ShockflakeBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<Shockflake>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class SeaAnomalyBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<SeaAnomaly>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class FractalSlimeBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<FractalSlimeSmall>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class FractalFernBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<FractalFern>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class EuryopterBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<Euryopter>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class DustSpriteBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<DustSprite>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class BisectorBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<Bisector>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class AmphisbaenaBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<Amphisbaena>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class FractalPointBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<FractalPoint>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class ChaosCrawlerBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<ChaosCrawler>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class OrthoconicBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<Orthoconic>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class MegaMengerBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<MegaMenger>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
+
+    public class FractalSpiritBannerTile : BaseBannerTile
+    {
+        protected override int NPC => ModContent.NPCType<FractalSpirit>();
+        protected override Color MapColor => Color.SandyBrown;
+    }
 }

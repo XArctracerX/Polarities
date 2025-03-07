@@ -437,6 +437,14 @@ Mods: {
 				DisplayName: Pegasus Mount Buff
 				Description: Mods.Polarities.Buffs.PegasusMountBuff.Description
 			}
+
+			Fractalizing: {
+				DisplayName: Fractalizing
+				Description: Chaotic forces tear at you, reducing your maximum life
+				PreDendriticEnergy: You cannot yet mine dendritic energy
+				PostDendriticEnergy: You can now mine dendritic energy, given a powerful enough pickaxe
+				PostSentinel: You are attracting stronger fractal enemies
+			}
 		}
 
 		Items: {
@@ -714,6 +722,15 @@ Mods: {
 				Tooltip: Summons the Rapture when used in the hallow
 			}
 
+			BetsySummonItem: {
+				DisplayName: Infernia Crystal
+				Tooltip: 
+					'''
+					Summons Betsy
+					Not consumable
+					'''
+			}
+
 			//Treasure Bags
 			StormCloudfishBag: {
 				DisplayName: Treasure Bag (Storm Cloudfish)
@@ -902,6 +919,11 @@ Mods: {
 				Tooltip: Toggles the world evil's spread
 			}
 
+			DuckSpewer: {
+				DisplayName: Duck Spewer
+				Tooltip: Spews ducks
+			}
+
 			//Multi
 			SunplateHamaxe: {
 				DisplayName: Sunplate Hamaxe
@@ -967,6 +989,11 @@ Mods: {
 
 			SunPixieMask: {
 				DisplayName: Sun Pixie Mask
+				Tooltip: ""
+			}
+
+			AmphisnekHat: {
+				DisplayName: Amphisnek Hat
 				Tooltip: ""
 			}
 
@@ -1193,6 +1220,16 @@ Mods: {
 			}
 
 			//Weapons
+			MandelbrotOrb: {
+				DisplayName: Brot Orb
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.OrbBase}
+					Summons an antibrot minion
+					'Palindrome!'
+					'''
+			}
+
 			EyeOfTheStormfish: {
 				DisplayName: Eye Of The Stormfish
 				Tooltip: Summons a storm vortex around the cursor, which shoots a bolt of lightning at the cursor
@@ -3087,6 +3124,92 @@ Mods: {
 				DisplayName: Sea Serpent Banner
 				Tooltip: ""
 			}
+
+			AmphisbaenaBanner: {
+				DisplayName: Amphisbaena Banner
+				Tooltip: ""
+			}
+
+			BisectorBanner: {
+				DisplayName: Bisector Banner
+				Tooltip: ""
+			}
+
+			DustSpriteBanner: {
+				DisplayName: Dust Sprite Banner
+				Tooltip: ""
+			}
+
+			EuryopterBanner: {
+				DisplayName: Euryopter Banner
+				Tooltip: ""
+			}
+
+			FractalFernBanner: {
+				DisplayName: Fractal Fern Banner
+				Tooltip: ""
+			}
+
+			FractalSlimeBanner: {
+				DisplayName: Fractal Slime Banner
+				Tooltip: ""
+			}
+
+			SeaAnomalyBanner: {
+				DisplayName: Sea Anomaly Banner
+				Tooltip: ""
+			}
+
+			ShockflakeBanner: {
+				DisplayName: Shockflake Banner
+				Tooltip: ""
+			}
+
+			SparkCrawlerBanner: {
+				DisplayName: Spark Crawler Banner
+				Tooltip: ""
+			}
+
+			TurbulenceSparkBanner: {
+				DisplayName: Turbulence Spark Banner
+				Tooltip: ""
+			}
+
+			ChaosCrawlerBanner: {
+				DisplayName: Chaos Crawler Banner
+				Tooltip: ""
+			}
+
+			FractalPointBanner: {
+				DisplayName: Fractal Point Banner
+				Tooltip: ""
+			}
+
+			FractalSpiritBanner: {
+				DisplayName: Fractal Spirit Banner
+				Tooltip: ""
+			}
+
+			MegaMengerBanner: {
+				DisplayName: Mega Menger Banner
+				Tooltip: ""
+			}
+
+			OrthoconicBanner: {
+				DisplayName: Orthoconic Banner
+				Tooltip: ""
+			}
+
+			//Keys
+			FractalBiomeKey: {
+				DisplayName: Fractal Dimension Key
+				Tooltip: Unlocks a Fractal Dimension Chest in the dungeon
+			}
+
+			FractalKey: {
+				DisplayName: Strand Key
+				Tooltip: Unlocks one locked fractal chest or lock box
+			}
 		}
 
 		NPCs: {
@@ -3280,6 +3403,33 @@ Mods: {
 			Hemorrphage.DisplayName: Hemorrphage
 			HemorrphageLeg.DisplayName: Hemorrphage Leg
 			HemorrphageTentacle.DisplayName: Hemorrphage Tentacle
+			RiftDenizen.DisplayName: Rift Denizen
+			RiftOpening.DisplayName: Rift Opening
+			RiftOpeningHitbox.DisplayName: Rift Opening Hitbox
+			SelfsimilarSentinel.DisplayName: Selfsimilar Sentinel
+			Amphisbaena.DisplayName: Amphisbaena
+			BisectorBody1.DisplayName: Bisector Body1
+			BisectorBody2.DisplayName: Bisector Body2
+			BisectorHead.DisplayName: Bisector Head
+			BisectorHeadHitbox.DisplayName: Bisector Head Hitbox
+			BisectorTail.DisplayName: Bisector Tail
+			DustSprite.DisplayName: Dust Sprite
+			Euryopter.DisplayName: Euryopter
+			FractalSlimeLarge.DisplayName: Fractal Slime Large
+			FractalSlimeMedium.DisplayName: Fractal Slime Medium
+			FractalSlimeSmall.DisplayName: Fractal Slime Small
+			SeaAnomaly.DisplayName: Sea Anomaly
+			SeaAnomalyHitbox.DisplayName: Sea Anomaly Hitbox
+			Shockflake.DisplayName: Shockflake
+			SparkCrawler.DisplayName: Spark Crawler
+			TurbulenceSpark.DisplayName: Turbulence Spark
+			ChaosCrawler.DisplayName: Chaos Crawler
+			ChaosCrawlerHitbox.DisplayName: Chaos Crawler Hitbox
+			FractalPoint.DisplayName: Fractal Point
+			FractalSpirit.DisplayName: Fractal Spirit
+			MegaMenger.DisplayName: Mega Menger
+			Orthoconic.DisplayName: Orthoconic
+			OrthoconicHitbox.DisplayName: Orthoconic Hitbox
 		}
 
 		Projectiles: {
@@ -3517,6 +3667,35 @@ Mods: {
 			CirclingBloodShot.DisplayName: Circling Blood Shot
 			HomingClot.DisplayName: Homing Clot
 			Platelet.DisplayName: Platelet
+			ChordRay.DisplayName: Chord Ray
+			ParallaxBolt.DisplayName: Parallax Bolt
+			ParallaxBoltBehindTiles.DisplayName: Parallax Bolt Behind Tiles
+			ParallaxRay.DisplayName: Parallax Ray
+			ParallaxRayBehindTiles.DisplayName: Parallax Ray Behind Tiles
+			RiftBolt.DisplayName: Rift Bolt
+			RiftClaw.DisplayName: Rift Claw
+			HyperbolicAperiogon.DisplayName: Hyperbolic Aperiogon
+			HyperbolicBolt.DisplayName: Hyperbolic Bolt
+			HyperbolicHorocycle.DisplayName: Hyperbolic Horocycle
+			HyperbolicRay.DisplayName: Hyperbolic Ray
+			HyperbolicWisp.DisplayName: Hyperbolic Wisp
+			SelfsimilarSentinelCollision.DisplayName: Selfsimilar Sentinel Collision
+			SentinelOreChunk.DisplayName: Sentinel Ore Chunk
+			EuryopterBolt.DisplayName: Euryopter Bolt
+			ShockflakeBolt.DisplayName: Shockflake Bolt
+			SparkCrawlerLightning.DisplayName: Spark Crawler Lightning
+			SparkCrawlerLightningHead.DisplayName: Spark Crawler Lightning Head
+			SparkCrawlerTriangle.DisplayName: Spark Crawler Triangle
+			MandelbrotOrbMinion.DisplayName: Mandelbrot Orb Minion
+			MandelbrotOrbMinionClone.DisplayName: Mandelbrot Orb Minion Clone
+			MandelbrotOrbMinionHomingShot.DisplayName: Mandelbrot Orb Minion Homing Shot
+			MandelbrotOrbMinionOscillatingRay.DisplayName: Mandelbrot Orb Minion Oscillating Ray
+			ChaosBolt.DisplayName: Chaos Bolt
+			FractalSpiritLightning.DisplayName: Fractal Spirit Lightning
+			FractalSpiritSpark.DisplayName: Fractal Spirit Spark
+			MegaMengerLaser.DisplayName: Mega Menger Laser
+			OrthoconicEllipse.DisplayName: Orthoconic Ellipse
+			OrthoconicParabola.DisplayName: Orthoconic Parabola
 		}
 
 		Biomes: {
@@ -3543,6 +3722,31 @@ Mods: {
 			WorldEvilInvasion: {
 				DisplayName: The Pestilence
 				TownNPCDialogueName: The Pestilence
+			}
+
+			FractalBiome: {
+				DisplayName: Fractal Biome
+				TownNPCDialogueName: the Fractal Biome
+			}
+
+			FractalOceanBiome: {
+				DisplayName: Fractal Ocean Biome
+				TownNPCDialogueName: the Fractal Ocean Biome
+			}
+
+			FractalSkyBiome: {
+				DisplayName: Fractal Sky Biome
+				TownNPCDialogueName: the Fractal Sky Biome
+			}
+
+			FractalUGBiome: {
+				DisplayName: Fractal U G Biome
+				TownNPCDialogueName: the Fractal U G Biome
+			}
+
+			FractalWastesBiome: {
+				DisplayName: Fractal Wastes Biome
+				TownNPCDialogueName: the Fractal Wastes Biome
 			}
 		}
 

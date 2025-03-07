@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-//using Polarities.Items.Books;
+using Polarities.Content.Items.Tools.Books.Hardmode;
 using Polarities.Global;
 using Polarities.Core;
 using System;
@@ -226,21 +226,21 @@ namespace Polarities.Content.Projectiles
                 }
 
                 //plantera book tentacles
-                //if (Main.player[projectile.owner].HasBuff(BuffType<PlanteraBookBuff>()))
-                //{
-                    //if (!planteraBookHooks)
-                    //{
-                        // = true;
-                        //for (int i = 0; i < 3; i++)
-                        //{
-                            //Projectile.NewProjectile(projectile.GetSource_FromAI(), Main.player[projectile.owner].Center, Main.player[projectile.owner].velocity, ProjectileType<PlanteraBookHookProjectile>(), 30, 2, projectile.owner, Main.rand.NextFloat(MathHelper.Pi * 2), projectile.whoAmI);
-                        //}
-                    //}
-                //}
-                //else
-                //{
-                    //planteraBookHooks = false;
-                //}
+                if (Main.player[projectile.owner].HasBuff(BuffType<PlanteraBookBuff>()))
+                {
+                    if (!planteraBookHooks)
+                    {
+                        planteraBookHooks = true;
+                        for (int i = 0; i < 3; i++)
+                        {
+                            Projectile.NewProjectile(projectile.GetSource_FromAI(), Main.player[projectile.owner].Center, Main.player[projectile.owner].velocity, ProjectileType<PlanteraBookHookProjectile>(), 30, 2, projectile.owner, Main.rand.NextFloat(MathHelper.Pi * 2), projectile.whoAmI);
+                        }
+                    }
+                }
+                else
+                {
+                    planteraBookHooks = false;
+                }
             }
 
             return true;

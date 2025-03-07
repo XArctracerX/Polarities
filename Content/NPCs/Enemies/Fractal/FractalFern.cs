@@ -1,9 +1,9 @@
 using Microsoft.Xna.Framework;
-//using Polarities.Biomes.Fractal;
+using Polarities.Content.Biomes.Fractal;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Content.Items.Materials.Hardmode;
-//using Polarities.Items.Placeable.Banners;
+using Polarities.Content.Items.Placeable.Banners.Items;
 using Polarities.Content.Items.Placeable.Blocks.Fractal;
 using Polarities.Content.Items.Weapons.Summon.Minions.Hardmode;
 using System;
@@ -42,7 +42,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
             //Banner = NPC.type;
             //BannerItem = ItemType<FractalFernBanner>();
 
-            //this.SetModBiome<FractalBiome>();
+            this.SetModBiome<FractalBiome>();
         }
 
         public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
@@ -172,11 +172,11 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            //if (FractalSubworld.Active)
-            //{
-            //return 0.2f;
-            //}
-            //return 0f;
+            if (FractalSubworld.Active)
+            {
+                return 0.2f;
+            }
+            return 0f;
 
             if (PolaritiesSystem.downedGigabat)
             {

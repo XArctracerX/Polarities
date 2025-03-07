@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Terraria;
+﻿using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -9,6 +8,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
+using System.Collections.Generic;
+using Terraria.Localization;
 using Polarities.Content.Projectiles;
 //using Polarities.Buffs;
 using Polarities.Core;
@@ -77,9 +78,29 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
             Music = MusicLoader.GetMusicSlot("Assets/Sounds/Music/Hemorrphage");
         }
 
+        public static void SpawnOn(Player player)
+        {
+            float r = (float)Main.rand.NextDouble();
+            float theta = Main.rand.NextFloat(-MathHelper.PiOver4, MathHelper.PiOver4) + Main.rand.Next(2) * MathHelper.Pi;
+
+            int boss = NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)(player.Center.X + (500 * r + 1000) * (float)Math.Cos(theta)), (int)(player.Center.Y - (500 * r + 1000) * (float)Math.Sin(theta)), NPCType<Hemorrphage>());
+            Main.NewText(Language.GetTextValue("Announcement.HasAwoken", Main.npc[boss].TypeName), 171, 64, 255);
+
+            SoundEngine.PlaySound(new SoundStyle("Terraria/Sounds/NPC_Killed_10")
+            {
+                Volume = 1.2f,
+                Pitch = -0.5f
+            }, player.position);
+            SoundEngine.PlaySound(new SoundStyle("Terraria/Sounds/Roar_0")
+            {
+                Volume = 1.2f,
+                Pitch = -0.5f
+            }, player.position);
+        }
+
         //public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
         //{
-            //NPC.lifeMax = (int)(100000 * bossLifeScale);
+        //NPC.lifeMax = (int)(100000 * bossLifeScale);
         //}
 
         public override void AI()

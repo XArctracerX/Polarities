@@ -1,1 +1,13 @@
-Modify this file with a description of your mod.
+The 1.4 version of Polarities is currently in beta: Not all of the content from 1.3 has been ported yet!
+
+A content mod which aims to add mechanically interesting bosses, enemies, items, and more! (Not all of this has been ported yet) Currently adds ten new bosses, several new enemies, a variety of weapons and accessories, some tiles and armor sets, two new mini-biomes, a new subworld, and a new town NPC.
+
+IMPORTANT NOTE: THE MOD DOES NOT WORK IN MULTIPLAYER.
+
+Coders: turingcomplete30, Arc
+Wiki: bubbyboytoo
+Spriters: ElectroManiac, niker, triangle, Scratch Lunin, Squartron, Rednbloo, Leaper
+Sounds: moonburn
+Bestiary: Danku (Jerry), bubbyboytoo
+Former team members: junk boy
+With sprites from: discord_account, yogu, Vega_1, Evolution, UnworthyPie, warrenmark_art, Masked Luigi, Darkpuppey, DeJuiceTD, Jimbo Animations, Le Supreme Slimelad, nalyddd, Hugekraken, Heart Plus Up!, MountainyBear49, Rocketlauncher269, TRYAGAIN211, Danmaskino, Soft

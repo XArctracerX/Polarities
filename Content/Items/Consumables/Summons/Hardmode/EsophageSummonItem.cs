@@ -1,7 +1,13 @@
-﻿using Polarities.Content.Events;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.IO;
+using System.Collections.Generic;
+using Polarities.Content.Events;
 using Polarities.Content.NPCs.Bosses.Hardmode.Esophage;
 using Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -45,20 +51,7 @@ namespace Polarities.Content.Items.Consumables.Summons.Hardmode
         {
             if (!(NPC.AnyNPCs(NPCType<Hemorrphage>())) && Main.bloodMoon)
 			{
-				float r = (float)Main.rand.NextDouble();
-				float theta = (float)(Math.PI * Main.rand.NextDouble());
-
-				if (Main.netMode != 1)
-				{
-					int boss = NPC.NewNPC((int)(player.Center.X + (500 * r + 1000) * (float)Math.Cos(theta)), (int)(player.Center.Y - (500 * r + 1000) * (float)Math.Sin(theta)), NPCType<NPCs.Hemorrphage.Hemorrphage>());
-
-					Main.npc[boss].netUpdate = true;
-
-					Main.NewText("Hemorrphage has awoken!", 171, 64, 255);
-				}
-				Main.PlaySound(SoundID.NPCKilled, (int)player.position.X, (int)player.position.Y, 10, volumeScale: 1.2f, pitchOffset: -0.5f);
-				Main.PlaySound(SoundID.Roar, (int)player.position.X, (int)player.position.Y, 0, volumeScale: 1.2f, pitchOffset: -0.5f);
-				return true;
+                Hemorrphage.SpawnOn(player);
 			}
 			else
             {

@@ -214,4 +214,80 @@ namespace Polarities.Content.Items.Placeable.Banners.Items
     {
         protected override int Tile => ModContent.TileType<GraniteCrawlerBannerTile>();
     }
+
+    public class TurbulenceSparkBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<TurbulenceSparkBannerTile>();
+    }
+
+    public class SparkCrawlerBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<SparkCrawlerBannerTile>();
+    }
+
+    public class ShockflakeBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<ShockflakeBannerTile>();
+    }
+
+    
+    public class SeaAnomalyBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<SeaAnomalyBannerTile>();
+    }
+
+    public class FractalSlimeBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<FractalSlimeBannerTile>();
+    }
+
+    public class FractalFernBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<FractalFernBannerTile>();
+    }
+
+    public class EuryopterBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<EuryopterBannerTile>();
+    }
+
+    public class DustSpriteBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<DustSpriteBannerTile>();
+    }
+
+    public class BisectorBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<BisectorBannerTile>();
+    }
+
+    public class AmphisbaenaBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<AmphisbaenaBannerTile>();
+    }
+
+    public class FractalPointBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<FractalPointBannerTile>();
+    }
+
+    public class ChaosCrawlerBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<ChaosCrawlerBannerTile>();
+    }
+
+    public class OrthoconicBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<OrthoconicBannerTile>();
+    }
+
+    public class MegaMengerBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<MegaMengerBannerTile>();
+    }
+
+    public class FractalSpiritBanner : BaseBannerItem
+    {
+        protected override int Tile => ModContent.TileType<FractalSpiritBannerTile>();
+    }
 }
