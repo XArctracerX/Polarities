@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\Content",
-    "\\Content\\Items",
-    "\\Content\\Items\\Consumables",
-    "\\Content\\Items\\Consumables\\Summons",
-    "\\Content\\Items\\Weapons\\Magic\\Flawless",
+    "\\Content\\Items\\Tools\\Misc",
+    "\\Content\\Items\\Tools\\Misc\\Hardmode",
+    "\\Content\\Items\\Weapons\\Summon\\Orbs",
+    "\\Content\\Items\\Weapons\\Summon\\Orbs\\Hardmode",
     "\\Content\\NPCs",
-    "\\Content\\NPCs\\Bosses",
-    "\\Content\\NPCs\\Bosses\\Hardmode",
-    "\\Content\\NPCs\\Bosses\\Hardmode\\Hemorrphage"
+    "\\Content\\NPCs\\TownNPCs",
+    "\\Content\\NPCs\\TownNPCs\\PreHardmode",
+    "\\Localization"
   ],
-  "SelectedNode": "\\Content\\NPCs\\Bosses\\Hardmode\\Hemorrphage\\Hemorrphage.cs",
+  "SelectedNode": "\\Content\\NPCs\\TownNPCs\\PreHardmode\\Ghostwriter_Head.png",
   "PreviewInSolutionExplorer": false
 }
