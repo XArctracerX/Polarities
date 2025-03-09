@@ -37,7 +37,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
             NPC.buffImmune[BuffID.Poisoned] = true;
             NPC.buffImmune[BuffID.Venom] = true;
 
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Textures/Bestiary/ChaosCrawler", Position = new Vector2(0f, 70f), };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Assets/Bestiary/ChaosCrawler", Position = new Vector2(0f, 70f), };
         }
 
         public override void SetDefaults()

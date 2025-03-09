@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Polarities")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7fac1712f2ce13e3985d0825507f1ad8ba4ecd3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb3233c8025fd0d9103144dc4310497f5acaedc1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Polarities")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Polarities")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

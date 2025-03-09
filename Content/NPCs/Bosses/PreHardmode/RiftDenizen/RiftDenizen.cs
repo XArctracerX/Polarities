@@ -29,7 +29,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             NPC.buffImmune[BuffID.Confused] = true;
             NPC.buffImmune[BuffID.OnFire] = true;
 
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Textures/BossChecklist/RiftDenizen", };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Assets/BossChecklist/RiftDenizen", };
         }
 
         public override void SetDefaults()

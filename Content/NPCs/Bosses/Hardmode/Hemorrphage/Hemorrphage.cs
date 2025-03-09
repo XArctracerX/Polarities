@@ -1,15 +1,5 @@
-﻿using Terraria;
-using Terraria.Audio;
-using Terraria.GameContent;
-using Terraria.ID;
-using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.IO;
-using System.Collections.Generic;
-using Terraria.Localization;
 using Polarities.Content.Projectiles;
 //using Polarities.Buffs;
 using Polarities.Core;
@@ -20,6 +10,20 @@ using Polarities.Global;
 //using Polarities.Items.Armor;
 //using Polarities.Items.Accessories;
 using Polarities.Content.Items.Placeable.Trophies;
+using ReLogic.Content;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Terraria;
+using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.GameContent;
+using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
 {
@@ -49,8 +53,20 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
 
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Hemorrphage");
-            Main.npcFrameCount[NPC.type] = 1;
+            Main.npcFrameCount[NPC.type] = 18;
+
+            NPC.buffImmune[BuffID.Confused] = true;
+
+            NPCID.Sets.BossBestiaryPriority.Add(Type);
+        }
+
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Events.BloodMoon,
+				//flavor text
+				this.TranslatedBestiaryEntry()
+            });
         }
 
         public override void SetDefaults()
@@ -870,6 +886,16 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
                 legs[i] = reader.ReadInt32();
             }
         }
+
+        public override void FindFrame(int frameHeight)
+        {
+            NPC.frameCounter++;
+            if (NPC.frameCounter == 18)
+            {
+                NPC.frameCounter = 0;
+                NPC.frame.Y = (NPC.frame.Y + frameHeight) % (18 * frameHeight);
+            }
+        }
     }
 
     internal class HemorrphageLeg : ModNPC
@@ -1020,69 +1046,67 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
             }
         }
 
+
+        public static Asset<Texture2D> ChainTexture;
+
+        public override void Load()
+        {
+            ChainTexture = Request<Texture2D>(Texture + "_Chain");
+        }
+
+        public override void Unload()
+        {
+            ChainTexture = null;
+        }
+
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            Texture2D legTexture = ModContent.Request<Texture2D>($"{Texture}Chain").Value;
+            NPC owner = Main.npc[(int)NPC.ai[0]];
 
-            Vector2 mainCenter = Main.npc[(int)NPC.ai[0]].Center;
-            Vector2 center = NPC.Center + new Vector2(0, -240 - 11);
-            Vector2 intermediateCenter = center + (mainCenter - NPC.Center) / 2;//+ new Vector2(240, 0).RotatedBy((mainCenter-npc.Center).ToRotation());
+            DrawAt(owner, NPC.Center, spriteBatch, screenPos, drawColor);
 
+            return false;
+        }
 
-            Vector2 distToNPC = intermediateCenter - center;
-            float projRotation = distToNPC.ToRotation() + MathHelper.PiOver2;
-            float distance = distToNPC.Length();
-            int tries = 100;
-            while (distance > 12f && !float.IsNaN(distance) && tries > 0)
+        public void DrawAt(NPC owner, Vector2 center, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor, bool bestiaryDummy = false)
+        {
+            Vector2[] points = { center + new Vector2(0, -8), center + (owner.Center - center) * 0.34f - new Vector2(0, 200), center + (owner.Center - center) * 0.66f, owner.Center };
+
+            for (int i = 0; i < points.Length - 1; i++)
             {
-                tries--;
-                //Draw chain
-                spriteBatch.Draw(legTexture, new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                    new Rectangle(0, 0, 18, 12), Lighting.GetColor((int)(center.X / 16), (int)(center.Y / 16)), projRotation,
-                    new Vector2(18 * 0.5f, 12 * 0.5f), 1f, SpriteEffects.None, 0f);
-
-                distToNPC.Normalize();                 //get unit vector
-                distToNPC *= 12f;                      //speed = 24
-                center += distToNPC;                   //update draw position
-                distToNPC = intermediateCenter - center;    //update distance
-                distance = distToNPC.Length();
-            }
-            spriteBatch.Draw(legTexture, new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                new Rectangle(0, 0, 18, 12), Lighting.GetColor((int)(center.X / 16), (int)(center.Y / 16)), projRotation,
-                new Vector2(18 * 0.5f, 12 * 0.5f), 1f, SpriteEffects.None, 0f);
-
-            distToNPC.Normalize();                 //get unit vector
-            distToNPC *= 12f;                      //speed = 24
-            center += distToNPC;                   //update draw position
-            distToNPC = intermediateCenter - center;    //update distance
-
-            distToNPC = mainCenter - intermediateCenter;
-            projRotation = distToNPC.ToRotation() + MathHelper.PiOver2;
-            distance = distToNPC.Length();
-            tries = 100;
-            while (distance > 12f && !float.IsNaN(distance) && tries > 0)
-            {
-                tries--;
-                //Draw chain
-                spriteBatch.Draw(legTexture, new Vector2(intermediateCenter.X - Main.screenPosition.X, intermediateCenter.Y - Main.screenPosition.Y),
-                    new Rectangle(0, 0, 18, 12), Lighting.GetColor((int)(center.X / 16), (int)(center.Y / 16)), projRotation,
-                    new Vector2(18 * 0.5f, 12 * 0.5f), 1f, SpriteEffects.None, 0f);
-
-                distToNPC.Normalize();                 //get unit vector
-                distToNPC *= 12f;                      //speed = 24
-                intermediateCenter += distToNPC;                   //update draw position
-                distToNPC = mainCenter - intermediateCenter;    //update distance
-                distance = distToNPC.Length();
+                DrawChain(owner, points[i], points[i + 1], spriteBatch, screenPos, drawColor, bestiaryDummy);
             }
 
-            for (int i = 0; i <= 20; i++)
+            float num246 = Main.NPCAddHeight(NPC);
+            SpriteEffects spriteEffects = 0;
+            if (NPC.spriteDirection == 1)
             {
-                center = NPC.Center + new Vector2(0, -11 - i * 12);
-                spriteBatch.Draw(legTexture, new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                    new Rectangle(0, 0, 18, 12), Lighting.GetColor((int)(center.X / 16), (int)(center.Y / 16)), 0,
-                    new Vector2(18 * 0.5f, 12 * 0.5f), 1f, SpriteEffects.None, 0f);
+                spriteEffects = (SpriteEffects)1;
             }
-            return true;
+            Vector2 halfSize = new Vector2(TextureAssets.Npc[Type].Width() / 2, TextureAssets.Npc[Type].Height() / Main.npcFrameCount[NPC.type] / 2);
+
+            Color color = owner.GetNPCColorTintedByBuffs(bestiaryDummy ? Color.White : Lighting.GetColor(NPC.Center.ToTileCoordinates()));
+
+            spriteBatch.Draw(TextureAssets.Npc[Type].Value, center + new Vector2(0, NPC.height / 2) - screenPos + new Vector2(-TextureAssets.Npc[Type].Width() * NPC.scale / 2f + halfSize.X * NPC.scale, -TextureAssets.Npc[Type].Height() * NPC.scale / Main.npcFrameCount[Type] + 4f + halfSize.Y * NPC.scale + num246 + NPC.gfxOffY), TextureAssets.Npc[Type].Frame(), color, NPC.rotation, halfSize, NPC.scale, spriteEffects, 0f);
+        }
+
+        public void DrawChain(NPC owner, Vector2 startPoint, Vector2 endPoint, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor, bool bestiaryDummy)
+        {
+            Texture2D chainTexture = ChainTexture.Value;
+            Rectangle chainFrame = ChainTexture.Frame();
+            Vector2 chainOrigin = chainFrame.Size() / 2;
+
+            int stepSize = chainFrame.Width;
+
+            int parity = 1;
+
+            for (int i = 0; i < (endPoint - startPoint).Length() / stepSize; i++)
+            {
+                parity *= -1;
+
+                Vector2 drawingPos = startPoint + (endPoint - startPoint).SafeNormalize(Vector2.Zero) * i * stepSize;
+                spriteBatch.Draw(chainTexture, drawingPos - screenPos, chainFrame, owner.GetNPCColorTintedByBuffs(bestiaryDummy ? Color.White : Lighting.GetColor(drawingPos.ToTileCoordinates())), (endPoint - startPoint).ToRotation(), chainOrigin, NPC.scale, NPC.spriteDirection * parity == -1 ? SpriteEffects.None : SpriteEffects.FlipVertically, 0f);
+            }
         }
 
         public override bool CheckActive()
@@ -1223,7 +1247,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            Texture2D legTexture = ModContent.Request<Texture2D>($"{ModContent.GetInstance<HemorrphageLeg>().Texture}Chain").Value;
+            Texture2D legTexture = ModContent.Request<Texture2D>($"{ModContent.GetInstance<HemorrphageLeg>().Texture}_Chain2").Value;
 
             Vector2 mainCenter = Main.npc[(int)NPC.ai[0]].Center;
             Vector2 center = NPC.Center;

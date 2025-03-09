@@ -34,7 +34,7 @@ namespace Polarities.Content.Items.Tools.Hooks.Hardmode
             Item.useTime = 20;
             Item.rare = ItemRarityID.Pink;
             Item.noMelee = true;
-            Item.value = 10000 * 5;
+            Item.value = Item.sellPrice(gold: 4);
         }
     }
 

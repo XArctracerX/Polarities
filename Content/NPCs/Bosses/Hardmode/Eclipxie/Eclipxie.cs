@@ -17,6 +17,7 @@ using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.Localization;
+using Terraria.GameContent.Bestiary;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 using static Terraria.ModLoader.ModContent;
@@ -88,6 +89,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Eclipxie
 
             Main.npcFrameCount[NPC.type] = 8;
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
@@ -1338,6 +1340,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Eclipxie
 
             Main.npcFrameCount[NPC.type] = 8;
         }
+
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             int associatedNPCType = NPCType<Eclipxie>();

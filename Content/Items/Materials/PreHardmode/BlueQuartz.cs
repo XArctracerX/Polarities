@@ -1,11 +1,14 @@
-﻿namespace Polarities.Content.Items.Materials.PreHardmode
+﻿using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace Polarities.Content.Items.Materials.PreHardmode
 {
-    //TODO: Make this useful for literally anything
-    /*public class BlueQuartz : ModItem
+    public class BlueQuartz : ModItem
     {
         public override void SetStaticDefaults()
         {
-            SacrificeTotal = (25);
+            Item.ResearchUnlockCount = (25);
         }
 
         public override void SetDefaults()
@@ -14,7 +17,7 @@
             Item.height = 20;
             Item.maxStack = 9999;
             Item.value = 10;
-            Item.rare = ItemRarityID.White;
+            Item.rare = ItemRarityID.Blue;
         }
-    }*/
+    }
 }

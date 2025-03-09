@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 //using MultiHitboxNPCLibrary;
 using Polarities.Content.Items.Placeable.Banners.Items;
+using Polarities.Content.Items.Materials.PreHardmode;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Content.Projectiles;
@@ -48,8 +49,8 @@ namespace Polarities.Content.NPCs.Enemies.GraniteCaves.PreHardmode
         public override void SetDefaults()
         {
             NPC.aiStyle = -1;
-            NPC.width = 18;
-            NPC.height = 18;
+            NPC.width = 32;
+            NPC.height = 30;
 
             NPC.defense = 8;
             NPC.damage = 36;
@@ -321,7 +322,7 @@ namespace Polarities.Content.NPCs.Enemies.GraniteCaves.PreHardmode
             npcLoot.Add(ItemDropRule.Common(ItemID.Granite, 1, 5, 10));
             npcLoot.Add(ItemDropRule.Common(ItemID.NightVisionHelmet, 30));
             npcLoot.Add(ItemDropRule.Common(ItemID.Geode, 20));
-            //TODO: npcLoot.Add(ItemDropRule.Common(ItemType<BlueQuartz>(), 2, 1, 2));
+            npcLoot.Add(ItemDropRule.Common(ItemType<BlueQuartz>(), 2, 1, 2));
         }
 
         public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)

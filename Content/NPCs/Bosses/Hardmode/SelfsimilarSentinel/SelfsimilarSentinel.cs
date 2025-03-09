@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
 using Polarities.Content.Projectiles;
+using Polarities.Content.Biomes.Fractal;
 using Polarities.Content.Buffs.Hardmode;
 using Polarities.Content.Items.Placeable;
 using Polarities.Content.Items.Weapons;
@@ -19,6 +20,7 @@ using System.Collections.Generic;
 using Polarities.Global;
 using Polarities.Core;
 using Terraria.Utilities;
+using Terraria.GameContent.Bestiary;
 using Polarities.Content.Items.Placeable.Blocks.Fractal;
 using Polarities.Content.NPCs.Enemies.HallowInvasion;
 using Terraria.DataStructures;
@@ -289,10 +291,22 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SelfsimilarSentinel
 		{
 			// DisplayName.SetDefault("Selfsimilar Sentinel");
 			Main.npcFrameCount[NPC.type] = 5;
-			NPCID.Sets.MustAlwaysDraw[NPC.type] = true;
-		}
 
-		public override void SetDefaults()
+            NPC.buffImmune[BuffID.Confused] = true;
+
+            NPCID.Sets.MustAlwaysDraw[NPC.type] = true;
+            NPCID.Sets.BossBestiaryPriority.Add(Type);
+        }
+
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.Info.AddRange(new IBestiaryInfoElement[] {
+				//flavor text
+				this.TranslatedBestiaryEntry()
+            });
+        }
+
+        public override void SetDefaults()
 		{
 			NPC.aiStyle = -1;
 			NPC.width = 64;
@@ -312,7 +326,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SelfsimilarSentinel
 			NPC.buffImmune[BuffID.Confused] = true;
 
 			Music = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/SentinelP1");
-		}
+
+            this.SetModBiome<FractalBiome>();
+        }
 
         //public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
 		//{

@@ -3,14 +3,15 @@
     "",
     "\\Content",
     "\\Content\\Items",
-    "\\Content\\Items\\Pets",
-    "\\Content\\Items\\Placeable\\MusicBoxes",
-    "\\Content\\Items\\Vanity\\Hardmode",
-    "\\Content\\NPCs",
-    "\\Content\\NPCs\\Bosses",
-    "\\Content\\NPCs\\Bosses\\Hardmode",
-    "\\Content\\NPCs\\Critters\\PreHardmode"
+    "\\Content\\Items\\Accessories\\Books",
+    "\\Content\\Items\\Accessories\\Books\\Hardmode",
+    "\\Content\\Items\\Armor\\Classless",
+    "\\Content\\Items\\Placeable",
+    "\\Content\\Items\\Placeable\\Trophies",
+    "\\Content\\Items\\Tools\\Hooks",
+    "\\Content\\Items\\Tools\\Hooks\\Hardmode",
+    "\\Content\\Items\\Vanity\\Hardmode"
   ],
-  "SelectedNode": "\\PolaritiesSystem.cs",
+  "SelectedNode": "\\Localization\\en-US.hjson",
   "PreviewInSolutionExplorer": false
 }

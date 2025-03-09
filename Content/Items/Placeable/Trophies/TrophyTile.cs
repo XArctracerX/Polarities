@@ -25,16 +25,6 @@ namespace Polarities.Content.Items.Placeable.Trophies
 
             AddMapEntry(new Color(120, 85, 60), CreateMapEntryName());
         }
-
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
-            int style = frameX / 54;
-            int itemType = TrophyBase.trophyIndexToItemType[style];
-            if (itemType != 0)
-            {
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 48, itemType);
-            }
-        }
     }
 
     public abstract class TrophyBase : ModItem

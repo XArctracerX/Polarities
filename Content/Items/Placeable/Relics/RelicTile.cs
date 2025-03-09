@@ -56,17 +56,7 @@ namespace Polarities.Content.Items.Placeable.Relics
             TileObjectData.addTile(Type);
 
             AddMapEntry(new Color(233, 207, 94), Language.GetText("MapObject.Relic"));
-        }
-
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
-            int style = frameX / FrameWidth;
-            int itemType = RelicBase.relicIndexToItemType[style];
-            if (itemType != 0)
-            {
-                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 48, 64, itemType);
-            }
-        }
+        }     
 
         public override bool CreateDust(int i, int j, ref int type)
         {

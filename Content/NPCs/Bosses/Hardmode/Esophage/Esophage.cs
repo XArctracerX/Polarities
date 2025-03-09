@@ -84,7 +84,6 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
 
             NPC.buffImmune[BuffID.Confused] = true;
 
-            Main.npcFrameCount[NPC.type] = 6;
             NPCID.Sets.TrailCacheLength[NPC.type] = 5;
             NPCID.Sets.TrailingMode[NPC.type] = 0;
 
@@ -106,8 +105,8 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
         public override void SetDefaults()
         {
             NPC.aiStyle = -1;
-            NPC.width = 60;
-            NPC.height = 60;
+            NPC.width = 76;
+            NPC.height = 182;
 
             NPC.defense = 30;
             NPC.damage = 60;
@@ -607,150 +606,31 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
             else
             {
                 NPC.rotation -= maxTurn;
-            }
-
-            //Animations!
-            NPC.frameCounter++;
-            if (NPC.frameCounter == 8)
-            {
-                NPC.frameCounter = 0;
-
-                //capsid animations
-                if (capsidOpen)
-                {
-                    if (capsidFrameY < 182 * 2)
-                    {
-                        capsidFrameY += 182;
-                    }
-                }
-                else
-                {
-                    if (capsidFrameY > 0)
-                    {
-                        capsidFrameY -= 182;
-                    }
-                }
-                capsidFrameX += 136;
-                if (capsidFrameX == 136 * 4)
-                {
-                    capsidFrameX = 0;
-                }
-
-                //mouth animations
-                if (jawsOpen)
-                {
-                    if (headFrameY < 182 * 2)
-                    {
-                        headFrameY += 182;
-                    }
-                }
-                else
-                {
-                    if (headFrameY > 0)
-                    {
-                        headFrameY -= 182;
-                    }
-                }
-                headFrameX += 136;
-                if (headFrameX == 136 * 4)
-                {
-                    headFrameX = 0;
-                }
-
-                //blinking
-                if (blinking || eyesFrameY != 0)
-                {
-                    eyesFrameY += 182;
-                    if (eyesFrameY == 182 * 4)
-                    {
-                        eyesFrameY = 0;
-                    }
-                }
-
-                //scythe swinging
-                if (!scytheLeftSwinging)
-                {
-                    if (jawsOpen)
-                    {
-                        if (scytheLeftFrameY < 182 * 2)
-                        {
-                            scytheLeftFrameY += 182;
-                        }
-                    }
-                    else
-                    {
-                        if (scytheLeftFrameY > 0)
-                        {
-                            scytheLeftFrameY -= 182;
-                        }
-                    }
-                }
-                if (!scytheRightSwinging)
-                {
-                    if (jawsOpen)
-                    {
-                        if (scytheRightFrameY < 182 * 2)
-                        {
-                            scytheRightFrameY += 182;
-                        }
-                    }
-                    else
-                    {
-                        if (scytheRightFrameY > 0)
-                        {
-                            scytheRightFrameY -= 182;
-                        }
-                    }
-                }
-            }
-            //more scythe swinging
-            scytheFrameCounter++;
-            if (scytheFrameCounter == 6)
-            {
-                scytheFrameCounter = 0;
-                if (scytheLeftSwinging)
-                {
-                    scytheLeftFrameY += 182;
-                    if (scytheLeftFrameY == 182 * 4)
-                    {
-                        scytheLeftFrameY = 0;
-                        scytheLeftSwinging = false;
-                    }
-                }
-                if (scytheRightSwinging)
-                {
-                    scytheRightFrameY += 182;
-                    if (scytheRightFrameY == 182 * 4)
-                    {
-                        scytheRightFrameY = 0;
-                        scytheRightSwinging = false;
-                    }
-                }
-            }       
+            }    
         }
 
-        public override void FindFrame(int frameHeight)
-        {
-            if (NPC.IsABestiaryIconDummy)
-            {
-                NPC.frameCounter++;
-                if (NPC.frameCounter == 8)
-                {
-                    NPC.frameCounter = 0;
+        //public override void FindFrame(int frameHeight)
+        //{
+            //if (NPC.IsABestiaryIconDummy)
+            //{
+                //NPC.frameCounter++;
+                //if (NPC.frameCounter == 8)
+                //{
+                    //NPC.frameCounter = 0;
 
-                    capsidFrameX += 136;
-                    if (capsidFrameX == 136 * 4)
-                    {
-                        capsidFrameX = 0;
-                    }
-                    headFrameX += 136;
-                    if (headFrameX == 136 * 4)
-                    {
-                        headFrameX = 0;
-                    }
-                }
-            }
-        }
+                    //capsidFrameX += 136;
+                    //if (capsidFrameX == 136 * 4)
+                    //{
+                        //capsidFrameX = 0;
+                    //}
+                    //headFrameX += 136;
+                    //if (headFrameX == 136 * 4)
+                    //{
+                        //headFrameX = 0;
+                    //}
+                //}
+            //}
+        //}
 
         private bool scytheLeftSwinging;
         private bool scytheRightSwinging;
@@ -764,15 +644,11 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
         private int headFrameY;
         private int eyesFrameY;
 
-        public static Asset<Texture2D> CapsidTexture;
-        public static Asset<Texture2D> ScytheTexture;
-        public static Asset<Texture2D> EyesTexture;
-
-        public override void Load()
-        {
-            CapsidTexture = Request<Texture2D>(Texture + "_Capsid");
-            ScytheTexture = Request<Texture2D>(Texture + "_Scythe");
-            EyesTexture = Request<Texture2D>(Texture + "_Eyes");
+        //public override void Load()
+        //{
+            //CapsidTexture = Request<Texture2D>(Texture + "_Capsid");
+            //ScytheTexture = Request<Texture2D>(Texture + "_Scythe");
+            //EyesTexture = Request<Texture2D>(Texture + "_Eyes");
 
             /*IL.Terraria.Main.UpdateMenu += Main_UpdateMenu;
 		}
@@ -813,35 +689,28 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
 					}
 				}
 			});*/
-        }
+        //}
 
-        public override void Unload()
-        {
-            CapsidTexture = null;
-            ScytheTexture = null;
-            EyesTexture = null;
-        }
+        //public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        //{
+            //if (NPC.IsABestiaryIconDummy)
+            //{
+                //EsophageClaw legDummy = GetModNPC(NPCType<EsophageClaw>()) as EsophageClaw;
+                //for (int i = -LEGCOUNT / 2; i <= LEGCOUNT / 2; i++)
+                //{
+                    //if (i != 0)
+                        //legDummy.DrawAt(NPC, NPC.Center + new Vector2((float)i / LEGCOUNT * 300, 240), spriteBatch, screenPos, drawColor, true);
+                //}
+            //}
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-        {
-            if (NPC.IsABestiaryIconDummy)
-            {
-                EsophageClaw legDummy = GetModNPC(NPCType<EsophageClaw>()) as EsophageClaw;
-                for (int i = -LEGCOUNT / 2; i <= LEGCOUNT / 2; i++)
-                {
-                    if (i != 0)
-                        legDummy.DrawAt(NPC, NPC.Center + new Vector2((float)i / LEGCOUNT * 300, 240), spriteBatch, screenPos, drawColor, true);
-                }
-            }
+            //spriteBatch.Draw(CapsidTexture.Value, NPC.Center - screenPos, new Rectangle(capsidFrameX, capsidFrameY, 136, 182), NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, new Vector2(68, 136), NPC.scale, SpriteEffects.None, 0f);
+            //spriteBatch.Draw(ScytheTexture.Value, NPC.Center - screenPos, new Rectangle(0, scytheLeftFrameY, 136, 182), NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, new Vector2(68, 136), NPC.scale, SpriteEffects.None, 0f);
+            //spriteBatch.Draw(ScytheTexture.Value, NPC.Center - screenPos, new Rectangle(0, scytheRightFrameY, 136, 182), NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, new Vector2(68, 136), NPC.scale, SpriteEffects.FlipHorizontally, 0f);
+            //spriteBatch.Draw(TextureAssets.Npc[Type].Value, NPC.Center - screenPos, new Rectangle(headFrameX, headFrameY, 136, 182), NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, new Vector2(68, 136), NPC.scale, SpriteEffects.None, 0f);
+            //spriteBatch.Draw(EyesTexture.Value, NPC.Center - screenPos, new Rectangle(0, eyesFrameY, 136, 182), NPC.GetNPCColorTintedByBuffs(Color.White), NPC.rotation, new Vector2(68, 136), NPC.scale, SpriteEffects.None, 0f);
 
-            spriteBatch.Draw(CapsidTexture.Value, NPC.Center - screenPos, new Rectangle(capsidFrameX, capsidFrameY, 136, 182), NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, new Vector2(68, 136), NPC.scale, SpriteEffects.None, 0f);
-            spriteBatch.Draw(ScytheTexture.Value, NPC.Center - screenPos, new Rectangle(0, scytheLeftFrameY, 136, 182), NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, new Vector2(68, 136), NPC.scale, SpriteEffects.None, 0f);
-            spriteBatch.Draw(ScytheTexture.Value, NPC.Center - screenPos, new Rectangle(0, scytheRightFrameY, 136, 182), NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, new Vector2(68, 136), NPC.scale, SpriteEffects.FlipHorizontally, 0f);
-            spriteBatch.Draw(TextureAssets.Npc[Type].Value, NPC.Center - screenPos, new Rectangle(headFrameX, headFrameY, 136, 182), NPC.GetNPCColorTintedByBuffs(drawColor), NPC.rotation, new Vector2(68, 136), NPC.scale, SpriteEffects.None, 0f);
-            spriteBatch.Draw(EyesTexture.Value, NPC.Center - screenPos, new Rectangle(0, eyesFrameY, 136, 182), NPC.GetNPCColorTintedByBuffs(Color.White), NPC.rotation, new Vector2(68, 136), NPC.scale, SpriteEffects.None, 0f);
-
-            return false;
-        }
+            //return false;
+        //}
 
         public override void BossLoot(ref string name, ref int potionType)
         {
