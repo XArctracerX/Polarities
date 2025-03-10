@@ -30,6 +30,7 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.Enums;
 using static Terraria.ModLoader.ModContent;
 
 namespace Polarities
@@ -118,6 +119,7 @@ namespace Polarities
         public const int MECH_MASK_COOLDOWN = 20;
         public const int MECH_TAIL_COOLDOWN = 60;
 
+        //public bool fractalDimensionRespawn;
 
         //direction of dash
         public int dashDir;
@@ -210,6 +212,8 @@ namespace Polarities
             convectiveDash = false;
             stormcloudArmor = false;
 
+            fractalDimensionRespawn = false;
+
             if (skeletronBookCooldown > 0) skeletronBookCooldown--;
             if (beeRingTimer > 0) beeRingTimer--;
             if (limestoneShieldCooldown > 0) limestoneShieldCooldown--;
@@ -276,6 +280,33 @@ namespace Polarities
             maxBookSlots = 1f;
         }
 
+
+        public static void HookPlayerSpawn(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+            if (!c.TryGotoNext(i => i.MatchLdarg(0)))
+                return; //hook not found
+
+            c.Index--;
+
+            c.EmitDelegate<Action>(() => {
+                if (FractalSubworld.Active)
+                {
+                    if (!Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().fractalDimensionRespawn || !Main.LocalPlayer.dead)
+                    {
+                        if (!FractalSubworld.entering)
+                        {
+                            FractalSubworld.DoExit();
+                        }
+                    }
+                    else
+                    {
+                        FractalSubworld.ResetDimension();
+                    }
+                }
+            });
+        }
 
         public override void PostUpdateEquips()
         {

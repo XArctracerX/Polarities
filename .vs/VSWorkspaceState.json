@@ -4,14 +4,14 @@
     "\\Content",
     "\\Content\\Items",
     "\\Content\\Items\\Weapons",
-    "\\Content\\Items\\Weapons\\Magic",
-    "\\Content\\Items\\Weapons\\Magic\\Staffs",
+    "\\Content\\Items\\Weapons\\Ranged",
+    "\\Content\\Items\\Weapons\\Summon\\Orbs",
+    "\\Content\\Items\\Weapons\\Summon\\Orbs\\PreHardmode",
     "\\Content\\NPCs",
     "\\Content\\NPCs\\Bosses",
-    "\\Content\\NPCs\\Bosses\\Hardmode",
-    "\\Content\\NPCs\\Bosses\\Hardmode\\MagnetonElectris",
-    "\\Localization"
+    "\\Content\\NPCs\\Bosses\\PreHardmode",
+    "\\Content\\NPCs\\Bosses\\PreHardmode\\RiftDenizen"
   ],
-  "SelectedNode": "\\Content\\NPCs\\Bosses\\Hardmode\\MagnetonElectris\\Polarities.cs",
+  "SelectedNode": "\\Content\\Items\\Weapons\\Ranged\\Flawless\\BeyondBow.cs",
   "PreviewInSolutionExplorer": false
 }

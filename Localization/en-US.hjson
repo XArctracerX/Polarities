@@ -455,6 +455,11 @@ Mods: {
 				DisplayName: Phagocyte Buff
 				Description: Mods.Polarities.Buffs.PhagocyteBuff.Description
 			}
+
+			Observed: {
+				DisplayName: Observed
+				Description: Mods.Polarities.Buffs.Observed.Description
+			}
 		}
 
 		Items: {
@@ -667,6 +672,15 @@ Mods: {
 			BloodBearer: {
 				DisplayName: Blood Bearer
 				Tooltip: Summons tentacles around the player to spew blood at enemies
+			}
+
+			DimensionalAnchor: {
+				DisplayName: Dimensional Anchor
+				Tooltip:
+					'''
+					Causes you to respawn in the fractal dimension if you die there
+					Works when in the inventory
+					'''
 			}
 
 			//Summon Items
@@ -1057,6 +1071,11 @@ Mods: {
 
 			HemorrphageMask: {
 				DisplayName: Hemorrphage Mask
+				Tooltip: ""
+			}
+
+			RiftDenizenMask: {
+				DisplayName: Rift Denizen Mask
 				Tooltip: ""
 			}
 
@@ -2078,6 +2097,43 @@ Mods: {
 				Tooltip: Sticks to enemies, dealing damage over time that increases significantly the more phagocytes latch on
 			}
 
+			BeyondBow: {
+				DisplayName: Beyond Bow
+				Tooltip:
+					'''
+					Shoots a barrage of arrows from a portal that focuses over time
+					Converts wooden arrows into piercing rift bolts that go through portals to target the cursor again
+					'''
+			}
+
+			Parallaxian: {
+				DisplayName: Parallaxian
+				Tooltip: Shoots bullets at the cursor from the third dimension
+			}
+
+			InstabilityScepter: {
+				DisplayName: Instability Scepter
+				Tooltip: Summons a short-lived rift
+			}
+
+			RiftOnAStick: {
+				DisplayName: Rift On A Stick
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.WarhammerBase}
+					Right click to shoot a rift beam
+					'''
+			}
+
+			ObserverOrb: {
+				DisplayName: Observer Orb
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.OrbBase}
+					Summons a fractal rift to watch your enemies, granting minions a 25% chance to critically strike enemies within its range
+					'''
+			}
+
 			//Critter Items
 			BabyWandererItem: {
 				DisplayName: Baby Wanderer
@@ -2186,6 +2242,11 @@ Mods: {
 				Tooltip: ""
 			}
 
+			RiftDenizenRelic: {
+				DisplayName: Rift Denizen Relic
+				Tooltip: ""
+			}
+
 			//Trophies
 			ConvectiveWandererTrophy: {
 				DisplayName: Convective Wanderer Trophy
@@ -2219,6 +2280,11 @@ Mods: {
 
 			HemorrphageTrophy: {
 				DisplayName: Hemorrphage Trophy
+				Tooltip: ""
+			}
+
+			RiftDenizenTrophy: {
+				DisplayName: Rift Denizen Trophy
 				Tooltip: ""
 			}
 
@@ -3888,6 +3954,11 @@ Mods: {
 			MagnetonRing.DisplayName: Magneton Ring
 			MagnetonRing2.DisplayName: Magneton Ring 2
 			SmallEMVortex.DisplayName: Small EM Vortex
+			BeyondBowProjectile.DisplayName: Beyond Bow Projectile
+			BeyondBowRift.DisplayName: Beyond Bow Rift
+			ParallaxianProjectile.DisplayName: Parallaxian Projectile
+			InstabilityScepterProjectile.DisplayName: Instability Scepter Projectile
+			ObserverOrbMinion.DisplayName: Observer Orb Minion
 		}
 
 		Bestiary: {

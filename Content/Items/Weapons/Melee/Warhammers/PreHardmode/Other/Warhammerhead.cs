@@ -12,6 +12,8 @@ namespace Polarities.Content.Items.Weapons.Melee.Warhammers.PreHardmode.Other
         public override int HammerHeadSize => 21;
         public override int DefenseLoss => 16;
         public override int DebuffTime => 1200;
+        public override float SwingTime => 20f;
+        public override float SwingTilt => 0.1f;
 
         public override void SetDefaults()
         {

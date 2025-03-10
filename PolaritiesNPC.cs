@@ -66,6 +66,8 @@ namespace Polarities
         public bool spiritBite;
         public int spiritBiteLevel;
 
+        public int observers;
+
         //vanilla NPC.takenDamageMultiplier doesn't have any effect when less than 1, so we do this instead
         public float neutralTakenDamageMultiplier = 1f;
 
@@ -347,6 +349,8 @@ namespace Polarities
                 spiritBiteLevel = 0;
             }
             spiritBite = false;
+
+            observers = 0;
         }
 
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
