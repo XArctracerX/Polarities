@@ -39,9 +39,8 @@ namespace Polarities.Content.Items.Weapons.Magic.Staffs.PreHardmode
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            position = Main.MouseWorld;
-            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-            return true;
+            Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, type, damage, knockback, player.whoAmI);
+            return false;
         }
     }
 

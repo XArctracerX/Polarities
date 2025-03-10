@@ -50,7 +50,13 @@ namespace Polarities.Content.Items.Weapons.Ranged.Flawless
 
 		public override void HoldItem(Player player)
 		{
-			if (player.channel)
+            if (player.channel && !player.HasAmmo(Item))
+            {
+                player.channel = false;
+
+                chargeTime = 0;
+            }
+            else if (player.channel)
 			{
                 Vector2 velocity = (Main.MouseWorld - player.MountedCenter).SafeNormalize(Vector2.Zero) * Item.shootSpeed;
                 player.itemRotation = (Main.MouseWorld - player.MountedCenter).ToRotation();
@@ -71,24 +77,30 @@ namespace Polarities.Content.Items.Weapons.Ranged.Flawless
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			if (type == ProjectileID.WoodenArrowFriendly)
-            {
-				type = ProjectileType<BeyondBowProjectile>();
-            }
 
-			float lineDistance = 40f;
-			float lineRadius = Math.Min(62f, chargeTime / 20f) * 16f / 20f;
-			float angleVariance = 400f / (chargeTime + 400f);
+            Projectile.NewProjectile(source, position, velocity, type == ProjectileID.WoodenArrowFriendly ? ProjectileType<BeyondBowProjectile>() : type, damage, knockback, player.whoAmI);
+            
+			//if (type == ProjectileID.WoodenArrowFriendly)
+            //{
+				//type = ProjectileType<BeyondBowProjectile>();
+            //}
 
-			position = player.Center;
+            float lineDistance = 40f;
+            float lineRadius = Math.Min(62f, chargeTime / 20f) * 16f / 20f;
+            float angleVariance = 400f / (chargeTime + 400f);
 
-			if (type == ProjectileType<BeyondBowProjectile>())
-				position -= velocity * 2;
+            position = player.Center + new Vector2(velocity.X, velocity.Y).SafeNormalize(Vector2.Zero) * lineDistance + new Vector2(-velocity.Y, velocity.X).SafeNormalize(Vector2.Zero) * lineRadius * (float)Math.Sin(chargeParity * MathHelper.Pi + chargeTime / 40f);
+            Vector2 speed = ((Main.MouseWorld - position).SafeNormalize(Vector2.Zero) * new Vector2(velocity.X, velocity.Y).Length()).RotatedBy(angleVariance * (float)Math.Sin(chargeParity * MathHelper.Pi + chargeTime / 40f));
 
-			chargeParity = (chargeParity + 1) % 2;
+            position -= speed * 2;
 
-			return true;
-		}
+            velocity.X = speed.X;
+            velocity.Y = speed.Y;
+
+            chargeParity = (chargeParity + 1) % 2;
+
+            return true;
+        }
 
 		public override Vector2? HoldoutOffset()
 		{

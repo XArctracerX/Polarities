@@ -45,13 +45,15 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.PreHardmode
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            position = Main.MouseWorld;
-            float distIndex = Main.rand.NextFloat(-1, 1);
-            //Vector2 speed = new Vector2(velocity).RotatedByRandom(MathHelper.TwoPi) * Math.Sqrt(1 - distIndex * distIndex);
+            type = ProjectileType<ParallaxianProjectile>();
 
-            Projectile.NewProjectile(source, position + new Vector2(Main.rand.NextFloat(10)), velocity, type, damage, knockback, player.whoAmI, distIndex);
+            position = player.MountedCenter + (player.MountedCenter - Main.MouseWorld).SafeNormalize(Vector2.Zero).RotatedByRandom(MathHelper.PiOver4) * -100;
+            velocity = (Main.MouseWorld - position).SafeNormalize(Vector2.Zero) * velocity.Length();
+
+            Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+
             return false;
-		}
+        }
 
         public override Vector2? HoldoutOffset()
         {
