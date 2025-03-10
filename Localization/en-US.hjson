@@ -3582,6 +3582,8 @@ Mods: {
 			Orthoconic.DisplayName: Orthoconic
 			OrthoconicHitbox.DisplayName: Orthoconic Hitbox
 			Instability.DisplayName: Instability
+			Electris.DisplayName: Electris
+			Magneton.DisplayName: Magneton
 		}
 
 		Projectiles: {
@@ -3863,6 +3865,29 @@ Mods: {
 			VolatileHeartBloodsplosion.DisplayName: Volatile Heart Bloodsplosion
 			VolatileHeartProjectile.DisplayName: Volatile Heart Projectile
 			PhagocyteProjectile.DisplayName: Phagocyte Projectile
+			BlastTelegraph.DisplayName: Blast Telegraph
+			ElectricBlast.DisplayName: Electric Blast
+			ElectrisDeathray.DisplayName: Electris Deathray
+			ElectrisLightningBolt.DisplayName: Electris Lightning Bolt
+			ElectrisLightningBoltTelegraph.DisplayName: Electris Lightning Bolt Telegraph
+			ElectrisPreLargeVortexProjectile.DisplayName: Electris Pre Large Vortex Projectile
+			ElectrisPreSmallVortexProjectile.DisplayName: Electris Pre Small Vortex Projectile
+			ElectrisRing.DisplayName: Electris Ring
+			ElectrisRing2.DisplayName: Electris Ring 2
+			ElectromagneticDeathray.DisplayName: Electromagnetic Deathray
+			ElectromagneticDeathray2.DisplayName: Electromagnetic Deathray2
+			ElectromagneticDeathray3.DisplayName: Electromagnetic Deathray3
+			ElectronCloud.DisplayName: Electron Cloud
+			LargeEMVortex.DisplayName: Large EM Vortex
+			MagneticBlast.DisplayName: Magnetic Blast
+			MagnetonAura.DisplayName: Magneton Aura
+			MagnetonAura2.DisplayName: Magneton Aura 2
+			MagnetonDeathray.DisplayName: Magneton Deathray
+			MagnetonPreLargeVortexProjectile.DisplayName: Magneton Pre Large Vortex Projectile
+			MagnetonPreSmallVortexProjectile.DisplayName: Magneton Pre Small Vortex Projectile
+			MagnetonRing.DisplayName: Magneton Ring
+			MagnetonRing2.DisplayName: Magneton Ring 2
+			SmallEMVortex.DisplayName: Small EM Vortex
 		}
 
 		Bestiary: {

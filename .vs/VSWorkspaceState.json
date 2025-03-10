@@ -4,13 +4,14 @@
     "\\Content",
     "\\Content\\Items",
     "\\Content\\Items\\Weapons",
-    "\\Content\\Items\\Weapons\\Melee\\Warhammers",
-    "\\Content\\Items\\Weapons\\Melee\\Warhammers\\PreHardmode",
-    "\\Content\\Items\\Weapons\\Melee\\Warhammers\\PreHardmode\\Metal",
-    "\\Content\\Items\\Weapons\\Ranged",
-    "\\Content\\Items\\Weapons\\Ranged\\Guns",
-    "\\Content\\Items\\Weapons\\Ranged\\Guns\\Hardmode"
+    "\\Content\\Items\\Weapons\\Magic",
+    "\\Content\\Items\\Weapons\\Magic\\Staffs",
+    "\\Content\\NPCs",
+    "\\Content\\NPCs\\Bosses",
+    "\\Content\\NPCs\\Bosses\\Hardmode",
+    "\\Content\\NPCs\\Bosses\\Hardmode\\MagnetonElectris",
+    "\\Localization"
   ],
-  "SelectedNode": "\\Content\\Items\\Weapons\\Ranged\\Guns\\Hardmode\\Hemophobia.cs",
+  "SelectedNode": "\\Content\\NPCs\\Bosses\\Hardmode\\MagnetonElectris\\Polarities.cs",
   "PreviewInSolutionExplorer": false
 }
