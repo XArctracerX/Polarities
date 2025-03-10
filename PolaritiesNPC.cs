@@ -17,6 +17,7 @@ using Polarities.Content.Items.Armor.Flawless.MechaMayhemArmor;
 using Polarities.Content.Items.Accessories.Movement.Hardmode;
 using Polarities.Content.NPCs.TownNPCs.PreHardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
+using Polarities.Content.Items.Weapons.Melee.Boomerangs.Hardmode;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -56,6 +57,7 @@ namespace Polarities
         public int chlorophyteDarts;
         public int contagunPhages;
         public int boneShards;
+        public bool phagocytes;
 
         public int desiccation;
         public int incineration;
@@ -332,6 +334,7 @@ namespace Polarities
             tentacleClubs = 0;
             chlorophyteDarts = 0;
             boneShards = 0;
+            phagocytes = false;
 
             desiccation = 0;
             incineration = 0;
@@ -379,19 +382,19 @@ namespace Polarities
         {
             if (!npc.buffImmune[BuffID.BoneJavelin])
             {
-                //if (tentacleClubs > 0)
-                //{
-                    //if (npc.lifeRegen > 0)
-                    //{
-                        //npc.lifeRegen = 0;
-                    //}
-                    //int amountLoss = tentacleClubs * 10;
-                    //npc.lifeRegen -= amountLoss * 2;
-                    //if (damage < amountLoss)
-                    //{
-                        //damage = amountLoss;
-                    //}
-                //}
+                if (tentacleClubs > 0)
+                {
+                    if (npc.lifeRegen > 0)
+                    {
+                        npc.lifeRegen = 0;
+                    }
+                    int amountLoss = tentacleClubs * 10;
+                    npc.lifeRegen -= amountLoss * 2;
+                    if (damage < amountLoss)
+                    {
+                        damage = amountLoss;
+                    }
+                }
                 if (chlorophyteDarts > 0)
                 {
                     if (npc.lifeRegen > 0)
@@ -405,32 +408,53 @@ namespace Polarities
                         damage = amountLoss;
                     }
                 }
-                //if (contagunPhages > 0)
-                //{
-                    //if (npc.lifeRegen > 0)
-                    //{
-                        //npc.lifeRegen = 0;
-                    //}
-                    //int amountLoss = contagunPhages * 10;
-                    //npc.lifeRegen -= amountLoss * 2;
-                    //if (damage < amountLoss)
-                    //{
-                        //damage = amountLoss;
-                    //}
-                //}
-                //if (boneShards > 0)
-                //{
-                    //if (npc.lifeRegen > 0)
-                    //{
-                        //npc.lifeRegen = 0;
-                    //}
-                    //int amountLoss = boneShards * 2;
-                    //npc.lifeRegen -= amountLoss * 2;
-                    //if (damage < amountLoss)
-                    //{
-                        //damage = amountLoss;
-                    //}
-                //}
+                if (contagunPhages > 0)
+                {
+                    if (npc.lifeRegen > 0)
+                    {
+                        npc.lifeRegen = 0;
+                    }
+                    int amountLoss = contagunPhages * 10;
+                    npc.lifeRegen -= amountLoss * 2;
+                    if (damage < amountLoss)
+                    {
+                        damage = amountLoss;
+                    }
+                }
+                if (phagocytes)
+                {
+                    if (npc.lifeRegen > 0)
+                    {
+                        npc.lifeRegen = 0;
+                    }
+                    int phagocyteCount = 0;
+                    for (int i = 0; i < Main.projectile.Length; i++)
+                    {
+                        Projectile p = Main.projectile[i];
+                        if (p.active && p.type == ProjectileType<PhagocyteProjectile>() && p.ai[0] == 1f && p.ai[1] == npc.whoAmI)
+                        {
+                            phagocyteCount++;
+                        }
+                    }
+                    npc.lifeRegen -= phagocyteCount * phagocyteCount * 2;
+                    if (damage < phagocyteCount * phagocyteCount)
+                    {
+                        damage = phagocyteCount * phagocyteCount;
+                    }
+                }
+                if (boneShards > 0)
+                {
+                    if (npc.lifeRegen > 0)
+                    {
+                        npc.lifeRegen = 0;
+                    }
+                    int amountLoss = boneShards * 2;
+                    npc.lifeRegen -= amountLoss * 2;
+                    if (damage < amountLoss)
+                    {
+                        damage = amountLoss;
+                    }
+                }
             }
             if (desiccation > 60 * 10)
             {

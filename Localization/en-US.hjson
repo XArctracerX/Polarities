@@ -450,6 +450,11 @@ Mods: {
 				PostDendriticEnergy: You can now mine dendritic energy, given a powerful enough pickaxe
 				PostSentinel: You are attracting stronger fractal enemies
 			}
+
+			PhagocyteBuff: {
+				DisplayName: Phagocyte Buff
+				Description: Mods.Polarities.Buffs.PhagocyteBuff.Description
+			}
 		}
 
 		Items: {
@@ -659,6 +664,11 @@ Mods: {
 				Tooltip: Grants a wall-summoning dash
 			}
 
+			BloodBearer: {
+				DisplayName: Blood Bearer
+				Tooltip: Summons tentacles around the player to spew blood at enemies
+			}
+
 			//Summon Items
 			AltBiomeMimicSummon: {
 				DisplayName: Weird Key of Night
@@ -773,6 +783,11 @@ Mods: {
 
 			ConvectiveWandererBag: {
 				DisplayName: Treasure Bag (Convective Wanderer)
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			HemorrphageBag: {
+				DisplayName: Treasure Bag (Hemorrphage)
 				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 			}
 
@@ -2036,6 +2051,31 @@ Mods: {
 			PearlwoodWarhammer: {
 				DisplayName: Pearlwood Warhammer
 				Tooltip: "{$Mods.Polarities.ItemTooltip.WarhammerBase}"
+			}
+
+			BleedingSky: {
+				DisplayName: Bleeding Sky
+				Tooltip: ""
+			}
+
+			BloodDicer: {
+				DisplayName: Blood Dicer
+				Tooltip: Shoots sets of four homing bloodsaws
+			}
+
+			Hemophobia: {
+				DisplayName: Hemophobia
+				Tooltip: Creates blood explosions on striking enemies
+			}
+
+			VolatileHeart: {
+				DisplayName: Volatile Heart
+				Tooltip: Hitting enemies has a chance to create damaging bloodsplosions
+			}
+
+			Phagocyte: {
+				DisplayName: Phagocyte
+				Tooltip: Sticks to enemies, dealing damage over time that increases significantly the more phagocytes latch on
 			}
 
 			//Critter Items
@@ -3812,6 +3852,17 @@ Mods: {
 			EndlessHookProjectile.DisplayName: Endless Hook Projectile
 			HemolyticHookProjectile.DisplayName: Hemolytic Hook Projectile
 			BloodSpider.DisplayName: Blood Spider
+			FriendlyBloodRain.DisplayName: Friendly Blood Rain
+			BloodStalactite.DisplayName: Blood Stalactite
+			BloodDrop.DisplayName: Blood Drop
+			FriendlyBloodsaw.DisplayName: Friendly Bloodsaw
+			Bloodsplosion.DisplayName: Bloodsplosion
+			BloodsplosionProjectile.DisplayName: Bloodsplosion Projectile
+			BloodBearerTentacle.DisplayName: Blood Bearer Tentacle
+			FriendlyCirclingBloodShot.DisplayName: Friendly Circling Blood Shot
+			VolatileHeartBloodsplosion.DisplayName: Volatile Heart Bloodsplosion
+			VolatileHeartProjectile.DisplayName: Volatile Heart Projectile
+			PhagocyteProjectile.DisplayName: Phagocyte Projectile
 		}
 
 		Bestiary: {
@@ -3895,7 +3946,8 @@ Mods: {
 			FrondBud: A juvenile Fractal Frond that has not yet developed any offensive capabilities, its instinctual teleportation nonetheless allows it to avoid predators and reach maturity.
 			FractusSpore: When a fractus reaches maturity, it begins to produce these strange hopping creatures, which rove the wastes looking for a spot to lay root and grow. Plant, animal, or something more? Another mystery of the fractals...
 			Sparkfly: A surprisingly mundane bug found high in the fractal skies, its abdomen contains a mote of dendritic energy that blinks in strange sequences to communicate. Just don't look too closely...
-			Ghostwriter: A friendly specter, she prefers spending her endless freetime reading and writing her very own literature. She�s rather sociable, being able to slip through walls opens up many avenues for gossip.
+			Hemorrphage: A much stronger version of Esophage, fought during a blood moon. Because the original wasn't creepy enough, this one comes with more, longer, and spindlier legs.
+			Ghostwriter: A friendly specter, she prefers spending her endless freetime reading and writing her very own literature. She's rather sociable, being able to slip through walls opens up many avenues for gossip.
 		}
 
 		Biomes: {

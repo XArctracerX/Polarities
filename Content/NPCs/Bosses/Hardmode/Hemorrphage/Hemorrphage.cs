@@ -1,15 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Polarities.Content.Projectiles;
-//using Polarities.Buffs;
 using Polarities.Core;
 using Polarities.Global;
-//using Polarities.Items;
-//using Polarities.Items.Placeable;
-//using Polarities.Items.Weapons;
-//using Polarities.Items.Armor;
-//using Polarities.Items.Accessories;
+using Polarities.Content.Items.Tools.Hooks.Hardmode;
+using Polarities.Content.Items.Vanity.Hardmode;
+using Polarities.Content.Items.Consumables.TreasureBags.Hardmode;
 using Polarities.Content.Items.Placeable.Trophies;
+using Polarities.Content.Items.Placeable.Relics;
+using Polarities.Content.Items.Materials.Hardmode;
+using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
+using Polarities.Content.Items.Pets.Hardmode;
+using Polarities.Content.Items.Weapons.Melee.Boomerangs.Hardmode;
+using Polarities.Content.Items.Weapons.Magic.Staffs.Hardmode;
+using Polarities.Content.Items.Weapons.Magic.Books.Hardmode;
+using Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode;
 using ReLogic.Content;
 using System;
 using System.Collections.Generic;
@@ -827,48 +832,22 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
             potionType = ItemID.GreaterHealingPotion;
         }
 
-        public override void OnKill()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //if (Main.rand.NextBool(10) || NPC.GetGlobalNPC<PolaritiesNPC>().noHit)
-            //{
-            //    Item.NewItem(NPC.getRect(), ItemType<HemorrphageTrophy>());
-            //}
+            npcLoot.Add(new FlawlessOrRandomDropRule(ItemType<HemorrphageTrophy>(), 10));
+            npcLoot.Add(ItemDropRule.BossBag(ItemType<HemorrphageBag>()));
+            npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ItemType<HemorrphageRelic>()));
+            npcLoot.Add(ModUtils.MasterModeDropOnAllPlayersOrFlawless(ItemType<BloodyBloodCell>(), 4));
 
-            //if (Main.expertMode)
-            //{
-            //    NPC.DropBossBags();
-            //    if (Main.rand.NextBool(4))
-            //    {
-            //        Item.NewItem(NPC.getRect(), ItemType<BloodyBloodCell>());
-            //    }
-            //}
-            //else
-            //{
-            //    if (Main.rand.NextBool(7))
-            //    {
-            //        Item.NewItem(NPC.getRect(), ItemType<HemorrphageMask>());
-            //    }
-            //    Item.NewItem(NPC.getRect(), ItemType<HemorrhagicFluid>(), Main.rand.Next(10, 21));
-            //    if (Main.rand.NextBool(5))
-            //    {
-            //        Item.NewItem(NPC.getRect(), ItemType<VolatileHeart>());
-            //    }
-            //    switch (Main.rand.Next(4))
-            //    {
-            //        case 0:
-            //            Item.NewItem(NPC.getRect(), ItemType<BloodDicer>());
-            //            break;
-            //        case 1:
-            //            Item.NewItem(NPC.getRect(), ItemType<Hemophobia>());
-            //            break;
-            //        case 2:
-            //            Item.NewItem(NPC.getRect(), ItemType<Phagocyte>());
-            //            break;
-            //        case 3:
-            //            Item.NewItem(NPC.getRect(), ItemType<BleedingSky>());
-            //            break;
-            //    }
-            //}
+            //normal mode loot
+            npcLoot.Add(ItemDropRule.Common(ItemType<HemorrhagicFluid>(), 1, 15, 20));
+            LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+            notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<HemorrphageMask>(), 7));
+            notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<VolatileHeart>(), 4));
+            notExpertRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ItemType<BleedingSky>(), ItemType<BloodDicer>(), ItemType<Hemophobia>(), ItemType<Phagocyte>()));
+            npcLoot.Add(notExpertRule);
+
+            //npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<Contagun>()));
         }
 
         public override void SendExtraAI(BinaryWriter writer)

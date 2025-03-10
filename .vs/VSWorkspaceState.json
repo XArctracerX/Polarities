@@ -3,15 +3,14 @@
     "",
     "\\Content",
     "\\Content\\Items",
-    "\\Content\\Items\\Accessories\\Books",
-    "\\Content\\Items\\Accessories\\Books\\Hardmode",
-    "\\Content\\Items\\Armor\\Classless",
-    "\\Content\\Items\\Placeable",
-    "\\Content\\Items\\Placeable\\Trophies",
-    "\\Content\\Items\\Tools\\Hooks",
-    "\\Content\\Items\\Tools\\Hooks\\Hardmode",
-    "\\Content\\Items\\Vanity\\Hardmode"
+    "\\Content\\Items\\Weapons",
+    "\\Content\\Items\\Weapons\\Melee\\Warhammers",
+    "\\Content\\Items\\Weapons\\Melee\\Warhammers\\PreHardmode",
+    "\\Content\\Items\\Weapons\\Melee\\Warhammers\\PreHardmode\\Metal",
+    "\\Content\\Items\\Weapons\\Ranged",
+    "\\Content\\Items\\Weapons\\Ranged\\Guns",
+    "\\Content\\Items\\Weapons\\Ranged\\Guns\\Hardmode"
   ],
-  "SelectedNode": "\\Localization\\en-US.hjson",
+  "SelectedNode": "\\Content\\Items\\Weapons\\Ranged\\Guns\\Hardmode\\Hemophobia.cs",
   "PreviewInSolutionExplorer": false
 }

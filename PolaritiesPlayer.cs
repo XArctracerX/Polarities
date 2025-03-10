@@ -68,6 +68,9 @@ namespace Polarities
         public int limestoneShieldCooldown;
         public bool limestoneSetBonus;
         public int limestoneSetBonusHitCooldown;
+        public bool bloodBearer;
+        public bool volatileHeart;
+        public int volatileHeartCooldown;
         public bool skeletronBook;
         public int moonLordLifestealCooldown;
         public int wingTimeBoost;
@@ -182,6 +185,9 @@ namespace Polarities
             limestoneShield = false;
             limestoneSetBonus = false;
             skeletronBook = false;
+            bloodBearer = false;
+            volatileHeart = false;
+
             wingTimeBoost = 0;
             critDamageBoostMultiplier = 1f;
             ignoreCritDefenseAmount = 0;
@@ -216,6 +222,7 @@ namespace Polarities
                 hydraHideTime--;
                 Player.lifeRegenTime = 120;
             }
+            if (volatileHeartCooldown > 0) volatileHeartCooldown--;
 
             //mech flawless stuff
             flawlessMechArmorSet = false;
@@ -524,6 +531,15 @@ namespace Polarities
 				Main.projectile[Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center.X + 500 * (2 * (float)Main.rand.NextDouble() - 1), Player.Center.Y - 500, 0, 0, ProjectileType<StormcoreMinion>(), 1, Player.GetTotalKnockback(DamageClass.Summon).ApplyTo(0.5f), Player.whoAmI, 0, 0)].originalDamage = 1;
 			}
 
+            if (bloodBearer && Player.ownedProjectileCounts[ProjectileType<BloodBearerTentacle>()] < 8)
+            {
+                for (int i = 0; i < (8 - Player.ownedProjectileCounts[ProjectileType<BloodBearerTentacle>()]); i++)
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromAI(), Main.MouseWorld, Vector2.Zero, ProjectileType<BloodBearerTentacle>(), 8, 0.5f, Player.whoAmI, Main.rand.NextFloat(0, 2 * MathHelper.Pi));
+                    //Projectile.NewProjectile(projectile.GetSource_FromAI(), Main.player[projectile.owner].Center, Main.player[projectile.owner].velocity, ProjectileType<PlanteraBookHookProjectile>(), 30, 2, projectile.owner, Main.rand.NextFloat(MathHelper.Pi * 2), projectile.whoAmI);
+                }
+            }
+
             if (wyvernsNestDamage > 0)
             {
                 //sentries don't despawn while using the wyvern's nest
@@ -744,6 +760,17 @@ namespace Polarities
             if (item.DamageType == DamageClass.Summon || item.DamageType.GetEffectInheritance(DamageClass.Summon))
             {
                 royalOrbHitCount++;
+            }
+
+            if (volatileHeart && volatileHeartCooldown == 0 && Main.rand.NextBool(5))
+            {
+                volatileHeartCooldown = 20;
+                Projectile.NewProjectile(Player.GetSource_FromAI(), target.Center, Vector2.Zero, ProjectileType<Bloodsplosion>(), 6, 2, Player.whoAmI, Main.rand.NextFloat(MathHelper.Pi * 2)); 
+                for (int i = 0; i < 4; i++)
+                {
+                    //Projectile.NewProjectile(Player.GetSource_FromAI(), Main.MouseWorld, Vector2.Zero, ProjectileType<BloodBearerTentacle>(), 8, 0.5f, Player.whoAmI, Main.rand.NextFloat(0, 2 * MathHelper.Pi));
+                    Projectile.NewProjectile(Player.GetSource_FromAI(), target.Center, Vector2.Zero, ProjectileType<Bloodsplosion>(), 6, 2, Player.whoAmI, Main.rand.NextFloat(MathHelper.Pi * 2)); 
+                }
             }
         }
 
