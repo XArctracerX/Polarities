@@ -70,6 +70,7 @@ namespace Polarities
 
         public static ModKeybind ArmorSetBonusHotkey { get; private set; }
         public static ModKeybind ConvectiveDashHotkey { get; private set; }
+        public static ModKeybind RiftDodgeHotKey { get; private set; }
 
         public const string CallShootProjectile = "Polarities/Content/Projectiles/CallShootProjectile";
 
@@ -88,6 +89,7 @@ namespace Polarities
             //register hotkeys
             ArmorSetBonusHotkey = KeybindLoader.RegisterKeybind(this, "Convective Set Bonus", Keys.K);
             ConvectiveDashHotkey = KeybindLoader.RegisterKeybind(this, "Convective Dash", Keys.I);
+            RiftDodgeHotKey = KeybindLoader.RegisterKeybind(this, "Rift Dodge", Keys.I);
 
             //string texture = GetModNPC(ModContent.NPCType<StormCloudfish>()).BossHeadTexture + "_2";
             //AddBossHeadTexture(texture, -1);

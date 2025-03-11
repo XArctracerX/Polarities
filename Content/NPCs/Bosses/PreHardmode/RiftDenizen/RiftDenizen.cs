@@ -4,6 +4,18 @@ using Polarities.Global;
 using Polarities.Core;
 using Polarities.Assets;
 using Polarities.Content.Biomes.Fractal;
+using Polarities.Content.Items.Placeable.Trophies;
+using Polarities.Content.Items.Placeable.Relics;
+using Polarities.Content.Items.Consumables.TreasureBags.PreHardmode;
+using Polarities.Content.Items.Vanity.PreHardmode;
+using Polarities.Content.Items.Accessories.Information.PreHardmode;
+using Polarities.Content.Items.Tools.Hooks.PreHardmode;
+using Polarities.Content.Items.Weapons.Magic.Staffs.PreHardmode;
+using Polarities.Content.Items.Weapons.Ranged.Flawless;
+using Polarities.Content.Items.Weapons.Ranged.Guns.PreHardmode;
+using Polarities.Content.Items.Weapons.Melee.Warhammers.PreHardmode.Other;
+using Polarities.Content.Items.Placeable.Furniture.Fractal;
+using Polarities.Content.Items.Weapons.Summon.Orbs.PreHardmode;
 using ReLogic.Content;
 using System;
 using System.Collections.Generic;
@@ -12,6 +24,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -80,6 +93,24 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         public override void ModifyIncomingHit(ref NPC.HitModifiers modifiers)
         {
             return;
+        }
+
+
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(new FlawlessOrRandomDropRule(ItemType<RiftDenizenTrophy>(), 10));
+            npcLoot.Add(ItemDropRule.BossBag(ItemType<RiftDenizenBag>()));
+            npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ItemType<RiftDenizenRelic>()));
+            
+            //normal mode loot
+            npcLoot.Add(ItemDropRule.Common(ItemType<FractalAssembler>(), 1));
+            LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+            notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<RiftDenizenMask>(), 7));
+            notExpertRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ItemType<EndlessHook>(), ItemType<DimensionalAnchor>()));
+            notExpertRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ItemType<RiftOnAStick>(), ItemType<Parallaxian>(), ItemType<InstabilityScepter>(), ItemType<ObserverOrb>()));
+            npcLoot.Add(notExpertRule);
+
+            npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<BeyondBow>()));
         }
 
         private Vector2[] defaultGuidePoints = new Vector2[]

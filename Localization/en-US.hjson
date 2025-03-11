@@ -460,6 +460,11 @@ Mods: {
 				DisplayName: Observed
 				Description: Mods.Polarities.Buffs.Observed.Description
 			}
+
+			CloakofPocketsCooldown: {
+				DisplayName: Cloakof Pockets Cooldown
+				Description: Mods.Polarities.Buffs.CloakofPocketsCooldown.Description
+			}
 		}
 
 		Items: {
@@ -683,6 +688,11 @@ Mods: {
 					'''
 			}
 
+			CloakofPockets: {
+				DisplayName: Cloak Of Pockets
+				Tooltip: ""
+			}
+
 			//Summon Items
 			AltBiomeMimicSummon: {
 				DisplayName: Weird Key of Night
@@ -802,6 +812,11 @@ Mods: {
 
 			HemorrphageBag: {
 				DisplayName: Treasure Bag (Hemorrphage)
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			RiftDenizenBag: {
+				DisplayName: Treasure Bag (Rift Denizen)
 				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 			}
 
@@ -3968,6 +3983,8 @@ Mods: {
 			ParallaxianProjectile.DisplayName: Parallaxian Projectile
 			InstabilityScepterProjectile.DisplayName: Instability Scepter Projectile
 			ObserverOrbMinion.DisplayName: Observer Orb Minion
+			StardustPillarMinion.DisplayName: Stardust Pillar Minion
+			StardustWeaverMinion.DisplayName: Stardust Weaver Minion
 		}
 
 		Bestiary: {
@@ -4110,6 +4127,7 @@ Mods: {
 		Keybinds: {
 			"Convective Set Bonus.DisplayName": Convective Set Bonus
 			"Convective Dash.DisplayName": Convective Dash
+			"Rift Dodge.DisplayName": Rift  Dodge
 		}
 
 		Conditions: {

@@ -19,6 +19,7 @@ using Polarities.Content.Items.Vanity.DevSets.BubbySet;
 using Polarities.Content.Items.Vanity.DevSets.TuringSet;
 using Polarities.Content.Items.Vanity.DevSets.ElectroManiacSet;
 using Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer;
+using Polarities.Content.Items.Accessories.ExpertMode.PreHardmode;
 using Polarities.Content.Items.Accessories.ExpertMode.Hardmode;
 using System;
 using System.Collections.Generic;
@@ -118,6 +119,11 @@ namespace Polarities
         public const int MECH_ARMOR_SET_TIME = 240;
         public const int MECH_MASK_COOLDOWN = 20;
         public const int MECH_TAIL_COOLDOWN = 60;
+
+        public bool hasRiftDodge;
+        public int riftDodgeTimer;
+        public const int RIFT_DODGE_MAX_LENGTH = 600;
+        public const int RIFT_DODGE_COOLDOWN = 3600;
 
         //public bool fractalDimensionRespawn;
 
@@ -252,6 +258,16 @@ namespace Polarities
                 }
             }
 
+            hasRiftDodge = false;
+            if (riftDodgeTimer > 0)
+            {
+                riftDodgeTimer--;
+
+                //can't use channeled items while using the rift dodge, but aggro is reduced to 0
+                Player.channel = false;
+                Player.aggro = 0;
+            }
+
             //screenshakeRandomSeed = Main.rand.Next();
 
             dashIndex = 0;
@@ -367,6 +383,21 @@ namespace Polarities
             if (PlayerInput.Triggers.JustPressed.MouseRight && (Player.HeldItem.DamageType == DamageClass.Summon || Player.HeldItem.DamageType.GetEffectInheritance(DamageClass.Summon)) && Player.channel)
             {
                 Player.MinionNPCTargetAim(false);
+            }
+
+            if (Polarities.RiftDodgeHotKey.JustPressed && hasRiftDodge)
+            {
+                if (riftDodgeTimer > 30)
+                {
+                    //cancel dodge
+                    riftDodgeTimer = 30;
+                }
+                else if (riftDodgeTimer == 0 && !Player.HasBuff(BuffType<CloakofPocketsCooldown>()))
+                {
+                    //activate dodge and cooldown
+                    riftDodgeTimer = RIFT_DODGE_MAX_LENGTH;
+                    Player.AddBuff(BuffType<CloakofPocketsCooldown>(), RIFT_DODGE_COOLDOWN);
+                }
             }
 
             if (stargelAmulet)
@@ -894,6 +925,35 @@ namespace Polarities
         {
             Turbulence.Update(Player);
 
+            //if rift dodging, freeze in place
+            if (riftDodgeTimer > 30 && riftDodgeTimer < RIFT_DODGE_MAX_LENGTH - 30)
+            {
+                Player.velocity = Vector2.Zero;
+                Player.wingTimeMax = 0;
+                Player.wingTime = 0;
+                Player.wings = 0;
+                Player.wingsLogic = 0;
+                Player.noFallDmg = true;
+                Player.noBuilding = true;
+
+                Player.controlJump = false;
+                Player.controlDown = false;
+                Player.controlLeft = false;
+                Player.controlRight = false;
+                Player.controlUp = false;
+                Player.controlUseItem = false;
+                Player.controlUseTile = false;
+                Player.controlThrow = false;
+                Player.gravDir = 1f;
+                for (int i = 0; i < 4; i++)
+                    Player.doubleTapCardinalTimer[i] = 0;
+
+                Player.sandStorm = false;
+                Player.blockExtraJumps = true;
+                if (Player.mount.Active)
+                    Player.mount.Dismount(Player);
+            }
+
             //apply dash if it exists
             if (Dash.HasDash(dashIndex) && CanUseAnyDash())
             {
@@ -994,6 +1054,27 @@ namespace Polarities
         {
             if (Player.HasBuff(BuffType<Pinpointed>()) && Main.rand.NextBool()) crit = true;
         }
+
+        public override bool CanBeHitByNPC(NPC npc, ref int cooldownSlot)
+        {
+            if (riftDodgeTimer > 0)
+            {
+                return false;
+            }
+
+            return base.CanBeHitByNPC(npc, ref cooldownSlot);
+        }
+
+        public override bool CanBeHitByProjectile(Projectile proj)
+        {
+            if (riftDodgeTimer > 0)
+            {
+                return false;
+            }
+
+            return base.CanBeHitByProjectile(proj);
+        }
+
 
         public int GetFractalization()
         {

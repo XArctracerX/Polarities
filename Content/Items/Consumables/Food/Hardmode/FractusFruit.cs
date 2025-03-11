@@ -1,6 +1,8 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Polarities.Content.Biomes.Fractal;
+using Polarities.Content.Buffs.Hardmode;
 
 namespace Polarities.Content.Items.Consumables.Food.Hardmode
 {
@@ -25,11 +27,11 @@ namespace Polarities.Content.Items.Consumables.Food.Hardmode
 
         public override bool ConsumeItem(Player player)
         {
-            //if (FractalSubworld.Active)
-            //{
-            //    player.AddBuff(BuffType<FractalSubworldDebuff>(), 10 * 60);
-            //    player.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
-            //}
+            if (FractalSubworld.Active)
+            {
+                player.AddBuff(ModContent.BuffType<Fractalizing>(), 10 * 60);
+                player.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+            }
 
             return true;
         }
@@ -56,11 +58,11 @@ namespace Polarities.Content.Items.Consumables.Food.Hardmode
 
         public override bool ConsumeItem(Player player)
         {
-            //if (FractalSubworld.Active)
-            //{
-            //    player.AddBuff(BuffType<FractalSubworldDebuff>(), 20 * 60);
-            //    player.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
-            //}
+            if (FractalSubworld.Active)
+            {
+                player.AddBuff(ModContent.BuffType<Fractalizing>(), 20 * 60);
+                player.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+            }
 
             return true;
         }
