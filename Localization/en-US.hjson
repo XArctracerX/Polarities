@@ -1312,6 +1312,15 @@ Mods: {
 					'''
 			}
 
+			StardustPillarOrb: {
+				DisplayName: Stardust Tower Orb
+				Tooltip:
+					'''
+					{$Mods.Polarities.ItemTooltip.OrbBase}
+					Summons an image of the stardust tower
+					'''
+			}
+
 			EyeOfTheStormfish: {
 				DisplayName: Eye Of The Stormfish
 				Tooltip: Summons a storm vortex around the cursor, which shoots a bolt of lightning at the cursor
