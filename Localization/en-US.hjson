@@ -693,6 +693,15 @@ Mods: {
 				Tooltip: ""
 			}
 
+			SentinelsHeart: {
+				DisplayName: Sentinels Heart
+				Tooltip:
+					'''
+					Grants the player additional health, and a boost to defense while this additional health is retained
+					When this additional health is lost, released homing wisps to damage enemies
+					'''
+			}
+
 			//Summon Items
 			AltBiomeMimicSummon: {
 				DisplayName: Weird Key of Night
@@ -817,6 +826,11 @@ Mods: {
 
 			RiftDenizenBag: {
 				DisplayName: Treasure Bag (Rift Denizen)
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			SelfsimilarSentinelBag: {
+				DisplayName: Treasure Bag (Selfsimilar Sentinel)
 				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 			}
 
@@ -1094,6 +1108,11 @@ Mods: {
 				Tooltip: ""
 			}
 
+			SelfsimilarSentinelMask: {
+				DisplayName: Selfsimilar Sentinel Mask
+				Tooltip: ""
+			}
+
 			//DevSets
 			BubbyHead: {
 				DisplayName: Bubby's Sniper Mask
@@ -1314,6 +1333,82 @@ Mods: {
 					10% increased movement speed
 					Grants the ability to swim
 					'''
+			}
+
+			FractalHelmetMage: {
+				DisplayName: Fractal Hood
+				Tooltip:
+					'''
+					Maximum life lost to fractalization is divided by 1.25
+					10% increased magic damage
+					'''
+			}
+
+			FractalHelmetMelee: {
+				DisplayName: Fractal Faceplate
+				Tooltip:
+					'''
+					Maximum life lost to fractalization is divided by 1.25
+					10% increased melee damage
+					'''
+			}
+
+			FractalHelmetRanger: {
+				DisplayName: Fractal Visor
+				Tooltip:
+					'''
+					Maximum life lost to fractalization is divided by 1.25
+					10% increased ranged damage
+					'''
+			}
+
+			FractalHelmetSummoner: {
+				DisplayName: Fractal Mask
+				Tooltip:
+					'''
+					Maximum life lost to fractalization is divided by 1.25
+					10% increased minion damage
+					'''
+			}
+
+			FractalBreastplate: {
+				DisplayName: Fractal Breastplate
+				Tooltip: Maximum life lost to fractalization is divided by 1.33
+			}
+
+			FractalGreaves: {
+				DisplayName: Fractal Greaves
+				Tooltip: Maximum life lost to fractalization is divided by 1.2
+			}
+
+			SelfsimilarHelmetMage: {
+				DisplayName: Selfsimilar Hood
+				Tooltip: ""
+			}
+
+			SelfsimilarHelmetMelee: {
+				DisplayName: Selfsimilar Faceplate
+				Tooltip: ""
+			}
+
+			SelfsimilarHelmetRanger: {
+				DisplayName: Selfsimilar Visor
+				Tooltip: ""
+			}
+
+			SelfsimilarHelmetSummoner: {
+				DisplayName: Selfsimilar Mask
+				Tooltip: ""
+			}
+
+			SelfsimilarBreastplate: {
+				DisplayName: Selfsimilar Breastplate
+				Tooltip: ""
+			}
+
+			SelfsimilarGreaves: {
+				DisplayName: Selfsimilar Greaves
+				Tooltip: ""
 			}
 
 			//Weapons
@@ -2271,6 +2366,11 @@ Mods: {
 				Tooltip: ""
 			}
 
+			SelfsimilarSentinelRelic: {
+				DisplayName: Selfsimilar Sentinel Relic
+				Tooltip: ""
+			}
+
 			//Trophies
 			ConvectiveWandererTrophy: {
 				DisplayName: Convective Wanderer Trophy
@@ -2309,6 +2409,11 @@ Mods: {
 
 			RiftDenizenTrophy: {
 				DisplayName: Rift Denizen Trophy
+				Tooltip: ""
+			}
+
+			SelfsimilarSentinelTrophy: {
+				DisplayName: Selfsimilar Sentinel Trophy
 				Tooltip: ""
 			}
 
@@ -3985,6 +4090,16 @@ Mods: {
 			ObserverOrbMinion.DisplayName: Observer Orb Minion
 			StardustPillarMinion.DisplayName: Stardust Pillar Minion
 			StardustWeaverMinion.DisplayName: Stardust Weaver Minion
+			FractalMagicSword.DisplayName: Fractal Magic Sword
+			FractalMeleeShield.DisplayName: Fractal Melee Shield
+			FractalRangerTarget.DisplayName: Fractal Ranger Target
+			FractalSummonerOrb.DisplayName: Fractal Summoner Orb
+			SentinelHeartWisp.DisplayName: Sentinel Heart Wisp
+			SelfsimilarMagicSword.DisplayName: Selfsimilar Magic Sword
+			SelfsimilarMagicSwordMini.DisplayName: Selfsimilar Magic Sword Mini
+			SelfsimilarMeleeShield.DisplayName: Selfsimilar Melee Shield
+			SelfsimilarRangerTarget.DisplayName: Selfsimilar Ranger Target
+			SelfsimilarSummonerOrb.DisplayName: Selfsimilar Summoner Orb
 		}
 
 		Bestiary: {

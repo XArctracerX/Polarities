@@ -2,16 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\Content",
-    "\\Content\\Buffs",
-    "\\Content\\Buffs\\Hardmode",
     "\\Content\\Items",
-    "\\Content\\Items\\Consumables",
-    "\\Content\\Items\\Consumables\\Food",
-    "\\Content\\Items\\Consumables\\Food\\Hardmode",
-    "\\Content\\Items\\Consumables\\Food\\PreHardmode",
-    "\\Content\\Items\\Consumables\\Potions",
-    "\\Content\\Items\\Consumables\\Potions\\PreHardmode"
+    "\\Content\\Items\\Armor",
+    "\\Content\\Items\\Armor\\MultiClass",
+    "\\Content\\Items\\Armor\\MultiClass\\Hardmode",
+    "\\Content\\Items\\Armor\\MultiClass\\Hardmode\\FractalArmor",
+    "\\Content\\NPCs",
+    "\\Content\\NPCs\\Bosses",
+    "\\Content\\NPCs\\Bosses\\Hardmode",
+    "\\Content\\NPCs\\Bosses\\Hardmode\\Esophage"
   ],
-  "SelectedNode": "\\FractalSubworld.cs",
+  "SelectedNode": "\\Localization\\en-US.hjson",
   "PreviewInSolutionExplorer": false
 }

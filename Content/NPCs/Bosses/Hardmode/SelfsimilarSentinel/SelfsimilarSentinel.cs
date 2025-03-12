@@ -16,13 +16,17 @@ using Polarities.Content.Items.Weapons;
 using Polarities.Content.Items.Armor;
 using Polarities.Content.Items.Accessories;
 using Polarities.Content.Items.Placeable.Trophies;
+using Polarities.Content.Items.Placeable.Relics;
+using Polarities.Content.Items.Vanity.Hardmode;
+using Polarities.Content.Items.Consumables.TreasureBags.Hardmode;
+using Polarities.Content.Items.Placeable.Blocks.Fractal;
+using Polarities.Content.NPCs.Enemies.HallowInvasion;
 using System.Collections.Generic;
 using Polarities.Global;
 using Polarities.Core;
 using Terraria.Utilities;
 using Terraria.GameContent.Bestiary;
-using Polarities.Content.Items.Placeable.Blocks.Fractal;
-using Polarities.Content.NPCs.Enemies.HallowInvasion;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.DataStructures;
 
 namespace Polarities.Content.NPCs.Bosses.Hardmode.SelfsimilarSentinel
@@ -356,8 +360,22 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SelfsimilarSentinel
             return null;
         }
 
-		//spawning
-		public static NPC SpawnSentinel(Vector2 position)
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(new FlawlessOrRandomDropRule(ItemType<SelfsimilarSentinelTrophy>(), 10));
+            npcLoot.Add(ItemDropRule.BossBag(ItemType<SelfsimilarSentinelBag>()));
+            npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ItemType<SelfsimilarSentinelRelic>()));
+            //TODO: npcLoot.Add(ModUtils.MasterModeDropOnAllPlayersOrFlawless(ItemType<ConvectiveWandererPetItem>(), 4));
+
+            //normal mode loot
+            LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+            notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<SelfsimilarSentinelMask>(), 7));
+            notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<SelfsimilarOre>(), 1, 50, 80));
+            npcLoot.Add(notExpertRule);
+        }
+
+        //spawning
+        public static NPC SpawnSentinel(Vector2 position)
         {
 			if (NPC.AnyNPCs(NPCType<SelfsimilarSentinel>())) return null;
 

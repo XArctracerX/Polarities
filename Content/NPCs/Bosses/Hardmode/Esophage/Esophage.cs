@@ -77,7 +77,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
 
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[NPC.type] = 1;
+            Main.npcFrameCount[NPC.type] = 6;
 
             //group with other bosses
             NPCID.Sets.BossBestiaryPriority.Add(Type);
@@ -631,6 +631,16 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
                 //}
             //}
         //}
+
+        public override void FindFrame(int frameHeight)
+        {
+            NPC.frameCounter++;
+            if (NPC.frameCounter == 6)
+            {
+                NPC.frameCounter = 0;
+                NPC.frame.Y = (NPC.frame.Y + frameHeight) % (6 * frameHeight);
+            }
+        }
 
         private bool scytheLeftSwinging;
         private bool scytheRightSwinging;

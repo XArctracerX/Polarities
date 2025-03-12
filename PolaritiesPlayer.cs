@@ -12,6 +12,8 @@ using Polarities.Content.Items.Tools.Books.Hardmode;
 using Polarities.Content.Items.Armor.Flawless.MechaMayhemArmor;
 using Polarities.Content.Items.Armor.MultiClass.Hardmode.ConvectiveArmor;
 using Polarities.Content.Items.Armor.Summon.PreHardmode.StormcloudArmor;
+using Polarities.Content.Items.Armor.MultiClass.Hardmode.FractalArmor;
+using Polarities.Content.Items.Armor.MultiClass.Hardmode.SelfsimilarArmor;
 using Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.PreHardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
@@ -105,6 +107,19 @@ namespace Polarities
         public bool stormcloudArmor;
         public int stormcloudArmorCooldown;
         public int tolerancePotionDelayTime = 3600;
+        public float ammoChance;
+
+        //fractal and selfsimilar set bonuses
+        public int fractalSetBonusTier;
+        public bool fractalSummonerOrbs;
+        public bool fractalMeleeShield;
+        public bool fractalMageSwords;
+        public int fractalMageSwordCooldown;
+        public bool fractalRangerTargets;
+        public int fractalRangerTargetCooldown;
+
+        public bool hasSentinelHearts;
+        public int mostRecentSentinelHeartHealth;
 
         public bool flawlessMechArmorSet;
         public int flawlessMechSetBonusTime;
@@ -217,6 +232,17 @@ namespace Polarities
             hydraHide = false;
             convectiveDash = false;
             stormcloudArmor = false;
+            ammoChance = 1f;
+
+            fractalSetBonusTier = 0;
+            fractalSummonerOrbs = false;
+            fractalMeleeShield = false;
+            fractalMageSwords = false;
+            if (fractalMageSwordCooldown > 0) fractalMageSwordCooldown--;
+            fractalRangerTargets = false;
+            if (fractalRangerTargetCooldown > 0) fractalRangerTargetCooldown--;
+
+            hasSentinelHearts = false;
 
             fractalDimensionRespawn = false;
 
@@ -593,6 +619,94 @@ namespace Polarities
 				Main.projectile[Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center.X + 500 * (2 * (float)Main.rand.NextDouble() - 1), Player.Center.Y - 500, 0, 0, ProjectileType<StormcoreMinion>(), 1, Player.GetTotalKnockback(DamageClass.Summon).ApplyTo(0.5f), Player.whoAmI, 0, 0)].originalDamage = 1;
 			}
 
+            if (fractalSummonerOrbs)
+            {
+                switch (fractalSetBonusTier)
+                {
+                    case 0:
+                        //normal fractal armor
+                        if (Player.ownedProjectileCounts[ProjectileType<FractalSummonerOrb>()] < Player.maxMinions * 2 - 1)
+                            //Projectile.NewProjectile(Player.Center, Vector2.Zero, ProjectileType<FractalSummonerOrb>(), (int)(16 * Player.minionDamage * Player.minionDamageMult * Player.allDamage * Player.allDamageMult), Player.minionKB, Player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, Vector2.Zero, ProjectileType<FractalSummonerOrb>(), 10, 0f, Player.whoAmI);
+                        break;
+                    case 1:
+                        //selfsimilar armor
+                        if (Player.ownedProjectileCounts[ProjectileType<SelfsimilarSummonerOrb>()] < Player.maxMinions * 2 - 1)
+                            //Projectile.NewProjectile(Player.Center, Vector2.Zero, ProjectileType<Items.Armor.SelfsimilarArmor.SelfsimilarSummonerOrb>(), (int)(48 * player.minionDamage * player.minionDamageMult * player.allDamage * player.allDamageMult), player.minionKB, player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, Vector2.Zero, ProjectileType<SelfsimilarSummonerOrb>(), 20, 0f, Player.whoAmI);
+                        break;
+                }
+            }
+            if (fractalMeleeShield)
+            {
+                switch (fractalSetBonusTier)
+                {
+                    case 0:
+                        if (Player.ownedProjectileCounts[ProjectileType<FractalMeleeShield>()] < 1)
+                            //Projectile.NewProjectile(Player.Center, Vector2.Zero, ProjectileType<FractalMeleeShield>(), (int)(64 * Player.meleeDamage * Player.meleeDamageMult * Player.allDamage * Player.allDamageMult), 12f, Player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, Vector2.Zero, ProjectileType<FractalMeleeShield>(), 30, 12f, Player.whoAmI);
+                        break;
+                    case 1:
+                        if (Player.ownedProjectileCounts[ProjectileType<SelfsimilarMeleeShield>()] < 1)
+                            //Projectile.NewProjectile(Player.Center, Vector2.Zero, ProjectileType<Items.Armor.SelfsimilarArmor.SelfsimilarMeleeShield>(), (int)(256 * player.meleeDamage * player.meleeDamageMult * player.allDamage * player.allDamageMult), 12f, player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, Vector2.Zero, ProjectileType<SelfsimilarMeleeShield>(), 40, 12f, Player.whoAmI);
+                        break;
+                }
+            }
+
+            //sentinel hearts
+            if (hasSentinelHearts)
+            {
+                //if our health has decreased by enough
+                int totalSentinelHealth = originalStatLifeMax2 * 3 / 28;
+                int baseHealth = originalStatLifeMax2 * 25 / 28;
+
+                //get number of hearts drawn (adapted from vanilla heart drawing)
+                float UIDisplay_LifePerHeart = 20f;
+                int num = Player.statLifeMax / 20;
+                int num2 = (Player.statLifeMax - 400) / 5;
+                if (num2 < 0)
+                {
+                    num2 = 0;
+                }
+                if (num2 > 0)
+                {
+                    num = Player.statLifeMax / (20 + num2 / 4);
+                    UIDisplay_LifePerHeart = (float)Player.statLifeMax / 20f;
+                }
+                UIDisplay_LifePerHeart += totalSentinelHealth / num;
+                int numHearts = (int)((float)baseHealth / UIDisplay_LifePerHeart);
+
+                //do stuff
+                int healthPerSentinelHeart = totalSentinelHealth / numHearts;
+                int boundedLife = Math.Max(Player.statLife, baseHealth);
+
+                int newMostRecentSentinelHeartHealth = Math.Max(baseHealth, boundedLife - (boundedLife - baseHealth) % healthPerSentinelHeart);
+                if (newMostRecentSentinelHeartHealth < mostRecentSentinelHeartHealth && newMostRecentSentinelHeartHealth > baseHealth)
+                {
+                    //make projectiles
+                    int baseDamage = 40 * (mostRecentSentinelHeartHealth - newMostRecentSentinelHeartHealth);
+
+                    int numProjectiles = Main.rand.Next(3, 7);
+                    for (int i = 0; i < numProjectiles; i++)
+                    {
+                        Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, Vector2.Zero, ProjectileType<SentinelHeartWisp>(), 15, 2f, Player.whoAmI);
+                        //Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, new Vector2(Main.rand.NextFloat(1, 4), 0).RotatedByRandom(MathHelper.TwoPi), ProjectileType<SentinelHeartWisp>(), (int)(baseDamage * Player.GetDamage(DamageClass.Generic) * Player.GetDamage(DamageClass.Generic) / numProjectiles), 2f, Player.whoAmI, ai1: Main.rand.Next(1000));
+                    }
+                }
+                mostRecentSentinelHeartHealth = newMostRecentSentinelHeartHealth;
+
+                //boost defense by the amount of extra hearts you have, if you have extra hearts
+                if (Player.statLife > baseHealth)
+                {
+                    Player.statDefense += (Player.statLife - baseHealth) / healthPerSentinelHeart;
+                }
+            }
+            else
+            {
+                mostRecentSentinelHeartHealth = Player.statLife;
+            }
+
             if (bloodBearer && Player.ownedProjectileCounts[ProjectileType<BloodBearerTentacle>()] < 8)
             {
                 for (int i = 0; i < (8 - Player.ownedProjectileCounts[ProjectileType<BloodBearerTentacle>()]); i++)
@@ -759,6 +873,31 @@ namespace Polarities
             Lighting.AddLight(Player.Center, light);
         }
 
+        public override void OnConsumeMana(Item item, int manaConsumed)
+        {
+            if (fractalMageSwords)
+            {
+                if (fractalMageSwordCooldown < 30)
+                {
+                    float baseDamage;
+                    switch (fractalSetBonusTier)
+                    {
+                        case 0:
+                            baseDamage = (60 - fractalMageSwordCooldown) / 2f;
+                            Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, Vector2.Zero, ProjectileType<FractalMagicSword>(), 70, 0f, Player.whoAmI);
+                            //Projectile.NewProjectile(player.Center, Vector2.Zero, ProjectileType<Items.Armor.FractalArmor.FractalMagicSword>(), (int)(baseDamage * player.magicDamage * player.magicDamageMult * player.allDamage * player.allDamageMult), 0f, player.whoAmI);
+                            break;
+                        case 1:
+                            baseDamage = (60 - fractalMageSwordCooldown) * 3f;
+                            Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, Vector2.Zero, ProjectileType<SelfsimilarMagicSword>(), 70, 0f, Player.whoAmI);
+                            //Projectile.NewProjectile(player.Center, Vector2.Zero, ProjectileType<Items.Armor.SelfsimilarArmor.SelfsimilarMagicSword>(), (int)(baseDamage * player.magicDamage * player.magicDamageMult * player.allDamage * player.allDamageMult), 0f, player.whoAmI);
+                            break;
+                    }
+                    fractalMageSwordCooldown = 60;
+                }
+            }
+        }
+
         //public void AddScreenShake(float magnitude, float timeLeft)
         //{
         //if (magnitude > 0 && timeLeft > 0)
@@ -868,6 +1007,23 @@ namespace Polarities
                     Player.statLife += (int)baseLifestealAmount;
                     Player.HealEffect((int)baseLifestealAmount);
                 }
+            }
+
+            if (fractalRangerTargets && fractalRangerTargetCooldown == 0 && Player.controlUseItem && Player.HeldItem.CountsAsClass(DamageClass.Ranged))
+            {
+                switch (fractalSetBonusTier)
+                {
+                    case 0:
+                            //Projectile.NewProjectile(Main.MouseWorld, Vector2.Zero, ProjectileType<FractalRangerTarget>(), (int)(80 * Player.rangedDamage * Player.rangedDamageMult * Player.allDamage * Player.allDamageMult), 0f, player.whoAmI);
+                            Projectile.NewProjectile(Player.GetSource_FromAI(), Main.MouseWorld, Vector2.Zero, ProjectileType<FractalRangerTarget>(), 8, 0f, Player.whoAmI);
+                        break;
+                    case 1:
+                        for (int i = 0; i < 6; i++)
+                            Projectile.NewProjectile(Player.GetSource_FromAI(), Main.MouseWorld, Vector2.Zero, ProjectileType<SelfsimilarRangerTarget>(), 8, 0f, Player.whoAmI);
+                            //Projectile.NewProjectile(Main.MouseWorld + new Vector2((float)Math.Sqrt(i) * 256f, 0).RotatedByRandom(MathHelper.TwoPi), Vector2.Zero, ProjectileType<Items.Armor.SelfsimilarArmor.SelfsimilarRangerTarget>(), (int)(150 * player.rangedDamage * player.rangedDamageMult * player.allDamage * player.allDamageMult), 0f, player.whoAmI);
+                        break;
+                }
+                fractalRangerTargetCooldown = 30;
             }
 
             if (damageClass != DamageClass.Magic && !damageClass.GetEffectInheritance(DamageClass.Magic) && solarEnergizer)
