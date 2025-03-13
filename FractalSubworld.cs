@@ -1461,28 +1461,28 @@ namespace Polarities
         {
             progress.Message = "Generating suspicious caves";
 
-            //PolaritiesSystem.sentinelCaves = new List<Vector2>();
-            //PolaritiesSystem.sentinelCaveVars = new List<Vector2>();
-            //PolaritiesSystem.sentinelCaveRots = new List<double>();
+            PolaritiesSystem.sentinelCaves = new List<Vector2>();
+            PolaritiesSystem.sentinelCaveVars = new List<Vector2>();
+            PolaritiesSystem.sentinelCaveRots = new List<double>();
 
-            //while (PolaritiesSystem.sentinelCaves.Count < NUM_SENTINEL_CAVES)
-            //{
-            //    progress.Set(PolaritiesSystem.sentinelCaves.Count / (float)NUM_SENTINEL_CAVES);
+            while (PolaritiesSystem.sentinelCaves.Count < NUM_SENTINEL_CAVES)
+            {
+                progress.Set(PolaritiesSystem.sentinelCaves.Count / (float)NUM_SENTINEL_CAVES);
 
-            //    TryGenSentinelCave();
-            //}
+                TryGenSentinelCave();
+            }
         }
 
         private void SentinelVeinsGenpass(GenerationProgress progress)
         {
             progress.Message = "Generating suspicious ore";
 
-            //for (int c = 0; c < PolaritiesSystem.sentinelCaves.Count; c++)
-            //{
-            //    progress.Set(c / (float)PolaritiesSystem.sentinelCaves.Count);
+            for (int c = 0; c < PolaritiesSystem.sentinelCaves.Count; c++)
+            {
+                progress.Set(c / (float)PolaritiesSystem.sentinelCaves.Count);
 
-            //    GenSentinelVein(PolaritiesSystem.sentinelCaves[c], PolaritiesSystem.sentinelCaveVars[c], PolaritiesSystem.sentinelCaveRots[c]);
-            //}
+                GenSentinelVein(PolaritiesSystem.sentinelCaves[c], PolaritiesSystem.sentinelCaveVars[c], PolaritiesSystem.sentinelCaveRots[c]);
+            }
         }
 
         private void FractalTrapsGenpass(GenerationProgress progress)
@@ -1914,241 +1914,243 @@ namespace Polarities
 
         private static void TryGenSentinelCave()
         {
-            //const float ARENA_RADIUS = NPCs.SelfsimilarSentinel.SelfsimilarSentinel.ARENA_RADIUS;
+            const float ARENA_RADIUS = Content.NPCs.Bosses.Hardmode.SelfsimilarSentinel.SelfsimilarSentinel.ARENA_RADIUS;
 
-            //Vector2 cavePosition = new Vector2(WorldGen.genRand.NextFloat(3 * ARENA_RADIUS, Main.maxTilesX * 16 - 3 * ARENA_RADIUS), WorldGen.genRand.NextFloat(3 * ARENA_RADIUS, Main.maxTilesY * 16 - 3 * ARENA_RADIUS));
+            Vector2 cavePosition = new Vector2(WorldGen.genRand.NextFloat(3 * ARENA_RADIUS, Main.maxTilesX * 16 - 3 * ARENA_RADIUS), WorldGen.genRand.NextFloat(3 * ARENA_RADIUS, Main.maxTilesY * 16 - 3 * ARENA_RADIUS));
 
-            //foreach (Vector2 cavePosition2 in PolaritiesSystem.sentinelCaves)
-            //{
-            //    if ((cavePosition - cavePosition2).Length() < ARENA_RADIUS * 3) return;
-            //}
+            foreach (Vector2 cavePosition2 in PolaritiesSystem.sentinelCaves)
+            {
+                if ((cavePosition - cavePosition2).Length() < ARENA_RADIUS * 3) return;
+            }
 
-            //int totalAdjacentTiles = 0;
-            //int emptyAdjacentTiles = 0;
+            int totalAdjacentTiles = 0;
+            int emptyAdjacentTiles = 0;
 
             ////check if cave is fully underground with margin and not intersecting protected tiles
-            //for (int i = (int)(cavePosition.X - ARENA_RADIUS * 1.5f) / 16; i <= (int)(cavePosition.X + ARENA_RADIUS * 1.5f) / 16; i++)
-            //{
-            //    for (int j = (int)(cavePosition.Y - ARENA_RADIUS * 1.5f) / 16; j <= (int)(cavePosition.Y + ARENA_RADIUS * 1.5f) / 16; j++)
-            //    {
-            //        Vector2 tilePosition = new Vector2(i, j) * 16 + new Vector2(8);
+            for (int i = (int)(cavePosition.X - ARENA_RADIUS * 1.5f) / 16; i <= (int)(cavePosition.X + ARENA_RADIUS * 1.5f) / 16; i++)
+            {
+                for (int j = (int)(cavePosition.Y - ARENA_RADIUS * 1.5f) / 16; j <= (int)(cavePosition.Y + ARENA_RADIUS * 1.5f) / 16; j++)
+                {
+                   Vector2 tilePosition = new Vector2(i, j) * 16 + new Vector2(8);
 
-            //        if ((tilePosition - cavePosition).Length() < ARENA_RADIUS * 1.5f)
-            //        {
-            //            //can't generate above ground
-            //            if (Main.tile[i, j].wall == 0) return;
+                    if ((tilePosition - cavePosition).Length() < ARENA_RADIUS * 1.5f)
+                    {
+                        //can't generate above ground
+                        if (Main.tile[i, j].WallType == 0) return;
 
-            //            //can't generate in ocean
-            //            if (IsFractalOcean(i, j)) return;
+                        //can't generate in ocean
+                        if (IsFractalOcean(i, j)) return;
 
-            //            //can't generate intersecting protected tiles
-            //            if ((tilePosition - cavePosition).Length() <= ARENA_RADIUS)
-            //            {
-            //                if (Main.tile[i, j].active() && protectedTiles.Contains(Main.tile[i, j].type)) return;
-            //            }
-            //        }
-            //        if ((tilePosition - cavePosition).Length() >= ARENA_RADIUS)
-            //        {
-            //            if ((tilePosition - cavePosition + new Vector2(16, 0)).Length() < ARENA_RADIUS ||
-            //                (tilePosition - cavePosition + new Vector2(-16, 0)).Length() < ARENA_RADIUS ||
-            //                (tilePosition - cavePosition + new Vector2(0, 16)).Length() < ARENA_RADIUS ||
-            //                (tilePosition - cavePosition + new Vector2(0, -16)).Length() < ARENA_RADIUS)
-            //            {
-            //                totalAdjacentTiles++;
-            //                if (!Main.tile[i, j].active()) emptyAdjacentTiles++;
-            //            }
-            //        }
-            //    }
-            //}
+                        //can't generate intersecting protected tiles
+                        if ((tilePosition - cavePosition).Length() <= ARENA_RADIUS)
+                        {
+                            if (Main.tile[i, j].HasTile && protectedTiles.Contains(Main.tile[i, j].TileType)) return;
+                        }
+                    }
+                    if ((tilePosition - cavePosition).Length() >= ARENA_RADIUS)
+                    {
+                        if ((tilePosition - cavePosition + new Vector2(16, 0)).Length() < ARENA_RADIUS ||
+                            (tilePosition - cavePosition + new Vector2(-16, 0)).Length() < ARENA_RADIUS ||
+                            (tilePosition - cavePosition + new Vector2(0, 16)).Length() < ARENA_RADIUS ||
+                            (tilePosition - cavePosition + new Vector2(0, -16)).Length() < ARENA_RADIUS)
+                        {
+                            totalAdjacentTiles++;
+                            if (!Main.tile[i, j].HasTile) emptyAdjacentTiles++;
+                        }
+                    }
+                }
+            }
 
             ////we need a certain amount of adjacent tiles to be empty so that we have some openings to enter through but not enough to make the arena unreadable
-            //if (totalAdjacentTiles < emptyAdjacentTiles * 3 || totalAdjacentTiles > emptyAdjacentTiles * 4) return;
+            if (totalAdjacentTiles < emptyAdjacentTiles * 3 || totalAdjacentTiles > emptyAdjacentTiles * 4) return;
 
 
             ////we have successfully found a position!
-            //PolaritiesSystem.sentinelCaves.Add(cavePosition);
+            PolaritiesSystem.sentinelCaves.Add(cavePosition);
             ////vars and rotation
-            //double rot = WorldGen.genRand.NextDouble() * Math.PI * 2;
+            double rot = WorldGen.genRand.NextDouble() * Math.PI * 2;
 
-            //Vector2 bulbCenter = new Vector2(-0.1225611f, 0.7448617f);
-            //Vector2 bulbEdge = new Vector2(-1 / 8f, 3 * (float)Math.Sqrt(3) / 8f);
-            //Vector2 vars = bulbCenter + (bulbEdge - bulbCenter).RotatedBy(WorldGen.genRand.NextFloat(MathHelper.TwoPi)) * WorldGen.genRand.NextFloat(1f);
-            //vars.Y *= (WorldGen.genRand.NextBool() ? 1 : -1);
+            Vector2 bulbCenter = new Vector2(-0.1225611f, 0.7448617f);
+            Vector2 bulbEdge = new Vector2(-1 / 8f, 3 * (float)Math.Sqrt(3) / 8f);
+            Vector2 vars = bulbCenter + (bulbEdge - bulbCenter).RotatedBy(WorldGen.genRand.NextFloat(MathHelper.TwoPi)) * WorldGen.genRand.NextFloat(1f);
+            vars.Y *= (WorldGen.genRand.NextBool() ? 1 : -1);
 
-            //PolaritiesSystem.sentinelCaveVars.Add(vars);
-            //PolaritiesSystem.sentinelCaveRots.Add(rot);
+            PolaritiesSystem.sentinelCaveVars.Add(vars);
+            PolaritiesSystem.sentinelCaveRots.Add(rot);
 
             ////fill it all in with ore temporarily, this blocks other stuff from generating in to the cave
-            //for (int i = (int)(cavePosition.X - ARENA_RADIUS) / 16; i <= (int)(cavePosition.X + ARENA_RADIUS) / 16; i++)
-            //{
-            //    for (int j = (int)(cavePosition.Y - ARENA_RADIUS) / 16; j <= (int)(cavePosition.Y + ARENA_RADIUS) / 16; j++)
-            //    {
-            //        Vector2 tilePosition = new Vector2(i, j) * 16 + new Vector2(8);
+            for (int i = (int)(cavePosition.X - ARENA_RADIUS) / 16; i <= (int)(cavePosition.X + ARENA_RADIUS) / 16; i++)
+            {
+                for (int j = (int)(cavePosition.Y - ARENA_RADIUS) / 16; j <= (int)(cavePosition.Y + ARENA_RADIUS) / 16; j++)
+                {
+                    Vector2 tilePosition = new Vector2(i, j) * 16 + new Vector2(8);
 
-            //        if ((tilePosition - cavePosition).Length() < ARENA_RADIUS)
-            //        {
-            //            WorldGen.PlaceTile(i, j, TileType<Tiles.SelfsimilarOre>(), mute: true, forced: true);
-            //        }
-            //    }
-            //}
+                    if ((tilePosition - cavePosition).Length() < ARENA_RADIUS)
+                    {
+                        WorldGen.PlaceTile(i, j, TileType<SelfsimilarOreTile>(), mute: true, forced: true);
+                    }
+                }
+            }
         }
 
         private static void GenSentinelVein(Vector2 cavePosition, Vector2 vars, double rot, bool onlyGenVein = false)
         {
             //actually generate the thing
 
-            //const float ARENA_RADIUS = NPCs.SelfsimilarSentinel.SelfsimilarSentinel.ARENA_RADIUS;
+            const float ARENA_RADIUS = Content.NPCs.Bosses.Hardmode.SelfsimilarSentinel.SelfsimilarSentinel.ARENA_RADIUS;
 
-            //float varX = vars.X;
-            //float varY = vars.Y;
+            float varX = vars.X;
+            float varY = vars.Y;
 
-            //double veinScale = ARENA_RADIUS / 5;
+            double veinScale = ARENA_RADIUS / 5;
 
-            //for (int i = (int)(cavePosition.X - ARENA_RADIUS) / 16; i <= (int)(cavePosition.X + ARENA_RADIUS) / 16; i++)
-            //{
-            //    for (int j = (int)(cavePosition.Y - ARENA_RADIUS) / 16; j <= (int)(cavePosition.Y + ARENA_RADIUS) / 16; j++)
-            //    {
-            //        Vector2 tilePosition = new Vector2(i, j) * 16 + new Vector2(8);
+            for (int i = (int)(cavePosition.X - ARENA_RADIUS) / 16; i <= (int)(cavePosition.X + ARENA_RADIUS) / 16; i++)
+            {
+                for (int j = (int)(cavePosition.Y - ARENA_RADIUS) / 16; j <= (int)(cavePosition.Y + ARENA_RADIUS) / 16; j++)
+                {
+                    Vector2 tilePosition = new Vector2(i, j) * 16 + new Vector2(8);
 
-            //        if ((tilePosition - cavePosition).Length() < ARENA_RADIUS)
-            //        {
-            //            //remove walls
-            //            if (!onlyGenVein)
-            //            {
-            //                for (int a = -1; a <= 1; a++)
-            //                {
-            //                    for (int b = -1; b <= 1; b++)
-            //                    {
-            //                        Main.tile[i + a, j + b].wall = 0;
-            //                    }
-            //                }
-            //            }
+                    if ((tilePosition - cavePosition).Length() < ARENA_RADIUS)
+                    {
+                        //remove walls
+                        if (!onlyGenVein)
+                        {
+                            for (int a = -1; a <= 1; a++)
+                            {
+                                for (int b = -1; b <= 1; b++)
+                                {
+                                    Main.tile[i + a, j + b].WallType = 0;
+                                }
+                            }
+                        }
 
-            //            //check if it's in the julia set for ore vein
-            //            double x = (cavePosition.X - tilePosition.X) / (double)veinScale * Math.Cos(rot) - (cavePosition.Y - tilePosition.Y) / (double)veinScale * Math.Sin(rot);
-            //            double y = (cavePosition.Y - tilePosition.Y) / (double)veinScale * Math.Cos(rot) + (cavePosition.X - tilePosition.X) / (double)veinScale * Math.Sin(rot);
+                        //check if it's in the julia set for ore vein
+                        double x = (cavePosition.X - tilePosition.X) / (double)veinScale * Math.Cos(rot) - (cavePosition.Y - tilePosition.Y) / (double)veinScale * Math.Sin(rot);
+                        double y = (cavePosition.Y - tilePosition.Y) / (double)veinScale * Math.Cos(rot) + (cavePosition.X - tilePosition.X) / (double)veinScale * Math.Sin(rot);
 
-            //            for (int iterations = 0; iterations < 16; iterations++)
-            //            {
-            //                double newX = x * x - y * y + varX;
-            //                double newY = 2 * x * y + varY;
-            //                x = newX;
-            //                y = newY;
+                        for (int iterations = 0; iterations < 16; iterations++)
+                        {
+                            double newX = x * x - y * y + varX;
+                            double newY = 2 * x * y + varY;
+                            x = newX;
+                            y = newY;
 
-            //                if (x * x + y * y > 4)
-            //                {
-            //                    //funny converging wall pattern
-            //                    //I'll only be able to do this if I get it to work with walls
-            //                    //So probably not
-            //                    /*if (!onlyGenVein)
-            //                    {
-            //                        if (Main.tile[i, j].wall == WallType<Walls.FractalDuststoneWallNatural>())
-            //                        {
-            //                            Main.tile[i, j].wall = (ushort)((iterations % 2 == 0) ? WallType<Walls.FractalDuststoneWallNatural>() : WallType<Walls.FractalStrandsWallNatural>());
-            //                        }
-            //                        else
-            //                        {
-            //                            Main.tile[i, j].wall = (ushort)((iterations % 2 == 0) ? WallType<Walls.FractalMatterWallNatural>() : WallType<Walls.FractalStrandsWallNatural>());
-            //                        }
-            //                    }*/
+                            if (x * x + y * y > 4)
+                            {
+                                //funny converging wall pattern
+                                //I'll only be able to do this if I get it to work with walls
+                                //So probably not
+                                if (!onlyGenVein)
+                                {
+                                    if (Main.tile[i, j].WallType == WallType<FractalDuststoneWallNatural>())
+                                    {
+                                        Main.tile[i, j].WallType = (ushort)((iterations % 2 == 0) ? WallType<FractalDuststoneWallNatural>() : WallType<FractalStrandsWallNatural>());
+                                    }
+                                    else
+                                    {
+                                        Main.tile[i, j].WallType = (ushort)((iterations % 2 == 0) ? WallType<FractalMatterWallNatural>() : WallType<FractalStrandsWallNatural>());
+                                    }
+                                }
 
-            //                    break;
-            //                }
-            //            }
-            //            if (x * x + y * y <= 4)
-            //            {
-            //                WorldGen.PlaceTile(i, j, TileType<Tiles.SelfsimilarOre>(), mute: true);
-            //            }
-            //            else if (!onlyGenVein)
-            //            {
-            //                Main.tile[i, j].active(false);
-            //            }
-            //        }
-            //    }
-            //}
+                                break;
+                            }
+                        }
+                        if (x * x + y * y <= 4)
+                        {
+                            WorldGen.PlaceTile(i, j, TileType<SelfsimilarOreTile>(), mute: true);
+                        }
+                        else if (!onlyGenVein)
+                        {
+                            //var selfsim = Main.tile[i, j];
+                            //selfsim.SelfsimilarOreTile = false;
+                        }
+                    }
+                }
+            }
 
-            //if (!onlyGenVein)
-            //{
-            //    for (int a = -1; a <= 1; a += 2)
-            //    {
-            //        int j = (int)(cavePosition.Y + a * ARENA_RADIUS / 3) / 16;
+            if (!onlyGenVein)
+            {
+                for (int a = -1; a <= 1; a += 2)
+                {
+                    int j = (int)(cavePosition.Y + a * ARENA_RADIUS / 3) / 16;
 
-            //        bool genLeft = false;
-            //        bool genRight = false;
-            //        for (int i = (int)(cavePosition.X - ARENA_RADIUS) / 16; i <= (int)(cavePosition.X + ARENA_RADIUS) / 16; i++)
-            //        {
-            //            if ((new Vector2(i * 16 + 8, j * 16 + 8) - cavePosition).Length() >= ARENA_RADIUS && (new Vector2((i - 1) * 16 + 8, j * 16 + 8) - cavePosition).Length() < ARENA_RADIUS)
-            //            {
-            //                //on the right side
-            //                if (Main.tile[i, j].active() && Main.tileSolid[Main.tile[i, j].type])
-            //                {
-            //                    genRight = true;
-            //                }
-            //            }
-            //            else if ((new Vector2(i * 16 + 8, j * 16 + 8) - cavePosition).Length() >= ARENA_RADIUS && (new Vector2((i + 1) * 16 + 8, j * 16 + 8) - cavePosition).Length() < ARENA_RADIUS)
-            //            {
-            //                //on the left side
-            //                if (Main.tile[i, j].active() && Main.tileSolid[Main.tile[i, j].type])
-            //                {
-            //                    genLeft = true;
-            //                }
-            //            }
-            //        }
+                    bool genLeft = false;
+                    bool genRight = false;
+                    for (int i = (int)(cavePosition.X - ARENA_RADIUS) / 16; i <= (int)(cavePosition.X + ARENA_RADIUS) / 16; i++)
+                    {
+                        if ((new Vector2(i * 16 + 8, j * 16 + 8) - cavePosition).Length() >= ARENA_RADIUS && (new Vector2((i - 1) * 16 + 8, j * 16 + 8) - cavePosition).Length() < ARENA_RADIUS)
+                        {
+                            //on the right side
+                            if (Main.tile[i, j].HasTile && Main.tileSolid[Main.tile[i, j].TileType])
+                            {
+                                genRight = true;
+                            }
+                        }
+                        else if ((new Vector2(i * 16 + 8, j * 16 + 8) - cavePosition).Length() >= ARENA_RADIUS && (new Vector2((i + 1) * 16 + 8, j * 16 + 8) - cavePosition).Length() < ARENA_RADIUS)
+                        {
+                            //on the left side
+                            if (Main.tile[i, j].HasTile && Main.tileSolid[Main.tile[i, j].TileType])
+                            {
+                                genLeft = true;
+                            }
+                        }
+                    }
 
-            //        bool genMiddle = WorldGen.genRand.NextBool();
+                    bool genMiddle = WorldGen.genRand.NextBool();
 
-            //        float leftInwards = WorldGen.genRand.NextFloat(64, ARENA_RADIUS / 3 - 64);
-            //        float rightInwards = WorldGen.genRand.NextFloat(64, ARENA_RADIUS / 3 - 64);
+                    float leftInwards = WorldGen.genRand.NextFloat(64, ARENA_RADIUS / 3 - 64);
+                    float rightInwards = WorldGen.genRand.NextFloat(64, ARENA_RADIUS / 3 - 64);
 
-            //        float maxLeft = genLeft ? (cavePosition.X - ARENA_RADIUS) :
-            //            (cavePosition.X - ARENA_RADIUS / 3 - leftInwards);
-            //        float maxRight = genRight ? (cavePosition.X + ARENA_RADIUS) :
-            //            (cavePosition.X + ARENA_RADIUS / 3 + rightInwards);
+                    float maxLeft = genLeft ? (cavePosition.X - ARENA_RADIUS) :
+                        (cavePosition.X - ARENA_RADIUS / 3 - leftInwards);
+                    float maxRight = genRight ? (cavePosition.X + ARENA_RADIUS) :
+                        (cavePosition.X + ARENA_RADIUS / 3 + rightInwards);
 
-            //        float middleLeft = (cavePosition.X - ARENA_RADIUS / 3 + leftInwards);
-            //        float middleRight = (cavePosition.X + ARENA_RADIUS / 3 - rightInwards);
+                    float middleLeft = (cavePosition.X - ARENA_RADIUS / 3 + leftInwards);
+                    float middleRight = (cavePosition.X + ARENA_RADIUS / 3 - rightInwards);
 
-            //        for (int i = (int)(cavePosition.X - ARENA_RADIUS) / 16; i <= (int)(cavePosition.X + ARENA_RADIUS) / 16; i++)
-            //        {
-            //            Vector2 tilePosition = new Vector2(i, j) * 16 + new Vector2(8);
+                    for (int i = (int)(cavePosition.X - ARENA_RADIUS) / 16; i <= (int)(cavePosition.X + ARENA_RADIUS) / 16; i++)
+                    {
+                        Vector2 tilePosition = new Vector2(i, j) * 16 + new Vector2(8);
 
-            //            if ((tilePosition - cavePosition).Length() < ARENA_RADIUS)
-            //            {
-            //                if ((i > maxLeft / 16 && i < maxRight / 16) &&
-            //                    (genMiddle || i < middleLeft / 16 || i > middleRight / 16))
-            //                {
-            //                    WorldGen.PlaceTile(i, j, TileType<FractalPlatformTile>(), mute: true);
-            //                }
-            //            }
-            //        }
+                        if ((tilePosition - cavePosition).Length() < ARENA_RADIUS)
+                        {
+                            if ((i > maxLeft / 16 && i < maxRight / 16) &&
+                                (genMiddle || i < middleLeft / 16 || i > middleRight / 16))
+                            {
+                                WorldGen.PlaceTile(i, j, TileType<FractalPlatformTile>(), mute: true);
+                            }
+                        }
+                    }
 
-            //        //Generate columns if needed
-            //        if (!genLeft || !genMiddle)
-            //        {
-            //            int i = (int)(cavePosition.X - ARENA_RADIUS / 3) / 16;
-            //            int j2 = (a == -1) ? (j - 1) : j;
+                    //fix later when sprite has
+                    //Generate columns if needed
+                    //if (!genLeft || !genMiddle)
+                    //{
+                        //int i = (int)(cavePosition.X - ARENA_RADIUS / 3) / 16;
+                        //int j2 = (a == -1) ? (j - 1) : j;
 
-            //            //generate column
-            //            while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].wall == 0)
-            //            {
-            //                Main.tile[i, j2].wall = (ushort)WallType<Walls.FractalFence>();
-            //                j2 += a;
-            //            }
-            //        }
-            //        if (!genRight || !genMiddle)
-            //        {
-            //            int i = (int)(cavePosition.X + ARENA_RADIUS / 3) / 16;
-            //            int j2 = (a == -1) ? (j - 1) : j;
+                        //generate column
+                        //while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].WallType == 0)
+                        //{
+                            //Main.tile[i, j2].WallType = (ushort)WallType<FractalFence>();
+                            //j2 += a;
+                        //}
+                    //}
+                    //if (!genRight || !genMiddle)
+                    //{
+                        //int i = (int)(cavePosition.X + ARENA_RADIUS / 3) / 16;
+                        //int j2 = (a == -1) ? (j - 1) : j;
 
-            //            //generate column
-            //            while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].wall == 0)
-            //            {
-            //                Main.tile[i, j2].wall = (ushort)WallType<Walls.FractalFence>();
-            //                j2 += a;
-            //            }
-            //        }
-            //    }
-            //}
+                        //generate column
+                        //while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].WallType == 0)
+                        //{
+                            //Main.tile[i, j2].WallType = (ushort)WallType<FractalFence>();
+                            //j2 += a;
+                        //}
+                    //}
+                }
+            }
         }
 
 
@@ -2742,12 +2744,12 @@ namespace Polarities
         //are we in a sentinel cave
         public static bool InSentinelCave(Vector2 position)
         {
-            //Vector2 worldPosition = NPCs.SelfsimilarSentinel.SelfsimilarSentinel.GetNearestArenaPosition(position);
+            Vector2 worldPosition = Content.NPCs.Bosses.Hardmode.SelfsimilarSentinel.SelfsimilarSentinel.GetNearestArenaPosition(position);
 
-            //if ((worldPosition - position).Length() > NPCs.SelfsimilarSentinel.SelfsimilarSentinel.ARENA_RADIUS)
-            //{
-            //    return true;
-            //}
+            if ((worldPosition - position).Length() > Content.NPCs.Bosses.Hardmode.SelfsimilarSentinel.SelfsimilarSentinel.ARENA_RADIUS)
+            {
+                return true;
+            }
             return false;
         }
 
@@ -2768,10 +2770,10 @@ namespace Polarities
             }
 
             //regenerate sentinel veins
-            //for (int i = 0; i < PolaritiesSystem.sentinelCaves.Count; i++)
-            //{
-            //    GenSentinelVein(PolaritiesSystem.sentinelCaves[i], PolaritiesSystem.sentinelCaveVars[i], PolaritiesSystem.sentinelCaveRots[i], onlyGenVein: true);
-            //}
+            for (int i = 0; i < PolaritiesSystem.sentinelCaves.Count; i++)
+            {
+                GenSentinelVein(PolaritiesSystem.sentinelCaves[i], PolaritiesSystem.sentinelCaveVars[i], PolaritiesSystem.sentinelCaveRots[i], onlyGenVein: true);
+            }
         }
     }
 

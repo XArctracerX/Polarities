@@ -3,6 +3,15 @@ using Microsoft.Xna.Framework.Graphics;
 using Polarities.Core;
 using Polarities.Global;
 using Polarities.Assets;
+using Polarities.Content.Items.Weapons.Summon.Minions.Hardmode;
+using Polarities.Content.Items.Weapons.Melee.Broadswords.Hardmode;
+using Polarities.Content.Items.Weapons.Melee.Boomerangs.Hardmode;
+using Polarities.Content.Items.Weapons.Ranged.Bows.Hardmode;
+using Polarities.Content.Items.Materials.Hardmode;
+using Polarities.Content.Items.Placeable.Relics;
+using Polarities.Content.Items.Placeable.Trophies;
+using Polarities.Content.Items.Consumables.TreasureBags.Hardmode;
+using Polarities.Content.Items.Vanity.Hardmode;
 using Polarities.Content.Items.Weapons.Ranged.Flawless;
 using Polarities.Content.Projectiles;
 using ReLogic.Content;
@@ -13,6 +22,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
@@ -123,9 +133,26 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Eclipxie
 
             NPC.hide = true;
 
-            Music = MusicID.EmpressOfLight;
-            //TODO: Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/Eclipxie");
+            Music = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/Eclipxie");
         }
+
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(new FlawlessOrRandomDropRule(ItemType<EclipxieTrophy>(), 10));
+            npcLoot.Add(ItemDropRule.BossBag(ItemType<EclipxieBag>()));
+            npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ItemType<EclipxieRelic>()));
+            //TODO: npcLoot.Add(ModUtils.MasterModeDropOnAllPlayersOrFlawless(ItemType<EsophagePetItem>(), 4));
+
+            //normal mode loot
+            LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+            notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<EclipxieMask>(), 7));
+            notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<EclipxieDust>(), 1, 10, 20));
+            notExpertRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ItemType<BlackLight>(), ItemType<SolarEyeStaff>(), ItemType<Sunsliver>(), ItemType<MoonDisc>(), ItemType<SunDisc>()));
+            npcLoot.Add(notExpertRule);
+
+            //npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<Contagun>()));
+        }
+
         public static void SpawnOn(Player player)
         {
             NPC pixie = Main.npc[NPC.NewNPC(NPC.GetBossSpawnSource(player.whoAmI), (int)player.Center.X, (int)player.Center.Y - 300, NPCType<Eclipxie>())];

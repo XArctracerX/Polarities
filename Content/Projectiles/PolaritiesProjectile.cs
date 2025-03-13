@@ -2,6 +2,7 @@
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using Polarities.Content.Items.Tools.Books.Hardmode;
+using Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode;
 using Polarities.Global;
 using Polarities.Core;
 using System;
@@ -174,6 +175,7 @@ namespace Polarities.Content.Projectiles
         public bool planteraBookHooks;
 
         public bool candyCaneAtlatl;
+        public bool bloodsplosion = false;
 
         public override bool PreAI(Projectile projectile)
         {
@@ -307,6 +309,16 @@ namespace Polarities.Content.Projectiles
             }
 
             Player player = Main.player[projectile.owner];
+
+            if (bloodsplosion)
+            {
+                bloodsplosion = false;
+                Projectile.NewProjectile(projectile.GetSource_FromAI(), target.Center, Main.player[projectile.owner].velocity, ProjectileType<Bloodsplosion>(), 6, 2, projectile.owner, Main.rand.NextFloat(MathHelper.Pi * 2), projectile.whoAmI);
+                for (int i = 0; i < 4; i++)
+                {
+                    Projectile.NewProjectile(projectile.GetSource_FromAI(), target.Center, Main.player[projectile.owner].velocity, ProjectileType<Bloodsplosion>(), 6, 2, projectile.owner, Main.rand.NextFloat(MathHelper.Pi * 2), projectile.whoAmI); ;
+                }
+            }
 
             if (candyCaneAtlatl)
             {

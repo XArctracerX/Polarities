@@ -100,7 +100,13 @@ Mods: {
 			FractalOreTile.MapEntry: Fractal Ore
 			SelfsimilarOreTile.MapEntry: Selfsimilar Ore
 			FractalBiomeChestTile.MapEntry: Fractal Biome Chest
-			FractalChestTile.MapEntry: Fractal Chest
+
+			FractalChestTile: {
+				MapEntry: Fractal Chest
+				MapEntry0: Mods.Polarities.Tiles.FractalChestTile.MapEntry0
+				MapEntry1: Mods.Polarities.Tiles.FractalChestTile.MapEntry1
+			}
+
 			BookTile.MapEntry: Book
 			BannerTile.MapEntry: Banner Tile
 		}
@@ -453,17 +459,27 @@ Mods: {
 
 			PhagocyteBuff: {
 				DisplayName: Phagocyte Buff
-				Description: Mods.Polarities.Buffs.PhagocyteBuff.Description
+				Description: ""
 			}
 
 			Observed: {
 				DisplayName: Observed
-				Description: Mods.Polarities.Buffs.Observed.Description
+				Description: ""
 			}
 
 			CloakofPocketsCooldown: {
-				DisplayName: Cloakof Pockets Cooldown
-				Description: Mods.Polarities.Buffs.CloakofPocketsCooldown.Description
+				DisplayName: Cloak Of Pockets Cooldown
+				Description: You have seen too much
+			}
+
+			SolarEyeBuff: {
+				DisplayName: Solar Eye Buff
+				Description: The solar eye will watch over you
+			}
+
+			SolarCalibratorBuff: {
+				DisplayName: Solar Calibrator Buff
+				Description: All attacks are guaranteed to crit
 			}
 		}
 
@@ -702,6 +718,11 @@ Mods: {
 					'''
 			}
 
+			SolarCalibrator: {
+				DisplayName: Solar Calibrator
+				Tooltip: Gives the player a guarantee to crit enemies for a short time after dealing a certain amount of damage
+			}
+
 			//Summon Items
 			AltBiomeMimicSummon: {
 				DisplayName: Weird Key of Night
@@ -834,7 +855,17 @@ Mods: {
 				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 			}
 
+			EclipxieBag: {
+				DisplayName: Treasure Bag (EclipxieBag)
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
 			//Materials
+			EclipxieDust: {
+				DisplayName: Eclipxie Dust
+				Tooltip: ""
+			}
+
 			AlkalineFluid: {
 				DisplayName: Alkaline Fluid
 				Tooltip: ""
@@ -1015,6 +1046,17 @@ Mods: {
 				Tooltip: Spews ducks
 			}
 
+			//Pickaxes
+			FractalPickaxe: {
+				DisplayName: Fractal Pickaxe
+				Tooltip: ""
+			}
+
+			SelfsimilarPickaxe: {
+				DisplayName: Selfsimilar Pickaxe
+				Tooltip: ""
+			}
+
 			//Multi
 			SunplateHamaxe: {
 				DisplayName: Sunplate Hamaxe
@@ -1110,6 +1152,11 @@ Mods: {
 
 			SelfsimilarSentinelMask: {
 				DisplayName: Selfsimilar Sentinel Mask
+				Tooltip: ""
+			}
+
+			EclipxieMask: {
+				DisplayName: Eclipxie Mask
 				Tooltip: ""
 			}
 
@@ -2253,6 +2300,93 @@ Mods: {
 					'''
 			}
 
+			Radial: {
+				DisplayName: Radial
+				Tooltip: Creates a swarm of radial blades around the cursor which ignore up to 20 enemy defense
+			}
+
+			CosmicDiscs: {
+				DisplayName: Cosmic Discs
+				Tooltip: ""
+			}
+
+			MoonDisc: {
+				DisplayName: Moon Disc
+				Tooltip: ""
+			}
+
+			SunDisc: {
+				DisplayName: Sun Disc
+				Tooltip: ""
+			}
+
+			BlackLight: {
+				DisplayName: Black Light
+				Tooltip:
+					'''
+					'Where does it end?' 
+					'Doesn't.'
+					'''
+			}
+
+			FractalScythe: {
+				DisplayName: Fractal Scythe
+				Tooltip: Shoots a wave of fractal energy that splits on hitting enemies
+			}
+
+			FractalSword: {
+				DisplayName: Fractal Sword
+				Tooltip:
+					'''
+					Inflicts chaos state on striking enemies
+					Deals double damage to enemies with chaos state
+					'''
+			}
+
+			SelfsimilarSlasher: {
+				DisplayName: Selfsimilar Slasher
+				Tooltip: Shoots a splitting wave of selfsimilar energy
+			}
+
+			SelfsimilarSword: {
+				DisplayName: Selfsimilar Sword
+				Tooltip:
+					'''
+					Inflicts chaos state on striking enemies
+					Deals double damage to enemies with chaos state
+					'''
+			}
+
+			FractalBow: {
+				DisplayName: Fractal Bow
+				Tooltip: Shoots a mini fractal bow which fires an arrow at the cursor
+			}
+
+			SelfsimilarBow: {
+				DisplayName: Selfsimilar Bow
+				Tooltip: Shoots four mini selfsimilar bows, which fire arrows at the cursor
+			}
+
+			Sunsliver: {
+				DisplayName: Sunsliver
+				Tooltip: Fires streams of arrows at varying speeds
+			}
+
+			CantorShot: {
+				DisplayName: Cantor Shot
+				Tooltip: Shoots a fractal spray of bullets
+			}
+
+			Iterator: {
+				DisplayName: Iterator
+				Tooltip: Shoots a fractal spread of bullets which cause the weapon to shoot more bullets on hitting enemies
+			}
+
+			SolarEyeStaff: {
+				DisplayName: Solar Eye Staff
+				Tooltip: Summons a solar eye to protect you
+			}
+
 			//Critter Items
 			BabyWandererItem: {
 				DisplayName: Baby Wanderer
@@ -2371,6 +2505,11 @@ Mods: {
 				Tooltip: ""
 			}
 
+			EclipxieRelic: {
+				DisplayName: Eclipxie Relic
+				Tooltip: ""
+			}
+
 			//Trophies
 			ConvectiveWandererTrophy: {
 				DisplayName: Convective Wanderer Trophy
@@ -2414,6 +2553,11 @@ Mods: {
 
 			SelfsimilarSentinelTrophy: {
 				DisplayName: Selfsimilar Sentinel Trophy
+				Tooltip: ""
+			}
+
+			EclipxieTrophy: {
+				DisplayName: Eclipxie Trophy
 				Tooltip: ""
 			}
 
@@ -4100,6 +4244,17 @@ Mods: {
 			SelfsimilarMeleeShield.DisplayName: Selfsimilar Melee Shield
 			SelfsimilarRangerTarget.DisplayName: Selfsimilar Ranger Target
 			SelfsimilarSummonerOrb.DisplayName: Selfsimilar Summoner Orb
+			RadialBlade.DisplayName: Radial Blade
+			Lunarang.DisplayName: Lunarang
+			Solarang.DisplayName: Solarang
+			BlackLightProjectile.DisplayName: Black Light Projectile
+			FractalScytheSlash.DisplayName: Fractal Scythe Slash
+			SelfsimilarScytheSlash.DisplayName: Selfsimilar Scythe Slash
+			SelfsimilarSwordShot.DisplayName: Selfsimilar Sword Shot
+			FractalBowMini.DisplayName: Fractal Bow Mini
+			SelfsimilarBowMini.DisplayName: Selfsimilar Bow Mini
+			SolarEye.DisplayName: Solar Eye
+			SolarEyeSpark.DisplayName: Solar Eye Spark
 		}
 
 		Bestiary: {

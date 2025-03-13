@@ -49,6 +49,7 @@ namespace Polarities
         public int screenshakeTimer;
         public int screenshakeMagnitude;
 
+        public bool selfsimilarMining;
         public int selfsimilarHits;
         public int selfsimilarHitTimer;
 
@@ -108,6 +109,10 @@ namespace Polarities
         public int stormcloudArmorCooldown;
         public int tolerancePotionDelayTime = 3600;
         public float ammoChance;
+
+        public bool solarCalibrator;
+        public int solarCalibratorDamageTick;
+        private static readonly int SOLARCALIBRATORTICKMAX = 25000;
 
         //fractal and selfsimilar set bonuses
         public int fractalSetBonusTier;
@@ -173,6 +178,7 @@ namespace Polarities
 
         public override void ResetEffects()
 		{
+            selfsimilarMining = false;
             if (selfsimilarHitTimer > 0)
             {
                 selfsimilarHitTimer--;
@@ -234,6 +240,8 @@ namespace Polarities
             stormcloudArmor = false;
             ammoChance = 1f;
 
+            solarCalibrator = false;
+
             fractalSetBonusTier = 0;
             fractalSummonerOrbs = false;
             fractalMeleeShield = false;
@@ -244,7 +252,7 @@ namespace Polarities
 
             hasSentinelHearts = false;
 
-            fractalDimensionRespawn = false;
+            //fractalDimensionRespawn = false;
 
             if (skeletronBookCooldown > 0) skeletronBookCooldown--;
             if (beeRingTimer > 0) beeRingTimer--;
@@ -1026,6 +1034,16 @@ namespace Polarities
                 fractalRangerTargetCooldown = 30;
             }
 
+            if (solarCalibrator && !Player.HasBuff(BuffType<SolarCalibratorBuff>()))
+            {
+                solarCalibratorDamageTick += damage;
+                if (solarCalibratorDamageTick > SOLARCALIBRATORTICKMAX)
+                {
+                    solarCalibratorDamageTick = 0;
+                    Player.AddBuff(BuffType<SolarCalibratorBuff>(), 60 * 3);
+                }
+            }
+
             if (damageClass != DamageClass.Magic && !damageClass.GetEffectInheritance(DamageClass.Magic) && solarEnergizer)
             {
                 Player.statMana++;
@@ -1193,6 +1211,13 @@ namespace Polarities
             {
                 damage = Math.Max(damage, (int)(damage * critDamageBoostMultiplier));
                 target.GetGlobalNPC<PolaritiesNPC>().ignoredDefenseFromCritAmount = ignoreCritDefenseAmount;
+            }
+
+            if (Player.HasBuff(BuffType<SolarCalibratorBuff>())) { crit = true; }
+            if (crit)
+            {
+                damage = Math.Max(damage, (int)(damage * critDamageBoostMultiplier));
+                damage += Math.Max(0, Math.Min(target.defense / 2, ignoreCritDefenseAmount));
             }
         }
 

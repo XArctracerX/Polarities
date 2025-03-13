@@ -40,12 +40,16 @@ namespace Polarities
         public static List<int> DrawCacheProjsBehindWalls = new List<int>();
 
         public static List<Vector2> sentinelCaves;
+        public static List<Vector2> sentinelCaveVars;
+        public static List<double> sentinelCaveRots;
 
         public override void Load()
         {
             SkyManager.Instance["Polarities: Rift Denizen"] = new RiftDenizenSky();
 
             sentinelCaves = new List<Vector2>();
+            sentinelCaveVars = new List<Vector2>();
+            sentinelCaveRots = new List<double>();
             Terraria.On_Main.CacheProjDraws += Main_CacheProjDraws;
             Terraria.On_Main.DoDraw_WallsAndBlacks += Main_DoDraw_WallsAndBlacks;
 
@@ -241,6 +245,8 @@ namespace Polarities
         {
             DrawCacheProjsBehindWalls.Clear();
             sentinelCaves?.Clear();
+            sentinelCaveVars?.Clear();
+            sentinelCaveRots?.Clear();
 
             downedStormCloudfish = false;
             downedStarConstruct = false;
@@ -279,6 +285,8 @@ namespace Polarities
         {
             DrawCacheProjsBehindWalls.Clear();
             sentinelCaves?.Clear();
+            sentinelCaveVars?.Clear();
+            sentinelCaveRots?.Clear();
 
             downedStormCloudfish = false;
             downedStarConstruct = false;
