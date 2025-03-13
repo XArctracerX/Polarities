@@ -2,13 +2,14 @@
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using Polarities.Content.Items.Tools.Books.Hardmode;
-using Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode;
 using Polarities.Global;
 using Polarities.Core;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Terraria;
+using Terraria.ID;
+using Terraria.Audio;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
@@ -173,7 +174,6 @@ namespace Polarities.Content.Projectiles
         public bool planteraBookHooks;
 
         public bool candyCaneAtlatl;
-        public bool bloodsplosion = false;
 
         public override bool PreAI(Projectile projectile)
         {
@@ -291,6 +291,9 @@ namespace Polarities.Content.Projectiles
             return base.CanHitNPC(projectile, target);
         }
 
+        public Item recurShotItem = null;
+        public bool hasRecurred = false;
+
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (target.GetGlobalNPC<PolaritiesNPC>().usesProjectileHitCooldowns)
@@ -305,16 +308,6 @@ namespace Polarities.Content.Projectiles
 
             Player player = Main.player[projectile.owner];
 
-            if (bloodsplosion)
-            {
-                bloodsplosion = false;
-                Projectile.NewProjectile(projectile.GetSource_FromAI(), target.Center, Main.player[projectile.owner].velocity, ProjectileType<Bloodsplosion>(), 6, 2, projectile.owner, Main.rand.NextFloat(MathHelper.Pi * 2), projectile.whoAmI);
-                for (int i = 0; i < 4; i++)
-                {
-                    Projectile.NewProjectile(projectile.GetSource_FromAI(), target.Center, Main.player[projectile.owner].velocity, ProjectileType<Bloodsplosion>(), 6, 2, projectile.owner, Main.rand.NextFloat(MathHelper.Pi * 2), projectile.whoAmI); ;
-                }
-            }
-
             if (candyCaneAtlatl)
             {
                 candyCaneAtlatl = false;
@@ -323,6 +316,21 @@ namespace Polarities.Content.Projectiles
                 if (player.GetModPlayer<PolaritiesPlayer>().candyCaneAtlatlBoost >= 60 * 15)
                 {
                     player.GetModPlayer<PolaritiesPlayer>().candyCaneAtlatlBoost = 60 * 15;
+                }
+            }
+
+            if (recurShotItem != null && !hasRecurred)
+            {
+                SoundEngine.PlaySound(recurShotItem.UseSound, player.position);
+                float angle = (float)Main.rand.NextDouble() * (float)Math.PI * 2;
+                Vector2 randOnUnitCircle = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
+                Vector2 pos = player.Center + (randOnUnitCircle * 64);
+                Dust.NewDustPerfect(pos, DustID.WitherLightning, Velocity: Vector2.Zero, Scale: 2f).noGravity = true;
+                Projectile reShot = Projectile.NewProjectileDirect(recurShotItem.GetSource_FromThis(), pos, pos.DirectionTo(target.position) * projectile.velocity.Length(), projectile.type, projectile.damage, projectile.knockBack, player.whoAmI);
+                hasRecurred = true;
+                if (Main.rand.NextDouble() > 0.75)
+                {
+                    reShot.GetGlobalProjectile<Content.Projectiles.PolaritiesProjectile>().recurShotItem = recurShotItem;
                 }
             }
         }
