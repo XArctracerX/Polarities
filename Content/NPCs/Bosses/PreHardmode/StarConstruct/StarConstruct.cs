@@ -1745,6 +1745,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
+            if (NPC.whoAmI == 0) return true;
             NPC construct = Main.npc[(int)NPC.ai[0]];
 
             drawColor = construct.GetNPCColorTintedByBuffs(Color.White);

@@ -525,6 +525,7 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
+            if (NPC.whoAmI == 0) return true;
             drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 
             NPC owner = Main.npc[(int)NPC.ai[0]];

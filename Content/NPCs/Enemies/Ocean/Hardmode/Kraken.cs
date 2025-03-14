@@ -401,6 +401,7 @@ namespace Polarities.Content.NPCs.Enemies.Ocean.Hardmode
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
+            if (NPC.whoAmI == 0) return true;
             NPC owner = Main.npc[kraken];
 
             Vector2[] bezierPoints = { owner.Center, owner.Center + new Vector2(0, 80).RotatedBy(owner.rotation), NPC.Center + new Vector2(-80, 0).RotatedBy(NPC.rotation), NPC.Center };
