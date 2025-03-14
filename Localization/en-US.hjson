@@ -3776,11 +3776,7 @@ Mods: {
 
 			StormCloudfish: {
 				DisplayName: Storm Cloudfish
-
-				BossChecklistIntegration: {
-					EntryName: "{$Mods.Polarities.NPCName.StormCloudfish}"
-					SpawnInfo: Fly a [i:5976 as high as you can at the surface.
-				}
+				BossChecklistIntegration.SpawnInfo: Fly a [i:Polarities/StormCloudfishSummonItem] as high as you can at the surface.
 			}
 
 			CloudCichlid.DisplayName: Cloud Cichlid
@@ -3789,22 +3785,14 @@ Mods: {
 
 			StarConstruct: {
 				DisplayName: Star Construct
-
-				BossChecklistIntegration: {
-					EntryName: "{$Mods.Polarities.NPCName.StarConstruct}"
-					SpawnInfo: Wait for a dormant construct to spawn at night while the player has at least 300 maximum life, or use a [i:5975 at the surface.
-				}
+				BossChecklistIntegration.SpawnInfo: Wait for a dormant construct to spawn at night while the player has at least 300 maximum life, or use a [i:Polarities/StarConstructSummonItem] at the surface.
 			}
 
 			StarConstructClaw.DisplayName: Star Construct Claw
 
 			Gigabat: {
 				DisplayName: Gigabat
-
-				BossChecklistIntegration: {
-					EntryName: "{$Mods.Polarities.NPCName.Gigabat}"
-					SpawnInfo: Release gemflies and wait, or use a [i:5973], while underground.
-				}
+				BossChecklistIntegration.SpawnInfo: Release gemflies and wait, or use a [i:Polarities/GigabatSummonItem] while underground.
 			}
 
 			GigabatMinion.DisplayName: Swarm Bat
@@ -3843,11 +3831,7 @@ Mods: {
 
 			SunPixie: {
 				DisplayName: Sun Pixie
-
-				BossChecklistIntegration: {
-					EntryName: "{$Mods.Polarities.NPCName.SunPixie}"
-					SpawnInfo: Reach the end of the Rapture, or use a [i:5971] anywhere.
-				}
+				BossChecklistIntegration.SpawnInfo: Reach the end of the Rapture, or use a [i:Polarities/SunPixieSummonItem] anywhere.
 			}
 
 			SunServitor.DisplayName: Sun Servitor
@@ -3860,11 +3844,7 @@ Mods: {
 
 			Esophage: {
 				DisplayName: Esophage
-
-				BossChecklistIntegration: {
-					EntryName: "{$Mods.Polarities.NPCName.Esophage}"
-					SpawnInfo: Reach the end of the Pestilence, or use a [i:5969] anywhere.
-				}
+				BossChecklistIntegration.SpawnInfo: Reach the end of the Pestilence, or use a [i:Polarities/EsophageSummonItem] anywhere.
 			}
 
 			EsophageClaw.DisplayName: Esophage Claw
@@ -3878,11 +3858,7 @@ Mods: {
 
 			ConvectiveWanderer: {
 				DisplayName: Convective Wanderer
-
-				BossChecklistIntegration: {
-					EntryName: "{$Mods.Polarities.NPCName.ConvectiveWanderer}"
-					SpawnInfo: Kill a baby wanderer, or use a [i:5968], at the lava ocean.
-				}
+				BossChecklistIntegration.SpawnInfo: Kill a baby wanderer, or use a [i:Polarities/ConvectiveWandererSummonItem], at the lava ocean.
 			}
 
 			BabyWanderer.DisplayName: Baby Wanderer
@@ -4264,7 +4240,7 @@ Mods: {
 
 		Bestiary: {
 			StormCloudfish: A rather aggressive, predatory life form composed entirely of turbulent thunder clouds. It employs rain clouds, lightning, and even transparency as a last resort.
-			DormantConstruct: Fallen from the heavens, this enigmatic machine silently waits to be awoken from it�s idle state.
+			DormantConstruct: Fallen from the heavens, this enigmatic machine silently waits to be awoken from its idle state.
 			StarConstruct: With violently flinging chained hooks and blood-curdling shrieks, this entity blurs the line between organic and automaton.
 			Gigabat: Reinforced with its own posse of bat companions, this positively enormous bat employs echolocation and its overwhelming numbers to hunt.
 			GigabatMinion: A single pawn utilized by Gigabat. As soon as one falls, another takes its place, as if nothing had happened at all.
@@ -4402,7 +4378,7 @@ Mods: {
 		Keybinds: {
 			"Convective Set Bonus.DisplayName": Convective Set Bonus
 			"Convective Dash.DisplayName": Convective Dash
-			"Rift Dodge.DisplayName": Rift  Dodge
+			"Rift Dodge.DisplayName": Rift Dodge
 		}
 
 		Conditions: {
@@ -4450,24 +4426,6 @@ Mods: {
 		Misc: {
 			UnboundHotkey: an unbound hotkey
 			Extra: ""
-		}
-
-		BossChecklistIntegration: {
-			Mods: {
-				Polarities: {
-					BiomeName: {
-						HallowInvasion: {
-							EntryName: "{$Mods.Polarities.BiomeName.HallowInvasion}"
-							SpawnInfo: Use a [i:5970], or wait after defeating any mechanical boss.
-						}
-
-						WorldEvilInvasion: {
-							EntryName: "{$Mods.Polarities.BiomeName.WorldEvilInvasion}"
-							SpawnInfo: Use a [i:5972], or wait after defeating every mechanical boss.
-						}
-					}
-				}
-			}
 		}
 	}
 }
