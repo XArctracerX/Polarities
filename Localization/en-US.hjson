@@ -285,7 +285,12 @@ Mods: {
 
 			ConeVenom: {
 				DisplayName: Cone Venom
-				Description: ""
+				Description: You cannot move (that includes your lungs)
+			}
+
+			Magnetized: {
+				DisplayName: Magnetized
+				Description: Your hair is standing on end
 			}
 
 			//Potions
