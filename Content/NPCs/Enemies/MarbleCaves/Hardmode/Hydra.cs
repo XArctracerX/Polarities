@@ -25,7 +25,7 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
         //TODO: Custom bestiary image, proper bestiary loot drops
         public override void SetStaticDefaults()
         {
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 SpriteDirection = 1
             };
@@ -137,7 +137,7 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
 
             Main.npcFrameCount[NPC.type] = 2;
 
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 //don't show up in bestiary
                 Hide = true

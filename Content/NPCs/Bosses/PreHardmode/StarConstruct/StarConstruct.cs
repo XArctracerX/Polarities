@@ -109,7 +109,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
             NPC.buffImmune[BuffID.OnFire] = true;
             NPC.buffImmune[BuffID.Poisoned] = true;
 
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 PortraitPositionYOverride = -0f,
                 Position = new Vector2(0f, 4f)
@@ -1279,7 +1279,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
         {
             NPCID.Sets.CantTakeLunchMoney[Type] = true;
 
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 //don't show up in bestiary
                 Hide = true
@@ -2050,7 +2050,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
         {
             NPCID.Sets.CantTakeLunchMoney[Type] = true;
 
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 //don't show up in bestiary
                 Hide = true
@@ -2113,7 +2113,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
                 Vector2 value34 = new Vector2(Main.screenWidth, Main.screenHeight);
                 for (int i = 0; i < 4; i++)
                 {
-                    if (NPC.Hitbox.Intersects(Utils.CenteredRectangle(Main.screenPosition + value34 / 2f, value34 + new Vector2(400f))) && Main.rand.Next(6) == 0)
+                    if (NPC.Hitbox.Intersects(Utils.CenteredRectangle(Main.screenPosition + value34 / 2f, value34 + new Vector2(400f))) && Main.rand.NextBool(6))
                     {
                         int[] array6 = new int[4] { 16, 17, 17, 17 };
                         int num855 = Utils.SelectRandom(Main.rand, array6);
@@ -2124,7 +2124,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
                         }
                         Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center - new Vector2(11) + new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f)) * (NPC.Size - new Vector2(22)) / 2f, NPC.velocity * 0.2f, num855);
                     }
-                    if (Main.rand.Next(20) == 0 || (Main.tenthAnniversaryWorld && Main.rand.Next(15) == 0))
+                    if (Main.rand.NextBool(20)|| (Main.tenthAnniversaryWorld && Main.rand.NextBool(15)))
                     {
                         Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Enchanted_Pink, NPC.velocity.X * 0.5f, NPC.velocity.Y * 0.5f, 150, default(Color), 1.2f);
                     }
@@ -2408,7 +2408,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
             Projectile.rotation += (Math.Abs(Projectile.velocity.X) + Math.Abs(Projectile.velocity.Y)) * 0.01f * Projectile.direction;
 
             Vector2 value34 = new Vector2(Main.screenWidth, Main.screenHeight);
-            if (Projectile.Hitbox.Intersects(Utils.CenteredRectangle(Main.screenPosition + value34 / 2f, value34 + new Vector2(400f))) && Main.rand.Next(6) == 0)
+            if (Projectile.Hitbox.Intersects(Utils.CenteredRectangle(Main.screenPosition + value34 / 2f, value34 + new Vector2(400f))) && Main.rand.NextBool(6))
             {
                 int[] array6 = new int[4] { 16, 17, 17, 17 };
                 int num855 = Utils.SelectRandom(Main.rand, array6);
@@ -2420,7 +2420,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
                 Gore.NewGore(Projectile.GetSource_FromAI(), Projectile.position, Projectile.velocity * 0.2f, num855);
             }
             Projectile.light = 0.9f;
-            if (Main.rand.Next(20) == 0 || (Main.tenthAnniversaryWorld && Main.rand.Next(15) == 0))
+            if (Main.rand.NextBool(20)|| (Main.tenthAnniversaryWorld && Main.rand.NextBool(15)))
             {
                 Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, default(Color), 1.2f);
             }

@@ -312,7 +312,7 @@ namespace Polarities.Content.NPCs.Enemies.Ocean.Hardmode
 
         public override void SetStaticDefaults()
         {
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 //don't show up in bestiary
                 Hide = true

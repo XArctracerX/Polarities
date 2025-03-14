@@ -778,7 +778,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
     {
         public override void SetStaticDefaults()
         {
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 //don't show up in bestiary
                 Hide = true

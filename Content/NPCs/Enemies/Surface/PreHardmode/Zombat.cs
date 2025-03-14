@@ -19,7 +19,7 @@ namespace Polarities.Content.NPCs.Enemies.Surface.PreHardmode
         {
             Main.npcFrameCount[Type] = 6;
 
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 //positions flying enemy in the center of the bestiary portrait
                 PortraitPositionYOverride = -20f,

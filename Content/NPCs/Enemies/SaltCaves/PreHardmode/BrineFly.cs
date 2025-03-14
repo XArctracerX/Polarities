@@ -20,7 +20,7 @@ namespace Polarities.Content.NPCs.Enemies.SaltCaves.PreHardmode
         {
             Main.npcFrameCount[NPC.type] = 2;
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 SpriteDirection = 1
             };

@@ -84,7 +84,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
             NPCID.Sets.AttackAverageChance[Type] = int.MaxValue; //Just don't
             NPCID.Sets.HatOffsetY[Type] = 4; //Party hat Y offset
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Velocity = 1f,
                 Direction = -1
@@ -411,7 +411,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                                 obj3.velocity /= 2f;
                                 Main.dust[num195].scale = 0.8f;
                             }
-                            if (Main.rand.Next(30) == 0)
+                            if (Main.rand.NextBool(30))
                             {
                                 int num196 = Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center + Vector2.UnitX * -NPC.direction * 8f, Vector2.Zero, Main.rand.Next(580, 583));
                                 Gore obj4 = Main.gore[num196];
@@ -420,7 +420,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                                 Main.gore[num196].velocity.X = (0f - Math.Abs(Main.gore[num196].velocity.X)) * NPC.direction;
                             }
                         }
-                        if (NPC.frameCounter >= 100.0 && Main.rand.Next(20) == 0)
+                        if (NPC.frameCounter >= 100.0 && Main.rand.NextBool(20))
                         {
                             NPC.frame.Y = 0;
                             NPC.frameCounter = 0.0;

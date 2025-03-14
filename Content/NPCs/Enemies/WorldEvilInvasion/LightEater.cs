@@ -28,7 +28,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
             NPC.buffImmune[BuffID.Confused] = true;
             // NPCID.Sets.DebuffImmunitySets/* tModPorter Removed: See the porting notes in https://github.com/tModLoader/tModLoader/pull/3453 */.Add(Type, debuffData);
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Rotation = 5 * MathHelper.PiOver4
             };

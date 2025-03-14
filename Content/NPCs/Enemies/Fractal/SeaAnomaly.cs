@@ -23,7 +23,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 1;
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Assets/Bestiary/SeaAnomaly", Position = new Vector2(0f, 16f), };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { CustomTexturePath = "Polarities/Assets/Bestiary/SeaAnomaly", Position = new Vector2(0f, 16f), };
         }
 
         public override void SetDefaults()
@@ -259,7 +259,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
 
         public override void SetStaticDefaults()
         {
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true, };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true, };
         }
 
         public override void SetDefaults()

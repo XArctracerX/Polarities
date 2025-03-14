@@ -26,7 +26,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
 
             Polarities.customNPCGlowMasks[Type] = TextureAssets.Npc[Type];
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 SpriteDirection = 1
             };

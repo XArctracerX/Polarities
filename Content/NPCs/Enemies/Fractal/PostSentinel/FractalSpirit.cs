@@ -44,7 +44,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
                     //BuffID.Venom,
                 //}
             //};
-            //NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Position = new Vector2(0f, -40f), PortraitPositionYOverride = -24f, };
+            //NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Position = new Vector2(0f, -40f), PortraitPositionYOverride = -24f, };
 
             /*
 			Texture2D texture = new Texture2D(Main.spriteBatch.GraphicsDevice, 166, 166, false, SurfaceFormat.Color);

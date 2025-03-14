@@ -75,7 +75,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
             //group with other bosses
             NPCID.Sets.BossBestiaryPriority.Add(Type);
 
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 //draw offset on x a bit in the small portrait
                 Position = new Vector2(10f, 0f),
@@ -733,7 +733,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
             NPCID.Sets.CantTakeLunchMoney[Type] = true;
             NPCID.Sets.BossBestiaryPriority.Add(Type);
 
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 //draw offset on y a bit in the small portrait
                 Position = new Vector2(0f, 10f)

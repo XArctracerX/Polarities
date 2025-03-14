@@ -18,7 +18,7 @@ namespace Polarities.Content.NPCs.Critters.PreHardmode
             Main.npcFrameCount[NPC.type] = 4;
             NPCID.Sets.CountsAsCritter[Type] = true;
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Position = new Vector2(0, 2)
             };

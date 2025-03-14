@@ -183,7 +183,7 @@ namespace Polarities.Content.Items.Armor.Classless.PreHardmode.SunplateArmor
         public override void Update(Player player, int timeLeft)
         {
             Vector2 value34 = new Vector2(Main.screenWidth, Main.screenHeight);
-            if (player.Hitbox.Intersects(Utils.CenteredRectangle(Main.screenPosition + value34 / 2f, value34 + new Vector2(400f))) && Main.rand.Next(6) == 0)
+            if (player.Hitbox.Intersects(Utils.CenteredRectangle(Main.screenPosition + value34 / 2f, value34 + new Vector2(400f))) && Main.rand.NextBool(6))
             {
                 int[] array6 = new int[4] { 16, 17, 17, 17 };
                 int num855 = Utils.SelectRandom(Main.rand, array6);
@@ -194,7 +194,7 @@ namespace Polarities.Content.Items.Armor.Classless.PreHardmode.SunplateArmor
                 }
                 Gore.NewGore(player.GetSource_FromThis(), player.Center - new Vector2(11) + new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f)) * (player.Size - new Vector2(22)) / 2f, player.velocity * 0.2f, num855);
             }
-            if (Main.rand.Next(20) == 0 || (Main.tenthAnniversaryWorld && Main.rand.Next(15) == 0))
+            if (Main.rand.NextBool(20)|| (Main.tenthAnniversaryWorld && Main.rand.NextBool(15)))
             {
                 Dust.NewDust(player.position, player.width, player.height, DustID.Enchanted_Pink, player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 150, default(Color), 1.2f);
             }

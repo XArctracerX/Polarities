@@ -148,7 +148,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             NPC.buffImmune[BuffID.CursedInferno] = true;
             NPC.buffImmune[ModContent.BuffType<Incinerating>()] = true;
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 CustomTexturePath = "Polarities/Content/NPCs/Bosses/Hardmode/ConvectiveWanderer/ConvectiveWanderer_Bestiary",
                 Position = new Vector2(64f, -64f)
