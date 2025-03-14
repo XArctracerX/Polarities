@@ -71,7 +71,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
                     NPC.ai[1]++;
                     if (NPC.ai[1] == 120)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             NPC.ai[0] = Main.rand.Next(new int[] { 0, 1, 2, 3 });
                         }
@@ -110,7 +110,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
                     NPC.ai[1]++;
                     if (NPC.ai[1] == 120)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             NPC.ai[0] = Main.rand.Next(new int[] { 0, 1, 2, 3 });
                         }
@@ -142,7 +142,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
                     if (NPC.ai[1] == 210)
                     {
                         SoundEngine.PlaySound(SoundID.Item33, NPC.Center);
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             for (int i = 0; i < 6; i++)
                             {
@@ -154,7 +154,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
                     NPC.ai[1]++;
                     if (NPC.ai[1] == 240)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             NPC.ai[0] = Main.rand.Next(new int[] { 0, 1 });//, 2, 3 });
                         }
@@ -173,7 +173,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
                         if (NPC.ai[1] > 0 && NPC.ai[1] % 60 == 0)
                         {
                             SoundEngine.PlaySound(SoundID.Item33, NPC.Center);
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 for (int i = 0; i < 6; i++)
                                 {
@@ -187,7 +187,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
                     NPC.ai[1]++;
                     if (NPC.ai[1] == 210)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             NPC.ai[0] = Main.rand.Next(new int[] { 0, 1 });//, 2, 3 });
                         }

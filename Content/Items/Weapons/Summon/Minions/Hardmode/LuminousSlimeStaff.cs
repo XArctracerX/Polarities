@@ -30,7 +30,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.Hardmode
 
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.UseSound = SoundID.Item44;
             Item.autoReuse = true;

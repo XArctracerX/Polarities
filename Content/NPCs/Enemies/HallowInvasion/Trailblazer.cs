@@ -87,7 +87,7 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
             }
 
             //create my trail projectile if it doesn't exist
-            if ((NPC.ai[2] == 0 || !Main.projectile[(int)NPC.ai[2] - 1].active || Main.projectile[(int)NPC.ai[2] - 1].type != ProjectileType<TrailblazerHitbox>() || Main.projectile[(int)NPC.ai[2] - 1].ai[0] != NPC.whoAmI) && Main.netMode != 1)
+            if ((NPC.ai[2] == 0 || !Main.projectile[(int)NPC.ai[2] - 1].active || Main.projectile[(int)NPC.ai[2] - 1].type != ProjectileType<TrailblazerHitbox>() || Main.projectile[(int)NPC.ai[2] - 1].ai[0] != NPC.whoAmI) && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 NPC.ai[2] = Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ProjectileType<TrailblazerHitbox>(), 25, 0f, Main.myPlayer, ai0: NPC.whoAmI) + 1;
             }
@@ -151,7 +151,7 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
                     }
 
                     //do aforementioned flashbang thing
-                    if (Main.netMode != 1 && NPC.ai[1] == 0)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && NPC.ai[1] == 0)
                     {
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ProjectileType<TrailblazerFlash>(), 25, 0f, Main.myPlayer, NPC.whoAmI);
                     }
@@ -233,7 +233,7 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("TrailblazerWingGore").Type);
             for (int a = 0; a < 12; a++)
             {
-                Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, 6, newColor: Color.White, Scale: 2f).noGravity = true;
+                Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, DustID.Torch, newColor: Color.White, Scale: 2f).noGravity = true;
             }
 
             return true;

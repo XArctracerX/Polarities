@@ -639,14 +639,14 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                 SoundEngine.PlaySound(Polarities.GetSound("ParallaxRay", 0.75f), player.Center);
             }
 
-            if (NPC.ai[1] == 60 && Main.netMode != 1)
+            if (NPC.ai[1] == 60 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 Projectile.NewProjectile(NPC.GetSource_FromAI(), player.Center, Vector2.Zero, ProjectileType<ParallaxRay>(), 40, 0f, Main.myPlayer, player.whoAmI);
                 Projectile.NewProjectile(NPC.GetSource_FromAI(), player.Center, Vector2.Zero, ProjectileType<ParallaxRayBehindTiles>(), 40, 0f, Main.myPlayer, player.whoAmI);
             }
 
             //faster for the desperation attack
-            if (((NPC.ai[0] == 8 && NPC.ai[1] % 60 == 30) || (NPC.ai[0] == 9 && NPC.ai[1] % 40 == 30)) && NPC.ai[1] >= 150 && NPC.ai[1] < 630 && Main.netMode != 1)
+            if (((NPC.ai[0] == 8 && NPC.ai[1] % 60 == 30) || (NPC.ai[0] == 9 && NPC.ai[1] % 40 == 30)) && NPC.ai[1] >= 150 && NPC.ai[1] < 630 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 for (int i = 1; i < 4; i++)
                 {
@@ -861,7 +861,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         NPC.rotation = (player.Center - NPC.Center).ToRotation();
                     }
 
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         if (NPC.localAI[0] == 70)
                         {
@@ -891,7 +891,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         NPC.rotation = (player.Center - NPC.Center).ToRotation();
                     }
 
-                    if (Main.netMode != 1 && NPC.localAI[0] == 60)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && NPC.localAI[0] == 60)
                     {
                         for (int i = 0; i < 4; i++)
                         {
@@ -911,7 +911,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         NPC.rotation = (player.Center - NPC.Center).ToRotation();
                     }
 
-                    if (Main.netMode != 1 && (NPC.localAI[0] == 60 || NPC.localAI[0] == 70 || NPC.localAI[0] == 80))
+                    if (Main.netMode != NetmodeID.MultiplayerClient && (NPC.localAI[0] == 60 || NPC.localAI[0] == 70 || NPC.localAI[0] == 80))
                     {
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, (player.Center - NPC.Center).SafeNormalize(Vector2.Zero) * 16, ProjectileType<RiftBolt>(), 15, 2f, Main.myPlayer, ai0: 600);
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, (player.Center - NPC.Center).SafeNormalize(Vector2.Zero) * 20, ProjectileType<RiftBolt>(), 15, 2f, Main.myPlayer, ai0: 600);
@@ -930,7 +930,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         NPC.rotation = NPC.ai[3] + MathHelper.Pi;
                     }
 
-                    if (NPC.localAI[0] == 30 && Main.netMode != 1)
+                    if (NPC.localAI[0] == 30 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         for (int i = 0; i <= ((int)NPC.ai[2] / 2 - 1); i++)
                         {
@@ -955,7 +955,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         NPC.rotation = (player.Center - NPC.Center).ToRotation();
                     }
 
-                    if (Main.netMode != 1 && NPC.localAI[0] == 60)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && NPC.localAI[0] == 60)
                     {
                         for (int i = 0; i < 8; i++)
                         {
@@ -993,7 +993,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         time = 35;
                     }
 
-                    if (NPC.localAI[0] == 20 && Main.netMode != 1)
+                    if (NPC.localAI[0] == 20 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         for (int i = -(int)NPC.ai[0]; i <= (int)NPC.ai[0]; i++)
                         {

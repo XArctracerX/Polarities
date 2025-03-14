@@ -56,7 +56,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Warhammers.PreHardmode.Metal
             else
             {
                 Item.useStyle = WarhammerUseStyle;
-                Item.shoot = 0;
+                Item.shoot = ProjectileID.None;
                 Item.shootSpeed = 0f;
                 Item.noMelee = false;
                 Item.noUseGraphic = false;
@@ -75,8 +75,8 @@ namespace Polarities.Content.Items.Weapons.Melee.Warhammers.PreHardmode.Metal
         {
             if (player.itemAnimation < player.itemAnimationMax)
             {
-                Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 6, player.velocity.X / 2, player.velocity.Y / 2, 0, Color.White, 2)].noGravity = true;
-                Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 6, player.velocity.X / 2, player.velocity.Y / 2, 0, Color.White, 2)].noGravity = true;
+                Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Torch, player.velocity.X / 2, player.velocity.Y / 2, 0, Color.White, 2)].noGravity = true;
+                Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Torch, player.velocity.X / 2, player.velocity.Y / 2, 0, Color.White, 2)].noGravity = true;
             }
         }
 
@@ -170,8 +170,8 @@ namespace Polarities.Content.Items.Weapons.Melee.Warhammers.PreHardmode.Metal
                 Projectile.rotation -= MathHelper.ToRadians(90f);
             }
 
-            Main.dust[Dust.NewDust(new Vector2(Projectile.Hitbox.X, Projectile.Hitbox.Y), Projectile.Hitbox.Width, Projectile.Hitbox.Height, 6, projOwner.velocity.X / 2, projOwner.velocity.Y / 2, 0, Color.White, 2)].noGravity = true;
-            Main.dust[Dust.NewDust(new Vector2(Projectile.Hitbox.X, Projectile.Hitbox.Y), Projectile.Hitbox.Width, Projectile.Hitbox.Height, 6, projOwner.velocity.X / 2, projOwner.velocity.Y / 2, 0, Color.White, 2)].noGravity = true;
+            Main.dust[Dust.NewDust(new Vector2(Projectile.Hitbox.X, Projectile.Hitbox.Y), Projectile.Hitbox.Width, Projectile.Hitbox.Height, DustID.Torch, projOwner.velocity.X / 2, projOwner.velocity.Y / 2, 0, Color.White, 2)].noGravity = true;
+            Main.dust[Dust.NewDust(new Vector2(Projectile.Hitbox.X, Projectile.Hitbox.Y), Projectile.Hitbox.Width, Projectile.Hitbox.Height, DustID.Torch, projOwner.velocity.X / 2, projOwner.velocity.Y / 2, 0, Color.White, 2)].noGravity = true;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

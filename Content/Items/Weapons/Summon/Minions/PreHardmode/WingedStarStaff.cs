@@ -32,7 +32,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.PreHardmode
 
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.UseSound = SoundID.Item9;
             Item.autoReuse = true;
@@ -159,7 +159,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.PreHardmode
                     }
                     for (int num573 = 0; num573 < 7; num573++)
                     {
-                        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 58, Projectile.velocity.X * 0.1f, Projectile.velocity.Y * 0.1f, 150, default(Color), 0.8f);
+                        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X * 0.1f, Projectile.velocity.Y * 0.1f, 150, default(Color), 0.8f);
                     }
                     for (float num574 = 0f; num574 < 1f; num574 += 0.125f)
                     {
@@ -316,7 +316,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.PreHardmode
                 }
                 if (Main.rand.Next(20) == 0 || (Main.tenthAnniversaryWorld && Main.rand.Next(15) == 0))
                 {
-                    Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 58, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, default(Color), 1.2f);
+                    Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, default(Color), 1.2f);
                 }
 
                 Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
@@ -335,7 +335,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.PreHardmode
             }
             for (int num573 = 0; num573 < 7 / 2; num573++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 58, Projectile.velocity.X * 0.05f, Projectile.velocity.Y * 0.05f, 150, default(Color), 0.8f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X * 0.05f, Projectile.velocity.Y * 0.05f, 150, default(Color), 0.8f);
             }
             for (float num574 = 0f; num574 < 1f / 2; num574 += 0.125f)
             {
@@ -393,7 +393,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.PreHardmode
                 }
                 for (int num573 = 0; num573 < 7; num573++)
                 {
-                    Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 58, oldVelocity.X * 0.1f, oldVelocity.Y * 0.1f, 150, default(Color), 0.8f);
+                    Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, oldVelocity.X * 0.1f, oldVelocity.Y * 0.1f, 150, default(Color), 0.8f);
                 }
                 for (float num574 = 0f; num574 < 1f; num574 += 0.125f)
                 {

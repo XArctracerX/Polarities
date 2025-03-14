@@ -9,6 +9,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
+using Terraria.ID;
 
 namespace Polarities.Content.Items.Weapons.Melee.Flawless
 {
@@ -31,7 +32,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Flawless
             Item.useTime = 1;
             Item.useAnimation = 1;
             Item.noUseGraphic = true;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.autoReuse = false;
             Item.channel = true;

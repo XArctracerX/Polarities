@@ -124,7 +124,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
                     Vector2 velocityGoal = 16 * (targetPoint - NPC.Center).SafeNormalize(Vector2.Zero);
                     NPC.velocity += (velocityGoal - NPC.velocity) / 90;
 
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         attackType = Main.rand.Next(3);
                     }
@@ -159,7 +159,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
             }
             else
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     NPC.direction = Main.rand.NextBool() ? -1 : 1;
                 }
@@ -348,7 +348,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
         // The AI of the projectile
         public override void AI()
         {
-            int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 75, Projectile.velocity.X, Projectile.velocity.Y, Scale: 2.5f);
+            int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.CursedTorch, Projectile.velocity.X, Projectile.velocity.Y, Scale: 2.5f);
             Main.dust[dust].noGravity = true;
         }
 
@@ -377,7 +377,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
         // The AI of the projectile
         public override void AI()
         {
-            int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 75, Projectile.velocity.X * 0.8f, Projectile.velocity.Y * 0.8f, Scale: 1.5f);
+            int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.CursedTorch, Projectile.velocity.X * 0.8f, Projectile.velocity.Y * 0.8f, Scale: 1.5f);
             Main.dust[dust].noGravity = true;
 
             Projectile.velocity *= 0.95f;

@@ -135,7 +135,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 				Vector2 spawnPosition = player.MountedCenter * 2 - NPC.Center;
 
-				if (Main.netMode != 1)
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					//NPC.ai[0] = NPC.NewNPC(spawnPosition.X, spawnPosition.Y, NPCType<Magneton>(), ai0: NPC.whoAmI);
 				}
@@ -249,7 +249,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (NPC.ai[3] % 60 == 0 && Main.netMode != 1)
+					if (NPC.ai[3] % 60 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 8f, ProjectileType<ElectricBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 1.02f);
                     }
@@ -266,7 +266,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				case PolaritiesAttackIDs.ShrinkRingsThenEyeblasts:
 					//shrinking rings then more eyeblasts
 
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					if (NPC.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						for (int i = 0; i < 1; i++)
 						{
@@ -277,7 +277,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (NPC.ai[3] % 60 == 0 && NPC.ai[3] >= 120 && Main.netMode != 1)
+					if (NPC.ai[3] % 60 == 0 && NPC.ai[3] >= 120 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 8f, ProjectileType<ElectricBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 1.02f);
 					}
@@ -294,7 +294,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				case PolaritiesAttackIDs.AuraAttacks:
 					//aura attacks
 
-					if (NPC.ai[3] == 30 && Main.netMode != 1)
+					if (NPC.ai[3] == 30 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, Vector2.Zero, ProjectileType<ElectronCloud>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai0: NPC.whoAmI, ai1: -1);
 					}
@@ -325,7 +325,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (NPC.ai[3] % 30 == 0 && Main.netMode != 1)
+					if (NPC.ai[3] % 30 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center).RotatedBy(0.05f) * 8f, ProjectileType<ElectricBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 1.04f);
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center).RotatedBy(-0.05f) * 8f, ProjectileType<ElectricBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 1.04f);
@@ -343,7 +343,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				case PolaritiesAttackIDs.CloserShrinkRings:
 					//much tighter shrinking rings followed up with more eyeblasts
 
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					if (NPC.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						for (int i = 0; i < 1; i++)
 						{
@@ -352,12 +352,12 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						}
 					}
 
-					if ((NPC.ai[3] == 60 || NPC.ai[3] == 180) && Main.netMode != 1)
+					if ((NPC.ai[3] == 60 || NPC.ai[3] == 180) && Main.netMode != NetmodeID.MultiplayerClient)
                     {
 						//Projectile.NewProjectile(NPC.Center, new Vector2(1, 0), ProjectileType<BlastTelegraph>(), 0, 0, Main.myPlayer, NPC.whoAmI, 0);
                     }
 
-					if (NPC.ai[3] % 120 == 0 && NPC.ai[3] >= 120 && Main.netMode != 1)
+					if (NPC.ai[3] % 120 == 0 && NPC.ai[3] >= 120 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						for (int i=0; i<4; i++)
 						{
@@ -377,7 +377,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				case PolaritiesAttackIDs.AuraAndBolts:
 					//magneton does an aura while electris shoots telegraphed lightning bolts
 
-					if ((NPC.ai[3] == 0 || NPC.ai[3] == 120 || NPC.ai[3] == 240) && Main.netMode != 1)
+					if ((NPC.ai[3] == 0 || NPC.ai[3] == 120 || NPC.ai[3] == 240) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						float angleRotation = Main.rand.NextFloat(MathHelper.TwoPi);
 						for (int i = 0; i < 24; i++)
@@ -412,7 +412,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					frameLength = 10;
 
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					if (NPC.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center)*16f, ProjectileType<ElectrisPreSmallVortexProjectile>(), 0, 0f, Main.myPlayer, player.Center.X, player.Center.Y);
 					}
@@ -429,7 +429,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				case PolaritiesAttackIDs.ProjectilesAndBolts:
 					//electris does bolts while magneton shoots a line of projectiles
 
-					if ((NPC.ai[3] == 0 || NPC.ai[3] == 240) && Main.netMode != 1)
+					if ((NPC.ai[3] == 0 || NPC.ai[3] == 240) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						float angleRotation = Main.rand.NextFloat(MathHelper.TwoPi);
 						for (int i = 0; i < 24; i++)
@@ -458,12 +458,12 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					//electris does an aura while magneton does a deathray
 					//the deathray moves faster if the player is magnetized
 
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					if (NPC.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, Vector2.Zero, ProjectileType<ElectronCloud>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai0: NPC.whoAmI, ai1: -1);
 					}
 
-					if (NPC.ai[3] == 180 && Main.netMode != 1)
+					if (NPC.ai[3] == 180 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						for (int i = 0; i < 1; i++)
 						{
@@ -482,7 +482,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						}
 					}
 
-					if (NPC.ai[3] >= 210 && NPC.ai[3] < 540 && NPC.ai[3] % 5 == 0 && Main.netMode != 1)
+					if (NPC.ai[3] >= 210 && NPC.ai[3] < 540 && NPC.ai[3] % 5 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 8f, ProjectileType<ElectricBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 1.04f);
 					}
@@ -498,7 +498,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					break;
 				case PolaritiesAttackIDs.AurasAndRings:
 					//auras and rings
-					if (NPC.ai[3] == 20 && Main.netMode != 1)
+					if (NPC.ai[3] == 20 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center), ProjectileType<ElectrisDeathray>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai1: NPC.whoAmI);
 					}
@@ -534,7 +534,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					if (NPC.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						int numRays = 4;
 						if (playerOffset[2] < 0)
@@ -591,7 +591,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						maxTurn = 0.2f * (120 - (NPC.ai[3] % 240)) / 120f;
 					}
 
-					if ((NPC.ai[3] == 180 || NPC.ai[3] == 420) && Main.netMode != 1)
+					if ((NPC.ai[3] == 180 || NPC.ai[3] == 420) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, new Vector2(1, 0), ProjectileType<BlastTelegraph>(), 0, 0, Main.myPlayer, NPC.whoAmI, 0);
 					}
@@ -613,7 +613,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					break;
 				case PolaritiesAttackIDs.LargeVortexAttack:
 					//both shoot harmless projectiles towards the player, which hit each other and turn into a vortex that does stuff
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					if (NPC.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 12f, ProjectileType<ElectrisPreLargeVortexProjectile>(), 0, 0f, Main.myPlayer, player.Center.X, player.Center.Y);
 					}
@@ -630,7 +630,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				case PolaritiesAttackIDs.HarderCircleDeathrays:
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					if (NPC.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						int numRays = 4;
 						if (playerOffset[2] < 0)
@@ -871,7 +871,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
                 Vector2 spawnPosition = player.MountedCenter * 2 - NPC.Center;
 
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     //NPC.ai[0] = NPC.NewNPC(spawnPosition.X, spawnPosition.Y, NPCType<Electris>(), ai0: NPC.whoAmI);
                 }
@@ -967,7 +967,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (electris.ai[3] % 60 == 30 && Main.netMode != 1)
+					if (electris.ai[3] % 60 == 30 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 6f, ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.1f, ai1: player.whoAmI);
 					}
@@ -977,7 +977,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (electris.ai[3] == 0 && Main.netMode != 1)
+					if (electris.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						for (int i = 0; i < 24; i++)
 						{
@@ -986,13 +986,13 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						}
 					}
 
-					if (electris.ai[3] > 120 && electris.ai[3] % 60 == 30 && Main.netMode != 1)
+					if (electris.ai[3] > 120 && electris.ai[3] % 60 == 30 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 6f, ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.05f, ai1: player.whoAmI);
 					}
 					break;
 				case PolaritiesAttackIDs.AuraAttacks:
-					if (electris.ai[3] == 30 && Main.netMode != 1)
+					if (electris.ai[3] == 30 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						for (int i = 0; i < 16; i++)
 						{
@@ -1013,7 +1013,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (electris.ai[3] % 30 == 0 && Main.netMode != 1)
+					if (electris.ai[3] % 30 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center).RotatedBy(1f) * 6f, ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.1f, ai1: player.whoAmI);
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center).RotatedBy(-1f) * 6f, ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.1f, ai1: player.whoAmI);
@@ -1021,7 +1021,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					break;
 				case PolaritiesAttackIDs.CloserShrinkRings:
 
-					if (electris.ai[3] == 0 && Main.netMode != 1)
+					if (electris.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						for (int i = 0; i < 24; i++)
 						{
@@ -1030,12 +1030,12 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						}
 					}
 
-					if ((electris.ai[3] == 120 || electris.ai[3] == 240) && Main.netMode != 1)
+					if ((electris.ai[3] == 120 || electris.ai[3] == 240) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, new Vector2(1, 0).RotatedBy(MathHelper.PiOver4), ProjectileType<BlastTelegraph>(), 0, 0, Main.myPlayer, NPC.whoAmI, 1);
 					}
 
-					if (electris.ai[3] % 120 == 60 && electris.ai[3] >= 120 && Main.netMode != 1)
+					if (electris.ai[3] % 120 == 60 && electris.ai[3] >= 120 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						for (int i = 0; i < 4; i++)
 						{
@@ -1044,7 +1044,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					}
 					break;
 				case PolaritiesAttackIDs.AuraAndBolts:
-					if ((electris.ai[3] == 0 || electris.ai[3] == 120 || electris.ai[3] == 240) && Main.netMode != 1)
+					if ((electris.ai[3] == 0 || electris.ai[3] == 120 || electris.ai[3] == 240) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						for (int i = 0; i < 20; i++)
 						{
@@ -1060,7 +1060,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					}
 					break;
 				case PolaritiesAttackIDs.SmallVortexAttack:
-					if (electris.ai[3] == 0 && Main.netMode != 1)
+					if (electris.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 16f, ProjectileType<MagnetonPreSmallVortexProjectile>(), 0, 0f, Main.myPlayer, player.Center.X, player.Center.Y);
 					}
@@ -1072,7 +1072,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if ((electris.ai[3] == 180 || electris.ai[3] == 420) && Main.netMode != 1)
+					if ((electris.ai[3] == 180 || electris.ai[3] == 420) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						for (int i = 0; i < 12; i++)
 						{
@@ -1084,7 +1084,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					//electris does an aura while magneton does a deathray
 					//the deathray moves faster if the player is magnetized
 
-					if (electris.ai[3] == 60 && Main.netMode != 1)
+					if (electris.ai[3] == 60 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center), ProjectileType<MagnetonDeathray>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai1: NPC.whoAmI);
 					}
@@ -1104,7 +1104,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					break;
 				case PolaritiesAttackIDs.AurasAndRings:
 
-					if (electris.ai[3] == 0 && Main.netMode != 1)
+					if (electris.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						for (int i = 0; i < 16; i++)
 						{
@@ -1146,7 +1146,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						maxTurn = 0.2f * (120 - ((electris.ai[3] + 120) % 240)) / 120f;
 					}
 
-					if ((electris.ai[3] == 60 || electris.ai[3] == 300) && Main.netMode != 1)
+					if ((electris.ai[3] == 60 || electris.ai[3] == 300) && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, new Vector2(1,0), ProjectileType<BlastTelegraph>(), 0, 0, Main.myPlayer, NPC.whoAmI, 1);
 					}
@@ -1160,7 +1160,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					}
 					break;
 				case PolaritiesAttackIDs.LargeVortexAttack:
-					if (electris.ai[3] == 0 && Main.netMode != 1)
+					if (electris.ai[3] == 0 && Main.netMode != NetmodeID.MultiplayerClient)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 12f, ProjectileType<MagnetonPreLargeVortexProjectile>(), 0, 0f, Main.myPlayer, player.Center.X, player.Center.Y);
 					}
@@ -2195,7 +2195,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
         public override void OnKill(int timeLeft)
         {
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
 			{
 				//Projectile.NewProjectile(Projectile.Center, new Vector2(20f, 0).RotatedBy(Projectile.rotation), ProjectileType<ElectrisLightningBolt>(), 0, 0f, Main.myPlayer, ai0: Projectile.ai[0], ai1: Projectile.rotation);
 			}
@@ -2806,7 +2806,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
             {
 				Projectile.hostile = true;
 
-				if (Main.netMode != 1)
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					if (Projectile.timeLeft % 60 == 0)
 					{
@@ -2975,7 +2975,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			{
 				Projectile.hostile = true;
 
-				if (Main.netMode != 1)
+				if (Main.netMode != NetmodeID.MultiplayerClient)
 				{
 					/*if (projectile.timeLeft % 75 == 0)
 					{

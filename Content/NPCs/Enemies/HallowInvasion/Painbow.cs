@@ -190,7 +190,7 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
                     {
                         NPC.ai[2] = 128 * (float)Math.Sin((NPC.ai[1] - 120) / 30 * MathHelper.Pi);
                     }
-                    if (NPC.ai[1] == 120 && Main.netMode != 1)
+                    if (NPC.ai[1] == 120 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         for (int i = 0; i < 3; i++)
                         {

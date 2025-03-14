@@ -32,7 +32,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Bows.PreHardmode
             Item.noMelee = true;
             Item.UseSound = SoundID.Item5;
 
-            Item.shoot = 10;
+            Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 12f;
             Item.useAmmo = AmmoID.Arrow;
 
@@ -86,7 +86,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Bows.PreHardmode
 
         public override void OnKill(int timeLeft)
         {
-            Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Scale: 1f)].noGravity = true;
+            Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Scale: 1f)].noGravity = true;
         }
 
         public override bool PreDraw(ref Color lightColor)

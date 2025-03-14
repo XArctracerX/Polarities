@@ -16,7 +16,7 @@ namespace Polarities.Content.Items.Pets.Hardmode
         public override void SetDefaults()
         {
             Item.damage = 0;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.shoot = ProjectileType<SunPixiePet>();
             Item.width = 32;
             Item.height = 24;

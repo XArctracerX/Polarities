@@ -211,7 +211,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
                         }
                         else
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 NPC.ai[0] = Main.rand.Next(2, 5);
                                 NPC.ai[1] = 0;
@@ -275,7 +275,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
                         int numDusts = 20;
                         for (int j = 0; j < numDusts; j++)
                         {
-                            int dust = Dust.NewDust(dustPos, 0, 0, 92, Scale: 1.5f); //175, 180-183, 197, 204, 219-223, 226, 228, 229, 235, 258, 259, 261, 263, 264, 269, 270, 
+                            int dust = Dust.NewDust(dustPos, 0, 0, DustID.Frost, Scale: 1.5f); //175, 180-183, 197, 204, 219-223, 226, 228, 229, 235, 258, 259, 261, 263, 264, 269, 270, 
                             Main.dust[dust].noGravity = true;
                             Main.dust[dust].noLight = true;
                             Main.dust[dust].velocity = new Vector2(4, 0).RotatedBy(j * MathHelper.TwoPi / numDusts);
@@ -305,7 +305,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
                             int numDusts = 20;
                             for (int j = 0; j < numDusts; j++)
                             {
-                                int dust = Dust.NewDust(dustPos, 0, 0, 92, Scale: 1.5f); //175, 180-183, 197, 204, 219-223, 226, 228, 229, 235, 258, 259, 261, 263, 264, 269, 270, 
+                                int dust = Dust.NewDust(dustPos, 0, 0, DustID.Frost, Scale: 1.5f); //175, 180-183, 197, 204, 219-223, 226, 228, 229, 235, 258, 259, 261, 263, 264, 269, 270, 
                                 Main.dust[dust].noGravity = true;
                                 Main.dust[dust].noLight = true;
                                 Main.dust[dust].velocity = new Vector2(4, 0).RotatedBy(j * MathHelper.TwoPi / numDusts);
@@ -336,7 +336,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
                             int numDusts = 20;
                             for (int j = 0; j < numDusts; j++)
                             {
-                                int dust = Dust.NewDust(dustPos, 0, 0, 92, Scale: 1.5f); //175, 180-183, 197, 204, 219-223, 226, 228, 229, 235, 258, 259, 261, 263, 264, 269, 270, 
+                                int dust = Dust.NewDust(dustPos, 0, 0, DustID.Frost, Scale: 1.5f); //175, 180-183, 197, 204, 219-223, 226, 228, 229, 235, 258, 259, 261, 263, 264, 269, 270, 
                                 Main.dust[dust].noGravity = true;
                                 Main.dust[dust].noLight = true;
                                 Main.dust[dust].velocity = new Vector2(4, 0).RotatedBy(j * MathHelper.TwoPi / numDusts);
@@ -367,7 +367,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
                             int numDusts = 20;
                             for (int j = 0; j < numDusts; j++)
                             {
-                                int dust = Dust.NewDust(dustPos, 0, 0, 92, Scale: 1.5f); //175, 180-183, 197, 204, 219-223, 226, 228, 229, 235, 258, 259, 261, 263, 264, 269, 270, 
+                                int dust = Dust.NewDust(dustPos, 0, 0, DustID.Frost, Scale: 1.5f); //175, 180-183, 197, 204, 219-223, 226, 228, 229, 235, 258, 259, 261, 263, 264, 269, 270, 
                                 Main.dust[dust].noGravity = true;
                                 Main.dust[dust].noLight = true;
                                 Main.dust[dust].velocity = new Vector2(4, 0).RotatedBy(j * MathHelper.TwoPi / numDusts);
@@ -412,7 +412,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
                             int numDusts = 20;
                             for (int j = 0; j < numDusts; j++)
                             {
-                                int dust = Dust.NewDust(dustPos, 0, 0, 92, Scale: 1.5f); //175, 180-183, 197, 204, 219-223, 226, 228, 229, 235, 258, 259, 261, 263, 264, 269, 270, 
+                                int dust = Dust.NewDust(dustPos, 0, 0, DustID.Frost, Scale: 1.5f); //175, 180-183, 197, 204, 219-223, 226, 228, 229, 235, 258, 259, 261, 263, 264, 269, 270, 
                                 Main.dust[dust].noGravity = true;
                                 Main.dust[dust].noLight = true;
                                 Main.dust[dust].velocity = new Vector2(4, 0).RotatedBy(j * MathHelper.TwoPi / numDusts);
@@ -478,7 +478,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
 
                         NPC.ai[1] = (int)(210 - (32f + (NPC.Center - player.Center).Length()) / 12f);
 
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             if (dashCounter == 1 || Main.expertMode)
                             {
@@ -798,7 +798,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
 
                 NPC.localAI[0] = 1;
 
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     speed = Main.rand.NextFloat(12f, 24f);
                     radiusModifier = Main.rand.NextFloat(0.95f, 1.05f);
@@ -866,7 +866,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
                         }
                         if (Math.Abs(theta) < MathHelper.TwoPi / 64f)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 if (Main.rand.NextBool(4))
                                 {
@@ -890,7 +890,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
 
                         if ((NPC.Center - circleCenter).Length() < CircleRadius / 2f)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 float angleVariation = owner.life < owner.lifeMax * 0.65f ? 0.06f : 0.04f;
                                 NPC.ai[3] = 3 + Main.rand.NextFloat(-angleVariation, angleVariation);
@@ -937,7 +937,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
                         }
                         if (Math.Abs(theta) < MathHelper.TwoPi / 64f)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 if (Main.rand.NextBool(16))
                                 {
@@ -969,7 +969,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
                     //random chord darts and the followup dash
                     if (NPC.ai[3] == 0 && owner.ai[1] < 105 && owner.ai[1] > 15)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             if (Main.rand.NextBool(80))
                             {
@@ -1068,7 +1068,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.Gigabat
                 int numDusts = 20;
                 for (int i = 0; i < numDusts; i++)
                 {
-                    int dust = Dust.NewDust(Projectile.Center, 0, 0, 92, Scale: 1.5f);
+                    int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.Frost, Scale: 1.5f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].noLight = true;
                     Main.dust[dust].velocity = new Vector2(4, 0).RotatedBy(i * MathHelper.TwoPi / numDusts);

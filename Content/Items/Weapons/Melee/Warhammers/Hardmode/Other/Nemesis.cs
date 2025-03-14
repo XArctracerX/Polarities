@@ -64,7 +64,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Warhammers.Hardmode.Other
             else
             {
                 Item.useStyle = WarhammerUseStyle;
-                Item.shoot = 0;
+                Item.shoot = ProjectileID.None;
                 Item.noMelee = false;
                 Item.UseSound = SoundID.Item1;
             }

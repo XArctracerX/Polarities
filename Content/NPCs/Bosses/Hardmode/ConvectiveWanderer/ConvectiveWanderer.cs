@@ -239,7 +239,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             {
                 foreach (Player player in Main.player)
                 {
-                    if (Main.netMode != 1 && player.active && !player.dead)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && player.active && !player.dead)
                     {
                         SpawnOn(player);
 
@@ -1968,7 +1968,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                     }
                     tile.LiquidAmount = 0;
                     tile.LiquidType = LiquidID.Water;
-                    if (Main.netMode == 2)
+                    if (Main.netMode == NetmodeID.Server)
                     {
                         NetMessage.SendTileSquare(-1, i, j);
                     }

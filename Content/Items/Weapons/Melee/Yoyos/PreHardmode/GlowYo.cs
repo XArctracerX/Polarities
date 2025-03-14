@@ -25,7 +25,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Yoyos.PreHardmode
 
         public override void SetDefaults()
         {
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.width = 24;
             Item.height = 32;
             Item.useAnimation = 25;
@@ -165,7 +165,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Yoyos.PreHardmode
         {
             for (int i = 0; i < 10; i++)
             {
-                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Scale: 1.5f)].noGravity = true;
+                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Scale: 1.5f)].noGravity = true;
             }
         }
     }

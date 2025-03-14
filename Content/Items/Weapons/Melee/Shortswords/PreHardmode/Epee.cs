@@ -44,7 +44,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Shortswords.PreHardmode
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = false;
 
-            Item.rare = 0;
+            Item.rare = ItemRarityID.White;
             Item.value = 1000;
         }
 

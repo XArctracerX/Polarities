@@ -32,7 +32,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Throwables.Hardmode
 
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.knockBack = 2;
@@ -96,7 +96,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Throwables.Hardmode
 
             if (Main.rand.Next(4) < 3)
             {
-                int dust = Dust.NewDust(Projectile.Center + 9 * (new Vector2(0, -1)).RotatedBy(Projectile.rotation) - (new Vector2(3, 3)), 6, 6, 6, 0, 0, 100, default(Color), 1f);
+                int dust = Dust.NewDust(Projectile.Center + 9 * (new Vector2(0, -1)).RotatedBy(Projectile.rotation) - (new Vector2(3, 3)), 6, 6, DustID.Torch, 0, 0, 100, default(Color), 1f);
                 Main.dust[dust].noGravity = true;
                 Main.dust[dust].velocity *= 1.8f;
                 Main.dust[dust].velocity.Y -= 0.5f;

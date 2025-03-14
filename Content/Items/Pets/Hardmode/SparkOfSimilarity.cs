@@ -16,14 +16,14 @@ namespace Polarities.Content.Items.Pets.Hardmode
         public override void SetDefaults()
         {
             Item.damage = 0;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.shoot = ModContent.ProjectileType<BabySparkCrawler>();
             Item.width = 14;
             Item.height = 26;
             Item.UseSound = SoundID.Item2;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.rare = 3;
+            Item.rare = ItemRarityID.Orange;
             Item.noMelee = true;
             Item.value = Item.sellPrice(0, 0, 25, 0);
             Item.buffType = ModContent.BuffType<BabySparkCrawlerBuff>();

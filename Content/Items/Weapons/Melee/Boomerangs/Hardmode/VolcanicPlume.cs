@@ -35,7 +35,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Boomerangs.Hardmode
 
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.UseSound = SoundID.Item74;
             Item.autoReuse = true;
@@ -45,7 +45,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Boomerangs.Hardmode
             Item.shootSpeed = 16f;
 
             Item.value = 100000;
-            Item.rare = 8;
+            Item.rare = ItemRarityID.Yellow;
         }
 
         public override bool CanUseItem(Player player)

@@ -19,7 +19,7 @@ namespace Polarities.Content.Items.Pets.Hardmode
         public override void SetDefaults()
         {
             Item.damage = 0;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.shoot = ProjectileType<MiniMenger>();
             Item.width = 22;
             Item.height = 22;

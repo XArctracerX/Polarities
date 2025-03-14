@@ -121,7 +121,7 @@ namespace Polarities.Content.NPCs.Enemies.Ocean.Hardmode
                             }
                             else if (AttackCooldown >= 300)
                             {
-                                if (Main.netMode != 1)
+                                if (Main.netMode != NetmodeID.MultiplayerClient)
                                 {
                                     AttackPattern = Main.rand.Next(3);
                                 }
@@ -144,7 +144,7 @@ namespace Polarities.Content.NPCs.Enemies.Ocean.Hardmode
                             }
                             else if (AttackCooldown >= 240)
                             {
-                                if (Main.netMode != 1)
+                                if (Main.netMode != NetmodeID.MultiplayerClient)
                                 {
                                     AttackPattern = Main.rand.Next(3);
                                 }
@@ -169,7 +169,7 @@ namespace Polarities.Content.NPCs.Enemies.Ocean.Hardmode
                             }
                             else if (AttackCooldown >= 110)
                             {
-                                if (Main.netMode != 1)
+                                if (Main.netMode != NetmodeID.MultiplayerClient)
                                 {
                                     AttackPattern = Main.rand.Next(2);
                                 }
@@ -188,7 +188,7 @@ namespace Polarities.Content.NPCs.Enemies.Ocean.Hardmode
                     {
                         doAnimation = true;
 
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             float rotationAmount = (NPC.velocity + new Vector2(0.5f, 0).RotatedByRandom(MathHelper.TwoPi)).ToRotation();
 

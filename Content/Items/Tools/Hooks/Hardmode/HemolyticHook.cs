@@ -26,7 +26,7 @@ namespace Polarities.Content.Items.Tools.Hooks.Hardmode
             Item.noUseGraphic = true;
             Item.damage = 0;
             Item.knockBack = 7f;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.shootSpeed = 20f;
             Item.shoot = ProjectileType<HemolyticHookProjectile>();
             Item.width = 42;
@@ -184,7 +184,7 @@ namespace Polarities.Content.Items.Tools.Hooks.Hardmode
                         Projectile.netUpdate = true;
                         if (Main.myPlayer == Projectile.owner)
                         {
-                            NetMessage.SendData(13, -1, -1, null, Projectile.owner);
+                            NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, Projectile.owner);
                         }
                         break;
                     }

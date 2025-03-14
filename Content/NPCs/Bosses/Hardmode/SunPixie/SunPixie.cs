@@ -222,7 +222,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
                 }
                 else
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         NPC.ai[0] = Main.rand.Next(possibleAttacks);
                     }
@@ -243,7 +243,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
 
                     if (NPC.ai[1] % period == 0)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             bool dir = NPC.ai[2] > 0;
                             if (NPC.ai[1] == 0)
@@ -275,7 +275,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
 
                         SoundEngine.PlaySound(SoundID.Item33, NPC.position);
 
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             float speed = 0.05f;
                             float rotationOffset = Main.rand.NextBool() ? Main.rand.NextFloat(MathHelper.TwoPi) : 0;
@@ -452,7 +452,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
                         {
                             if (NPC.ai[1] == 0)
                             {
-                                if (Main.netMode != 1)
+                                if (Main.netMode != NetmodeID.MultiplayerClient)
                                 {
                                     for (int i = 0; i < 2 * amtExtra; i++)
                                     {
@@ -462,7 +462,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
                             }
                             else if (NPC.ai[1] == 120)
                             {
-                                if (Main.netMode != 1)
+                                if (Main.netMode != NetmodeID.MultiplayerClient)
                                 {
                                     for (int i = 0; i < 2 * amtExtra; i++)
                                     {
@@ -472,7 +472,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
                             }
                             else if (NPC.ai[1] == 240)
                             {
-                                if (Main.netMode != 1)
+                                if (Main.netMode != NetmodeID.MultiplayerClient)
                                 {
                                     for (int i = 0; i < 4 * amtExtra; i++)
                                     {
@@ -485,7 +485,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
                         {
                             if (NPC.ai[1] % 120 == 0)
                             {
-                                if (Main.netMode != 1)
+                                if (Main.netMode != NetmodeID.MultiplayerClient)
                                 {
                                     for (int i = 0; i < 4 * amtExtra; i++)
                                     {
@@ -516,7 +516,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
                     {
                         NPC.ai[2] = NPC.life > NPC.lifeMax * 0.65f ? 6 : 4;
 
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             NPC.direction = Main.rand.NextBool() ? 1 : -1;
                         }
@@ -596,7 +596,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
 
                             SoundEngine.PlaySound(SoundID.Item29, NPC.Center);
 
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 //create sweeping laser
                                 float direction = NPC.Center.X > arenaCenter.X ? -1 : (NPC.Center.X < arenaCenter.X ? 1 : (Main.rand.NextBool() ? -1 : 1));
@@ -628,7 +628,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
                 case AttackIDLaserStorm:
                     if (NPC.ai[1] == 0)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             NPC.direction = Main.rand.NextBool() ? 1 : -1;
                         }
@@ -692,7 +692,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
                         NPC.velocity = Vector2.Zero;
                         if (NPC.ai[1] == 60)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 NPC.direction = NPC.Center.X > arenaCenter.X ? -1 : (NPC.Center.X < arenaCenter.X ? 1 : (Main.rand.NextBool() ? -1 : 1));
                             }
@@ -703,7 +703,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SunPixie
                         {
                             SoundEngine.PlaySound(SoundID.Item29, NPC.Center);
 
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 if (Main.getGoodWorld)
                                 {

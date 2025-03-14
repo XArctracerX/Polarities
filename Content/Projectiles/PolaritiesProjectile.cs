@@ -197,7 +197,7 @@ namespace Polarities.Content.Projectiles
                         int num538 = 3;
                         for (int num539 = 0; num539 < num537; num539++)
                         {
-                            Dust.NewDust(projectile.position, projectile.width, projectile.height, 58, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 150, default(Color), 1.2f);
+                            Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Enchanted_Pink, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 150, default(Color), 1.2f);
                         }
                         for (int num540 = 0; num540 < num538; num540++)
                         {
@@ -206,7 +206,7 @@ namespace Polarities.Content.Projectiles
                         }
                         for (int num542 = 0; num542 < 4; num542++)
                         {
-                            Dust.NewDust(projectile.position + new Vector2(Main.rand.Next(projectile.width - 16), Main.rand.Next(projectile.height - 16)), projectile.width, projectile.height, 57, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 150, default(Color), 1.2f);
+                            Dust.NewDust(projectile.position + new Vector2(Main.rand.Next(projectile.width - 16), Main.rand.Next(projectile.height - 16)), projectile.width, projectile.height, DustID.Enchanted_Gold, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 150, default(Color), 1.2f);
                         }
                         for (int num543 = 0; num543 < 3; num543++)
                         {

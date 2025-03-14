@@ -2179,7 +2179,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Eclipxie
         {
             if (Projectile.timeLeft < 360)
             {
-                Texture2D spikeTexture = TextureAssets.Projectile[644].Value;
+                Texture2D spikeTexture = TextureAssets.Projectile[1].Value;
                 Texture2D texture = TextureAssets.Projectile[Type].Value;
                 float scale = 1f;
                 if (Projectile.timeLeft < 20)

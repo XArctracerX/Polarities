@@ -4,6 +4,7 @@ using Polarities.Core;
 using Polarities.Global;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace Polarities.Content.Items.Accessories.Combat.Offense.Hardmode
 {
@@ -20,7 +21,7 @@ namespace Polarities.Content.Items.Accessories.Combat.Offense.Hardmode
             Item.height = 32;
             Item.accessory = true;
             Item.value = 750000;
-            Item.rare = 7;
+            Item.rare = ItemRarityID.Lime;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -131,7 +131,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
                         NPC.ai[1]++;
 
                         for (int i = 0; i < 5; i++)
-                            Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, 74, Scale: 1f)].noGravity = true;
+                            Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GreenFairy, Scale: 1f)].noGravity = true;
 
                         SoundEngine.PlaySound(SoundID.NPCHit54, NPC.Center);
                     }
@@ -168,7 +168,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
                         if (NPC.ai[1] == 32)
                         {
                             for (int i = 0; i < 5; i++)
-                                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, 74, Scale: 1f)].noGravity = true;
+                                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GreenFairy, Scale: 1f)].noGravity = true;
 
                             SoundEngine.PlaySound(SoundID.NPCHit54, NPC.Center);
                         }
@@ -200,7 +200,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
                             SoundEngine.PlaySound(SoundID.NPCDeath14, NPC.Center);
 
                             for (int i = 0; i < 10; i++)
-                                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, 74, Scale: 1f)].noGravity = true;
+                                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GreenFairy, Scale: 1f)].noGravity = true;
                         }
                     }
                     break;
@@ -279,7 +279,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
             for (int i = 1; i <= 1; i++)
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("SlimeyGore" + i).Type);
             for (int i = 0; i < 10; i++)
-                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, 74, Scale: 1f)].noGravity = true;
+                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GreenFairy, Scale: 1f)].noGravity = true;
 
             return true;
         }
@@ -399,7 +399,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
                 if (Projectile.ai[1] == 100 + Projectile.ai[0] * 8)
                 {
                     for (int i = 0; i < 5; i++)
-                        Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Scale: 1f)].noGravity = true;
+                        Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Scale: 1f)].noGravity = true;
 
                     SoundEngine.PlaySound(SoundID.NPCHit54, Projectile.Center);
                 }
@@ -434,7 +434,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
         public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 5; i++)
-                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Scale: 1f)].noGravity = true;
+                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Scale: 1f)].noGravity = true;
         }
 
         public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)

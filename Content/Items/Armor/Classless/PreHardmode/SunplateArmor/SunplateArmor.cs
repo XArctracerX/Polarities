@@ -66,7 +66,7 @@ namespace Polarities.Content.Items.Armor.Classless.PreHardmode.SunplateArmor
             Item.width = 22;
             Item.height = 18;
             Item.value = 10000;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.defense = 6;
         }
 
@@ -98,7 +98,7 @@ namespace Polarities.Content.Items.Armor.Classless.PreHardmode.SunplateArmor
             Item.width = 24;
             Item.height = 28;
             Item.value = 10000;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.defense = 6;
         }
 
@@ -149,7 +149,7 @@ namespace Polarities.Content.Items.Armor.Classless.PreHardmode.SunplateArmor
             Vector2 useVelocity = player.velocity;
             for (int num573 = 0; num573 < 7 * scaleMult; num573++)
             {
-                Dust.NewDust(player.position, player.width, player.height, 58, useVelocity.X * 0.1f, useVelocity.Y * 0.1f, 150, default(Color), 0.8f);
+                Dust.NewDust(player.position, player.width, player.height, DustID.Enchanted_Pink, useVelocity.X * 0.1f, useVelocity.Y * 0.1f, 150, default(Color), 0.8f);
             }
             for (float num574 = 0f; num574 < 1f * scaleMult; num574 += 0.125f)
             {
@@ -196,7 +196,7 @@ namespace Polarities.Content.Items.Armor.Classless.PreHardmode.SunplateArmor
             }
             if (Main.rand.Next(20) == 0 || (Main.tenthAnniversaryWorld && Main.rand.Next(15) == 0))
             {
-                Dust.NewDust(player.position, player.width, player.height, 58, player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 150, default(Color), 1.2f);
+                Dust.NewDust(player.position, player.width, player.height, DustID.Enchanted_Pink, player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 150, default(Color), 1.2f);
             }
         }
     }

@@ -940,7 +940,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
             Vector2 useVelocity = NPC.velocity.SafeNormalize(-Vector2.UnitY) * 16;
             for (int num573 = 0; num573 < 7 * scaleMult; num573++)
             {
-                Dust.NewDust(NPC.position, NPC.width, NPC.height, 58, useVelocity.X * 0.1f, useVelocity.Y * 0.1f, 150, default(Color), 0.8f);
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Enchanted_Pink, useVelocity.X * 0.1f, useVelocity.Y * 0.1f, 150, default(Color), 0.8f);
             }
             for (float num574 = 0f; num574 < 1f * scaleMult; num574 += 0.125f)
             {
@@ -990,7 +990,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
                 }
                 if (Main.rand.NextBool(20) || (Main.tenthAnniversaryWorld && Main.rand.NextBool(15)))
                 {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 58, NPC.velocity.X * 0.5f, NPC.velocity.Y * 0.5f, 150, default(Color), 1.2f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Enchanted_Pink, NPC.velocity.X * 0.5f, NPC.velocity.Y * 0.5f, 150, default(Color), 1.2f);
                 }
             }
         }
@@ -1561,7 +1561,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
                                     Vector2 useVelocity = NPC.velocity.SafeNormalize(-Vector2.UnitY) * 16;
                                     for (int num573 = 0; num573 < 7 * scaleMult; num573++)
                                     {
-                                        Dust.NewDust(NPC.position, NPC.width, NPC.height, 58, useVelocity.X * 0.1f, useVelocity.Y * 0.1f, 150, default(Color), 0.8f);
+                                        Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Enchanted_Pink, useVelocity.X * 0.1f, useVelocity.Y * 0.1f, 150, default(Color), 0.8f);
                                     }
                                     for (float num574 = 0f; num574 < 1f * scaleMult; num574 += 0.125f)
                                     {
@@ -2126,7 +2126,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
                     }
                     if (Main.rand.Next(20) == 0 || (Main.tenthAnniversaryWorld && Main.rand.Next(15) == 0))
                     {
-                        Dust.NewDust(NPC.position, NPC.width, NPC.height, 58, NPC.velocity.X * 0.5f, NPC.velocity.Y * 0.5f, 150, default(Color), 1.2f);
+                        Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Enchanted_Pink, NPC.velocity.X * 0.5f, NPC.velocity.Y * 0.5f, 150, default(Color), 1.2f);
                     }
                 }
             }
@@ -2148,7 +2148,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
                 Vector2 useVelocity = NPC.velocity.SafeNormalize(-Vector2.UnitY) * 16;
                 for (int num573 = 0; num573 < 7 * scaleMult; num573++)
                 {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 58, useVelocity.X * 0.1f, useVelocity.Y * 0.1f, 150, default(Color), 0.8f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Enchanted_Pink, useVelocity.X * 0.1f, useVelocity.Y * 0.1f, 150, default(Color), 0.8f);
                 }
                 for (float num574 = 0f; num574 < 1f * scaleMult; num574 += 0.125f)
                 {
@@ -2190,7 +2190,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
                 //spawn dusts and despawn
                 for (int j = 0; j < 10; j++)
                 {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 15, NPC.velocity.X, NPC.velocity.Y, 150, default(Color), 1.2f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.MagicMirror, NPC.velocity.X, NPC.velocity.Y, 150, default(Color), 1.2f);
                 }
                 for (int k = 0; k < 3; k++)
                 {
@@ -2422,7 +2422,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
             Projectile.light = 0.9f;
             if (Main.rand.Next(20) == 0 || (Main.tenthAnniversaryWorld && Main.rand.Next(15) == 0))
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 58, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, default(Color), 1.2f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, default(Color), 1.2f);
             }
         }
 
@@ -2437,7 +2437,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
             }
             for (int num573 = 0; num573 < 7; num573++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 58, Projectile.velocity.X * 0.1f, Projectile.velocity.Y * 0.1f, 150, default(Color), 0.8f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X * 0.1f, Projectile.velocity.Y * 0.1f, 150, default(Color), 0.8f);
             }
             for (float num574 = 0f; num574 < 1f; num574 += 0.125f)
             {

@@ -211,7 +211,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
                         }
                         else
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                                 NPC.ai[0] = Main.rand.Next(NPC.lifeMax) < NPC.life ? 1 : 2;
                             NPC.netUpdate = true;
                         }
@@ -325,7 +325,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
                         NPC.velocity.Y *= 0.99f;
                     }
 
-                    if (NPC.ai[1] >= 20 && NPC.ai[1] % 3 == 0 && Main.netMode != 1)
+                    if (NPC.ai[1] >= 20 && NPC.ai[1] % 3 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, Vector2.Zero, ProjectileType<StormCloudfishLightningBall>(), 8, 0, Main.myPlayer, 60);
                     }
@@ -385,7 +385,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
                         }
                         else
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                                 NPC.ai[0] = Main.rand.Next(NPC.lifeMax) < NPC.life ? 4 : 5;
                             NPC.netUpdate = true;
                         }
@@ -418,7 +418,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
                         NextAttack();
                     }
 
-                    if (NPC.ai[1] % 5 == 4 && Main.netMode != 1)
+                    if (NPC.ai[1] % 5 == 4 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         for (int i = 0; i < 2; i++)
                         {
@@ -458,7 +458,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
                     if (NPC.ai[1] % 5 == 4)
                     {
                         //client side non-synced projectile because syncing doesn't work for some reason, probably related to it being an extraupdates projectile that calls a bunch of random things?
-                        if (Main.netMode != 2)
+                        if (Main.netMode != NetmodeID.Server)
                         {
                             Vector2 aimPosition = NPC.Center + new Vector2(0, 480);
                             Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, (aimPosition - NPC.Center).SafeNormalize(Vector2.Zero) * 20, ProjectileType<StormCloudfishLightningArc>(), 10, 0, Main.myPlayer, aimPosition.X, aimPosition.Y);
@@ -497,7 +497,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
 
                         goalPosition = new Vector2(NPC.ai[3] + direction * 720 + Main.rand.Next(-50, 50), NPC.Center.Y - 400 + Main.rand.Next(-400, 400));
 
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, (goalPosition - NPC.Center).SafeNormalize(Vector2.Zero) * Main.rand.NextFloat(8, 12), ProjectileType<StormCloudfishCloudOrb>(), 0, 0, Main.myPlayer, goalPosition.X, goalPosition.Y);
                         }
@@ -529,7 +529,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
                             SoundEngine.PlaySound(SoundID.NPCHit30, NPC.Center);
                         }
 
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, (player.Center - NPC.Center).SafeNormalize(Vector2.Zero).RotatedByRandom(0.5f) * Main.rand.NextFloat(16, 24), ProjectileType<StormCloudfishStormcloudOrb>(), 0, 0, Main.myPlayer, NPC.whoAmI);
                         }
@@ -567,7 +567,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
                 numAttacks++;
             }
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
                 NPC.ai[0] = attacks[Main.rand.Next(numAttacks)];
             NPC.ai[1] = 0;
             NPC.netUpdate = true;
@@ -688,6 +688,8 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
         public override void Load()
         {
             GlowTexture = Request<Texture2D>(Texture + "_Mask");
+            string secondPhaseHeadPath = Texture + "_Head_Boss_2";
+            secondStageHeadSlot = Mod.AddBossHeadTexture(secondPhaseHeadPath, -1);
         }
 
         public override void Unload()
@@ -733,7 +735,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
             }
             for (int i = 0; i < 40; i++)
             {
-                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, 36, Scale: 1.5f)].noGravity = true;
+                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Ash, Scale: 1.5f)].noGravity = true;
             }
 
             if (rainToggleUsed)
@@ -797,7 +799,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
 
         public override void OnKill(int timeLeft)
         {
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center.X, Projectile.Center.Y, 0, 0, ProjectileType<StormCloudfishRaincloud>(), 0, 0f, Main.myPlayer, 0, 0);
             }
@@ -821,7 +823,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
 
         public override void AI()
         {
-            if (Projectile.timeLeft % 40 == 0 && Main.netMode != 1)
+            if (Projectile.timeLeft % 40 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center.X + Main.rand.NextFloat(-20, 20), Projectile.Center.Y, 0, 6, ProjectileID.RainNimbus, 7, 1f, Main.myPlayer, 0, 0);
             }
@@ -882,12 +884,12 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StormCloudfish
                 SoundEngine.PlaySound(SoundID.Item122, Main.npc[(int)Projectile.ai[0]].Center);
 
                 //see prior non-synced projectile comment
-                if (Main.netMode != 2)
+                if (Main.netMode != NetmodeID.Server)
                 {
                     Projectile.NewProjectile(Projectile.GetSource_Death(), Main.npc[(int)Projectile.ai[0]].Center, (Projectile.Center - Main.npc[(int)Projectile.ai[0]].Center).SafeNormalize(Vector2.Zero) * 20, ProjectileType<StormCloudfishLightningArc>(), 10, 0, Main.myPlayer, Projectile.Center.X, Projectile.Center.Y);
                 }
 
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ProjectileType<StormCloudfishLightningBall>(), 8, 0, Main.myPlayer, 240);
                 }

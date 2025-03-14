@@ -139,7 +139,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
                             NPC.velocity = new Vector2(0, -8).RotatedBy(angleGoal);
 
                             //spawn projectiles
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 for (int i = 0; i < 7; i++)
                                 {
@@ -169,7 +169,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
                     }
                     NPC.velocity *= 0.93f;
 
-                    if (NPC.ai[1] % 6 == 0 && NPC.ai[1] > 30 && NPC.ai[1] <= 120 && Main.netMode != 1)
+                    if (NPC.ai[1] % 6 == 0 && NPC.ai[1] > 30 && NPC.ai[1] <= 120 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         float rotation = NPC.rotation - MathHelper.PiOver2;
                         float speed = Main.rand.NextFloat(10, 12);
@@ -191,7 +191,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
                     //circle charge circle attack
                     if (NPC.ai[1] == 0)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             NPC.ai[2] = Main.rand.NextBool() ? 1 : -1;
                         }
@@ -304,7 +304,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
                 Vector2 spot = NPC.Center + NPC.velocity + new Vector2(0, -h * (178 / hitBoxSegmentIds.Length)).RotatedBy(NPC.rotation); //QwertyMethods.PolarVector((totalLength - bladeLength - 18) + h * (bladeLength / (hitBoxSegmentIds.Length + 1)) + bladeWidth / 2, npc.rotation);
                 if (hitBoxSegmentIds[h] == -1 || !Main.npc[hitBoxSegmentIds[h]].active || Main.npc[hitBoxSegmentIds[h]].type != NPCType<OrthoconicHitbox>())
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         hitBoxSegmentIds[h] = NPC.NewNPC(NPC.GetSource_FromAI(), (int)spot.X, (int)spot.Y, NPCType<OrthoconicHitbox>(), ai0: NPC.whoAmI);
                         NPC.netUpdate = true;

@@ -31,11 +31,11 @@ namespace Polarities.Content.Items.Weapons.Melee.Boomerangs.Hardmode
             Item.height = 44;
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.knockBack = 3;
             Item.value = 80000;
-            Item.rare = 8;
+            Item.rare = ItemRarityID.Yellow;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.shoot = ProjectileType<PhagocyteProjectile>();

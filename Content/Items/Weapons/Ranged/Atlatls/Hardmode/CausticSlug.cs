@@ -30,7 +30,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Atlatls.Hardmode
             Item.noMelee = true;
             Item.autoReuse = true;
 
-            Item.shoot = 10;
+            Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 17f;
             Item.useAmmo = AmmoID.Dart;
 
@@ -137,7 +137,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Atlatls.Hardmode
                 if (Projectile.localAI[0] == 60 + Projectile.localAI[1])
                 {
                     for (int i = 0; i < 4; i++)
-                        Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Scale: 1f)].noGravity = true;
+                        Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Scale: 1f)].noGravity = true;
 
                     SoundEngine.PlaySound(SoundID.NPCHit54, Projectile.Center);
                 }
@@ -158,7 +158,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Atlatls.Hardmode
         public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 4; i++)
-                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Scale: 1f)].noGravity = true;
+                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Scale: 1f)].noGravity = true;
         }
 
         public override bool PreDraw(ref Color lightColor)

@@ -30,7 +30,7 @@ namespace Polarities.Content.Items.Ammo.PreHardmode
             Item.shootSpeed = 3f;
 
             Item.value = 10;
-            Item.rare = 2;
+            Item.rare = ItemRarityID.Green;
         }
     }
 

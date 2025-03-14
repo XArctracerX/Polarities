@@ -164,7 +164,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
 
             if (NPC.ai[1] == 0)
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     NPC.ai[0] = (NPC.ai[0] + 1 + Main.rand.Next(2)) % 3;
                 }
@@ -200,7 +200,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
                     if (NPC.ai[1] == 0)
                     {
                         NPC.ai[1] = Main.rand.Next(120, 180);
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             NPC.ai[2] = Main.rand.NextFloat(-MathHelper.Pi / 3, MathHelper.Pi / 3);
                             NPC.ai[3] = Main.rand.Next(200, 400);
@@ -233,7 +233,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
                     if (NPC.ai[1] == 0)
                     {
                         NPC.ai[1] = Main.rand.Next(120, 180);
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             NPC.ai[2] = Main.rand.NextFloat(-MathHelper.Pi / 3, MathHelper.Pi / 3);
                             NPC.ai[3] = Main.rand.Next(200, 400);

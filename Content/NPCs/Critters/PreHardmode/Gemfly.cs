@@ -275,11 +275,11 @@ namespace Polarities.Content.NPCs.Critters.PreHardmode
             {
                 int treeHeight = 0;
                 WorldGen.GetTreeLeaf(x, Main.tile[x, y], Main.tile[x, num], ref treeHeight, out int treeFrame, out int passStyle);
-                if (Main.netMode == 2)
+                if (Main.netMode == NetmodeID.Server)
                 {
                     NetMessage.SendData(MessageID.SpecialFX, -1, -1, null, 1, x, y, 1f, passStyle);
                 }
-                if (Main.netMode == 0)
+                if (Main.netMode == NetmodeID.SinglePlayer)
                 {
                     WorldGen.TreeGrowFX(x, y, 1, passStyle, hitTree: true);
                 }
@@ -337,7 +337,7 @@ namespace Polarities.Content.NPCs.Critters.PreHardmode
                 if ((Main.LocalPlayer.ZoneRockLayerHeight || Main.LocalPlayer.ZoneDirtLayerHeight) && Main.LocalPlayer.Distance(NPC.Center) < 1000 && !NPC.AnyNPCs(NPCType<Gigabat>()))
                 {
                     canWeSpawnGigabat = true;
-                    if (Main.rand.NextBool(ExpectedTime) && Main.netMode != 1)
+                    if (Main.rand.NextBool(ExpectedTime) && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         NPC.SpawnOnPlayer(Main.myPlayer, NPCType<Gigabat>());
                         SoundEngine.PlaySound(new SoundStyle("Terraria/Sounds/NPC_Killed_4")
@@ -424,7 +424,7 @@ namespace Polarities.Content.NPCs.Critters.PreHardmode
         {
             Item.CloneDefaults(ItemID.Firefly);
             Item.bait = Bait;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.makeNPC = (short)MakeNPC;
         }
 

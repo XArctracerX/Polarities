@@ -22,12 +22,12 @@ namespace Polarities.Content.Items.Tools.Misc.Hardmode
             Item.height = 38;
             Item.useTime = 20;
             Item.useAnimation = 20;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.knockBack = 1;
             Item.value = 80000;
-            Item.rare = 8;
+            Item.rare = ItemRarityID.Yellow;
             Item.shoot = ProjectileType<WormSpewerProjectile>();
             Item.shootSpeed = 8f;
         }

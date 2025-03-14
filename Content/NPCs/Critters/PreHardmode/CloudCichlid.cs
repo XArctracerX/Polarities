@@ -109,7 +109,7 @@ namespace Polarities.Content.NPCs.Critters.PreHardmode
         {
             for (int i = 0; i < 16; i++)
             {
-                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, 51, Scale: 1.5f)].noGravity = true;
+                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.SnowBlock, Scale: 1.5f)].noGravity = true;
             }
 
             return true;
@@ -129,7 +129,7 @@ namespace Polarities.Content.NPCs.Critters.PreHardmode
         {
             Item.CloneDefaults(ItemID.Firefly);
             Item.bait = 0;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.makeNPC = (short)NPCType<CloudCichlid>();
         }
 
@@ -244,7 +244,7 @@ namespace Polarities.Content.NPCs.Critters.PreHardmode
         {
             for (int i = 0; i < 16; i++)
             {
-                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, 36, Scale: 1.5f)].noGravity = true;
+                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Ash, Scale: 1.5f)].noGravity = true;
             }
 
             return true;
@@ -264,7 +264,7 @@ namespace Polarities.Content.NPCs.Critters.PreHardmode
         {
             Item.CloneDefaults(ItemID.Firefly);
             Item.bait = 0;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.makeNPC = (short)NPCType<StormcloudCichlid>();
         }
     }

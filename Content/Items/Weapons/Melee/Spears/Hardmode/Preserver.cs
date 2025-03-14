@@ -27,7 +27,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Spears.Hardmode
 
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 3;
+            Item.useStyle = ItemUseStyleID.Thrust;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.noMelee = true;

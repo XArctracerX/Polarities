@@ -31,11 +31,11 @@ namespace Polarities.Content.Items.Consumables.Summons.PreHardmode
 			Item.width = 22;
 			Item.height = 18;
 			Item.maxStack = 20;
-			Item.rare = 1;
+			Item.rare = ItemRarityID.Blue;
 			Item.maxStack = 1;
 			Item.useAnimation = 30;
 			Item.useTime = 30;
-			Item.useStyle = 4;
+			Item.useStyle = ItemUseStyleID.HoldUp;
 			Item.consumable = false;
 			Item.noUseGraphic = true;
 

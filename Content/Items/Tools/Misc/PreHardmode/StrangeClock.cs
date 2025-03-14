@@ -18,11 +18,11 @@ namespace Polarities.Content.Items.Tools.Misc.PreHardmode
             Item.height = 30;
             Item.maxStack = 1;
             Item.value = 10000;
-            Item.rare = 2;
+            Item.rare = ItemRarityID.Green;
             Item.useAnimation = 10;
             Item.useTime = 10;
             Item.channel = true;
-            Item.useStyle = 4;
+            Item.useStyle = ItemUseStyleID.HoldUp;
             Item.UseSound = SoundID.Item29;
         }
 

@@ -118,7 +118,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
                     {
                         int index = 8 + 46 * i / 3;
 
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Projectile.NewProjectile(NPC.GetSource_FromAI(), segmentPositions[index], (player.Center - segmentPositions[index]).SafeNormalize(Vector2.Zero) * 8, ProjectileType<ShockflakeBolt>(), 17, 1f, Main.myPlayer);
                         }
@@ -177,7 +177,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
 
                 if (hitBoxSegmentIds[h] == -1 || !Main.npc[hitBoxSegmentIds[h]].active || Main.npc[hitBoxSegmentIds[h]].type != NPCType<SeaAnomalyHitbox>())
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         hitBoxSegmentIds[h] = NPC.NewNPC(NPC.GetSource_FromThis(), (int)spot.X, (int)spot.Y, NPCType<SeaAnomalyHitbox>(), ai0: NPC.whoAmI, ai1: index);
                         NPC.netUpdate = true;

@@ -26,12 +26,12 @@ namespace Polarities.Content.Items.Tools.Multi
 
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.useTurn = true;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.value = 4000;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
         }
 
         public override void AddRecipes()

@@ -175,7 +175,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
                     Main.npc[legs[i]].velocity.Y = 1;
                 }
 
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     doCorruptAttacks = Main.rand.NextBool();
                     doCrimsonAttacks = !doCorruptAttacks;
@@ -315,7 +315,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
                         //fireballs
                         capsidOpen = true;
 
-                        if (corruptAttackCooldown % 45 == 44 && Main.netMode != 1)
+                        if (corruptAttackCooldown % 45 == 44 && Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Vector2 displacement = new Vector2(128f, 0).RotatedBy(NPC.rotation - MathHelper.PiOver2) * NPC.scale;
                             Vector2 speed = new Vector2(8f, 0).RotatedBy(NPC.rotation - MathHelper.PiOver2);
@@ -337,7 +337,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
                         {
                             SoundEngine.PlaySound(SoundID.Item117, NPC.Center);
 
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 Vector2 displacement = new Vector2(91f, 0).RotatedBy(NPC.rotation - MathHelper.PiOver2) * NPC.scale;
 
@@ -375,7 +375,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
                         {
                             SoundEngine.PlaySound(SoundID.Item8, NPC.Center);
 
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 for (int i = 0; i < 6; i++)
                                 {
@@ -483,7 +483,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
                         }
                         angleGoal = MathHelper.Pi + ((NPC.direction - NPC.direction * (crimsonAttackCooldown - setupTime) / 240f) / 3f);
 
-                        if (crimsonAttackCooldown >= setupTime && crimsonAttackCooldown % ichorSprayPeriod == ichorSprayPeriod - 1 && Main.netMode != 1)
+                        if (crimsonAttackCooldown >= setupTime && crimsonAttackCooldown % ichorSprayPeriod == ichorSprayPeriod - 1 && Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             Vector2 speed = new Vector2(ichorSprayVelocity, 0).RotatedBy(angleGoal + MathHelper.PiOver2);
                             Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center + speed.SafeNormalize(Vector2.Zero) * 24f * NPC.scale, speed, ProjectileType<EsophageIchorSpray>(), 16, 3, Main.myPlayer);
@@ -520,7 +520,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
                         {
                             SoundEngine.PlaySound(SoundID.Item71, NPC.Center);
 
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 if (crimsonAttackCooldown % 36 == 17)
                                 {
@@ -564,7 +564,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
 
                         if (crimsonAttackCooldown % 30 == 29 && crimsonAttackCooldown < 180)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 Vector2 displacement = new Vector2(24f, 0).RotatedBy(NPC.rotation + MathHelper.PiOver2) * NPC.scale;
                                 Vector2 speed = new Vector2(NPC.velocity.X, 2f);
@@ -914,7 +914,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
             if ((NPC.Center + new Vector2(0, -60) - owner.Center).Length() > 480)
             {
                 NPC.noTileCollide = true;
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     NPC.velocity += (owner.Center - NPC.Center).SafeNormalize(new Vector2(0, -1)) * 4 + new Vector2(1, 0).RotatedByRandom(Math.PI * 2);
                     owner.velocity -= ((owner.Center - NPC.Center).SafeNormalize(new Vector2(0, -1)) * 4 + new Vector2(1, 0).RotatedByRandom(Math.PI * 2)) / 6;
@@ -1056,7 +1056,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
                     float num69 = Projectile.velocity.X / 3f * num68;
                     float num70 = Projectile.velocity.Y / 3f * num68;
                     int num71 = 2;
-                    int num72 = Dust.NewDust(new Vector2(Projectile.position.X + num71, Projectile.position.Y + num71), Projectile.width - num71 * 2, Projectile.height - num71 * 2, 170, 0f, 0f, 100);
+                    int num72 = Dust.NewDust(new Vector2(Projectile.position.X + num71, Projectile.position.Y + num71), Projectile.width - num71 * 2, Projectile.height - num71 * 2, DustID.Ichor, 0f, 0f, 100);
                     Main.dust[num72].noGravity = true;
                     Dust dust79 = Main.dust[num72];
                     Dust dust195 = dust79;
@@ -1071,7 +1071,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
             if (Main.rand.NextBool(24))
             {
                 int num73 = 4;
-                int num75 = Dust.NewDust(new Vector2(Projectile.position.X + num73, Projectile.position.Y + num73), Projectile.width - num73 * 2, Projectile.height - num73 * 2, 170, 0f, 0f, 100, default(Color), 0.5f);
+                int num75 = Dust.NewDust(new Vector2(Projectile.position.X + num73, Projectile.position.Y + num73), Projectile.width - num73 * 2, Projectile.height - num73 * 2, DustID.Ichor, 0f, 0f, 100, default(Color), 0.5f);
                 Dust dust78 = Main.dust[num75];
                 Dust dust195 = dust78;
                 dust195.velocity *= 0.25f;
@@ -1148,7 +1148,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
             float x13 = Projectile.velocity.X;
             float y9 = Projectile.velocity.Y;
             Color newColor4 = default(Color);
-            int num2467 = Dust.NewDust(position58, width31, height31, 75, x13, y9, 100, newColor4, 3f * Projectile.scale);
+            int num2467 = Dust.NewDust(position58, width31, height31, DustID.CursedTorch, x13, y9, 100, newColor4, 3f * Projectile.scale);
             Main.dust[num2467].noGravity = true;
 
             Projectile.rotation += 0.3f * Projectile.direction;
@@ -1184,7 +1184,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
         {
             SoundEngine.PlaySound(SoundID.Item14, Projectile.Center);
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 Projectile.NewProjectile(Projectile.GetSource_Death(), Projectile.Center, Vector2.Zero, ProjectileType<CursedFlameExplosion>(), 27, 0f, Main.myPlayer);
                 //for (int i = 0; i < 32; i++)
@@ -1583,7 +1583,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Esophage
         {
             SoundEngine.PlaySound(SoundID.NPCDeath19, Projectile.Center);
 
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 for (int i = 0; i < 10; i++)
                 {

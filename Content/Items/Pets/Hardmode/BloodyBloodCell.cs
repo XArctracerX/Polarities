@@ -24,7 +24,7 @@ namespace Polarities.Content.Items.Pets.Hardmode
 		public override void SetDefaults()
 		{
 			Item.damage = 0;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.shoot = ProjectileType<BloodSpider>();
             Item.width = 30;
             Item.height = 36;

@@ -154,7 +154,7 @@ namespace Polarities.Content.NPCs.Enemies.LavaOcean
             {
                 for (int num473 = 0; num473 < NPC.damage / NPC.lifeMax * 50.0; num473++)
                 {
-                    int num474 = Dust.NewDust(NPC.position, NPC.width, NPC.height, 31, 0f, 0f, 0, default(Color), 1.5f);
+                    int num474 = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Smoke, 0f, 0f, 0, default(Color), 1.5f);
                     Main.dust[num474].noGravity = true;
                 }
                 return;

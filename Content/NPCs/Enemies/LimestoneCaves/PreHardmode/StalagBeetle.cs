@@ -172,7 +172,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
 
         public override void AI()
         {
-            Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Scale: 1f)].velocity = new Vector2(0.5f, 0).RotatedByRandom(MathHelper.TwoPi);
+            Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Scale: 1f)].velocity = new Vector2(0.5f, 0).RotatedByRandom(MathHelper.TwoPi);
         }
 
         public override void OnHitPlayer(Player target, Player.HurtInfo info)

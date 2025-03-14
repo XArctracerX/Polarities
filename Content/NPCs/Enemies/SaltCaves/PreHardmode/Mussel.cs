@@ -83,7 +83,7 @@ namespace Polarities.Content.NPCs.Enemies.SaltCaves.PreHardmode
                     break;
                 case 1:
                     NPC.defense = 10;
-                    if (NPC.ai[0] % 60 == 0 && NPC.ai[0] != 0 && Main.netMode != 1)
+                    if (NPC.ai[0] % 60 == 0 && NPC.ai[0] != 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         //shoot pearl
                         //a = 0.2 units per tick per tick
