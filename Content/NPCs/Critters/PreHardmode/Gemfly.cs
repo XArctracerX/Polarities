@@ -130,7 +130,7 @@ namespace Polarities.Content.NPCs.Critters.PreHardmode
                 return;
             }
             bool flag = false;
-            if (Main.getGoodWorld && WorldGen.genRand.Next(15) == 0)
+            if (Main.getGoodWorld && WorldGen.genRand.NextBool(15))
             {
                 Projectile.NewProjectile(new EntitySource_ShakeTree(x, y), x * 16, y * 16, Main.rand.Next(-100, 101) * 0.002f, 0f, 28, 0, 0f, Player.FindClosest(new Vector2(x * 16, y * 16), 16, 16));
             }
