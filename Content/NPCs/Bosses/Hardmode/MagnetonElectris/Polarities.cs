@@ -1334,7 +1334,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
         public override void Load()
         {
-            texture = Request<Texture2D>("Terraria/Projectile_644");
+            
         }
 
         public override void Unload()
@@ -1344,9 +1344,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
         public override bool PreDraw(ref Color lightColor)
 		{
-			//Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644");//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
-
-			Color mainColor = new Color(181, 248, 255);
+			//Texture2D texture = ModContent.Request<Texture2D>("Terraria/Images/Projectile_644");//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
+			texture = TextureAssets.Projectile[644];
+            Color mainColor = new Color(181, 248, 255);
 
 			for (int k = 0; k < Projectile.oldPos.Length; k++)
 			{
@@ -1496,7 +1496,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644").Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
+			Texture2D texture = TextureAssets.Projectile[644].Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
 
 			Color mainColor = new Color(255, 181, 181);
 
@@ -2370,7 +2370,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-            Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644").Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
+            Texture2D texture = TextureAssets.Projectile[644].Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
 
             Color mainColor = new Color(181, 248, 255);
 
@@ -2464,7 +2464,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-			Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644").Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
+			Texture2D texture = TextureAssets.Projectile[644].Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
 
 			Color mainColor = new Color(255, 181, 181);
 
@@ -2560,7 +2560,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-            Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644").Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
+            Texture2D texture = TextureAssets.Projectile[644].Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
 
             Color mainColor = new Color(181, 248, 255);
 
@@ -2654,7 +2654,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-            Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644").Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
+            Texture2D texture = TextureAssets.Projectile[644].Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
 
             Color mainColor = new Color(255, 181, 181);
 
@@ -3875,7 +3875,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 	public class BlastTelegraph : ModProjectile
 	{
-		public override string Texture => "Terraria/Projectile_644";
+		public override string Texture => "Terraria/Images/Projectile_644";
 
 		public override void SetStaticDefaults()
 		{

@@ -106,7 +106,7 @@ namespace Polarities.Content.Items.Consumables.Summons.PreHardmode
 			}
 			else if (Projectile.timeLeft > 50)
 			{
-				Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644", AssetRequestMode.ImmediateLoad).Value;
+				Texture2D texture = TextureAssets.Projectile[644].Value;
                 Rectangle frame = texture.Frame();
 
 				Vector2 drawPosition = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2 - 300 / Main.GameZoomTarget);

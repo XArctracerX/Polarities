@@ -42,7 +42,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             NPC.buffImmune[BuffID.Confused] = true;
             NPC.buffImmune[BuffID.OnFire] = true;
 
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Assets/BossChecklist/RiftDenizen", };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { CustomTexturePath = "Polarities/Assets/BossChecklist/RiftDenizen", };
         }
 
         public override void SetDefaults()
@@ -792,7 +792,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 1;
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true, };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true, };
         }
 
         public override void SetDefaults()
@@ -1137,7 +1137,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 1;
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true, };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true, };
         }
 
         public override void SetDefaults()
@@ -1955,7 +1955,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
 
             if (Projectile.localAI[0] <= 65 && Projectile.localAI[0] >= 55)
             {
-                texture = ModContent.Request<Texture2D>("Terraria/Images/Projectile_644", AssetRequestMode.ImmediateLoad).Value;
+                texture = TextureAssets.Projectile[644].Value;
                 frame = texture.Frame();
 
                 float scale = Math.Max(0, 1 - (60 - Projectile.localAI[0]) * (60 - Projectile.localAI[0]) / 25f);

@@ -394,7 +394,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
 
         public override void SetStaticDefaults()
         {
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true, };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true, };
         }
 
         public override void SetDefaults()
@@ -504,7 +504,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
 
     public class OrthoconicParabola : ModProjectile
     {
-        public override string Texture => "Terraria/Images/Projectile_644";
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.RainbowCrystalExplosion;
         public override void SetStaticDefaults()
         {
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 40;

@@ -444,7 +444,7 @@ namespace Polarities.Content.NPCs.Enemies.Ocean.Hardmode
 
     public class KrakenInk : ModProjectile
     {
-        public override string Texture => "Terraria/Images/Projectile_644";
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.RainbowCrystalExplosion;
 
         public override void SetStaticDefaults()
         {
