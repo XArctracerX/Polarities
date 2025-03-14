@@ -166,7 +166,16 @@ namespace Polarities
                     }
                 );
 
-                bossChecklist.Call("AddBoss", this, "$Mods.Polarities.NPCName.StormCloudfish", NPCType<StormCloudfish>(), 1.9f, () => PolaritiesSystem.downedStormCloudfish, () => true,
+		bossChecklist.Call(
+  			"LogBoss",
+     			this,
+			"StormCloudfish",
+   			5.5f,
+   			() => PolaritiesSystem.downedStormCloudfish,
+      			ModContent.NPCType<StormCloudfish>()
+		)
+  
+                /*bossChecklist.Call("AddBoss", this, "$Mods.Polarities.NPCName.StormCloudfish", NPCType<StormCloudfish>(), 1.9f, () => PolaritiesSystem.downedStormCloudfish, () => true,
                     new List<int> { ItemType<StormCloudfishTrophy>(), ItemType<StormCloudfishMask>(), ItemType<StormCloudfishRelic>(), ItemType<GoldfishExplorerPetItem>(), ItemType<StormCloudfishMusicBox>(), ItemType<StormCloudfishPetItem>(), ItemType<EyeOfTheStormfish>() }, //collection
                     ItemType<StormCloudfishSummonItem>(), //spawning
                     "Fly a [i:" + ItemType<StormCloudfishSummonItem>() + " as high as you can at the surface.",
@@ -177,7 +186,7 @@ namespace Polarities
                         Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
                         sb.Draw(texture, centered, color);
                     }
-                );
+                );*/
                 bossChecklist.Call("AddBoss", this, "$Mods.Polarities.NPCName.StarConstruct", NPCType<StarConstruct>(), 2.9f, () => PolaritiesSystem.downedStarConstruct, () => true,
                     new List<int> { ItemType<StarConstructTrophy>(), ItemType<StarConstructMask>(), ItemType<StarConstructRelic>(), ItemType<StarConstructPetItem>(), ItemType<StarConstructMusicBox>(), ItemType<Stardance>() }, //collection
                     ItemType<StarConstructSummonItem>(), //spawning
