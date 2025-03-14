@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -26,7 +26,7 @@ using Terraria.Graphics.Shaders;
 namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 {
 	public enum PolaritiesAttackIDs
-    {
+	{
 		SpawnTransition = 0,
 		AlternateEyeblasts = 1,
 		ShrinkRingsThenEyeblasts = 2,
@@ -63,16 +63,12 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			DrawOffsetY = 40;
 
 			NPC.defense = 60;
+			
 			NPC.lifeMax = 120000;
-			if (Main.expertMode)
-			{
-				NPC.lifeMax = 180000;
-			}
+			if (Main.expertMode){NPC.lifeMax = 180000;}
+			
 			NPC.damage = 120;
-			if (Main.expertMode)
-			{
-				NPC.damage = 80;
-			}
+			if (Main.expertMode){NPC.damage = 80;}
 
 			NPC.knockBackResist = 0f;
 			NPC.value = Item.buyPrice(1, 0, 0, 0);
@@ -98,12 +94,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		private float[] playerOffset = { -600f, 0f, 0f };
 
-        public override void BossHeadRotation(ref float rotation)
-        {
-			rotation = NPC.rotation - MathHelper.PiOver2;
-        }
+		public override void BossHeadRotation(ref float rotation){rotation = NPC.rotation - MathHelper.PiOver2;}
 
-        public override void AI()
+		public override void AI()
 		{
 			Player player = Main.player[NPC.target];
 			if (!player.active || player.dead)
@@ -112,24 +105,18 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				player = Main.player[NPC.target];
 				if (player.dead)
 				{
-					if (NPC.timeLeft > 10)
-					{
-						NPC.timeLeft = 10;
-					}
+					if (NPC.timeLeft > 10){NPC.timeLeft = 10;}
 					NPC.velocity = (NPC.Center - player.Center) / 60;
 
 					//frames code
 					NPC.frameCounter++;
-					if (NPC.frameCounter >= 7)
-					{
-						NPC.frameCounter = 0;
-					}
+					if (NPC.frameCounter >= 7){NPC.frameCounter = 0;}
 					return;
 				}
 			}
 
 			if (NPC.localAI[0] == 0)
-            {
+			{
 				NPC.localAI[0] = 1;
 				NPC.rotation = MathHelper.PiOver2;
 
@@ -182,10 +169,8 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			//motion code
 			Vector2 playerVelocity = player.position - player.oldPosition;
 			float[] newPlayerOffset = {
-				playerOffset[0] + playerVelocity.X * playerOffset[2] / 600f
-				,
-				playerOffset[1] + playerVelocity.Y * playerOffset[2] / 600f
-				,
+				playerOffset[0] + playerVelocity.X * playerOffset[2] / 600f,
+				playerOffset[1] + playerVelocity.Y * playerOffset[2] / 600f,
 				playerOffset[2] - playerVelocity.X * playerOffset[0] / 600f - playerVelocity.Y * playerOffset[1] / 600f
 			};
 
@@ -202,11 +187,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			PolaritiesSky.height = playerOffset[2] / 600f;
 			PolaritiesSky.alpha = 1f;
 
-
-			if (NPC.ai[1] == 0)
-            {
-				NPC.dontTakeDamage = false;
-			}
+			if (NPC.ai[1] == 0){NPC.dontTakeDamage = false;}
 
 			float angleGoal = NPC.rotation;
 			float maxTurn = 0.2f;
@@ -218,7 +199,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 			//attack code
 			switch ((PolaritiesAttackIDs)NPC.ai[2])
-            {
+			{
 				case PolaritiesAttackIDs.SpawnTransition:
 					//spawn animation
 					NPC.dontTakeDamage = true;
@@ -230,10 +211,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					NPC.alpha = (int)(255 - 255 * ((NPC.ai[3] + 1) / 240f));
 					frameLength = (int)(4f + 3f * (NPC.ai[3] + 1) / 240f);
 
-					if (NPC.ai[3] % 20 == 0)
-					{
-						SoundEngine.PlaySound(SoundID.Item15, NPC.Center);
-					}
+					if (NPC.ai[3] % 20 == 0){SoundEngine.PlaySound(SoundID.Item15, NPC.Center);}
 
 					NPC.ai[3]++;
 					if (NPC.ai[3] >= 240)
@@ -250,13 +228,13 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
 					if (NPC.ai[3] % 60 == 0 && Main.netMode != 1)
-                    {
+					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 8f, ProjectileType<ElectricBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 1.02f);
-                    }
+					}
 
 					NPC.ai[3]++;
 					if (NPC.ai[3] >= 240)
-                    {
+					{
 						NPC.ai[3] = 0;
 						NPC.ai[2] = (int)PolaritiesAttackIDs.ShrinkRingsThenEyeblasts;
 
@@ -352,18 +330,18 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						}
 					}
 
-					if ((NPC.ai[3] == 60 || NPC.ai[3] == 180) && Main.netMode != 1)
-                    {
-						//Projectile.NewProjectile(NPC.Center, new Vector2(1, 0), ProjectileType<BlastTelegraph>(), 0, 0, Main.myPlayer, NPC.whoAmI, 0);
-                    }
+					/*if ((NPC.ai[3] == 60 || NPC.ai[3] == 180) && Main.netMode != 1)
+					{
+						Projectile.NewProjectile(NPC.Center, new Vector2(1, 0), ProjectileType<BlastTelegraph>(), 0, 0, Main.myPlayer, NPC.whoAmI, 0);
+					}*/
 
-					if (NPC.ai[3] % 120 == 0 && NPC.ai[3] >= 120 && Main.netMode != 1)
+					/*if (NPC.ai[3] % 120 == 0 && NPC.ai[3] >= 120 && Main.netMode != 1)
 					{
 						for (int i=0; i<4; i++)
 						{
-							//Projectile.NewProjectile(NPC.Center, new Vector2(8f,0).RotatedBy(i * MathHelper.TwoPi / 4f), ProjectileType<ElectricBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 1.02f);
+							Projectile.NewProjectile(NPC.Center, new Vector2(8f,0).RotatedBy(i * MathHelper.TwoPi / 4f), ProjectileType<ElectricBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 1.02f);
 						}
-					}
+					}*/
 
 					NPC.ai[3]++;
 					if (NPC.ai[3] >= 360)
@@ -388,15 +366,13 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 							//Projectile.NewProjectile(NPC.Center, new Vector2(24f, 0).RotatedBy(angleRotation + angle + angleDiff), ProjectileType<ElectrisLightningBoltTelegraph>(), Main.expertMode ? 30 : 40, 0f, Main.myPlayer, ai0: NPC.whoAmI, ai1: -angleDiff / 50);
 						}
 					}
-					if (NPC.ai[3] == 180 || NPC.ai[3] == 300 || NPC.ai[3] == 420)
+					
+					/*if (NPC.ai[3] == 180 || NPC.ai[3] == 300 || NPC.ai[3] == 420)
 					{
-						//SoundEngine.PlaySound(Mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/LightningStrike").WithVolume(1f), NPC.Center);
-					}
+						SoundEngine.PlaySound(Mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/LightningStrike").WithVolume(1f), NPC.Center);
+					}*/
 
-					if (NPC.ai[3] >= 420)
-					{
-						angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
-					}
+					if (NPC.ai[3] >= 420){angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;}
 
 					NPC.ai[3]++;
 					if (NPC.ai[3] >= 480)
@@ -412,10 +388,10 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					frameLength = 10;
 
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					/*if (NPC.ai[3] == 0 && Main.netMode != 1)
 					{
-						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center)*16f, ProjectileType<ElectrisPreSmallVortexProjectile>(), 0, 0f, Main.myPlayer, player.Center.X, player.Center.Y);
-					}
+						Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center)*16f, ProjectileType<ElectrisPreSmallVortexProjectile>(), 0, 0f, Main.myPlayer, player.Center.X, player.Center.Y);
+					}*/
 
 					NPC.ai[3]++;
 					if (NPC.ai[3] >= 540)
@@ -440,10 +416,11 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 							//Projectile.NewProjectile(NPC.Center, new Vector2(24f, 0).RotatedBy(angleRotation + angle + angleDiff), ProjectileType<ElectrisLightningBoltTelegraph>(), Main.expertMode ? 30 : 40, 0f, Main.myPlayer, ai0: NPC.whoAmI, ai1: -angleDiff / 50);
 						}
 					}
-					if (NPC.ai[3] == 180 || NPC.ai[3] == 420)
+					
+					/*if (NPC.ai[3] == 180 || NPC.ai[3] == 420)
 					{
-						//SoundEngine.PlaySound(Mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/LightningStrike").WithVolume(1f), NPC.Center);
-					}
+						SoundEngine.PlaySound(Mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/LightningStrike").WithVolume(1f), NPC.Center);
+					}*/
 
 					NPC.ai[3]++;
 					if (NPC.ai[3] >= 510)
@@ -458,10 +435,10 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					//electris does an aura while magneton does a deathray
 					//the deathray moves faster if the player is magnetized
 
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					/*if (NPC.ai[3] == 0 && Main.netMode != 1)
 					{
-						//Projectile.NewProjectile(NPC.Center, Vector2.Zero, ProjectileType<ElectronCloud>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai0: NPC.whoAmI, ai1: -1);
-					}
+						Projectile.NewProjectile(NPC.Center, Vector2.Zero, ProjectileType<ElectronCloud>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai0: NPC.whoAmI, ai1: -1);
+					}*/
 
 					if (NPC.ai[3] == 180 && Main.netMode != 1)
 					{
@@ -476,16 +453,13 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					{
 						angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-						if (NPC.ai[3] < 540)
-						{
-							frameLength = 4;
-						}
+						if (NPC.ai[3] < 540){frameLength = 4;}
 					}
 
-					if (NPC.ai[3] >= 210 && NPC.ai[3] < 540 && NPC.ai[3] % 5 == 0 && Main.netMode != 1)
+					/*if (NPC.ai[3] >= 210 && NPC.ai[3] < 540 && NPC.ai[3] % 5 == 0 && Main.netMode != 1)
 					{
-						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 8f, ProjectileType<ElectricBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 1.04f);
-					}
+						Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 8f, ProjectileType<ElectricBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 1.04f);
+					}*/
 
 					NPC.ai[3]++;
 					if (NPC.ai[3] >= 570)
@@ -498,10 +472,10 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					break;
 				case PolaritiesAttackIDs.AurasAndRings:
 					//auras and rings
-					if (NPC.ai[3] == 20 && Main.netMode != 1)
+					/*if (NPC.ai[3] == 20 && Main.netMode != 1)
 					{
-						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center), ProjectileType<ElectrisDeathray>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai1: NPC.whoAmI);
-					}
+						Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center), ProjectileType<ElectrisDeathray>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai1: NPC.whoAmI);
+					}*/
 					if (NPC.ai[3] < 520)
 					{
 						angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
@@ -534,7 +508,8 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					// Emerald - I'm going to wager a guess that next to none of Electris' projectiles are being fired at present
+					/*if (NPC.ai[3] == 0 && Main.netMode != 1)
 					{
 						int numRays = 4;
 						if (playerOffset[2] < 0)
@@ -551,12 +526,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 								//Projectile.NewProjectile(Main.npc[(int)NPC.ai[0]].Center, new Vector2(1, 0).RotatedBy((player.Center - NPC.Center).ToRotation() + i * MathHelper.Pi / numRays), ProjectileType<ElectromagneticDeathray>(), Main.expertMode ? 35 : 50, 0f, Main.myPlayer, NPC.ai[0], -1);
 							}
 						}
-					}
+					}*/
 
-					if (NPC.ai[3] >= 360)
-					{
-						canPhaseTransition = true;
-					}
+					if (NPC.ai[3] >= 360){canPhaseTransition = true;}
 
 					NPC.ai[3]++;
 					if (NPC.ai[3] >= 390)
@@ -580,10 +552,10 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					}
 					break;
 				case PolaritiesAttackIDs.AnticipatingRays:
-					if (NPC.ai[3] == 0 || NPC.ai[3] == 240)
+					/*if (NPC.ai[3] == 0 || NPC.ai[3] == 240)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center), ProjectileType<ElectrisDeathray>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai0: 1, ai1: NPC.whoAmI);
-					}
+					}*/
 					if (NPC.ai[3] % 240 < 120 && NPC.ai[3] < 360)
 					{
 						angleGoal = NPC.DirectionTo(player.Center + (player.velocity - NPC.velocity) * 60).ToRotation() + MathHelper.PiOver2;
@@ -591,18 +563,18 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						maxTurn = 0.2f * (120 - (NPC.ai[3] % 240)) / 120f;
 					}
 
-					if ((NPC.ai[3] == 180 || NPC.ai[3] == 420) && Main.netMode != 1)
+					/*if ((NPC.ai[3] == 180 || NPC.ai[3] == 420) && Main.netMode != 1)
 					{
 						//Projectile.NewProjectile(NPC.Center, new Vector2(1, 0), ProjectileType<BlastTelegraph>(), 0, 0, Main.myPlayer, NPC.whoAmI, 0);
-					}
+					}*/
 
-					if (NPC.ai[3] == 240 || NPC.ai[3] == 480)
-                    {
+					/*if (NPC.ai[3] == 240 || NPC.ai[3] == 480)
+					{
 						for (int i=0; i<4; i++)
 						{
 							//Projectile.NewProjectile(NPC.Center, new Vector2(8f,0).RotatedBy(i * MathHelper.TwoPi / 4f), ProjectileType<ElectricBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 1.04f);
 						}
-                    }
+					}*/
 
 					NPC.ai[3]++;
 					if (NPC.ai[3] >= 630)
@@ -613,10 +585,10 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					break;
 				case PolaritiesAttackIDs.LargeVortexAttack:
 					//both shoot harmless projectiles towards the player, which hit each other and turn into a vortex that does stuff
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					/*if (NPC.ai[3] == 0 && Main.netMode != 1)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 12f, ProjectileType<ElectrisPreLargeVortexProjectile>(), 0, 0f, Main.myPlayer, player.Center.X, player.Center.Y);
-					}
+					}*/
 
 					frameLength = 10;
 
@@ -630,7 +602,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				case PolaritiesAttackIDs.HarderCircleDeathrays:
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (NPC.ai[3] == 0 && Main.netMode != 1)
+					/*if (NPC.ai[3] == 0 && Main.netMode != 1)
 					{
 						int numRays = 4;
 						if (playerOffset[2] < 0)
@@ -647,7 +619,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 								//Projectile.NewProjectile(Main.npc[(int)NPC.ai[0]].Center, new Vector2(1, 0).RotatedBy((player.Center - NPC.Center).ToRotation() + i * MathHelper.Pi / numRays), ProjectileType<ElectromagneticDeathray2>(), Main.expertMode ? 35 : 50, 0f, Main.myPlayer, NPC.ai[0], i == 0 ? 1 : 0);
 							}
 						}
-					}
+					}*/
 
 					NPC.ai[3]++;
 					if (NPC.ai[3] >= 870)
@@ -659,9 +631,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			}
 
 			if (canPhaseTransition)
-            {
+			{
 				switch ((PolaritiesAttackIDs)NPC.ai[2])
-                {
+				{
 					case PolaritiesAttackIDs.AlternateEyeblasts:
 					case PolaritiesAttackIDs.ShrinkRingsThenEyeblasts:
 					case PolaritiesAttackIDs.AuraAttacks:
@@ -687,57 +659,31 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 							NPC.ai[2] = (int)PolaritiesAttackIDs.MidToLowTransition;
 						}
 						break;
-                }
+				}
 			}
 
 			//frames code
 			NPC.frameCounter++;
-			if (NPC.frameCounter >= frameLength)
-			{
-				NPC.frameCounter = 0;
-			}
+			if (NPC.frameCounter >= frameLength){NPC.frameCounter = 0;}
 
 			//rotation code//
 			float angleOffset = NPC.rotation - angleGoal;
-			while (angleOffset > MathHelper.Pi)
-			{
-				angleOffset -= MathHelper.TwoPi;
-			}
-			while (angleOffset < -MathHelper.Pi)
-			{
-				angleOffset += MathHelper.TwoPi;
-			}
-			if (Math.Abs(angleOffset) < maxTurn)
-			{
-				NPC.rotation = angleGoal;
-			}
-			else if (angleOffset < 0)
-			{
-				NPC.rotation += maxTurn;
-			}
-			else
-			{
-				NPC.rotation -= maxTurn;
-			}
+			while (angleOffset > MathHelper.Pi){angleOffset -= MathHelper.TwoPi;}
+			while (angleOffset < -MathHelper.Pi){angleOffset += MathHelper.TwoPi;}
+			if (Math.Abs(angleOffset) < maxTurn){NPC.rotation = angleGoal;}
+			else if (angleOffset < 0){NPC.rotation += maxTurn;}
+			else{NPC.rotation -= maxTurn;}
 		}
 
 		public override void FindFrame(int frameHeight)
 		{
 			if (NPC.frameCounter == 0)
-			{
-				NPC.frame.Y = (NPC.frame.Y + frameHeight) % (4 * frameHeight);
-			}
+			{NPC.frame.Y = (NPC.frame.Y + frameHeight) % (4 * frameHeight);}
 		}
 
-		public override bool CheckActive()
-		{
-			return Main.player[NPC.target].dead;
-		}
+		public override bool CheckActive(){return Main.player[NPC.target].dead;}
 
-		public override void BossLoot(ref string name, ref int potionType)
-		{
-			potionType = ItemID.SuperHealingPotion;
-		}
+		public override void BossLoot(ref string name, ref int potionType){potionType = ItemID.SuperHealingPotion;}
 
 		public override bool CheckDead()
 		{
@@ -766,7 +712,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return true;
 		}
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+		public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
 		{
 			Texture2D mask = TextureAssets.Npc[NPC.type].Value;
 			Vector2 drawOrigin = new Vector2(mask.Width * 0.5f, (mask.Height / 4) * 0.5f);
@@ -777,10 +723,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override bool PreKill()
-		{
-			return true;
-		}
+		public override bool PreKill(){return true;}
 	}
 
 	[AutoloadBossHead]
@@ -806,10 +749,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				NPC.lifeMax = 180000;
 			}
 			NPC.damage = 120;
-			if (Main.expertMode)
-			{
-				NPC.damage = 80;
-			}
+			if (Main.expertMode){NPC.damage = 80;}
 
 			NPC.knockBackResist = 0f;
 			NPC.npcSlots = 15f;
@@ -834,10 +774,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		private float[] playerOffset = { 600f, 0f, 0f };
 
-		public override void BossHeadRotation(ref float rotation)
-		{
-			rotation = NPC.rotation - MathHelper.PiOver2;
-		}
+		public override void BossHeadRotation(ref float rotation){rotation = NPC.rotation - MathHelper.PiOver2;}
 
 		public override void AI()
 		{
@@ -848,37 +785,31 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				player = Main.player[NPC.target];
 				if (player.dead)
 				{
-					if (NPC.timeLeft > 10)
-					{
-						NPC.timeLeft = 10;
-					}
+					if (NPC.timeLeft > 10){NPC.timeLeft = 10;}
 					NPC.velocity = (NPC.Center - player.Center) / 60;
 
 					//frames code
 					NPC.frameCounter++;
-					if (NPC.frameCounter >= 7)
-					{
-						NPC.frameCounter = 0;
-					}
+					if (NPC.frameCounter >= 7){NPC.frameCounter = 0;}
 					return;
 				}
 			}
 
-            if (NPC.localAI[0] == 0)
-            {
-                NPC.localAI[0] = 1;
-                NPC.rotation = MathHelper.PiOver2;
+			if (NPC.localAI[0] == 0)
+			{
+				NPC.localAI[0] = 1;
+				NPC.rotation = MathHelper.PiOver2;
 
-                Vector2 spawnPosition = player.MountedCenter * 2 - NPC.Center;
+				Vector2 spawnPosition = player.MountedCenter * 2 - NPC.Center;
 
-                if (Main.netMode != 1)
-                {
-                    //NPC.ai[0] = NPC.NewNPC(spawnPosition.X, spawnPosition.Y, NPCType<Electris>(), ai0: NPC.whoAmI);
-                }
-                NPC.netUpdate = true;
-            }
+				/*if (Main.netMode != 1)
+				{
+					//NPC.ai[0] = NPC.NewNPC(spawnPosition.X, spawnPosition.Y, NPCType<Electris>(), ai0: NPC.whoAmI);
+				}*/
+				NPC.netUpdate = true;
+			}
 
-            NPC electris = Main.npc[(int)NPC.ai[0]];
+			NPC electris = Main.npc[(int)NPC.ai[0]];
 
 			if (NPC.ai[1] == 2)
 			{
@@ -916,10 +847,8 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			//motion code
 			Vector2 playerVelocity = player.position - player.oldPosition;
 			float[] newPlayerOffset = {
-				playerOffset[0] + playerVelocity.X * playerOffset[2] / 600f
-				,
-				playerOffset[1] + playerVelocity.Y * playerOffset[2] / 600f
-				,
+				playerOffset[0] + playerVelocity.X * playerOffset[2] / 600f,
+				playerOffset[1] + playerVelocity.Y * playerOffset[2] / 600f,
 				playerOffset[2] - playerVelocity.X * playerOffset[0] / 600f - playerVelocity.Y * playerOffset[1] / 600f
 			};
 
@@ -932,10 +861,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 			NPC.velocity = new Vector2(playerOffset[0], playerOffset[1]) + player.Center - NPC.Center;
 
-			if (NPC.ai[1] == 0)
-			{
-				NPC.dontTakeDamage = false;
-			}
+			if (NPC.ai[1] == 0){NPC.dontTakeDamage = false;}
 
 			float angleGoal = NPC.rotation;
 			float maxTurn = 0.2f;
@@ -956,10 +882,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					NPC.alpha = (int)(255 - 255 * ((electris.ai[3] + 1) / 240f));
 					frameLength = (int)(4f + 3f * (electris.ai[3] + 1) / 240f);
 
-					if (NPC.ai[3] % 20 == 0)
-					{
-						SoundEngine.PlaySound(SoundID.Item15, NPC.Center);
-					}
+					if (NPC.ai[3] % 20 == 0){SoundEngine.PlaySound(SoundID.Item15, NPC.Center);}
 
 					break;
 				case PolaritiesAttackIDs.AlternateEyeblasts:
@@ -967,10 +890,10 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (electris.ai[3] % 60 == 30 && Main.netMode != 1)
+					/*if (electris.ai[3] % 60 == 30 && Main.netMode != 1)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 6f, ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.1f, ai1: player.whoAmI);
-					}
+					}*/
 
 					break;
 				case PolaritiesAttackIDs.ShrinkRingsThenEyeblasts:
@@ -986,13 +909,14 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						}
 					}
 
-					if (electris.ai[3] > 120 && electris.ai[3] % 60 == 30 && Main.netMode != 1)
+					/*if (electris.ai[3] > 120 && electris.ai[3] % 60 == 30 && Main.netMode != 1)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 6f, ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.05f, ai1: player.whoAmI);
-					}
+					}*/
+					
 					break;
 				case PolaritiesAttackIDs.AuraAttacks:
-					if (electris.ai[3] == 30 && Main.netMode != 1)
+					/*if (electris.ai[3] == 30 && Main.netMode != 1)
 					{
 						for (int i = 0; i < 16; i++)
 						{
@@ -1000,7 +924,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 							//Projectile.NewProjectile(NPC.Center, new Vector2(4.11f,0).RotatedBy(i * MathHelper.TwoPi / 16f), ProjectileType<MagnetonAura>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai0: NPC.whoAmI, ai1: direction);
 						}
-					}
+					}*/
 					break;
 				case PolaritiesAttackIDs.HighToMidTransition:
 					NPC.dontTakeDamage = true;
@@ -1013,38 +937,38 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if (electris.ai[3] % 30 == 0 && Main.netMode != 1)
+					/*if (electris.ai[3] % 30 == 0 && Main.netMode != 1)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center).RotatedBy(1f) * 6f, ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.1f, ai1: player.whoAmI);
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center).RotatedBy(-1f) * 6f, ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.1f, ai1: player.whoAmI);
-					}
+					}*/
 					break;
 				case PolaritiesAttackIDs.CloserShrinkRings:
 
-					if (electris.ai[3] == 0 && Main.netMode != 1)
+					/*if (electris.ai[3] == 0 && Main.netMode != 1)
 					{
 						for (int i = 0; i < 24; i++)
 						{
 							float angle = i * MathHelper.TwoPi / 24f;
 							//Projectile.NewProjectile(NPC.Center + new Vector2(1200f, 0).RotatedBy(angle), Vector2.Zero, ProjectileType<MagnetonRing2>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai0: NPC.whoAmI, ai1: angle);
 						}
-					}
+					}*/
 
-					if ((electris.ai[3] == 120 || electris.ai[3] == 240) && Main.netMode != 1)
+					/*if ((electris.ai[3] == 120 || electris.ai[3] == 240) && Main.netMode != 1)
 					{
 						//Projectile.NewProjectile(NPC.Center, new Vector2(1, 0).RotatedBy(MathHelper.PiOver4), ProjectileType<BlastTelegraph>(), 0, 0, Main.myPlayer, NPC.whoAmI, 1);
-					}
+					}*/
 
-					if (electris.ai[3] % 120 == 60 && electris.ai[3] >= 120 && Main.netMode != 1)
+					/*if (electris.ai[3] % 120 == 60 && electris.ai[3] >= 120 && Main.netMode != 1)
 					{
 						for (int i = 0; i < 4; i++)
 						{
 							//Projectile.NewProjectile(NPC.Center, new Vector2(8f, 0).RotatedBy(i * MathHelper.TwoPi / 4f + MathHelper.PiOver4), ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.05f, ai1: player.whoAmI);
 						}
-					}
+					}*/
 					break;
 				case PolaritiesAttackIDs.AuraAndBolts:
-					if ((electris.ai[3] == 0 || electris.ai[3] == 120 || electris.ai[3] == 240) && Main.netMode != 1)
+					/*if ((electris.ai[3] == 0 || electris.ai[3] == 120 || electris.ai[3] == 240) && Main.netMode != 1)
 					{
 						for (int i = 0; i < 20; i++)
 						{
@@ -1052,18 +976,15 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 							//Projectile.NewProjectile(NPC.Center, new Vector2(4.5f, 0).RotatedBy(i * MathHelper.TwoPi / 20f), ProjectileType<MagnetonAura>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai0: NPC.whoAmI, ai1: direction);
 						}
-					}
+					}*/
 
-					if (electris.ai[3] >= 420)
-					{
-						angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
-					}
+					if (electris.ai[3] >= 420){angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;}
 					break;
 				case PolaritiesAttackIDs.SmallVortexAttack:
-					if (electris.ai[3] == 0 && Main.netMode != 1)
+					/*if (electris.ai[3] == 0 && Main.netMode != 1)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 16f, ProjectileType<MagnetonPreSmallVortexProjectile>(), 0, 0f, Main.myPlayer, player.Center.X, player.Center.Y);
-					}
+					}*/
 
 					frameLength = 10;
 					break;
@@ -1072,13 +993,13 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 					angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
-					if ((electris.ai[3] == 180 || electris.ai[3] == 420) && Main.netMode != 1)
+					/*if ((electris.ai[3] == 180 || electris.ai[3] == 420) && Main.netMode != 1)
 					{
 						for (int i = 0; i < 12; i++)
 						{
 							//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 8f * (float)Math.Pow(1.02, -i * 10f), ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.1f, ai1: player.whoAmI);
 						}
-					}
+					}*/
 					break;
 				case PolaritiesAttackIDs.MagnetonDeathray:
 					//electris does an aura while magneton does a deathray
@@ -1089,22 +1010,19 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center), ProjectileType<MagnetonDeathray>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai1: NPC.whoAmI);
 					}
 					if (electris.ai[3] < 180)
-                    {
+					{
 						angleGoal = NPC.DirectionTo(player.Center).ToRotation() + MathHelper.PiOver2;
 
 						maxTurn = 0.015f * (180 - electris.ai[3]) / 120f;
 
 						frameLength = (int)(4f + 3f * (180 - electris.ai[3]) / 180f);
 					}
-					else
-                    {
-						frameLength = 4;
-					}
+					else{frameLength = 4;}
 
 					break;
 				case PolaritiesAttackIDs.AurasAndRings:
 
-					if (electris.ai[3] == 0 && Main.netMode != 1)
+					/*if (electris.ai[3] == 0 && Main.netMode != 1)
 					{
 						for (int i = 0; i < 16; i++)
 						{
@@ -1118,7 +1036,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 							float angle = i * MathHelper.TwoPi / 24f;
 							//Projectile.NewProjectile(NPC.Center + new Vector2(1200f, 0).RotatedBy(angle), Vector2.Zero, ProjectileType<MagnetonRing>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai0: NPC.whoAmI, ai1: angle);
 						}
-					}
+					}*/
 
 					break;
 				case PolaritiesAttackIDs.CircleDeathrays:
@@ -1135,10 +1053,10 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					break;
 
 				case PolaritiesAttackIDs.AnticipatingRays:
-					if (electris.ai[3] == 120 || electris.ai[3] == 360)
+					/*if (electris.ai[3] == 120 || electris.ai[3] == 360)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center), ProjectileType<MagnetonDeathray>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai0: 1, ai1: NPC.whoAmI);
-					}
+					}*/
 					if (electris.ai[3] % 240 >= 120 && electris.ai[3] < 480)
 					{
 						angleGoal = NPC.DirectionTo(player.Center + (player.velocity - NPC.velocity) * 60).ToRotation() + MathHelper.PiOver2;
@@ -1146,24 +1064,24 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						maxTurn = 0.2f * (120 - ((electris.ai[3] + 120) % 240)) / 120f;
 					}
 
-					if ((electris.ai[3] == 60 || electris.ai[3] == 300) && Main.netMode != 1)
+					/*if ((electris.ai[3] == 60 || electris.ai[3] == 300) && Main.netMode != 1)
 					{
 						//Projectile.NewProjectile(NPC.Center, new Vector2(1,0), ProjectileType<BlastTelegraph>(), 0, 0, Main.myPlayer, NPC.whoAmI, 1);
-					}
+					}*/
 
-					if (electris.ai[3] == 120 || electris.ai[3] == 360)
+					/*if (electris.ai[3] == 120 || electris.ai[3] == 360)
 					{
 						for (int i = 0; i < 4; i++)
 						{
 							//Projectile.NewProjectile(NPC.Center, new Vector2(8f, 0).RotatedBy(i * MathHelper.TwoPi / 4f), ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.05f, ai1: player.whoAmI);
 						}
-					}
+					}*/
 					break;
 				case PolaritiesAttackIDs.LargeVortexAttack:
-					if (electris.ai[3] == 0 && Main.netMode != 1)
+					/*if (electris.ai[3] == 0 && Main.netMode != 1)
 					{
 						//Projectile.NewProjectile(NPC.Center, NPC.DirectionTo(player.Center) * 12f, ProjectileType<MagnetonPreLargeVortexProjectile>(), 0, 0f, Main.myPlayer, player.Center.X, player.Center.Y);
-					}
+					}*/
 
 					frameLength = 10;
 
@@ -1175,52 +1093,27 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 			//frames code
 			NPC.frameCounter++;
-			if (NPC.frameCounter >= frameLength)
-			{
-				NPC.frameCounter = 0;
-			}
+			if (NPC.frameCounter >= frameLength){NPC.frameCounter = 0;}
 
 			//rotation code
 			float angleOffset = NPC.rotation - angleGoal;
-			while (angleOffset > MathHelper.Pi)
-            {
-				angleOffset -= MathHelper.TwoPi;
-			}
-			while (angleOffset < -MathHelper.Pi)
-			{
-				angleOffset += MathHelper.TwoPi;
-			}
-			if (Math.Abs(angleOffset) < maxTurn)
-            {
-				NPC.rotation = angleGoal;
-            }
-			else if (angleOffset < 0)
-            {
-				NPC.rotation += maxTurn;
-			}
-			else
-			{
-				NPC.rotation -= maxTurn;
-			}
+			while (angleOffset > MathHelper.Pi){angleOffset -= MathHelper.TwoPi;}
+			while (angleOffset < -MathHelper.Pi){angleOffset += MathHelper.TwoPi;}
+			
+			if (Math.Abs(angleOffset) < maxTurn){NPC.rotation = angleGoal;}
+			else if (angleOffset < 0){NPC.rotation += maxTurn;}
+			else{NPC.rotation -= maxTurn;}
 		}
 
 		public override void FindFrame(int frameHeight)
 		{
 			if (NPC.frameCounter == 0)
-			{
-				NPC.frame.Y = (NPC.frame.Y + frameHeight) % (4 * frameHeight);
-			}
+			{NPC.frame.Y = (NPC.frame.Y + frameHeight) % (4 * frameHeight);}
 		}
 
-		public override bool CheckActive()
-		{
-			return Main.player[NPC.target].dead;
-		}
+		public override bool CheckActive(){return Main.player[NPC.target].dead;}
 
-		public override void BossLoot(ref string name, ref int potionType)
-		{
-			potionType = ItemID.SuperHealingPotion;
-		}
+		public override void BossLoot(ref string name, ref int potionType){potionType = ItemID.SuperHealingPotion;}
 
 		public override bool CheckDead()
 		{
@@ -1249,28 +1142,25 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return true;
 		}
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
-        {
-            Texture2D mask = TextureAssets.Npc[NPC.type].Value;
-            Vector2 drawOrigin = new Vector2(mask.Width * 0.5f, (mask.Height / 4) * 0.5f);
-            Vector2 drawPos = NPC.Center - Main.screenPosition;
-            float alpha = (255 - NPC.alpha) / 255f;
-            spriteBatch.Draw(mask, drawPos, NPC.frame, Color.White * alpha, NPC.rotation, drawOrigin, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+				public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+				{
+					Texture2D mask = TextureAssets.Npc[NPC.type].Value;
+					Vector2 drawOrigin = new Vector2(mask.Width * 0.5f, (mask.Height / 4) * 0.5f);
+					Vector2 drawPos = NPC.Center - Main.screenPosition;
+					float alpha = (255 - NPC.alpha) / 255f;
+					spriteBatch.Draw(mask, drawPos, NPC.frame, Color.White * alpha, NPC.rotation, drawOrigin, NPC.scale, NPC.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
 
-            return false;
-        }
+					return false;
+				}
 
-        public override bool PreKill()
-		{
-			return false;
-		}
+		public override bool PreKill(){return false;}
 	}
 
 	public class ElectricBlast : ModProjectile
 	{
-        public override string Texture => "Polarities/Content/NPCs/Bosses/Hardmode/MagnetonElectris/EyeBlast";
+		public override string Texture => "Polarities/Content/NPCs/Bosses/Hardmode/MagnetonElectris/EyeBlast";
 
-        public override void SetStaticDefaults()
+		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Electric Eyeblast");
 
@@ -1301,7 +1191,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 		public override void AI()
 		{
 			if (Projectile.localAI[0] == 0)
-            {
+			{
 				Projectile.localAI[0] = 1;
 
 				SoundEngine.PlaySound(SoundID.Item94, Projectile.Center);
@@ -1314,10 +1204,10 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			}
 
 			if (Projectile.timeLeft < 10)
-            {
+						{
 				Projectile.scale -= 0.1f;
 				Projectile.hostile = false;
-            }
+						}
 
 			//Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Electric, newColor: Color.LightBlue, Scale: 1f)].noGravity = true;
 			Projectile.rotation = Projectile.velocity.ToRotation();
@@ -1330,19 +1220,12 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			//target.AddBuff(BuffID.Electrified, 180, true);
 		}
 
-        private static Asset<Texture2D> texture;
+		private static Asset<Texture2D> texture;
 
-        public override void Load()
-        {
-            texture = Request<Texture2D>("Terraria/Projectile_644");
-        }
+		public override void Load() {texture = Request<Texture2D>("Terraria/Projectile_644");}
+		public override void Unload() {texture = null;}
 
-        public override void Unload()
-        {
-            texture = null;
-        }
-
-        public override bool PreDraw(ref Color lightColor)
+		public override bool PreDraw(ref Color lightColor)
 		{
 			//Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644");//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
 
@@ -1384,11 +1267,11 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{
+			behindNPCsAndTiles.Add(index);
+		}
+	}
 
 	public class MagneticBlast : ModProjectile
 	{
@@ -1432,7 +1315,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 			Projectile.localAI[1] += 0.05f;
 			while (Projectile.localAI[1] > MathHelper.TwoPi / 11f)
-            {
+			{
 				Projectile.localAI[1] -= MathHelper.TwoPi / 11f;
 			}
 
@@ -1450,37 +1333,31 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			Player player = Main.player[(int)Projectile.ai[1]];
 
 			if (Projectile.ai[0] > 0)
-            {
+			{
 				float angleOffset = Projectile.DirectionTo(player.Center).ToRotation() - Projectile.velocity.ToRotation();
 
 				while (angleOffset > MathHelper.Pi)
-                {
-					angleOffset -= MathHelper.TwoPi;
-				}
+				{angleOffset -= MathHelper.TwoPi;}
+				
 				while (angleOffset < -MathHelper.Pi)
-				{
-					angleOffset += MathHelper.TwoPi;
-				}
+				{angleOffset += MathHelper.TwoPi;}
 
 				float maxTurn = /*0.5f*/ Projectile.ai[0] / Projectile.velocity.Length();
 
 				//if (player.GetModPlayer<PolaritiesPlayer>().magnetized)
-                //{
-					//maxTurn *= 2;
-                //}
+				//{
+				//	maxTurn *= 2;
+				//}
 
 				if (Math.Abs(angleOffset) < maxTurn)
 				{
 					Projectile.velocity = Projectile.DirectionTo(player.Center) * Projectile.velocity.Length();
-                }
+				}
 				else if (angleOffset > 0)
-                {
+				{
 					Projectile.velocity = Projectile.velocity.RotatedBy(maxTurn);
 				}
-				else
-				{
-					Projectile.velocity = Projectile.velocity.RotatedBy(-maxTurn);
-				}
+				else{Projectile.velocity = Projectile.velocity.RotatedBy(-maxTurn);}
 
 				//projectile.ai[0]--;
 			}
@@ -1533,15 +1410,15 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{
+			behindNPCsAndTiles.Add(index);
+		}
+	}
 
 	public class ElectronCloud : ModProjectile
 	{
-        public override void SetStaticDefaults()
+				public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Electron Cloud");
 
@@ -1613,12 +1490,10 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			}
 		}
 
-        public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
-        {
-			target.noKnockback = true;
-        }
+		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
+		{target.noKnockback = true;}
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo info)
+		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
 			//target.AddBuff(BuffID.Electrified, 180, true);
 		}
@@ -1630,17 +1505,15 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return (new Vector2(Projectile.Center.X - nearestX, Projectile.Center.Y - nearestY)).Length() < Projectile.width / 2;
 		}
 
-        public override bool PreDraw(ref Color lightColor)
-        {
+		public override bool PreDraw(ref Color lightColor)
+		{
 			Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, 758, 758), Color.White * (1 - Projectile.alpha / 255f), Projectile.rotation, new Vector2(379, 379), Projectile.scale, SpriteEffects.None, 0f);
 			return false;
-        }
+		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+				public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+				{behindNPCsAndTiles.Add(index);}
+		}
 
 	public class MagnetonAura : ModProjectile
 	{
@@ -1729,11 +1602,11 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+				public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+				{
+						behindNPCsAndTiles.Add(index);
+				}
+		}
 
 	public class MagnetonAura2 : ModProjectile
 	{
@@ -1792,17 +1665,15 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+	}
 
 	public class MagnetonRing : ModProjectile
 	{
-        public override string Texture => "Polarities/Content/NPCs/Bosses/Hardmode/MagnetonElectris/MagnetonAura";
+		public override string Texture => "Polarities/Content/NPCs/Bosses/Hardmode/MagnetonElectris/MagnetonAura";
 
-        public override void SetStaticDefaults()
+		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("Magneton Orbiter");
 		}
@@ -1863,11 +1734,11 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{
+			behindNPCsAndTiles.Add(index);
+		}
+	}
 
 	public class MagnetonRing2 : ModProjectile
 	{
@@ -1934,11 +1805,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+		}
 
 	public class ElectrisRing : ModProjectile
 	{
@@ -1994,7 +1863,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			Projectile.velocity = new Vector2(Projectile.velocity.Length(), 0).RotatedBy(rotation);
 
 			if (Projectile.position.X + Projectile.velocity.X < 0 || Projectile.position.X + Projectile.velocity.X > Main.maxTilesX * 16)
-            {
+			{
 				Projectile.position.X -= Projectile.velocity.X;
 				Projectile.ai[1] += 1f;
 			}
@@ -2043,11 +1912,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+	}
 
 	public class ElectrisRing2 : ModProjectile
 	{
@@ -2141,11 +2008,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+	}
 
 	public class ElectrisLightningBoltTelegraph : ModProjectile
 	{
@@ -2186,40 +2051,35 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			if (!electris.active || electris.ai[1] == 2) { Projectile.active = false; }
 		}
 
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-        {
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+		{
 			if (Projectile.timeLeft > 1) return false;
 
 			return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, Projectile.Center + 10000f * Projectile.velocity);
-        }
+		}
 
-        public override void OnKill(int timeLeft)
-        {
-            if (Main.netMode != 1)
+		public override void OnKill(int timeLeft)
+		{
+			if (Main.netMode != 1)
 			{
 				//Projectile.NewProjectile(Projectile.Center, new Vector2(20f, 0).RotatedBy(Projectile.rotation), ProjectileType<ElectrisLightningBolt>(), 0, 0f, Main.myPlayer, ai0: Projectile.ai[0], ai1: Projectile.rotation);
 			}
-        }
+		}
 
-        public override bool PreDraw(ref Color lightColor)
-        {
+		public override bool PreDraw(ref Color lightColor)
+		{
 			float alpha = 0.5f * (180 - Projectile.timeLeft) / 180f;
 
 			Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, 2, 2), Color.White * alpha, Projectile.rotation, new Vector2(0, 1), new Vector2(2400, 1), SpriteEffects.None, 0f);
 
 			return false;
-        }
+		}
 
-        public override bool ShouldUpdatePosition()
-        {
-			return false;
-        }
+		public override bool ShouldUpdatePosition(){return false;}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+	}
 
 	public class ElectrisLightningBolt : ModProjectile
 	{
@@ -2307,11 +2167,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+		}
 
 	public class ElectrisPreSmallVortexProjectile : ModProjectile
 	{
@@ -2359,20 +2217,20 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			Projectile.rotation = Projectile.velocity.ToRotation();
 
 			if (Projectile.Distance(goalPosition) < Projectile.velocity.Length() && Projectile.timeLeft > 20)
-            {
+			{
 				//Projectile.NewProjectile(goalPosition, Vector2.Zero, ProjectileType<SmallEMVortex>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer);
 
 				Projectile.Center = goalPosition;
 				Projectile.velocity = Vector2.Zero;
 				Projectile.timeLeft = 20;
-            }
+			}
 		}
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-            Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644").Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
+			Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644").Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
 
-            Color mainColor = new Color(181, 248, 255);
+			Color mainColor = new Color(181, 248, 255);
 
 			for (int k = 1; k < Projectile.oldPos.Length; k++)
 			{
@@ -2403,11 +2261,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+	}
 
 	public class MagnetonPreSmallVortexProjectile : ModProjectile
 	{
@@ -2497,11 +2353,11 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{
+			behindNPCsAndTiles.Add(index);
+		}
+	}
 
 	public class ElectrisPreLargeVortexProjectile : ModProjectile
 	{
@@ -2560,9 +2416,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-            Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644").Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
+			Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644").Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
 
-            Color mainColor = new Color(181, 248, 255);
+			Color mainColor = new Color(181, 248, 255);
 
 			for (int k = 1; k < Projectile.oldPos.Length; k++)
 			{
@@ -2593,11 +2449,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+		}
 
 	public class MagnetonPreLargeVortexProjectile : ModProjectile
 	{
@@ -2654,9 +2508,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		public override bool PreDraw(ref Color lightColor)
 		{
-            Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644").Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
+			Texture2D texture = ModContent.Request<Texture2D>("Terraria/Projectile_644").Value;//Main.projectileTexture[projectile.type];//Main.projectileTexture[ProjectileID.RainbowCrystalExplosion];
 
-            Color mainColor = new Color(255, 181, 181);
+			Color mainColor = new Color(255, 181, 181);
 
 			for (int k = 1; k < Projectile.oldPos.Length; k++)
 			{
@@ -2687,12 +2541,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
-
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+	}
 
 	public class SmallEMVortex : ModProjectile
 	{
@@ -2756,17 +2607,17 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 		public override void AI()
 		{
 			if (Projectile.localAI[0] == 0)
-            {
+			{
 				Projectile.localAI[0] = 1;
 
 				for (int i=0; i<Main.maxNPCs; i++)
-                {
+				{
 					if (Main.npc[i].type == NPCType<Electris>() && Main.npc[i].active)
-                    {
+					{
 						Projectile.ai[0] = i;
 						break;
 					}
-                }
+				}
 			}
 
 			Projectile.rotation -= 0.0707f / Projectile.scale;
@@ -2775,10 +2626,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			{
 				Projectile.hostile = false;
 				Projectile.alpha += 16;
-				if (Projectile.alpha > 255)
-				{
-					Projectile.Kill();
-				}
+				if (Projectile.alpha > 255){Projectile.Kill();}
 				return;
 			}
 
@@ -2803,7 +2651,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			Projectile.velocity = (player.Center - Projectile.Center) / 160f;
 
 			if (Projectile.scale > 0.25f)
-            {
+			{
 				Projectile.hostile = true;
 
 				if (Main.netMode != 1)
@@ -2820,11 +2668,8 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 						//Projectile.NewProjectile(Projectile.Center, Projectile.DirectionTo(player.Center) * 4f, ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.1f, ai1: player.whoAmI);
 					}
 				}
-            }
-			else
-            {
-				Projectile.hostile = false;
 			}
+			else{Projectile.hostile = false;}
 
 			if (Projectile.timeLeft % 20 == 0)
 			{
@@ -2833,9 +2678,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 		}
 
 		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
-		{
-			target.noKnockback = true;
-		}
+		{target.noKnockback = true;}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
@@ -2856,12 +2699,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
-
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+	}
 
 	public class LargeEMVortex : ModProjectile
 	{
@@ -2944,10 +2784,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			{
 				Projectile.hostile = false;
 				Projectile.alpha += 16;
-				if (Projectile.alpha > 255)
-				{
-					Projectile.Kill();
-				}
+				if (Projectile.alpha > 255){Projectile.Kill();}
 				return;
 			}
 
@@ -2995,7 +2832,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					}*/
 
 					if (Projectile.timeLeft % 60 == 0)
-                    {
+										{
 						for (int i = 0; i < 16; i++)
 						{
 							//Projectile.NewProjectile(Projectile.Center, (player.Center - Projectile.Center).SafeNormalize(Vector2.Zero).RotatedBy(i * MathHelper.TwoPi / 16) * 4f, ProjectileType<MagneticBlast>(), Main.expertMode ? 30 : 40, 3f, Main.myPlayer, ai0: 0.1f, ai1: player.whoAmI);
@@ -3010,10 +2847,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					}
 				}
 			}
-			else
-			{
-				Projectile.hostile = false;
-			}
+			else{Projectile.hostile = false;}
 
 			if (Projectile.timeLeft % 20 == 0)
 			{
@@ -3045,12 +2879,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
-
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+	}
 
 	public class MagnetonDeathray : ModProjectile
 	{
@@ -3087,13 +2918,11 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		//deleted the draw laser code here
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
 
-        // Change the way of collision check of the projectile
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+		// Change the way of collision check of the projectile
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
 			if (Projectile.timeLeft < ACTIVE_TIME)
 			{
@@ -3101,13 +2930,16 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				float point = 0f;
 				// Run an AABB versus Line check to look for collisions, look up AABB collision first to see how it works
 				// It will look for collisions on the given line using AABB
-				return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center,
-					Projectile.Center + unit * 2200, 32, ref point);
+				return Collision.CheckAABBvLineCollision(
+					targetHitbox.TopLeft(), 
+					targetHitbox.Size(), 
+					Projectile.Center,
+					Projectile.Center + unit * 2200, 
+					32, 
+					ref point
+				);
 			}
-			else
-			{
-				return false;
-			}
+			else{return false;}
 		}
 
 		// The AI of the projectile
@@ -3148,16 +2980,14 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			{
 				Projectile.localAI[1]--;
 				if (Projectile.localAI[1] == 0)
-                {
+				{
 					Projectile.hostile = true;
-                }
+				}
 			}
 		}
 
 		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
-		{
-			target.noKnockback = true;
-		}
+		{target.noKnockback = true;}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
@@ -3209,15 +3039,13 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			Projectile.timeLeft = ACTIVE_TIME + INACTIVE_TIME;
 		}
 
-        //deleted the draw laser code here
+				//deleted the draw laser code here
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
 
-        // Change the way of collision check of the projectile
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+				// Change the way of collision check of the projectile
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
 			if (Projectile.timeLeft < ACTIVE_TIME)
 			{
@@ -3228,10 +3056,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center,
 					Projectile.Center + unit * 2200, 32, ref point);
 			}
-			else
-			{
-				return false;
-			}
+			else{return false;}
 		}
 
 		// The AI of the projectile
@@ -3259,9 +3084,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			}
 
 			if (Projectile.ai[0] != 0)
-            {
+			{
 				if (Projectile.timeLeft >= 8 && Projectile.timeLeft <= ACTIVE_TIME && electris.ai[2] == (int)PolaritiesAttackIDs.AnticipatingRays && electris.ai[3] <= 600)
-                {
+				{
 					Projectile.timeLeft = 9;
 				}
 			}
@@ -3277,9 +3102,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 		}
 
 		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
-		{
-			target.noKnockback = true;
-		}
+		{target.noKnockback = true;}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
@@ -3297,8 +3120,6 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		public override bool ShouldUpdatePosition() => false;
 	}
-
-
 
 	public class ElectromagneticDeathray : ModProjectile
 	{
@@ -3366,7 +3187,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					for (int j = 0; j < 2; j++)
 					{
 						float laserOffset = (float)Math.Sin(MathHelper.TwoPi * j / 2 + Projectile.timeLeft / 5f);
-						Main.spriteBatch.Draw(texture, new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + new Vector2(laserOffset, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
+						Main.spriteBatch.Draw(
+							texture, 
+							new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + new Vector2(laserOffset, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
 							new Rectangle(0, Projectile.frame * 16, 16, 16), c, initRotation + (i - 5000) / radius + r,
 							new Vector2(16 * .5f, 16 * .5f), Projectile.scale, 0, 0);
 					}
@@ -3383,7 +3206,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 				for (int i = 0; i < Math.Min(MathHelper.TwoPi * radius, 10000); i += 15)
 				{
-					Main.spriteBatch.Draw(texture, new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
+					Main.spriteBatch.Draw(
+						texture, 
+						new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
 						new Rectangle(6, Projectile.frame * 16, 4, 16), c, initRotation + (i - 5000) / radius + r,
 						new Vector2(4 * .5f, 16 * .5f), new Vector2(Projectile.scale * 0.5f, Projectile.scale), 0, 0);
 				}
@@ -3392,13 +3217,11 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
 
-        // Change the way of collision check of the projectile
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+		// Change the way of collision check of the projectile
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
 			if (Projectile.timeLeft >= ACTIVE_TIME)
 			{
@@ -3444,16 +3267,11 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				Projectile.frame = ++Projectile.frame % 4;
 			}
 
-			if (Projectile.timeLeft == ACTIVE_TIME)
-			{
-				SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
-			}
+			if (Projectile.timeLeft == ACTIVE_TIME){SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);}
 		}
 
 		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
-		{
-			target.noKnockback = true;
-		}
+		{target.noKnockback = true;}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
@@ -3511,7 +3329,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					for (int j = 0; j < 2; j++)
 					{
 						float laserOffset = (float)Math.Sin(MathHelper.TwoPi * j / 2 + Projectile.timeLeft / 5f);
-						Main.spriteBatch.Draw(texture, new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + new Vector2(laserOffset, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
+						Main.spriteBatch.Draw(
+							texture, 
+							new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + new Vector2(laserOffset, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
 							new Rectangle(8 - 2 * Projectile.timeLeft, Projectile.frame * 16, 4 * Projectile.timeLeft, 16), c, initRotation + (i - 5000) / radius + r,
 							new Vector2(4 * Projectile.timeLeft * .5f, 16 * .5f), Projectile.scale, 0, 0);
 					}
@@ -3532,7 +3352,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					for (int j = 0; j < 2; j++)
 					{
 						float laserOffset = (float)Math.Sin(MathHelper.TwoPi * j / 2 + Projectile.timeLeft / 5f);
-						Main.spriteBatch.Draw(texture, new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + new Vector2(laserOffset, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
+						Main.spriteBatch.Draw(
+							texture, 
+							new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + new Vector2(laserOffset, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
 							new Rectangle(0, Projectile.frame * 16, 16, 16), c, initRotation + (i - 5000) / radius + r,
 							new Vector2(16 * .5f, 16 * .5f), Projectile.scale, 0, 0);
 					}
@@ -3549,7 +3371,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 				for (int i = 0; i < Math.Min(MathHelper.TwoPi * radius, 10000); i += 15)
 				{
-					Main.spriteBatch.Draw(texture, new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
+					Main.spriteBatch.Draw(
+						texture, 
+						new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
 						new Rectangle(6, Projectile.frame * 16, 4, 16), c, initRotation + (i - 5000) / radius + r,
 						new Vector2(4 * .5f, 16 * .5f), new Vector2(Projectile.scale * 0.5f, Projectile.scale), 0, 0);
 				}
@@ -3558,13 +3382,11 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
 
-        // Change the way of collision check of the projectile
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+		// Change the way of collision check of the projectile
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
 			if (Projectile.timeLeft >= ACTIVE_TIME)
 			{
@@ -3610,10 +3432,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				Projectile.frame = ++Projectile.frame % 4;
 			}
 
-			if (Projectile.timeLeft == ACTIVE_TIME)
-			{
-				SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
-			}
+			if (Projectile.timeLeft == ACTIVE_TIME){SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);}
 
 			if (Projectile.ai[1] == 1)
 			{
@@ -3622,18 +3441,13 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				{
 					//Projectile.NewProjectile(Projectile.Center, Vector2.Zero, ProjectileType<ElectromagneticDeathray3>(), Main.expertMode ? 40 : 60, 0f, Main.myPlayer, ai0: Projectile.ai[0]);
 
-					if (Projectile.timeLeft <= 720)
-					{
-						SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);
-					}
+					if (Projectile.timeLeft <= 720){SoundEngine.PlaySound(SoundID.Item122, Projectile.Center);}
 				}
 			}
 		}
 
 		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
-		{
-			target.noKnockback = true;
-		}
+		{target.noKnockback = true;}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
@@ -3674,10 +3488,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 		public override bool PreDraw(ref Color lightColor)
 		{
 			//don't draw if radius too small
-			if (Projectile.ai[1] < 6)
-            {
-				return false;
-            }
+			if (Projectile.ai[1] < 6){return false;}
 
 			/*if (projectile.timeLeft < 4)
 			{
@@ -3716,7 +3527,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 					for (int j = 0; j < 2; j++)
 					{
 						float laserOffset = (float)Math.Sin(MathHelper.TwoPi * j / 2 + Projectile.timeLeft / 5f);
-						Main.spriteBatch.Draw(texture, new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + new Vector2(laserOffset, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
+						Main.spriteBatch.Draw(
+							texture, 
+							new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + new Vector2(laserOffset, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
 							new Rectangle(0, Projectile.frame * 16, 16, 16), c, initRotation + (i - 5000) / radius + r,
 							new Vector2(16 * .5f, 16 * .5f), Projectile.scale, 0, 0);
 					}
@@ -3733,7 +3546,9 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 				for (int i = 0; i < Math.Min(MathHelper.TwoPi * radius, 10000); i += 15)
 				{
-					Main.spriteBatch.Draw(texture, new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
+					Main.spriteBatch.Draw(
+						texture, 
+						new Vector2(radius, 0).RotatedBy(initRotation + (i - 5000) / radius) + circleCenter - Main.screenPosition,
 						new Rectangle(6, Projectile.frame * 16, 4, 16), c, initRotation + (i - 5000) / radius + r,
 						new Vector2(4 * .5f, 16 * .5f), new Vector2(Projectile.scale * 0.5f, Projectile.scale), 0, 0);
 				}
@@ -3742,18 +3557,14 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			return false;
 		}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
 
-        // Change the way of collision check of the projectile
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+				// Change the way of collision check of the projectile
+		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
-			if (Projectile.timeLeft % 120 < 60)
-			{
-				return false;
-			}
+			if (Projectile.timeLeft % 120 < 60){return false;}
+			
 			float nearestX = Math.Max(targetHitbox.X, Math.Min(circleCenter.X, targetHitbox.X + targetHitbox.Size().X));
 			float nearestY = Math.Max(targetHitbox.Y, Math.Min(circleCenter.Y, targetHitbox.Y + targetHitbox.Size().Y));
 			bool isInside = (new Vector2(circleCenter.X - nearestX, circleCenter.Y - nearestY)).Length() < (Projectile.Center - circleCenter).Length() + 8;
@@ -3772,16 +3583,16 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			NPC electris = Main.npc[(int)magneton.ai[0]];
 			if (!magneton.active || !electris.active || electris.ai[1] == 2 || magneton.ai[1] == 2) { Projectile.Kill(); }
 
-			if ((electris.ai[2] == (int)PolaritiesAttackIDs.HarderCircleDeathrays && electris.ai[3] >= 836) || (magneton.ai[2] == (int)PolaritiesAttackIDs.HarderCircleDeathrays && magneton.ai[3] >= 836) || (magneton.ai[2] != (int)PolaritiesAttackIDs.HarderCircleDeathrays && electris.ai[2] != (int)PolaritiesAttackIDs.HarderCircleDeathrays))
-            {
-				if (Projectile.timeLeft > 4)
-                {
-					Projectile.timeLeft = 4;
-				}
-            } else if ((electris.ai[2] == (int)PolaritiesAttackIDs.HarderCircleDeathrays && electris.ai[3] < 120) || (magneton.ai[2] == (int)PolaritiesAttackIDs.HarderCircleDeathrays && magneton.ai[3] < 120))
-            {
-				Projectile.timeLeft = 602;
-            }
+			if (
+				(electris.ai[2] == (int)PolaritiesAttackIDs.HarderCircleDeathrays && electris.ai[3] >= 836) 
+				|| (magneton.ai[2] == (int)PolaritiesAttackIDs.HarderCircleDeathrays && magneton.ai[3] >= 836) 
+				|| (magneton.ai[2] != (int)PolaritiesAttackIDs.HarderCircleDeathrays && electris.ai[2] != (int)PolaritiesAttackIDs.HarderCircleDeathrays)
+			){
+				if (Projectile.timeLeft > 4){Projectile.timeLeft = 4;}
+			} else if (
+				(electris.ai[2] == (int)PolaritiesAttackIDs.HarderCircleDeathrays && electris.ai[3] < 120) 
+				|| (magneton.ai[2] == (int)PolaritiesAttackIDs.HarderCircleDeathrays && magneton.ai[3] < 120)
+			){Projectile.timeLeft = 602;}
 
 			Projectile.ai[1] += 2f;
 
@@ -3805,9 +3616,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 		}
 
 		public override void ModifyHitPlayer(Player target, ref Player.HurtModifiers modifiers)
-		{
-			target.noKnockback = true;
-		}
+		{target.noKnockback = true;}
 
 		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
@@ -3818,20 +3627,16 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 		public override bool ShouldUpdatePosition() => false;
 	}
 
-    public class PolaritiesSky : CustomSky
-    {
+	public class PolaritiesSky : CustomSky
+	{
 		private bool isActive;
 
 		public static float height;
 		public static float alpha;
 
-		public override void OnLoad()
-		{
-		}
+		public override void OnLoad(){}
 
-		public override void Update(GameTime gameTime)
-		{
-		}
+		public override void Update(GameTime gameTime){}
 
 		public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
 		{
@@ -3846,32 +3651,16 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			}
 		}
 
-		public override float GetCloudAlpha()
-		{
-			return 1f;
-		}
+		public override float GetCloudAlpha(){return 1f;}
 
-		public override void Activate(Vector2 position, params object[] args)
-		{
-			isActive = true;
-		}
+		public override void Activate(Vector2 position, params object[] args){isActive = true;}
 
-		public override void Deactivate(params object[] args)
-		{
-			isActive = false;
-		}
+		public override void Deactivate(params object[] args){isActive = false;}
 
-		public override void Reset()
-		{
-			isActive = false;
-		}
+		public override void Reset(){isActive = false;}
 
-		public override bool IsActive()
-		{
-			return isActive;
-		}
+		public override bool IsActive(){return isActive;}
 	}
-
 
 	public class BlastTelegraph : ModProjectile
 	{
@@ -3913,25 +3702,17 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 			Color color = new Color(181, 248, 255);
 			float rotation = Projectile.velocity.ToRotation();
 
-			if (Projectile.ai[1] == 1)
-            {
-				color = new Color(255, 181, 181);
-			}
+			if (Projectile.ai[1] == 1){color = new Color(255, 181, 181);}
 
 			Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, 72, 72), color * alpha, rotation, new Vector2(36, 36), new Vector2(0.5f, 12), SpriteEffects.None, 0f);
-            Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, 72, 72), color * alpha, rotation + MathHelper.PiOver2, new Vector2(36, 36), new Vector2(0.5f, 12), SpriteEffects.None, 0f);
+			Main.spriteBatch.Draw(TextureAssets.Projectile[Projectile.type].Value, Projectile.Center - Main.screenPosition, new Rectangle(0, 0, 72, 72), color * alpha, rotation + MathHelper.PiOver2, new Vector2(36, 36), new Vector2(0.5f, 12), SpriteEffects.None, 0f);
 
 			return false;
 		}
 
-		public override bool ShouldUpdatePosition()
-		{
-			return false;
-		}
+		public override bool ShouldUpdatePosition(){return false;}
 
-        public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
-        {
-            behindNPCsAndTiles.Add(index);
-        }
-    }
+		public override void DrawBehind(int index, List<int> behindNPCsAndTiles, List<int> behindNPCs, List<int> behindProjectiles, List<int> overPlayers, List<int> overWiresUI)
+		{behindNPCsAndTiles.Add(index);}
+	}
 }
