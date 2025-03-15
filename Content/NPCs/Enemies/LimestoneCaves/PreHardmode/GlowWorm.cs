@@ -87,7 +87,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
             if (NPC.localAI[0] == 0)
             {
                 NPC.localAI[0] = 1;
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     maxLength = Main.rand.Next(100, 160);
                 }
@@ -130,7 +130,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
 
                 if (((NPC.ai[1] > 30 && NPC.ai[1] < 90) || (NPC.ai[1] > 270 && NPC.ai[1] < 330)) && NPC.ai[1] % 10 == 0)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, 3.5f).RotatedBy(NPC.rotation), ProjectileType<GlowWormDroplet>(), 13, 2f, Main.myPlayer);
                     }
@@ -330,7 +330,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
 
             for (int i = 0; i < 5; i++)
             {
-                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, 74, Scale: 1.75f)].noGravity = true;
+                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GreenFairy, Scale: 1.75f)].noGravity = true;
             }
             Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("GlowWormGore").Type);
 
@@ -414,7 +414,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Scale: 1.5f)].noGravity = true;
+                    Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Scale: 1.5f)].noGravity = true;
                 }
             }
 

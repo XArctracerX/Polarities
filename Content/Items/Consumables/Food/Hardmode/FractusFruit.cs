@@ -19,7 +19,7 @@ namespace Polarities.Content.Items.Consumables.Food.Hardmode
             Item.useTime = 15;
             Item.useAnimation = 15;
             Item.useTurn = true;
-            Item.useStyle = 2;
+            Item.useStyle = ItemUseStyleID.EatFood;
             Item.UseSound = SoundID.Item2;
             Item.buffType = BuffID.WellFed;
             Item.buffTime = 7200;

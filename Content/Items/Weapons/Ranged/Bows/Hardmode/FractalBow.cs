@@ -36,7 +36,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Bows.Hardmode
 			Item.rare = ItemRarityID.Pink;
 			Item.UseSound = SoundID.Item5;
 			Item.autoReuse = true;
-			Item.shoot = 10;
+			Item.shoot = ProjectileID.PurificationPowder;
 			Item.shootSpeed = 12f;
 			Item.useAmmo = AmmoID.Arrow;
 		}
@@ -146,7 +146,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Bows.Hardmode
 			Item.rare = ItemRarityID.Yellow;
 			Item.UseSound = SoundID.Item5;
 			Item.autoReuse = true;
-			Item.shoot = 10;
+			Item.shoot = ProjectileID.PurificationPowder;
 			Item.shootSpeed = 12f;
 			Item.useAmmo = AmmoID.Arrow;
 		}

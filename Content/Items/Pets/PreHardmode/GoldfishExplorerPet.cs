@@ -17,14 +17,14 @@ namespace Polarities.Content.Items.Pets.PreHardmode
         public override void SetDefaults()
         {
             Item.damage = 0;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.shoot = ProjectileType<GoldfishExplorerPet>();
             Item.width = 32;
             Item.height = 32;
             Item.UseSound = SoundID.Item2;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.rare = 3;
+            Item.rare = ItemRarityID.Orange;
             Item.noMelee = true;
             Item.value = Item.sellPrice(0, 1, 0, 0);
             Item.buffType = BuffType<GoldfishExplorerPetBuff>();

@@ -166,7 +166,7 @@ namespace Polarities.Content.NPCs.Enemies.Surface.PreHardmode
                     float speedX13 = NPC.velocity.X * 0.5f;
                     float speedY13 = NPC.velocity.Y * 0.5f;
                     Color newColor = default;
-                    Dust.NewDust(position30, width27, height27, 58, speedX13, speedY13, 150, newColor, 1.2f);
+                    Dust.NewDust(position30, width27, height27, DustID.Enchanted_Pink, speedX13, speedY13, 150, newColor, 1.2f);
                 }
                 for (int i = 0; i < 15; i++)
                 {

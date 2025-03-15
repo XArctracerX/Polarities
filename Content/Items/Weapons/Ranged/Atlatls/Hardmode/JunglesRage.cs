@@ -25,7 +25,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Atlatls.Hardmode
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
 
-            Item.shoot = 10;
+            Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 4.5f;
             Item.useAmmo = AmmoID.Dart;
 

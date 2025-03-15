@@ -32,7 +32,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Sentries.Hardmode
             Item.useTime = 30;
             Item.useAnimation = 30;
 
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
 
             Item.value = Item.sellPrice(gold: 5);

@@ -18,7 +18,7 @@ namespace Polarities.Content.Items.Tools.Pickaxes.Hardmode
 			Item.height = 40;
 			Item.useTime = 8;
 			Item.useAnimation = 24;
-			Item.useStyle = 1;
+			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTurn = true;
 			Item.pick = 190;
 			Item.knockBack = 5;

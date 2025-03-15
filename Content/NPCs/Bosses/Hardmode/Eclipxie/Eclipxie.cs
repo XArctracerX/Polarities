@@ -27,7 +27,6 @@ using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.Localization;
-using Terraria.GameContent.Bestiary;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 using static Terraria.ModLoader.ModContent;
@@ -2179,7 +2178,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Eclipxie
         {
             if (Projectile.timeLeft < 360)
             {
-                Texture2D spikeTexture = TextureAssets.Projectile[644].Value;
+                Texture2D spikeTexture = TextureAssets.Projectile[ProjectileID.RainbowCrystalExplosion].Value;
                 Texture2D texture = TextureAssets.Projectile[Type].Value;
                 float scale = 1f;
                 if (Projectile.timeLeft < 20)
@@ -2471,7 +2470,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Eclipxie
                 //draw star
                 Color starColor = Projectile.ai[1] == 0 ? new Color(255, 224, 192) : new Color(192, 224, 255);
 
-                Texture2D spikeTexture = TextureAssets.Projectile[644].Value;
+                Texture2D spikeTexture = TextureAssets.Projectile[ProjectileID.RainbowCrystalExplosion].Value;
                 Texture2D starTexture = TextureAssets.Projectile[Type].Value;
 
                 Vector2 scaleMult = new Vector2(1, 1 + 0.33f * (float)Math.Sin(0.33f * Projectile.timeLeft));
@@ -2906,7 +2905,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Eclipxie
 
         public override bool PreDraw(ref Color lightColor)
         {
-            Texture2D spikeTexture = TextureAssets.Projectile[644].Value;
+            Texture2D spikeTexture = TextureAssets.Projectile[ProjectileID.RainbowCrystalExplosion].Value;
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             float scale = 1f;
             if (Projectile.timeLeft < 20)

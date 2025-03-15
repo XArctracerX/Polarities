@@ -27,7 +27,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Atlatls.Hardmode
             Item.noMelee = true;
             Item.autoReuse = true;
 
-            Item.shoot = 10;
+            Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 17f;
             Item.useAmmo = AmmoID.Dart;
 

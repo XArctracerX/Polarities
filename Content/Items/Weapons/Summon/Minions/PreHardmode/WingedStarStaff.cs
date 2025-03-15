@@ -32,7 +32,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.PreHardmode
 
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.UseSound = SoundID.Item9;
             Item.autoReuse = true;
@@ -159,7 +159,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.PreHardmode
                     }
                     for (int num573 = 0; num573 < 7; num573++)
                     {
-                        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 58, Projectile.velocity.X * 0.1f, Projectile.velocity.Y * 0.1f, 150, default(Color), 0.8f);
+                        Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X * 0.1f, Projectile.velocity.Y * 0.1f, 150, default(Color), 0.8f);
                     }
                     for (float num574 = 0f; num574 < 1f; num574 += 0.125f)
                     {
@@ -303,7 +303,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.PreHardmode
             else
             {
                 Vector2 value34 = new Vector2(Main.screenWidth, Main.screenHeight);
-                if (Projectile.Hitbox.Intersects(Utils.CenteredRectangle(Main.screenPosition + value34 / 2f, value34 + new Vector2(400f))) && Main.rand.Next(6) == 0)
+                if (Projectile.Hitbox.Intersects(Utils.CenteredRectangle(Main.screenPosition + value34 / 2f, value34 + new Vector2(400f))) && Main.rand.NextBool(6))
                 {
                     int[] array6 = new int[4] { 16, 17, 17, 17 };
                     int num855 = Utils.SelectRandom(Main.rand, array6);
@@ -314,9 +314,9 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.PreHardmode
                     }
                     Gore.NewGore(Projectile.GetSource_FromAI(), Projectile.position, Projectile.velocity * 0.2f, num855);
                 }
-                if (Main.rand.Next(20) == 0 || (Main.tenthAnniversaryWorld && Main.rand.Next(15) == 0))
+                if (Main.rand.NextBool(20)|| (Main.tenthAnniversaryWorld && Main.rand.NextBool(15)))
                 {
-                    Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 58, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, default(Color), 1.2f);
+                    Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f, 150, default(Color), 1.2f);
                 }
 
                 Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
@@ -335,7 +335,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.PreHardmode
             }
             for (int num573 = 0; num573 < 7 / 2; num573++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 58, Projectile.velocity.X * 0.05f, Projectile.velocity.Y * 0.05f, 150, default(Color), 0.8f);
+                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, Projectile.velocity.X * 0.05f, Projectile.velocity.Y * 0.05f, 150, default(Color), 0.8f);
             }
             for (float num574 = 0f; num574 < 1f / 2; num574 += 0.125f)
             {
@@ -393,7 +393,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.PreHardmode
                 }
                 for (int num573 = 0; num573 < 7; num573++)
                 {
-                    Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 58, oldVelocity.X * 0.1f, oldVelocity.Y * 0.1f, 150, default(Color), 0.8f);
+                    Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Enchanted_Pink, oldVelocity.X * 0.1f, oldVelocity.Y * 0.1f, 150, default(Color), 0.8f);
                 }
                 for (float num574 = 0f; num574 < 1f; num574 += 0.125f)
                 {

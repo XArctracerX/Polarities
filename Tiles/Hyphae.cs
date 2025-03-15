@@ -505,7 +505,7 @@ namespace Polarities.Tiles
                 if (!Main.tile[num125, num124].HasTile)
                 {
                     WorldGen.PlaceTile(num125, num124, TileType<HyphaeFilaments>(), mute: true);
-                    if (Main.netMode == 2 && Main.tile[num125, num124].HasTile)
+                    if (Main.netMode == NetmodeID.Server && Main.tile[num125, num124].HasTile)
                     {
                         NetMessage.SendTileSquare(-1, num125, num124, 1);
                     }
@@ -583,7 +583,7 @@ namespace Polarities.Tiles
                             if (!Main.tile[num125, num124].HasTile)
                             {
                                 WorldGen.PlaceTile(num125, num124, TileType<HyphaeFilaments>(), mute: true);
-                                if (Main.netMode == 2 && Main.tile[num125, num124].HasTile)
+                                if (Main.netMode == NetmodeID.Server && Main.tile[num125, num124].HasTile)
                                 {
                                     NetMessage.SendTileSquare(-1, num125, num124, 1);
                                 }

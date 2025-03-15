@@ -33,7 +33,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Books.Hardmode
             Item.useAnimation = 40;
 
             Item.reuseDelay = 30;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
 
             Item.noMelee = true;
             Item.knockBack = 5;

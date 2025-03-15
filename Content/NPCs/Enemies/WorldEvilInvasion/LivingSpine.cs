@@ -125,7 +125,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
 
                     if (!tendrilActive)
                     {
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             useAttack = Main.rand.NextBool();
                         }

@@ -20,7 +20,7 @@ namespace Polarities.Content.Items.Tools.Hooks.PreHardmode
             Item.noUseGraphic = true;
             Item.damage = 0;
             Item.knockBack = 7f;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.shootSpeed = 13f;
             Item.shoot = ProjectileType<StarhookProjectile>();
             Item.width = 30;

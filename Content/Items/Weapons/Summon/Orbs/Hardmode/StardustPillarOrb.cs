@@ -309,7 +309,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Orbs.Hardmode
 
 			if (!player.channel || !player.active || player.dead)
 			{
-				for (int i = 0; i < 4; i++) { Dust.NewDustDirect(Projectile.Center, 0, 0, 229, Alpha: 0, newColor: Color.Transparent, Scale: 1f).noGravity = true; }
+				for (int i = 0; i < 4; i++) { Dust.NewDustDirect(Projectile.Center, 0, 0, DustID.Vortex, Alpha: 0, newColor: Color.Transparent, Scale: 1f).noGravity = true; }
 				Projectile.Kill();
 				return;
 			}

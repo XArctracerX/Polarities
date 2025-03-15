@@ -90,7 +90,7 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
 
                 for (int a = 0; a < 12; a++)
                 {
-                    Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, 6, newColor: Color.White, Scale: 2f).noGravity = true;
+                    Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, DustID.Torch, newColor: Color.White, Scale: 2f).noGravity = true;
                 }
 
                 NPC.active = false;
@@ -234,7 +234,7 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
         {
             for (int a = 0; a < 12; a++)
             {
-                Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, 6, newColor: Color.White, Scale: 1.4f).noGravity = true;
+                Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, DustID.Torch, newColor: Color.White, Scale: 1.4f).noGravity = true;
             }
 
             NPC.position = new Vector2(NPC.ai[2], NPC.ai[3]);
@@ -242,7 +242,7 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
 
             for (int a = 0; a < 12; a++)
             {
-                Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, 6, newColor: Color.White, Scale: 1.4f).noGravity = true;
+                Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, DustID.Torch, newColor: Color.White, Scale: 1.4f).noGravity = true;
             }
         }
 
@@ -298,7 +298,7 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
 
             for (int a = 0; a < 12; a++)
             {
-                Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, 6, newColor: Color.White, Scale: 2f).noGravity = true;
+                Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, DustID.Torch, newColor: Color.White, Scale: 2f).noGravity = true;
             }
 
             return true;

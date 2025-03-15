@@ -37,7 +37,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
             NPC.buffImmune[BuffID.Poisoned] = true;
             NPC.buffImmune[BuffID.Venom] = true;
 
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Assets/Bestiary/ChaosCrawler", Position = new Vector2(0f, 70f), };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { CustomTexturePath = "Polarities/Assets/Bestiary/ChaosCrawler", Position = new Vector2(0f, 70f), };
         }
 
         public override void SetDefaults()
@@ -226,7 +226,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
                         segmentActive[i] = segmentActive[i - 1] ^ segmentActive[i];
                     }
 
-                    if (segmentActive[i] && Main.netMode != 1)
+                    if (segmentActive[i] && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), segmentPositions[17 * i + 8], (player.Center - segmentPositions[17 * i + 8]).SafeNormalize(Vector2.Zero) * 2f, ProjectileType<ChaosBolt>(), 24, 3f, Main.myPlayer);
                     }
@@ -255,7 +255,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
 
                 if (hitBoxSegmentIds[h] == -1 || !Main.npc[hitBoxSegmentIds[h]].active || Main.npc[hitBoxSegmentIds[h]].type != NPCType<ChaosCrawlerHitbox>())
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         hitBoxSegmentIds[h] = NPC.NewNPC(NPC.GetSource_FromThis(), (int)spot.X, (int)spot.Y, NPCType<ChaosCrawlerHitbox>(), ai0: NPC.whoAmI, ai1: h * 17 + 8);
                         NPC.netUpdate = true;
@@ -361,7 +361,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
             {
                 if (Main.rand.NextFloat() < 1 - i / (float)segmentPositions.Length)
                 {
-                    Dust.NewDustDirect(segmentPositions[i], 1, 1, 134, newColor: Color.Pink, Scale: 1f).noGravity = true;
+                    Dust.NewDustDirect(segmentPositions[i], 1, 1, DustID.Firework_Pink, newColor: Color.Pink, Scale: 1f).noGravity = true;
                 }
             }
 
@@ -478,7 +478,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
 
         public override void SetStaticDefaults()
         {
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true, };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true, };
         }
 
         public override void SetDefaults()
@@ -573,7 +573,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal.PostSentinel
         {
             for (int i = 0; i < 4; i++)
             {
-                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 134, newColor: Color.Pink, Scale: 1f)].noGravity = true;
+                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Firework_Pink, newColor: Color.Pink, Scale: 1f)].noGravity = true;
             }
         }
 

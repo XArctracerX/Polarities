@@ -23,14 +23,14 @@ namespace Polarities.Content.Items.Weapons.Ranged.Bows.Hardmode
 			Item.height = 56;
 			Item.useTime = 23;
 			Item.useAnimation = 23;
-			Item.useStyle = 5;
+			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.noMelee = true;
 			Item.knockBack = 4;
 			Item.value = 80000;
-			Item.rare = 8;
+			Item.rare = ItemRarityID.Yellow;
 			Item.UseSound = SoundID.Item5;
 			Item.autoReuse = true;
-			Item.shoot = 10;
+			Item.shoot = ProjectileID.PurificationPowder;
 			Item.shootSpeed = 0f;
 			Item.useAmmo = AmmoID.Arrow;
 		}

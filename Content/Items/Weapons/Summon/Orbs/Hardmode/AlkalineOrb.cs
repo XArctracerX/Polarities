@@ -167,7 +167,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Orbs.Hardmode
 
             for (int i = 0; i < 20; i++)
             {
-                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Scale: 1.5f)].noGravity = true;
+                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Scale: 1.5f)].noGravity = true;
             }
             SoundEngine.PlaySound(new SoundStyle("Terraria/Sounds/NPC_Killed_52")
             {
@@ -254,7 +254,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Orbs.Hardmode
         {
             for (int i = 0; i < 10; i++)
             {
-                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, newColor: new Color(0, 180, 255), Scale: 1f)].noGravity = true;
+                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, newColor: new Color(0, 180, 255), Scale: 1f)].noGravity = true;
             }
             SoundEngine.PlaySound(new SoundStyle("Terraria/Sounds/NPC_Killed_52")
             {

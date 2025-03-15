@@ -293,12 +293,12 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
 
                         for (int i = 0; i < numProjectiles; i++)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                                 Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, -Main.rand.NextFloat(22, 26)).RotatedBy(0.25f).RotatedByRandom(0.15f), ProjectileType<BloodVomit>(), 35, 0, Main.myPlayer);
                         }
                         for (int i = 0; i < numProjectiles; i++)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                                 Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, -Main.rand.NextFloat(22, 26)).RotatedBy(-0.25f).RotatedByRandom(0.15f), ProjectileType<BloodVomit>(), 35, 0, Main.myPlayer);
                         }
                     }
@@ -354,7 +354,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
                     //bloodsaws
                     angleGoal = attackCooldown * 0.1f;
 
-                    if (attackCooldown > 30 && attackCooldown % 30 == 0 && Main.netMode != 1)
+                    if (attackCooldown > 30 && attackCooldown % 30 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(6, 0).RotatedBy(angleGoal + MathHelper.PiOver2), ProjectileType<HomingClot>(), 40, 3, Main.myPlayer, player.whoAmI);
                     }
@@ -438,7 +438,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
                         }
                     }
 
-                    if (attackCooldown % 5 == 0 && attackCooldown >= 90 && Main.netMode != 1)
+                    if (attackCooldown % 5 == 0 && attackCooldown >= 90 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         if (!Main.expertMode)
                         {
@@ -531,7 +531,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
                     //more bloodsaws
                     angleGoal = attackCooldown * 0.1f;
 
-                    if (attackCooldown > 30 && attackCooldown % 22 == 8 && Main.netMode != 1)
+                    if (attackCooldown > 30 && attackCooldown % 22 == 8 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(6, 0).RotatedBy(angleGoal + MathHelper.PiOver2), ProjectileType<HomingClot>(), 40, 3, Main.myPlayer, player.whoAmI);
                     }
@@ -568,12 +568,12 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
 
                         for (int i = 0; i < numProjectiles; i++)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                                 Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, -Main.rand.NextFloat(22, 26)).RotatedBy(0.25f).RotatedByRandom(0.15f), ProjectileType<BloodVomit>(), 35, 0, Main.myPlayer);
                         }
                         for (int i = 0; i < numProjectiles; i++)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                                 Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, new Vector2(0, -Main.rand.NextFloat(22, 26)).RotatedBy(-0.25f).RotatedByRandom(0.15f), ProjectileType<BloodVomit>(), 35, 0, Main.myPlayer);
                         }
                     }
@@ -640,7 +640,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
                         }
                     }
 
-                    if (attackCooldown % 5 == 0 && attackCooldown >= 90 && Main.netMode != 1)
+                    if (attackCooldown % 5 == 0 && attackCooldown >= 90 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         if (!Main.expertMode)
                         {
@@ -715,7 +715,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
                     {
                         SoundEngine.PlaySound(SoundID.NPCDeath19, NPC.Center);
 
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             int direction = Main.rand.NextBool() ? 1 : -1;
                             int numPlates = 10;
@@ -744,7 +744,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
                     {
                         SoundEngine.PlaySound(SoundID.NPCDeath19, NPC.Center);
 
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             int direction = attackCooldown % 120 == 0 ? 1 : -1;
                             int numPlates = 10;
@@ -1167,7 +1167,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
                 //radial attack
                 if (owner.ai[1] == 6 || owner.ai[1] == 9)
                 {
-                    if (owner.ai[0] > 120 && owner.ai[0] % 2 == 0 && Main.netMode != 1)
+                    if (owner.ai[0] > 120 && owner.ai[0] % 2 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, (NPC.Center - owner.Center).SafeNormalize(Vector2.Zero) * 16, ProjectileType<CirclingBloodShot>(), 35, 1f, Main.myPlayer);
                     }

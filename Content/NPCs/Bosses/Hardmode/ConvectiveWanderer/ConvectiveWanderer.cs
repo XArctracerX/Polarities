@@ -148,7 +148,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             NPC.buffImmune[BuffID.CursedInferno] = true;
             NPC.buffImmune[ModContent.BuffType<Incinerating>()] = true;
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 CustomTexturePath = "Polarities/Content/NPCs/Bosses/Hardmode/ConvectiveWanderer/ConvectiveWanderer_Bestiary",
                 Position = new Vector2(64f, -64f)
@@ -239,7 +239,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             {
                 foreach (Player player in Main.player)
                 {
-                    if (Main.netMode != 1 && player.active && !player.dead)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && player.active && !player.dead)
                     {
                         SpawnOn(player);
 
@@ -1968,7 +1968,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                     }
                     tile.LiquidAmount = 0;
                     tile.LiquidType = LiquidID.Water;
-                    if (Main.netMode == 2)
+                    if (Main.netMode == NetmodeID.Server)
                     {
                         NetMessage.SendTileSquare(-1, i, j);
                     }

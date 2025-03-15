@@ -57,7 +57,7 @@ namespace Polarities.Content.Items.Consumables.Potions.Hardmode
                     player.immuneTime = num355;
                     for (int num354 = 0; num354 < 70; num354++)
                     {
-                        Dust obj29 = Main.dust[Dust.NewDust(player.position, player.width, player.height, 15, 0f, 0f, 150, Color.Cyan, 1.2f)];
+                        Dust obj29 = Main.dust[Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0f, 0f, 150, Color.Cyan, 1.2f)];
                         obj29.velocity *= 0.5f;
                     }
                     if (ItemLoader.ConsumeItem(Item, player) && Item.stack > 0)
@@ -100,9 +100,9 @@ namespace Polarities.Content.Items.Consumables.Potions.Hardmode
                 }
                 Main.maxQ = true;
             }
-            if (Main.netMode == 1 && player.whoAmI == Main.myPlayer)
+            if (Main.netMode == NetmodeID.MultiplayerClient && player.whoAmI == Main.myPlayer)
             {
-                NetMessage.SendData(12, -1, -1, null, Main.myPlayer);
+                NetMessage.SendData(MessageID.PlayerSpawn, -1, -1, null, Main.myPlayer);
                 Main.gameMenu = false;
             }
             player.headPosition = Vector2.Zero;

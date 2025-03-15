@@ -23,7 +23,7 @@ namespace Polarities.Content.Items.Consumables.Summons.PreHardmode
             Item.rare = ItemRarityID.Blue;
             Item.useAnimation = 30;
             Item.useTime = 30;
-            Item.useStyle = 4;
+            Item.useStyle = ItemUseStyleID.HoldUp;
         }
 
         public override bool CanUseItem(Player player)

@@ -300,7 +300,7 @@ namespace Polarities.Content.Items.Accessories.Combat.Offense.Hardmode
             float x13 = Projectile.velocity.X;
             float y9 = Projectile.velocity.Y;
             Color newColor4 = default(Color);
-            int num2467 = Dust.NewDust(position58, width31, height31, 6, x13, y9, 100, newColor4, 3f * Projectile.scale);
+            int num2467 = Dust.NewDust(position58, width31, height31, DustID.Torch, x13, y9, 100, newColor4, 3f * Projectile.scale);
             Main.dust[num2467].noGravity = true;
 
             Projectile.rotation += 0.3f * Projectile.direction;

@@ -84,7 +84,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
             NPCID.Sets.AttackAverageChance[Type] = int.MaxValue; //Just don't
             NPCID.Sets.HatOffsetY[Type] = 4; //Party hat Y offset
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Velocity = 1f,
                 Direction = -1
@@ -406,12 +406,12 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                             int num194 = Main.rand.Next(4);
                             for (int l = 0; l < 3 + num194; l++)
                             {
-                                int num195 = Dust.NewDust(NPC.Center + Vector2.UnitX * -NPC.direction * 8f - Vector2.One * 5f + Vector2.UnitY * 8f, 3, 6, 216, -NPC.direction, 1f);
+                                int num195 = Dust.NewDust(NPC.Center + Vector2.UnitX * -NPC.direction * 8f - Vector2.One * 5f + Vector2.UnitY * 8f, 3, 6, DustID.PirateStaff, -NPC.direction, 1f);
                                 Dust obj3 = Main.dust[num195];
                                 obj3.velocity /= 2f;
                                 Main.dust[num195].scale = 0.8f;
                             }
-                            if (Main.rand.Next(30) == 0)
+                            if (Main.rand.NextBool(30))
                             {
                                 int num196 = Gore.NewGore(NPC.GetSource_FromAI(), NPC.Center + Vector2.UnitX * -NPC.direction * 8f, Vector2.Zero, Main.rand.Next(580, 583));
                                 Gore obj4 = Main.gore[num196];
@@ -420,7 +420,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                                 Main.gore[num196].velocity.X = (0f - Math.Abs(Main.gore[num196].velocity.X)) * NPC.direction;
                             }
                         }
-                        if (NPC.frameCounter >= 100.0 && Main.rand.Next(20) == 0)
+                        if (NPC.frameCounter >= 100.0 && Main.rand.NextBool(20))
                         {
                             NPC.frame.Y = 0;
                             NPC.frameCounter = 0.0;
@@ -430,7 +430,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                     {
                         NPC.frame.Y = num * (num174 - 1);
                         NPC.frameCounter = 0.0;
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             EmoteBubble.NewBubble(89, new WorldUIAnchor(NPC), 90);
                         }
@@ -494,7 +494,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                     {
                         num202 = 0;
                     }
-                    else if (NPC.frameCounter == 16.0 && Main.netMode != 1)
+                    else if (NPC.frameCounter == 16.0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         EmoteBubble.NewBubbleNPC(new WorldUIAnchor(NPC), 112);
                     }
@@ -506,7 +506,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                     {
                         num202 = 0;
                     }
-                    else if (NPC.frameCounter != 160.0 || Main.netMode == 1)
+                    else if (NPC.frameCounter != 160.0 || Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         num202 = ((NPC.frameCounter < 220.0) ? ((NPC.frameCounter % 12.0 < 6.0) ? (num174 - 2) : 0) : 0);
                     }
@@ -649,7 +649,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                     {
                         num10 = 0;
                     }
-                    else if (NPC.frameCounter == 216.0 && Main.netMode != 1)
+                    else if (NPC.frameCounter == 216.0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         num12 = 70;
                     }
@@ -661,7 +661,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                     {
                         num10 = 0;
                     }
-                    else if (NPC.frameCounter != 320.0 || Main.netMode == 1)
+                    else if (NPC.frameCounter != 320.0 || Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         num10 = ((NPC.frameCounter < 420.0) ? ((NPC.frameCounter % 16.0 < 8.0) ? (num174 - 2) : 0) : 0);
                     }
@@ -673,7 +673,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                     {
                         num11 = 0;
                     }
-                    else if (NPC.frameCounter != 70.0 || Main.netMode == 1)
+                    else if (NPC.frameCounter != 70.0 || Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         num11 = ((!(NPC.frameCounter < 160.0)) ? ((NPC.frameCounter < 166.0) ? (num174 - 5) : ((NPC.frameCounter < 186.0) ? (num174 - 4) : ((NPC.frameCounter < 200.0) ? (num174 - 5) : ((!(NPC.frameCounter < 320.0)) ? ((NPC.frameCounter < 326.0) ? (num174 - 1) : 0) : 0)))) : ((NPC.frameCounter % 16.0 < 8.0) ? (num174 - 2) : 0));
                     }
@@ -736,7 +736,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                     {
                         num16 = num174 - 5;
                     }
-                    else if (NPC.frameCounter == 40.0 && Main.netMode != 1)
+                    else if (NPC.frameCounter == 40.0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         num17 = 45;
                     }
@@ -764,7 +764,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                     {
                         num16 = num174 - 5;
                     }
-                    else if (NPC.frameCounter == 100.0 && Main.netMode != 1)
+                    else if (NPC.frameCounter == 100.0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         num17 = 45;
                     }
@@ -792,7 +792,7 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
                     {
                         num16 = num174 - 5;
                     }
-                    else if (NPC.frameCounter != 160.0 || Main.netMode == 1)
+                    else if (NPC.frameCounter != 160.0 || Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         num16 = ((NPC.frameCounter < 220.0) ? (num174 - 4) : ((NPC.frameCounter < 226.0) ? (num174 - 5) : 0));
                     }

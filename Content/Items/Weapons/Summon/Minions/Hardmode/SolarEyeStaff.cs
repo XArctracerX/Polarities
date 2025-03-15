@@ -26,10 +26,10 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.Hardmode
 			Item.useTime = 30;
 			Item.useAnimation = 30;
 			Item.noMelee = true;
-			Item.useStyle = 1;
+			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 5;
 			Item.value = Item.sellPrice(gold:10);
-			Item.rare = 6;
+			Item.rare = ItemRarityID.LightPurple;
 			Item.UseSound = SoundID.Item44;
 			Item.autoReuse = true;
 			Item.shoot = ProjectileType<SolarEye>();

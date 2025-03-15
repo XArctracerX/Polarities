@@ -26,7 +26,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.Hardmode
             Item.mana = 5;
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.knockBack = 2f;
             Item.value = 10000;

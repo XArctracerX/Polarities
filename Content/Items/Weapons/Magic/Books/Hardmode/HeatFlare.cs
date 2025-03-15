@@ -77,7 +77,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Books.Hardmode
 
     public class HeatFlareProjectile : ModProjectile
     {
-        public override string Texture => "Terraria/Images/Projectile_644";
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.RainbowCrystalExplosion;
 
         public override void SetStaticDefaults()
         {

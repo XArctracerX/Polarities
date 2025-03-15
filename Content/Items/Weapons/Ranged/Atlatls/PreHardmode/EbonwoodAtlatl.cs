@@ -24,7 +24,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Atlatls.PreHardmode
             Item.noMelee = true;
             Item.UseSound = SoundID.Item1;
 
-            Item.shoot = 10;
+            Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 16f;
             Item.useAmmo = AmmoID.Dart;
 

@@ -27,12 +27,12 @@ namespace Polarities.Content.Items.Weapons.Ranged.Bows.Hardmode
             Item.useAnimation = 30;
             Item.useTime = 6;
             Item.reuseDelay = 45;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.UseSound = SoundID.Item13;
             Item.autoReuse = true;
 
-            Item.shoot = 10;
+            Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 12f;
 
             Item.value = Item.sellPrice(gold: 2);

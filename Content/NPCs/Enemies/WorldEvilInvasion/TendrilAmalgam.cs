@@ -30,7 +30,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
             NPC.buffImmune[BuffID.Confused] = true;
             // NPCID.Sets.DebuffImmunitySets/* tModPorter Removed: See the porting notes in https://github.com/tModLoader/tModLoader/pull/3453 */.Add(Type, debuffData);
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Position = new Vector2(0, 4)
             };
@@ -100,7 +100,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
                 Teleport(player, ref attemptSuccessful);
                 if (attemptSuccessful)
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         if (Main.rand.NextBool(3))
                         {
@@ -140,7 +140,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
                             {
                                 Vector2 location = new Vector2(16 * (int)((startPos + offset).X / 16) + 8, 16 * (int)((startPos + offset).Y / 16) + 8);
 
-                                if (Main.netMode != 1)
+                                if (Main.netMode != NetmodeID.MultiplayerClient)
                                     Projectile.NewProjectile(NPC.GetSource_FromAI(), location, Vector2.Zero, ProjectileType<TendrilAmalgamSpike>(), 23, 0, Main.myPlayer, lineDirection.ToRotation() + MathHelper.Pi, -16 * 60);
                                 break;
                             }
@@ -160,7 +160,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
                             {
                                 Vector2 location = new Vector2(16 * (int)((startPos + offset).X / 16) + 8, 16 * (int)((startPos + offset).Y / 16) + 8);
 
-                                if (Main.netMode != 1)
+                                if (Main.netMode != NetmodeID.MultiplayerClient)
                                     Projectile.NewProjectile(NPC.GetSource_FromAI(), location, Vector2.Zero, ProjectileType<TendrilAmalgamSpike>(), 23, 0, Main.myPlayer, lineDirection.ToRotation() + MathHelper.Pi, -16 * 60);
                                 break;
                             }
@@ -206,7 +206,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
                             {
                                 Vector2 location = new Vector2(16 * (int)((player.Center + offset).X / 16) + 8, 16 * (int)((player.Center + offset).Y / 16) + 8);
 
-                                if (Main.netMode != 1)
+                                if (Main.netMode != NetmodeID.MultiplayerClient)
                                     Projectile.NewProjectile(NPC.GetSource_FromAI(), location, Vector2.Zero, ProjectileType<TendrilAmalgamSpike>(), 28, 0, Main.myPlayer, lineDirection.ToRotation() + MathHelper.Pi, -16 * 60);
 
                                 NPC.ai[1]--;
@@ -237,7 +237,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
             //try up to 40 times
             for (int i = 0; i < 40; i++)
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     directional = Main.rand.NextFloat(100f, 500f) * (Main.rand.Next(2) * 2 - 1);
                     NPC.ai[3] = Main.rand.NextFloat(-500f, 500f);
@@ -286,7 +286,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
                             //teleport effects
                             for (int a = 0; a < 12; a++)
                             {
-                                Dust.NewDust(NPC.position + new Vector2(NPC.width / 2, NPC.height), 1, 1, 18, newColor: Color.Transparent, Alpha: 32, Scale: 1.4f);
+                                Dust.NewDust(NPC.position + new Vector2(NPC.width / 2, NPC.height), 1, 1, DustID.CorruptGibs, newColor: Color.Transparent, Alpha: 32, Scale: 1.4f);
                             }
 
                             if (!PolaritiesSystem.worldEvilInvasion)
@@ -301,7 +301,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
                             //after-teleport effects
                             for (int a = 0; a < 12; a++)
                             {
-                                Dust.NewDust(NPC.position + new Vector2(NPC.width / 2, NPC.height), 1, 1, 18, newColor: Color.Transparent, Alpha: 32, Scale: 1.4f);
+                                Dust.NewDust(NPC.position + new Vector2(NPC.width / 2, NPC.height), 1, 1, DustID.CorruptGibs, newColor: Color.Transparent, Alpha: 32, Scale: 1.4f);
                             }
                             break;
                         }
