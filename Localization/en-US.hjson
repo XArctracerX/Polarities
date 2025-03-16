@@ -101,10 +101,15 @@ Mods: {
 			SelfsimilarOreTile.MapEntry: Selfsimilar Ore
 			FractalBiomeChestTile.MapEntry: Fractal Biome Chest
 
+			FractalAssemblerTile: {
+				DisplayName: Fractal Assembler
+				MapEntry: Fractal Assembler
+			}
+
 			FractalChestTile: {
 				MapEntry: Fractal Chest
-				MapEntry0: Mods.Polarities.Tiles.FractalChestTile.MapEntry0
-				MapEntry1: Mods.Polarities.Tiles.FractalChestTile.MapEntry1
+				MapEntry0: Fractal Chest
+				MapEntry1: Fractal Chest
 			}
 
 			BookTile.MapEntry: Book
@@ -744,7 +749,7 @@ Mods: {
 			}
 
 			GigabatSummonItem: {
-				DisplayName: Gigabat Summon Item
+				DisplayName: Bat Whistle
 				Tooltip:
 					'''
 					Summons Gigabat when used in the caverns
@@ -2311,12 +2316,12 @@ Mods: {
 			}
 
 			MoonDisc: {
-				DisplayName: Moon Disc
+				DisplayName: Lunarang
 				Tooltip: ""
 			}
 
 			SunDisc: {
-				DisplayName: Sun Disc
+				DisplayName: Solarang
 				Tooltip: ""
 			}
 
@@ -3647,6 +3652,11 @@ Mods: {
 				DisplayName: Strand Key
 				Tooltip: Unlocks one locked fractal chest or lock box
 			}
+
+			FractalWorkBench: {
+				DisplayName: Fractal Work Bench
+				Tooltip: ""
+			}
 		}
 
 		NPCs: {
@@ -3923,6 +3933,7 @@ Mods: {
 			Instability.DisplayName: Instability
 			Electris.DisplayName: Electris
 			Magneton.DisplayName: Magneton
+			PlanetPixie.DisplayName: Planet Pixie
 		}
 
 		Projectiles: {
@@ -4255,6 +4266,19 @@ Mods: {
 			SelfsimilarBowMini.DisplayName: Selfsimilar Bow Mini
 			SolarEye.DisplayName: Solar Eye
 			SolarEyeSpark.DisplayName: Solar Eye Spark
+			AncientStarlight.DisplayName: Ancient Starlight
+			EclipseFlare.DisplayName: Eclipse Flare
+			EclipseFlareBolt.DisplayName: Eclipse Flare Bolt
+			EclipxieDeathray.DisplayName: Eclipxie Deathray
+			LunarCorona.DisplayName: Lunar Corona
+			MoonButterflyDeathray.DisplayName: Moon Butterfly Deathray
+			MoonButterflyScythe.DisplayName: Moon Butterfly Scythe
+			MoonButterflyTrail.DisplayName: Moon Butterfly Trail
+			PlanetPixieRay.DisplayName: Planet Pixie Ray
+			PlanetPixieScythe.DisplayName: Planet Pixie Scythe
+			SolarCorona.DisplayName: Solar Corona
+			SolarScythe.DisplayName: Solar Scythe
+			SunMothDeathray.DisplayName: Sun Moth Deathray
 		}
 
 		Bestiary: {
@@ -4268,7 +4292,7 @@ Mods: {
 			Eclipxie: Wish upon a shooting star, and you may just get your wish granted. Wish upon the darkened sun of an Eclipse, and it may just descend from the skies to personally meet you.
 			SolMoth: In a desperate attempt for survival, the Eclipxie may sunder itself in two. Searing rays and bright light make up just one half of the Eclipse after all.
 			LunaButterfly: In a desperate attempt for survival, the Eclipxie may sunder itself in two. The deep darkness disturbing the peaceful light of day created the Eclipses historical reputation of being a harbinger of doom.
-			//PlanetPixie: The Eclipxie is never alone. When not splitting itself in two so that it can be its own companion, it may conjure up small, winged flashes of light to keep itself company. Please do not try to use your friends as bullet shields at home.
+			PlanetPixie: The Eclipxie is never alone. When not splitting itself in two so that it can be its own companion, it may conjure up small, winged flashes of light to keep itself company. Please do not try to use your friends as bullet shields at home.
 			//Magneton: A member of the electromagnetic duo, this creature is armed to the teeth with homing rockets, mines, and latent magnetism. It works in perfect tandem with its companion.
 			//Electris:A member of the electromagnetic duo, this creature uses its powerful electricity to attack with deathrays, bolts, and deadly auras. It synchronizes its attacks to deadly effect with its companion.
 			Zombat: There are bats, there are zombies. Sometimes, there are zombie bats. This feeble creature does its best to perform its batty duties in spite of zombification.
@@ -4303,7 +4327,7 @@ Mods: {
 			LightEater: If the Eater of Souls truly did consume souls, logically Light Eaters similarly consume light. This would explain their near ineffable hunting strategy of conjuring illusional copies of itself.
 			Crimago: Soaring about on fell wings, this living nightmare hunts with its scythe-like claws. Close inspection reveals their claws to be literal bone matter erupting from their flesh... yet the Crimago cares not, the Crimson has long since stolen the sensation of true pain from all of its children.
 			//MoltenSpirit: Hotter than hot, this demons origins lie in the worlds core. It is capable of vaporizing flesh in an instant.
-			ConvectiveWanderer: A grand serpent with exceptional eyesight, this demon swims through the molten seas. Upon spotting prey, it wraps itself around the victim, cooking them well done in mere moments.
+			ConvectiveWanderer: This immense magma-dweller can tolerate the extreme temperatures of the Earth's core, using its tentacle-like gills both to drill through solid metal and to protect is more vulnerable head. Highly protective of its much smaller offspring.
 			CloudCichlid: These small, fish-like creatures are composed entirely of clouds and swim through the rainy skies as if they were water.
 			StormcloudCichlid: Composed of dark, stormy clouds, these fish-like creatures feed on airborne bacteria brought down from the skies in raindrops.
 			AmberGemfly: Their luster has become even greater with gemstones affixed to their bodies. That pretty glow in the dark is likely to be spotted by a large predator when underground.

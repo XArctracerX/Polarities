@@ -6,6 +6,7 @@ using Polarities.Content.Items.Placeable.Blocks.Fractal;
 using Polarities.Content.Items.Placeable.Furniture;
 using Polarities.Content.Items.Placeable.Furniture.Fractal;
 using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
+using Polarities.Content.Items.Weapons.Melee.Broadswords.Hardmode;
 using Polarities.Tiles;
 using SubworldLibrary;
 using System;
@@ -2063,6 +2064,8 @@ namespace Polarities
                         {
                             //var selfsim = Main.tile[i, j];
                             //selfsim.SelfsimilarOreTile = false;
+                            WorldGen.KillTile(i, j, noItem: true);
+                            Main.tile[i, j].ClearTile();
                         }
                     }
                 }
@@ -2572,7 +2575,8 @@ namespace Polarities
             unlockedChestItemIndex = 0;
             lockedChestItemIndex = 0;
             itemsToPlaceInUnlockedFractalChests = new int[] {
-                ItemID.Zenith,
+                ItemType<FractalSword>()
+                //ItemID.Zenith,
                 //ItemType<Items.Weapons.Sawrang>(),
                 //    ItemType<Items.Weapons.Gosperian>(),
                 //    ItemType<Items.Accessories.FractalAntenna>(),

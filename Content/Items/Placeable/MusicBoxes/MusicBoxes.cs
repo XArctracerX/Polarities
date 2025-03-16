@@ -22,6 +22,8 @@ namespace Polarities.Content.Items.Placeable.MusicBoxes
 
         public override void SetStaticDefaults()
         {
+            ItemID.Sets.CanGetPrefixes[Type] = false;
+            ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.MusicBox;
             Item.ResearchUnlockCount = 1;
 
             MusicLoader.AddMusicBox(Mod, MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/" + MusicName), Type, TileType<MusicBoxTile>(), Index * 36);

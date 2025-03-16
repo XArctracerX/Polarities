@@ -104,6 +104,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             
             //normal mode loot
             npcLoot.Add(ItemDropRule.Common(ItemType<FractalAssembler>(), 1));
+            npcLoot.Add(ItemDropRule.Common(ItemType<FractalAltar>(), 1));//TEMP DELETE WHEN IT GENERATES
             LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
             notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<RiftDenizenMask>(), 7));
             notExpertRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ItemType<EndlessHook>(), ItemType<DimensionalAnchor>()));
@@ -724,61 +725,6 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
 				//flavor text
 				this.TranslatedBestiaryEntry()
             });
-        }
-
-        public override void OnKill()
-        {
-            //if (Main.rand.NextBool(10) || NPC.GetGlobalNPC<PolaritiesNPC>().noHit)
-            //{
-            //	Item.NewItem(NPC.Hitbox, ItemType<RiftDenizenTrophy>());
-            //}
-            //if (NPC.GetGlobalNPC<PolaritiesNPC>().noHit)
-            //{
-            //	NPC.DropItemInstanced(NPC.position, NPC.Size, ItemType<BeyondBow>());
-            //}
-            //if (Main.expertMode)
-            //{
-            //	NPC.DropBossBags();
-            //	/*if (Main.rand.NextBool(4))
-            //	{
-            //		Item.NewItem(npc.getRect(), ItemType<?>());
-            //	}*/
-            //}
-            //else
-            //{
-            //	if (Main.rand.NextBool(7))
-            //	{
-            //		Item.NewItem(NPC.Hitbox, ItemType<RiftDenizenMask>());
-            //	}
-
-            //	Item.NewItem(NPC.Hitbox, ItemType<Tiles.Furniture.FractalAssemblerItem>());
-
-            //	switch (Main.rand.Next(2))
-            //	{
-            //		case 0:
-            //			Item.NewItem(NPC.Hitbox, ItemType<EndlessHookItem>());
-            //			break;
-            //		case 1:
-            //			Item.NewItem(NPC.Hitbox, ItemType<Items.Accessories.DimensionalAnchor>());
-            //			break;
-            //	}
-
-            //	switch (Main.rand.Next(4))
-            //	{
-            //		case 0:
-            //			Item.NewItem(NPC.Hitbox, ItemType<InstabilityScepter>());
-            //			break;
-            //		case 1:
-            //			Item.NewItem(NPC.Hitbox, ItemType<Parallaxian>());
-            //			break;
-            //		case 2:
-            //			Item.NewItem(NPC.Hitbox, ItemType<RiftonaStick>());
-            //			break;
-            //		case 3:
-            //			Item.NewItem(NPC.Hitbox, ItemType<ObserverOrb>());
-            //			break;
-            //	}
-            //}
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)

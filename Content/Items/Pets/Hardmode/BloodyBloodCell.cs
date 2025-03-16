@@ -31,8 +31,8 @@ namespace Polarities.Content.Items.Pets.Hardmode
             Item.UseSound = SoundID.Item2;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.rare = ItemRarityID.Expert;
-            Item.expert = true;
+            Item.rare = ItemRarityID.Master;
+            Item.master = true;
             Item.noMelee = true;
             Item.value = Item.sellPrice(0, 5, 0, 0);
             Item.buffType = BuffType<BloodSpiderBuff>();

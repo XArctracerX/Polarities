@@ -8,19 +8,9 @@ using Terraria.ModLoader;
 
 namespace Polarities.Content.Items.Placeable.Furniture.Fractal
 {
-    public class FractalWorkbench : ModItem
+    public class FractalWorkBench : WorkBenchBase
     {
-        public override void SetStaticDefaults()
-        {
-            Item.ResearchUnlockCount = 1;
-        }
-
-        public override void SetDefaults()
-        {
-            Item.CloneDefaults(ItemID.WorkBench);
-            Item.createTile = ModContent.TileType<FractalWorkbenchTile>();
-            Item.placeStyle = 0;
-        }
+        public override int PlaceTile => ModContent.TileType<FractalWorkbenchTile>();
 
         public override void AddRecipes()
         {
@@ -31,9 +21,9 @@ namespace Polarities.Content.Items.Placeable.Furniture.Fractal
         }
     }
 
-    public class FractalWorkbenchTile : TableTileBase
+    public class FractalWorkbenchTile : WorkBenchTileBase
     {
         public override int MyDustType => ModContent.DustType<FractalMatterDust>();
-        public override int DropItem => ModContent.ItemType<FractalWorkbench>();
+        public override int DropItem => ModContent.ItemType<FractalWorkBench>();
     }
 }

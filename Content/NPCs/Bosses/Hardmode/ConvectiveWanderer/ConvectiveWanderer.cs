@@ -175,7 +175,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             NPC.aiStyle = -1;
 
             NPC.width = 72;
-            NPC.height = 10000;
+            NPC.height = 72;
 
             NPC.defense = 25;
             NPC.damage = 32;
