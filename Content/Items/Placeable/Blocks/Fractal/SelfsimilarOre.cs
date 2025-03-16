@@ -152,9 +152,8 @@ namespace Polarities.Content.Items.Placeable.Blocks.Fractal
             				}
 
             				SoundEngine.PlaySound(SoundID.Shatter, worldPosition);
-
-            				SelfsimilarSentinel.SpawnSentinel(new Vector2(i * 16 + 8, j * 16 + 8));
-            			}
+                            SelfsimilarSentinel.SpawnSentinel(new Vector2(i * 16 + 8, j * 16 + 8));
+                        }
             		}
             	}
             }

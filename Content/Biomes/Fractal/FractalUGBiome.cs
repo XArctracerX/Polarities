@@ -20,5 +20,7 @@ namespace Polarities.Content.Biomes.Fractal
         public override string MapBackground => "Polarities/Content/Biomes/Fractal/FractalMapBackground";
         public override string BackgroundPath => MapBackground;
         public override string BestiaryIcon => "Polarities/Content/Biomes/Fractal/FractalUGBestiaryIcon";
+
+        public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/FractalPalace");
     }
 }

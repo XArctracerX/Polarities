@@ -89,7 +89,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Flawless
         {
             SoundEngine.PlaySound(SoundID.Zombie104, Main.MouseWorld);
             //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(30, 1);
-            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 30;
+            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 3;
             player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 240; // 4 seconds
             Projectile.NewProjectile(source, Main.MouseWorld, Vector2.Zero, type, damage, knockback, player.whoAmI);
             return false;

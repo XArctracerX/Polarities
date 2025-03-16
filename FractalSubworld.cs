@@ -2128,30 +2128,30 @@ namespace Polarities
 
                     //fix later when sprite has
                     //Generate columns if needed
-                    //if (!genLeft || !genMiddle)
-                    //{
-                        //int i = (int)(cavePosition.X - ARENA_RADIUS / 3) / 16;
-                        //int j2 = (a == -1) ? (j - 1) : j;
+                    if (!genLeft || !genMiddle)
+                    {
+                        int i = (int)(cavePosition.X - ARENA_RADIUS / 3) / 16;
+                        int j2 = (a == -1) ? (j - 1) : j;
 
                         //generate column
-                        //while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].WallType == 0)
-                        //{
-                            //Main.tile[i, j2].WallType = (ushort)WallType<FractalFence>();
-                            //j2 += a;
-                        //}
-                    //}
-                    //if (!genRight || !genMiddle)
-                    //{
-                        //int i = (int)(cavePosition.X + ARENA_RADIUS / 3) / 16;
-                        //int j2 = (a == -1) ? (j - 1) : j;
+                        while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].WallType == 0)
+                        {
+                            Main.tile[i, j2].WallType = (ushort)WallType<FractalFenceTile>();
+                            j2 += a;
+                        }
+                    }
+                    if (!genRight || !genMiddle)
+                    {
+                        int i = (int)(cavePosition.X + ARENA_RADIUS / 3) / 16;
+                        int j2 = (a == -1) ? (j - 1) : j;
 
                         //generate column
-                        //while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].WallType == 0)
-                        //{
-                            //Main.tile[i, j2].WallType = (ushort)WallType<FractalFence>();
-                            //j2 += a;
-                        //}
-                    //}
+                        while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].WallType == 0)
+                        {
+                            Main.tile[i, j2].WallType = (ushort)WallType<FractalFenceTile>();
+                            j2 += a;
+                        }
+                    }
                 }
             }
         }

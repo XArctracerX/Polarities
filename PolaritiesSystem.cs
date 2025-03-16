@@ -1858,7 +1858,7 @@ namespace Polarities
             }
         }
 
-        /*public static void GenFractalAltar()
+        public static void GenFractalAltar()
         {
             int scale = 32;
 
@@ -1928,7 +1928,9 @@ namespace Polarities
                                     for (int j = y - 5; j < y + 1; j++)
                                     {
                                         if ((i != x - 1 || j != y - 5) && (i != x - 1 || j != y + 1) && (i != x + 5 || j != y - 5) && (i != x + 5 || j != y + 1))
-                                            Main.tile[i, j].HasTile = false;
+                                            //Main.tile[i, j].HasTile = false;
+                                            WorldGen.KillTile(i, j, noItem: true);
+                                            Main.tile[i, j].ClearTile();
                                     }
                                     if (i > x - 1 && i < x + 4)
                                     {
@@ -1937,6 +1939,7 @@ namespace Polarities
                                 }
 
                                 WorldGen.PlaceObject(x, y - 3, TileType<FractalAltarTile>());
+                                //WorldGen.PlaceTile(x, y - 3, TileType<FractalAltarTile>(), forced: true);
 
                                 Main.NewText("A chaotic rift has formed in the sky!", 60, 161, 199);
                                 return;
@@ -1949,7 +1952,8 @@ namespace Polarities
 
             //just give the player the altar if generation fails
             Main.NewText("No space for altar generation found, have this instead", 60, 161, 199);
-            Main.LocalPlayer.QuickSpawnItem(ItemType<FractalAltar>());
-        }*/
+            //Main.LocalPlayer.QuickSpawnItem(ModContent.ItemType<FractalAltar>());
+            //Main.LocalPlayer.QuickSpawnItem(GetSource_FromThisMod(), ModContent.ItemType<FractalAltar>());
+        }
     }
 }

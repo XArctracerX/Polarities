@@ -535,7 +535,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct
                                 CollisionDusts();
 
                                 //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(36, 30);
-                                player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 36;
+                                player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 5;
                                 player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 120; // 2 seconds
 
                                 //starburst

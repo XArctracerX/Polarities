@@ -306,122 +306,122 @@ Mods: {
 
 			//Books
 			BetsyBookBuff: {
-				DisplayName: Betsy Book
+				DisplayName: Fire And More Fire
 				Description: You have extra sentry slots, and your sentries set enemies alight
 			}
 
 			ConvectiveWandererBookBuff: {
-				DisplayName: Convective Wanderer Book
+				DisplayName: Wander To The Center Of The Earth
 				Description: You are immune to fire, lava, and up to 10 seconds of incineration
 			}
 
 			DestroyerBookBuff: {
-				DisplayName: Destroyer Book
+				DisplayName: A Fight to Remember
 				Description: You have ultimate mining and building abilities
 			}
 
 			DukeFishronBookBuff: {
-				DisplayName: Duke Fishron Book
+				DisplayName: Moby Duke
 				Description: Damage is boosted while near the ocean
 			}
 
 			EmpressOfLightBookBuff: {
-				DisplayName: Empress Of Light Book
+				DisplayName: A Midsummer Nightmare
 				Description: Your critical strikes are empowered
 			}
 
 			EsophageBookBuff: {
-				DisplayName: Esophage Book
+				DisplayName: The Phage Runner
 				Description: Speed and defense increased while on the ground
 			}
 
 			GolemBookBuff: {
-				DisplayName: Golem Book
+				DisplayName: Rocky With Lasers
 				Description: You are immune to fall damage and jump speed and defense are boosted if not wearing wings
 			}
 
 			LunaticCultistBookBuff: {
-				DisplayName: Lunatic Cultist Book
+				DisplayName: The Haunter of the Stars
 				Description: Class damage is increased when near the celestial pillar corresponding to that class
 			}
 
 			MoonLordBookBuff: {
-				DisplayName: Moon Lord Book
+				DisplayName: The Call of the Moon Lord
 				Description: Your attacks have lifesteal
 			}
 
 			PlanteraBookBuff: {
-				DisplayName: Plantera Book
+				DisplayName: The Grape's Wrath
 				Description: You and your hooks have hooks
 			}
 
 			QueenSlimeBookBuff: {
-				DisplayName: Queen Slime Book
+				DisplayName: Doctor Slime
 				Description: Flight time is increased
 			}
 
 			SkeletronPrimeBookBuff: {
-				DisplayName: Skeletron Prime Book
+				DisplayName: Skeletron 2: Electric Boogaloo
 				Description: You have an insane defense bonus for a single hit, with a three minute cooldown
 			}
 
 			SunPixieBookBuff: {
-				DisplayName: Sun Pixie Book
+				DisplayName: The Wings on Our Star
 				Description: You leave behind a solar trail
 			}
 
 			TwinsBookBuff: {
-				DisplayName: Twins Book
+				DisplayName: Eye Robots
 				Description: Right click to zoom
 			}
 
 			BrainOfCthulhuBookBuff: {
-				DisplayName: Brain Of Cthulhu Book
+				DisplayName: A Terrible Mind
 				Description: Tile and wall placement speed are increased
 			}
 
 			DeerclopsBookBuff: {
-				DisplayName: Deerclops Book
+				DisplayName: Theoretical Horticulture
 				Description: You don't starve
 			}
 
 			EaterOfWorldsBookBuff: {
-				DisplayName: Eater Of Worlds Book
+				DisplayName: The Very Hungry Worm
 				Description: Mining speed is boosted and tools do more damage
 			}
 
 			EyeOfCthulhuBookBuff: {
-				DisplayName: Eye Of Cthulhu Book
+				DisplayName: A Throng of Eyes and Fliers
 				Description: Being hit summons demon eyes to protect you
 			}
 
 			GigabatBookBuff: {
-				DisplayName: Gigabat Book
+				DisplayName: Batula
 				Description: You can glide by holding jump and are immune to fall damage
 			}
 
 			KingSlimeBookBuff: {
-				DisplayName: King Slime Book
+				DisplayName: The Sliming
 				Description: You have a double jump
 			}
 
 			QueenBeeBookBuff: {
-				DisplayName: Queen Bee Book
+				DisplayName: Queen of the Bees
 				Description: Summons a ring of bees around the cursor
 			}
 
 			SkeletronBookBuff: {
-				DisplayName: Skeletron Book
+				DisplayName: Skulduggery Unpleasant
 				Description: You have a massive defense bonus for a single hit, with a three minute cooldown
 			}
 
 			StarConstructBookBuff: {
-				DisplayName: Star Construct Book
+				DisplayName: The Construct out of Space
 				Description: Defense is boosted while latched via a hook
 			}
 
 			StormCloudfishBookBuff: {
-				DisplayName: Storm Cloudfish Book
+				DisplayName: Maws
 				Description: Rain is falling from above you
 			}
 
@@ -435,10 +435,12 @@ Mods: {
 			}
 
 			WallOfFleshBookBuff: {
-				DisplayName: Wall Of Flesh Book Buff
+				DisplayName: The Perks of Being a Wall Tower
 				Description: Max life is boosted
 			}
 
+			//
+			
 			ToxicShock: {
 				DisplayName: Toxic Shock
 				Description: "'Shocking'"
@@ -3655,6 +3657,11 @@ Mods: {
 
 			FractalWorkBench: {
 				DisplayName: Fractal Work Bench
+				Tooltip: ""
+			}
+
+			FractalFence: {
+				DisplayName: Fractal Fence
 				Tooltip: ""
 			}
 		}

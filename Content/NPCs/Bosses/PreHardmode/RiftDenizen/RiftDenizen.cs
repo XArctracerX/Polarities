@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Polarities.Global;
 using Polarities.Core;
 using Polarities.Assets;
+using Polarities.Content.Buffs.Hardmode;
 using Polarities.Content.Biomes.Fractal;
 using Polarities.Content.Items.Placeable.Trophies;
 using Polarities.Content.Items.Placeable.Relics;
@@ -94,7 +95,6 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             return;
         }
-
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
@@ -698,7 +698,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             {
                 if (!PolaritiesSystem.downedRiftDenizen)
                 {
-                    //PolaritiesSystem.GenFractalAltar();
+                    PolaritiesSystem.GenFractalAltar();
 
                     PolaritiesSystem.downedRiftDenizen = true;
                 }
@@ -981,8 +981,8 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
-                //target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+                target.AddBuff(BuffType<Fractalizing>(), 600);
+                target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
 
@@ -1152,7 +1152,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
+                target.AddBuff(BuffType<Fractalizing>(), 600);
                 target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
@@ -1590,7 +1590,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             if (Projectile.localAI[0] == 45)
             {
                 //Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().AddScreenShake(60, 60);
-                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 60;
+                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 8;
                 Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 60;
                 SoundEngine.PlaySound(SoundID.Zombie104, Projectile.Center);
             }
@@ -1607,7 +1607,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 2400);
+                target.AddBuff(BuffType<Fractalizing>(), 600);
                 target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
@@ -1697,7 +1697,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             if (Projectile.localAI[0] == 45)
             {
                 //Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().AddScreenShake(60, 60);
-                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 60;
+                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 8;
                 Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 60;
                 SoundEngine.PlaySound(SoundID.Zombie104, Projectile.Center);
             }
@@ -1714,8 +1714,8 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 2400);
-                //target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+                target.AddBuff(BuffType<Fractalizing>(), 600);
+                target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
 
@@ -1846,8 +1846,8 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
-                //target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+                target.AddBuff(BuffType<Fractalizing>(), 600);
+                target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
 
@@ -2049,8 +2049,8 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
-                //target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+                target.AddBuff(BuffType<Fractalizing>(), 600);
+                target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
 
@@ -2151,8 +2151,8 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
-                //target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+                target.AddBuff(BuffType<Fractalizing>(), 600);
+                target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
 
@@ -2299,7 +2299,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
+                target.AddBuff(BuffType<Fractalizing>(), 600);
                 target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
