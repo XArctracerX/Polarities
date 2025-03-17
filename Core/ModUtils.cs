@@ -26,6 +26,52 @@ namespace Polarities.Core
 {
     public static class ModUtils
     {
+        public static void Load()
+        {
+            try
+            {
+                _addSpecialPointSpecialPositions = typeof(Terraria.GameContent.Drawing.TileDrawing).GetField("_specialPositions", BindingFlags.NonPublic | BindingFlags.Instance);
+                _addSpecialPointSpecialsCount = typeof(Terraria.GameContent.Drawing.TileDrawing).GetField("_specialsCount", BindingFlags.NonPublic | BindingFlags.Instance);
+
+                _AddHappinessReportText = typeof(Terraria.GameContent.ShopHelper).GetMethod("AddHappinessReportText", BindingFlags.NonPublic | BindingFlags.Instance);
+
+                _AI_007_FindGoodRestingSpot = typeof(NPC).GetMethod("AI_007_FindGoodRestingSpot", BindingFlags.NonPublic | BindingFlags.Instance);
+                _AI_007_TownEntities_IsInAGoodRestingSpot = typeof(NPC).GetMethod("AI_007_TownEntities_IsInAGoodRestingSpot", BindingFlags.NonPublic | BindingFlags.Instance);
+                _AI_007_TownEntities_TeleportToHome = typeof(NPC).GetMethod("AI_007_TownEntities_TeleportToHome", BindingFlags.NonPublic | BindingFlags.Instance);
+                _AI_007_TownEntities_GetWalkPrediction = typeof(NPC).GetMethod("AI_007_TownEntities_GetWalkPrediction", BindingFlags.NonPublic | BindingFlags.Instance);
+                _AI_007_TryForcingSitting = typeof(NPC).GetMethod("AI_007_TryForcingSitting", BindingFlags.NonPublic | BindingFlags.Instance);
+
+                _miscShaderDataImage0 = typeof(MiscShaderData).GetField("_uImage0", BindingFlags.NonPublic | BindingFlags.Instance);
+                _miscShaderDataImage1 = typeof(MiscShaderData).GetField("_uImage1", BindingFlags.NonPublic | BindingFlags.Instance);
+                _miscShaderDataImage2 = typeof(MiscShaderData).GetField("_uImage2", BindingFlags.NonPublic | BindingFlags.Instance);
+
+            }
+            catch (Exception e)
+            {
+                Logging.PublicLogger.Debug(e);
+            }
+
+            //Terraria.GameContent.Drawing.IL_TileDrawing.DrawMultiTileVines += TileDrawing_DrawMultiTileVines;
+        }
+
+        public static void Unload()
+        {
+            _addSpecialPointSpecialPositions = null;
+            _addSpecialPointSpecialsCount = null;
+
+            _AddHappinessReportText = null;
+
+            _AI_007_FindGoodRestingSpot = null;
+            _AI_007_TownEntities_IsInAGoodRestingSpot = null;
+            _AI_007_TownEntities_TeleportToHome = null;
+            _AI_007_TownEntities_GetWalkPrediction = null;
+            _AI_007_TryForcingSitting = null;
+
+            _miscShaderDataImage0 = null;
+            _miscShaderDataImage1 = null;
+            _miscShaderDataImage2 = null;
+
+        }
 
         public static bool CheckAABBvDisc(Rectangle rectangle, Circle circle)
         {
@@ -201,6 +247,91 @@ namespace Polarities.Core
             return new FlavorTextBestiaryInfoElement(Language.GetTextValue("Mods.Polarities.Bestiary." + modNPC.GetType().Name));
         }
 
+        private static FieldInfo _addSpecialPointSpecialPositions;
+        private static FieldInfo _addSpecialPointSpecialsCount;
+
+        public static void AddSpecialPoint(this Terraria.GameContent.Drawing.TileDrawing tileDrawing, int x, int y, int type)
+        {
+            if (_addSpecialPointSpecialPositions.GetValue(tileDrawing) is Point[][] _specialPositions)
+            {
+                if (_addSpecialPointSpecialsCount.GetValue(tileDrawing) is int[] _specialsCount)
+                {
+                    _specialPositions[type][_specialsCount[type]++] = new Point(x, y);
+                }
+            }
+        }
+
+        private static FieldInfo _miscShaderDataImage0;
+        private static FieldInfo _miscShaderDataImage1;
+        private static FieldInfo _miscShaderDataImage2;
+
+        public static MiscShaderData UseImage0(this MiscShaderData shaderData, Asset<Texture2D> image)
+        {
+            _miscShaderDataImage0.SetValue(shaderData, image);
+            return shaderData;
+        }
+        public static MiscShaderData UseImage1(this MiscShaderData shaderData, Asset<Texture2D> image)
+        {
+            _miscShaderDataImage1.SetValue(shaderData, image);
+            return shaderData;
+        }
+        public static MiscShaderData UseImage2(this MiscShaderData shaderData, Asset<Texture2D> image)
+        {
+            _miscShaderDataImage2.SetValue(shaderData, image);
+            return shaderData;
+        }
+
+        public static Color ColorLerpCycle(float time, float cycleTime, params Color[] colors)
+        {
+            if (colors.Length == 0) return default(Color);
+
+            int index = (int)(time / cycleTime * colors.Length) % colors.Length;
+            float lerpAmount = time / cycleTime * colors.Length % 1;
+
+            return Color.Lerp(colors[index], colors[(index + 1) % colors.Length], lerpAmount);
+        }
+
+        // public static float NextNormallyDistributedFloat(this UnifiedRandom rand, float timeMultiplier = 1)
+
+        public static float Lerp(float x, float y, float progress)
+        {
+            return x * (1 - progress) + y * progress;
+        }
+
+        public static Vector2 BezierCurve(Vector2[] bezierPoints, float bezierProgress)
+        {
+            if (bezierPoints.Length == 1)
+            {
+                return bezierPoints[0];
+            }
+            else
+            {
+                Vector2[] newBezierPoints = new Vector2[bezierPoints.Length - 1];
+                for (int i = 0; i < bezierPoints.Length - 1; i++)
+                {
+                    newBezierPoints[i] = bezierPoints[i] * bezierProgress + bezierPoints[i + 1] * (1 - bezierProgress);
+                }
+                return BezierCurve(newBezierPoints, bezierProgress);
+            }
+        }
+
+        public static Vector2 BezierCurveDerivative(Vector2[] bezierPoints, float bezierProgress)
+        {
+            if (bezierPoints.Length == 2)
+            {
+                return bezierPoints[0] - bezierPoints[1];
+            }
+            else
+            {
+                Vector2[] newBezierPoints = new Vector2[bezierPoints.Length - 1];
+                for (int i = 0; i < bezierPoints.Length - 1; i++)
+                {
+                    newBezierPoints[i] = bezierPoints[i] * bezierProgress + bezierPoints[i + 1] * (1 - bezierProgress);
+                }
+                return BezierCurveDerivative(newBezierPoints, bezierProgress);
+            }
+        }
+
         public static IItemDropRule MasterModeDropOnAllPlayersOrFlawless(int Type, int chanceDenominator, int amountDroppedMinimum = 1, int amountDroppedMaximum = 1, int chanceNumerator = 1)
         {
             return new DropBasedOnMasterMode(ItemDropRule.ByCondition(new FlawlessDropCondition(), Type, amountDroppedMinimum, amountDroppedMaximum), new FlawlessOrRandomDropRule(Type, chanceDenominator, amountDroppedMinimum, amountDroppedMaximum, chanceNumerator));
@@ -316,55 +447,6 @@ namespace Polarities.Core
             {
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(0, blendState, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.Transform);
-            }
-        }
-
-        public static Color ColorLerpCycle(float time, float cycleTime, params Color[] colors)
-        {
-            if (colors.Length == 0) return default(Color);
-
-            int index = (int)(time / cycleTime * colors.Length) % colors.Length;
-            float lerpAmount = time / cycleTime * colors.Length % 1;
-
-            return Color.Lerp(colors[index], colors[(index + 1) % colors.Length], lerpAmount);
-        }
-
-        public static float Lerp(float x, float y, float progress)
-        {
-            return x * (1 - progress) + y * progress;
-        }
-
-        public static Vector2 BezierCurve(Vector2[] bezierPoints, float bezierProgress)
-        {
-            if (bezierPoints.Length == 1)
-            {
-                return bezierPoints[0];
-            }
-            else
-            {
-                Vector2[] newBezierPoints = new Vector2[bezierPoints.Length - 1];
-                for (int i = 0; i < bezierPoints.Length - 1; i++)
-                {
-                    newBezierPoints[i] = bezierPoints[i] * bezierProgress + bezierPoints[i + 1] * (1 - bezierProgress);
-                }
-                return BezierCurve(newBezierPoints, bezierProgress);
-            }
-        }
-
-        public static Vector2 BezierCurveDerivative(Vector2[] bezierPoints, float bezierProgress)
-        {
-            if (bezierPoints.Length == 2)
-            {
-                return bezierPoints[0] - bezierPoints[1];
-            }
-            else
-            {
-                Vector2[] newBezierPoints = new Vector2[bezierPoints.Length - 1];
-                for (int i = 0; i < bezierPoints.Length - 1; i++)
-                {
-                    newBezierPoints[i] = bezierPoints[i] * bezierProgress + bezierPoints[i + 1] * (1 - bezierProgress);
-                }
-                return BezierCurveDerivative(newBezierPoints, bezierProgress);
             }
         }
 

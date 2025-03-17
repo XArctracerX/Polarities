@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Polarities.Content.Items.Materials.PreHardmode
+namespace Polarities.Content.Items.Fish
 {
     public class BrineShrimp : ModItem
     {

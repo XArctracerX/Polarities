@@ -339,6 +339,1022 @@ namespace Polarities.Content.NPCs.TownNPCs.PreHardmode
             npcShop.Register();
         }
 
+        //Doesnt work but should fix every issue
+        /*
+        public override bool PreAI()
+        {
+            //float, relying on blocks/walls for movement
+            float support = 10000f;
+            int groundY = (int)((NPC.Center.Y + NPC.height / 2 + 8) / 16) + 4;
+            for (int i = (int)(NPC.position.X / 16); i <= (int)((NPC.position.X + NPC.width) / 16); i++)
+            {
+                for (int j = (int)(NPC.position.Y / 16); j <= (int)((NPC.position.Y + NPC.height + 8) / 16) + 3; j++)
+                {
+                    Tile tile = Main.tile[i, j];
+                    if (tile.HasUnactuatedTile && Main.tileSolid[tile.TileType])
+                    {
+                        float trySupport = j - (NPC.Center.Y / 16);
+                        if (tile.IsHalfBlock)
+                        {
+                            trySupport += 0.5f;
+                        }
+                        if (trySupport < support) support = trySupport;
+                        groundY = j;
+                    }
+                }
+                if (support != 10000f) { break; }
+            }
+
+            bool effectivelyOnGround = support != 10000f;
+            bool doWeHover = true;
+
+            int num = 300;
+            bool wantToGoInside = Main.raining;
+            if (!Main.dayTime)
+            {
+                wantToGoInside = true;
+            }
+            if (Main.eclipse)
+            {
+                wantToGoInside = true;
+            }
+            if (Main.slimeRain)
+            {
+                wantToGoInside = true;
+            }
+            float num25 = 1f;
+            if (Main.masterMode)
+            {
+                NPC.defense = (NPC.dryadWard ? (NPC.defDefense + 14) : NPC.defDefense);
+            }
+            else if (Main.expertMode)
+            {
+                NPC.defense = (NPC.dryadWard ? (NPC.defDefense + 10) : NPC.defDefense);
+            }
+            else
+            {
+                NPC.defense = (NPC.dryadWard ? (NPC.defDefense + 6) : NPC.defDefense);
+            }
+            if (NPC.isLikeATownNPC)
+            {
+                if (NPC.combatBookWasUsed)
+                {
+                    num25 += 0.2f;
+                    NPC.defense += 6;
+                }
+                if (NPC.downedBoss1)
+                {
+                    num25 += 0.1f;
+                    NPC.defense += 3;
+                }
+                if (NPC.downedBoss2)
+                {
+                    num25 += 0.1f;
+                    NPC.defense += 3;
+                }
+                if (NPC.downedBoss3)
+                {
+                    num25 += 0.1f;
+                    NPC.defense += 3;
+                }
+                if (NPC.downedQueenBee)
+                {
+                    num25 += 0.1f;
+                    NPC.defense += 3;
+                }
+                if (Main.hardMode)
+                {
+                    num25 += 0.4f;
+                    NPC.defense += 12;
+                }
+                if (NPC.downedQueenSlime)
+                {
+                    num25 += 0.15f;
+                    NPC.defense += 6;
+                }
+                if (NPC.downedMechBoss1)
+                {
+                    num25 += 0.15f;
+                    NPC.defense += 6;
+                }
+                if (NPC.downedMechBoss2)
+                {
+                    num25 += 0.15f;
+                    NPC.defense += 6;
+                }
+                if (NPC.downedMechBoss3)
+                {
+                    num25 += 0.15f;
+                    NPC.defense += 6;
+                }
+                if (NPC.downedPlantBoss)
+                {
+                    num25 += 0.15f;
+                    NPC.defense += 8;
+                }
+                if (NPC.downedEmpressOfLight)
+                {
+                    num25 += 0.15f;
+                    NPC.defense += 8;
+                }
+                if (NPC.downedGolemBoss)
+                {
+                    num25 += 0.15f;
+                    NPC.defense += 8;
+                }
+                if (NPC.downedAncientCultist)
+                {
+                    num25 += 0.15f;
+                    NPC.defense += 8;
+                }
+                NPCLoader.BuffTownNPC(ref num25, ref NPC.defense);
+            }
+            if (NPC.homeTileX == -1 && NPC.homeTileY == -1 && effectivelyOnGround)
+            {
+                NPC.homeTileX = (int)NPC.Center.X / 16;
+                NPC.homeTileY = (int)(NPC.position.Y + NPC.height + 4f) / 16;
+            }
+            bool flag23 = false;
+            int num47 = (int)NPC.Center.X / 16;
+            int num58 = groundY - 3;
+            NPC.AI_007_FindGoodRestingSpot(num47, num58, out var floorX, out var floorY);
+            NPC.directionY = -1;
+            if (NPC.direction == 0)
+            {
+                NPC.direction = 1;
+            }
+            for (int i = 0; i < 255; i++)
+            {
+                if (Main.player[i].active && Main.player[i].talkNPC == NPC.whoAmI)
+                {
+                    flag23 = true;
+                    if (NPC.ai[0] != 0f)
+                    {
+                        NPC.netUpdate = true;
+                    }
+                    NPC.ai[0] = 0f;
+                    NPC.ai[1] = 300f;
+                    NPC.localAI[3] = 100f;
+                    if (Main.player[i].position.X + Main.player[i].width / 2 < NPC.Center.X)
+                    {
+                        NPC.direction = -1;
+                    }
+                    else
+                    {
+                        NPC.direction = 1;
+                    }
+                }
+            }
+            if (NPC.ai[3] == 1f)
+            {
+                NPC.life = -1;
+                NPC.HitEffect();
+                NPC.active = false;
+                NPC.netUpdate = true;
+                return false;
+            }
+            if (!WorldGen.InWorld(num47, num58) || Main.tile[num47, num58] == null)
+            {
+                return false;
+            }
+            if (!NPC.homeless && Main.netMode != 1 && NPC.townNPC && (wantToGoInside || Main.tileDungeon[Main.tile[num47, num58].TileType]) && !NPC.AI_007_TownEntities_IsInAGoodRestingSpot(num47, num58, floorX, floorY))
+            {
+                bool flag24 = true;
+                Rectangle rectangle = default(Rectangle);
+                for (int j = 0; j < 2; j++)
+                {
+                    if (!flag24)
+                    {
+                        break;
+                    }
+                    rectangle = new Rectangle((int)(NPC.position.X + NPC.width / 2 - NPC.sWidth / 2 - NPC.safeRangeX), (int)(NPC.position.Y + NPC.height / 2 - NPC.sHeight / 2 - NPC.safeRangeY), NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
+                    if (j == 1)
+                    {
+                        rectangle = new Rectangle(floorX * 16 + 8 - NPC.sWidth / 2 - NPC.safeRangeX, floorY * 16 + 8 - NPC.sHeight / 2 - NPC.safeRangeY, NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
+                    }
+                    for (int k = 0; k < 255; k++)
+                    {
+                        if (Main.player[k].active)
+                        {
+                            Rectangle val = new Rectangle((int)Main.player[k].position.X, (int)Main.player[k].position.Y, Main.player[k].width, Main.player[k].height);
+                            if (val.Intersects(rectangle))
+                            {
+                                flag24 = false;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (flag24)
+                {
+                    NPC.AI_007_TownEntities_TeleportToHome(floorX, floorY);
+                }
+            }
+            float num69 = 200f;
+            if (NPCID.Sets.DangerDetectRange[NPC.type] != -1)
+            {
+                num69 = NPCID.Sets.DangerDetectRange[NPC.type];
+            }
+            bool flag2 = false;
+            bool flag3 = false;
+            float num80 = -1f;
+            float num91 = -1f;
+            int num102 = 0;
+            int num2 = -1;
+            int num13 = -1;
+            bool keepwalking4;
+            if (Main.netMode != 1 && !flag23)
+            {
+                for (int l = 0; l < 200; l++)
+                {
+                    if (!Main.npc[l].active)
+                    {
+                        continue;
+                    }
+                    bool? modCanHit = NPCLoader.CanHitNPC(Main.npc[l], NPC);
+                    if (modCanHit.HasValue && !modCanHit.Value)
+                    {
+                        continue;
+                    }
+                    bool canHitVal = modCanHit.HasValue && modCanHit.Value;
+                    if (!Main.npc[l].active || Main.npc[l].friendly || Main.npc[l].damage <= 0 || !(Main.npc[l].Distance(NPC.Center) < num69) || (!Main.npc[l].noTileCollide && !Collision.CanHit(NPC.Center, 0, 0, Main.npc[l].Center, 0, 0)))
+                    {
+                        continue;
+                    }
+                    bool flag4 = Main.npc[l].CanBeChasedBy(this);
+                    flag2 = true;
+                    float num17 = Main.npc[l].Center.X - NPC.Center.X;
+                    if (num17 < 0f && (num80 == -1f || num17 > num80))
+                    {
+                        num80 = num17;
+                        if (flag4)
+                        {
+                            num2 = l;
+                        }
+                    }
+                    if (num17 > 0f && (num91 == -1f || num17 < num91))
+                    {
+                        num91 = num17;
+                        if (flag4)
+                        {
+                            num13 = l;
+                        }
+                    }
+                }
+                if (flag2)
+                {
+                    num102 = ((num80 == -1f) ? 1 : ((num91 != -1f) ? (num91 < 0f - num80).ToDirectionInt() : (-1)));
+                    float num18 = 0f;
+                    if (num80 != -1f)
+                    {
+                        num18 = 0f - num80;
+                    }
+                    if (num18 == 0f || (num91 < num18 && num91 > 0f))
+                    {
+                        num18 = num91;
+                    }
+                    if (NPC.ai[0] == 8f)
+                    {
+                        if (NPC.direction == -num102)
+                        {
+                            NPC.ai[0] = 1f;
+                            NPC.ai[1] = 300 + Main.rand.Next(300);
+                            NPC.ai[2] = 0f;
+                            NPC.localAI[3] = 0f;
+                            NPC.netUpdate = true;
+                        }
+                    }
+                    else if (NPC.ai[0] != 10f && NPC.ai[0] != 12f && NPC.ai[0] != 13f && NPC.ai[0] != 14f && NPC.ai[0] != 15f)
+                    {
+                        if (NPCID.Sets.PrettySafe[NPC.type] != -1 && NPCID.Sets.PrettySafe[NPC.type] < num18)
+                        {
+                            flag2 = false;
+                            flag3 = NPCID.Sets.AttackType[NPC.type] > -1;
+                        }
+                        else if (NPC.ai[0] != 1f)
+                        {
+                            int tileX = (int)((NPC.position.X + NPC.width / 2 + 15 * NPC.direction) / 16f);
+                            int tileY = (int)((NPC.position.Y + NPC.height - 16f) / 16f);
+                            bool currentlyDrowning = NPC.wet;
+                            NPC.AI_007_TownEntities_GetWalkPrediction(num47, floorX, false, currentlyDrowning, tileX, tileY, out keepwalking4, out var avoidFalling);
+                            keepwalking4 = true;
+                            if (!avoidFalling)
+                            {
+                                if (NPC.ai[0] == 3f || NPC.ai[0] == 4f || NPC.ai[0] == 16f || NPC.ai[0] == 17f)
+                                {
+                                    NPC nPC = Main.npc[(int)NPC.ai[2]];
+                                    if (nPC.active)
+                                    {
+                                        NPC.ai[0] = 1f;
+                                        NPC.ai[1] = 120 + Main.rand.Next(120);
+                                        NPC.ai[2] = 0f;
+                                        NPC.localAI[3] = 0f;
+                                        nPC.direction = -num102;
+                                        NPC.netUpdate = true;
+                                    }
+                                }
+                                NPC.ai[0] = 1f;
+                                NPC.ai[1] = 120 + Main.rand.Next(120);
+                                NPC.ai[2] = 0f;
+                                NPC.localAI[3] = 0f;
+                                NPC.direction = -num102;
+                                NPC.netUpdate = true;
+                            }
+                        }
+                        else if (NPC.ai[0] == 1f && NPC.direction != -num102)
+                        {
+                            NPC.direction = -num102;
+                            NPC.netUpdate = true;
+                        }
+                    }
+                }
+            }
+            if (NPC.ai[0] == 0f)
+            {
+                if (NPC.localAI[3] > 0f)
+                {
+                    NPC.localAI[3] -= 1f;
+                }
+                int num19 = 120;
+                if (wantToGoInside && !flag23)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        if (num47 == floorX && num58 == floorY)
+                        {
+                            if (NPC.velocity.X != 0f)
+                            {
+                                NPC.netUpdate = true;
+                            }
+                            if (NPC.velocity.X > 0.1f)
+                            {
+                                NPC.velocity.X -= 0.1f;
+                            }
+                            else if (NPC.velocity.X < -0.1f)
+                            {
+                                NPC.velocity.X += 0.1f;
+                            }
+                            else
+                            {
+                                NPC.velocity.X = 0f;
+                                NPC.AI_007_TryForcingSitting(floorX, floorY);
+                            }
+                        }
+                        else
+                        {
+                            if (num47 > floorX)
+                            {
+                                NPC.direction = -1;
+                            }
+                            else
+                            {
+                                NPC.direction = 1;
+                            }
+                            NPC.ai[0] = 1f;
+                            NPC.ai[1] = 200 + Main.rand.Next(200);
+                            NPC.ai[2] = 0f;
+                            NPC.localAI[3] = 0f;
+                            NPC.netUpdate = true;
+                        }
+                    }
+                }
+                else
+                {
+                    if (NPC.velocity.X > 0.1f)
+                    {
+                        NPC.velocity.X -= 0.1f;
+                    }
+                    else if (NPC.velocity.X < -0.1f)
+                    {
+                        NPC.velocity.X += 0.1f;
+                    }
+                    else
+                    {
+                        NPC.velocity.X = 0f;
+                    }
+                    if (Main.netMode != 1)
+                    {
+                        if (NPC.ai[1] > 0f)
+                        {
+                            NPC.ai[1] -= 1f;
+                        }
+                        bool flag5 = true;
+                        int tileX2 = (int)((NPC.position.X + NPC.width / 2 + 15 * NPC.direction) / 16f);
+                        int tileY2 = (int)((NPC.position.Y + NPC.height - 16f) / 16f);
+                        bool currentlyDrowning2 = NPC.wet;
+                        NPC.AI_007_TownEntities_GetWalkPrediction(num47, floorX, false, currentlyDrowning2, tileX2, tileY2, out keepwalking4, out var avoidFalling2);
+                        keepwalking4 = true;
+                        if (NPC.wet)
+                        {
+                            bool currentlyDrowning3 = Collision.DrownCollision(NPC.position, NPC.width, NPC.height, 1f, includeSlopes: true);
+                            if (currentlyDrowning3)
+                            {
+                                NPC.ai[0] = 1f;
+                                NPC.ai[1] = 200 + Main.rand.Next(300);
+                                NPC.ai[2] = 0f;
+                                NPC.localAI[3] = 0f;
+                                NPC.netUpdate = true;
+                            }
+                        }
+                        if (avoidFalling2)
+                        {
+                            flag5 = false;
+                        }
+                        if (NPC.ai[1] <= 0f)
+                        {
+                            if (flag5 && !avoidFalling2)
+                            {
+                                NPC.ai[0] = 1f;
+                                NPC.ai[1] = 200 + Main.rand.Next(300);
+                                NPC.ai[2] = 0f;
+                                NPC.localAI[3] = 0f;
+                                NPC.netUpdate = true;
+                            }
+                            else
+                            {
+                                NPC.direction *= -1;
+                                NPC.ai[1] = 60 + Main.rand.Next(120);
+                                NPC.netUpdate = true;
+                            }
+                        }
+                    }
+                }
+                if (Main.netMode != 1 && (!wantToGoInside || NPC.AI_007_TownEntities_IsInAGoodRestingSpot(num47, num58, floorX, floorY)))
+                {
+                    if (num47 < floorX - 25 || num47 > floorX + 25)
+                    {
+                        if (NPC.localAI[3] == 0f)
+                        {
+                            if (num47 < floorX - 50 && NPC.direction == -1)
+                            {
+                                NPC.direction = 1;
+                                NPC.netUpdate = true;
+                            }
+                            else if (num47 > floorX + 50 && NPC.direction == 1)
+                            {
+                                NPC.direction = -1;
+                                NPC.netUpdate = true;
+                            }
+                        }
+                    }
+                    else if (Main.rand.Next(80) == 0 && NPC.localAI[3] == 0f)
+                    {
+                        NPC.localAI[3] = 200f;
+                        NPC.direction *= -1;
+                        NPC.netUpdate = true;
+                    }
+                }
+            }
+            else if (NPC.ai[0] == 1f)
+            {
+                if (Main.netMode != 1 && wantToGoInside && NPC.AI_007_TownEntities_IsInAGoodRestingSpot(num47, num58, floorX, floorY))
+                {
+                    NPC.ai[0] = 0f;
+                    NPC.ai[1] = 200 + Main.rand.Next(200);
+                    NPC.localAI[3] = 60f;
+                    NPC.netUpdate = true;
+                }
+                else
+                {
+                    bool flag6 = Collision.DrownCollision(NPC.position, NPC.width, NPC.height, 1f, includeSlopes: true);
+                    if (!flag6)
+                    {
+                        if (Main.netMode != 1 && !NPC.homeless && !Main.tileDungeon[Main.tile[num47, num58].TileType] && (num47 < floorX - 35 || num47 > floorX + 35))
+                        {
+                            if (NPC.position.X < floorX * 16 && NPC.direction == -1)
+                            {
+                                NPC.ai[1] -= 5f;
+                            }
+                            else if (NPC.position.X > floorX * 16 && NPC.direction == 1)
+                            {
+                                NPC.ai[1] -= 5f;
+                            }
+                        }
+                        NPC.ai[1] -= 1f;
+                    }
+                    if (NPC.ai[1] <= 0f)
+                    {
+                        NPC.ai[0] = 0f;
+                        NPC.ai[1] = 300 + Main.rand.Next(300);
+                        NPC.ai[2] = 0f;
+                        NPC.ai[1] += Main.rand.Next(900);
+                        NPC.localAI[3] = 60f;
+                        NPC.netUpdate = true;
+                    }
+                    if (NPC.closeDoor && ((NPC.position.X + NPC.width / 2) / 16f > NPC.doorX + 2 || (NPC.position.X + NPC.width / 2) / 16f < NPC.doorX - 2))
+                    {
+                        Tile tileSafely = Framing.GetTileSafely(NPC.doorX, NPC.doorY);
+                        if (TileLoader.CloseDoorID(tileSafely) >= 0)
+                        {
+                            if (WorldGen.CloseDoor(NPC.doorX, NPC.doorY))
+                            {
+                                NPC.closeDoor = false;
+                                NetMessage.SendData(19, -1, -1, null, 1, NPC.doorX, NPC.doorY, NPC.direction);
+                            }
+                            if ((NPC.position.X + NPC.width / 2) / 16f > NPC.doorX + 4 || (NPC.position.X + NPC.width / 2) / 16f < NPC.doorX - 4 || (NPC.position.Y + NPC.height / 2) / 16f > NPC.doorY + 4 || (NPC.position.Y + NPC.height / 2) / 16f < NPC.doorY - 4)
+                            {
+                                NPC.closeDoor = false;
+                            }
+                        }
+                        else if (tileSafely.TileType == 389)
+                        {
+                            if (WorldGen.ShiftTallGate(NPC.doorX, NPC.doorY, closing: true))
+                            {
+                                NPC.closeDoor = false;
+                                NetMessage.SendData(19, -1, -1, null, 5, NPC.doorX, NPC.doorY);
+                            }
+                            if ((NPC.position.X + NPC.width / 2) / 16f > NPC.doorX + 4 || (NPC.position.X + NPC.width / 2) / 16f < NPC.doorX - 4 || (NPC.position.Y + NPC.height / 2) / 16f > NPC.doorY + 4 || (NPC.position.Y + NPC.height / 2) / 16f < NPC.doorY - 4)
+                            {
+                                NPC.closeDoor = false;
+                            }
+                        }
+                        else
+                        {
+                            NPC.closeDoor = false;
+                        }
+                    }
+                    float num20 = 1f;
+                    float num21 = 0.07f;
+                    if (NPC.friendly && (flag2 || flag6))
+                    {
+                        num20 = 1.5f;
+                        float num22 = 1f - NPC.life / (float)NPC.lifeMax;
+                        num20 += num22 * 0.9f;
+                        num21 = 0.1f;
+                    }
+                    if (NPC.velocity.X < 0f - num20 || NPC.velocity.X > num20)
+                    {
+                        if (effectivelyOnGround)
+                        {
+                            NPC.velocity *= 0.8f;
+                        }
+                    }
+                    else if (NPC.velocity.X < num20 && NPC.direction == 1)
+                    {
+                        NPC.velocity.X += num21;
+                        if (NPC.velocity.X > num20)
+                        {
+                            NPC.velocity.X = num20;
+                        }
+                    }
+                    else if (NPC.velocity.X > 0f - num20 && NPC.direction == -1)
+                    {
+                        NPC.velocity.X -= num21;
+                        if (NPC.velocity.X > num20)
+                        {
+                            NPC.velocity.X = num20;
+                        }
+                    }
+                    bool flag7 = true;
+					if ((float)(NPC.homeTileY * 16 - 32) > NPC.Bottom.Y)
+					{
+						flag7 = false;
+					}
+					if (!flag7 && wantToGoInside)
+                    {
+						doWeHover = false;
+					}
+                    if (effectivelyOnGround)
+                    {
+                        int num23 = (int)((NPC.position.X + NPC.width / 2 + 15 * NPC.direction) / 16f);
+                        int num24 = (int)((NPC.position.Y + NPC.height - 16f) / 16f);
+                        int num26 = 180;
+                        NPC.AI_007_TownEntities_GetWalkPrediction(num47, floorX, false, flag6, num23, num24, out var keepwalking3, out var avoidFalling3);
+                        keepwalking3 = true;
+                        bool flag8 = false;
+                        bool flag9 = false;
+                        if (NPC.wet && NPC.townNPC && (flag9 = flag6) && NPC.localAI[3] <= 0f)
+                        {
+                            avoidFalling3 = true;
+                            NPC.localAI[3] = num26;
+                            int num27 = 0;
+                            for (int m = 0; m <= 10 && Framing.GetTileSafely(num23 - NPC.direction, num24 - m).LiquidAmount != 0; m++)
+                            {
+                                num27++;
+                            }
+                            float num28 = 0.3f;
+                            float num29 = (float)Math.Sqrt((num27 * 16 + 16) * 2f * num28);
+                            if (num29 > 26f)
+                            {
+                                num29 = 26f;
+                            }
+                            NPC.velocity.Y = 0f - num29;
+                            NPC.localAI[3] = NPC.position.X;
+                            flag8 = true;
+                        }
+                        if (avoidFalling3 && !flag8)
+                        {
+                            int num30 = (int)((NPC.position.X + NPC.width / 2) / 16f);
+                            int num31 = 0;
+                            for (int n = -1; n <= 1; n++)
+                            {
+                                Tile tileSafely2 = Framing.GetTileSafely(num30 + n, num24 + 1);
+                                if (tileSafely2.HasUnactuatedTile && Main.tileSolid[tileSafely2.TileType])
+                                {
+                                    num31++;
+                                }
+                            }
+                            if (num31 <= 2)
+                            {
+                                if (NPC.velocity.X != 0f)
+                                {
+                                    NPC.netUpdate = true;
+                                }
+                                keepwalking3 = (avoidFalling3 = false);
+                                NPC.ai[0] = 0f;
+                                NPC.ai[1] = 50 + Main.rand.Next(50);
+                                NPC.ai[2] = 0f;
+                                NPC.localAI[3] = 40f;
+                            }
+                        }
+                        if (NPC.position.X == NPC.localAI[3] && !flag8)
+                        {
+                            NPC.direction *= -1;
+                            NPC.netUpdate = true;
+                            NPC.localAI[3] = num26;
+                        }
+                        if (flag6 && !flag8)
+                        {
+                            if (NPC.localAI[3] > num26)
+                            {
+                                NPC.localAI[3] = num26;
+                            }
+                            if (NPC.localAI[3] > 0f)
+                            {
+                                NPC.localAI[3] -= 1f;
+                            }
+                        }
+                        else
+                        {
+                            NPC.localAI[3] = -1f;
+                        }
+                        Tile tileSafely3 = Framing.GetTileSafely(num23, groundY - 1);
+                        Tile tileSafely4 = Framing.GetTileSafely(num23, groundY - 2);
+                        Tile tileSafely5 = Framing.GetTileSafely(num23, groundY - 3);
+                        bool flag10 = NPC.height / 16 < 3;
+                        if (NPC.townNPC && tileSafely5.HasUnactuatedTile && (TileLoader.OpenDoorID(tileSafely5) >= 0 || tileSafely5.TileType == 388) && (Main.rand.Next(4) == 0)) //this is normally 1/10 unless wantToGoInside
+                        {
+                            if (Main.netMode != 1)
+                            {
+                                if (WorldGen.OpenDoor(num23, groundY - 3, NPC.direction))
+                                {
+                                    NPC.closeDoor = true;
+                                    NPC.doorX = num23;
+                                    NPC.doorY = groundY - 3;
+                                    NetMessage.SendData(19, -1, -1, null, 0, num23, groundY - 3, NPC.direction);
+                                    NPC.netUpdate = true;
+                                    NPC.ai[1] += 80f;
+                                }
+                                else if (WorldGen.OpenDoor(num23, groundY - 3, -NPC.direction))
+                                {
+                                    NPC.closeDoor = true;
+                                    NPC.doorX = num23;
+                                    NPC.doorY = groundY - 3;
+                                    NetMessage.SendData(19, -1, -1, null, 0, num23, groundY - 3, -NPC.direction);
+                                    NPC.netUpdate = true;
+                                    NPC.ai[1] += 80f;
+                                }
+                                else if (WorldGen.ShiftTallGate(num23, floorY - 3, closing: false))
+                                {
+                                    NPC.closeDoor = true;
+                                    NPC.doorX = num23;
+                                    NPC.doorY = groundY - 3;
+                                    NetMessage.SendData(19, -1, -1, null, 4, num23, groundY - 3);
+                                    NPC.netUpdate = true;
+                                    NPC.ai[1] += 80f;
+                                }
+                                else
+                                {
+                                    NPC.direction *= -1;
+                                    NPC.netUpdate = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if ((NPC.velocity.X < 0f && NPC.spriteDirection == -1) || (NPC.velocity.X > 0f && NPC.spriteDirection == 1))
+                            {
+                                bool flag11 = false;
+                                bool flag13 = false;
+                                if (avoidFalling3)
+                                {
+                                    if (!flag9)
+                                    {
+                                        flag11 = true;
+                                    }
+                                    if (flag2)
+                                    {
+                                        flag13 = true;
+                                    }
+                                }
+                                if (flag13)
+                                {
+                                    keepwalking3 = false;
+                                    NPC.velocity.X = 0f;
+                                    NPC.ai[0] = 8f;
+                                    NPC.ai[1] = 240f;
+                                    NPC.netUpdate = true;
+                                }
+                                if (flag11)
+                                {
+                                    NPC.direction *= -1;
+                                    NPC.velocity.X *= -1f;
+                                    NPC.netUpdate = true;
+                                }
+                                if (keepwalking3)
+                                {
+                                    NPC.ai[1] = 90f;
+                                    NPC.netUpdate = true;
+                                }
+                                if (NPC.velocity.Y < 0f)
+                                {
+                                    NPC.localAI[3] = NPC.position.X;
+                                }
+                            }
+                            if (NPC.velocity.Y < 0f && NPC.wet)
+                            {
+                                NPC.velocity.Y *= 1.2f;
+                            }
+                        }
+                    }
+                }
+            }
+            else if (NPC.ai[0] == 2f || NPC.ai[0] == 11f)
+            {
+                if (Main.netMode != 1)
+                {
+                    NPC.localAI[3] -= 1f;
+                    if (Main.rand.Next(60) == 0 && NPC.localAI[3] == 0f)
+                    {
+                        NPC.localAI[3] = 60f;
+                        NPC.direction *= -1;
+                        NPC.netUpdate = true;
+                    }
+                }
+                NPC.ai[1] -= 1f;
+                NPC.velocity.X *= 0.8f;
+                if (NPC.ai[1] <= 0f)
+                {
+                    NPC.localAI[3] = 40f;
+                    NPC.ai[0] = 0f;
+                    NPC.ai[1] = 60 + Main.rand.Next(60);
+                    NPC.netUpdate = true;
+                }
+            }
+            else if (NPC.ai[0] == 3f || NPC.ai[0] == 4f || NPC.ai[0] == 5f || NPC.ai[0] == 8f || NPC.ai[0] == 9f || NPC.ai[0] == 16f || NPC.ai[0] == 17f || NPC.ai[0] == 20f || NPC.ai[0] == 21f || NPC.ai[0] == 22f || NPC.ai[0] == 23f)
+            {
+                NPC.velocity.X *= 0.8f;
+                NPC.ai[1] -= 1f;
+                if (NPC.ai[0] == 8f && NPC.ai[1] < 60f && flag2)
+                {
+                    NPC.ai[1] = 180f;
+                    NPC.netUpdate = true;
+                }
+                if (NPC.ai[0] == 5f)
+                {
+                    Point coords = (NPC.Bottom + Vector2.UnitY * -2f).ToTileCoordinates();
+                    Tile tile = Main.tile[coords.X, coords.Y];
+                    if (tile.TileType != 15 && tile.TileType != 497)
+                    {
+                        NPC.ai[1] = 0f;
+                    }
+                    else
+                    {
+                        Main.sittingManager.AddNPC(NPC.whoAmI, coords);
+                    }
+                }
+                if (NPC.ai[1] <= 0f)
+                {
+                    NPC.ai[0] = 0f;
+                    NPC.ai[1] = 60 + Main.rand.Next(60);
+                    NPC.ai[2] = 0f;
+                    NPC.localAI[3] = 30 + Main.rand.Next(60);
+                    NPC.netUpdate = true;
+                }
+            }
+            else if (NPC.ai[0] == 6f || NPC.ai[0] == 7f || NPC.ai[0] == 18f || NPC.ai[0] == 19f)
+            {
+                if (NPC.ai[0] == 18f && (NPC.localAI[3] < 1f || NPC.localAI[3] > 2f))
+                {
+                    NPC.localAI[3] = 2f;
+                }
+                NPC.velocity.X *= 0.8f;
+                NPC.ai[1] -= 1f;
+                int num32 = (int)NPC.ai[2];
+                if (num32 < 0 || num32 > 255 || !Main.player[num32].CanBeTalkedTo || Main.player[num32].Distance(NPC.Center) > 200f || !Collision.CanHitLine(NPC.Top, 0, 0, Main.player[num32].Top, 0, 0))
+                {
+                    NPC.ai[1] = 0f;
+                }
+                if (NPC.ai[1] > 0f)
+                {
+                    int num33 = ((NPC.Center.X < Main.player[num32].Center.X) ? 1 : (-1));
+                    if (num33 != NPC.direction)
+                    {
+                        NPC.netUpdate = true;
+                    }
+                    NPC.direction = num33;
+                }
+                else
+                {
+                    NPC.ai[0] = 0f;
+                    NPC.ai[1] = 60 + Main.rand.Next(60);
+                    NPC.ai[2] = 0f;
+                    NPC.localAI[3] = 30 + Main.rand.Next(60);
+                    NPC.netUpdate = true;
+                }
+            }
+            bool flag16 = NPC.ai[0] < 2f && !flag2 && !NPC.wet;
+            bool flag17 = (NPC.ai[0] < 2f || NPC.ai[0] == 8f) && (flag2 || flag3);
+            if (NPC.localAI[1] > 0f)
+            {
+                NPC.localAI[1] -= 1f;
+            }
+            if (NPC.localAI[1] > 0f)
+            {
+                flag17 = false;
+            }
+            if (NPC.CanTalk && flag16 && NPC.ai[0] == 0f && effectivelyOnGround && Main.rand.Next(300) == 0)
+            {
+                int num89 = 420;
+                num89 = ((Main.rand.Next(2) != 0) ? (num89 * Main.rand.Next(1, 3)) : (num89 * Main.rand.Next(1, 4)));
+                int num90 = 100;
+                int num92 = 20;
+                for (int num93 = 0; num93 < 200; num93++)
+                {
+                    NPC nPC4 = Main.npc[num93];
+                    bool flag18 = (nPC4.ai[0] == 1f && nPC4.closeDoor) || (nPC4.ai[0] == 1f && nPC4.ai[1] > 200f) || nPC4.ai[0] > 1f || nPC4.wet;
+                    if (nPC4 != NPC && nPC4.active && nPC4.CanBeTalkedTo && !flag18 && nPC4.Distance(NPC.Center) < num90 && nPC4.Distance(NPC.Center) > num92 && Collision.CanHit(NPC.Center, 0, 0, nPC4.Center, 0, 0))
+                    {
+                        int num94 = (NPC.position.X < nPC4.position.X).ToDirectionInt();
+                        NPC.ai[0] = 3f;
+                        NPC.ai[1] = num89;
+                        NPC.ai[2] = num93;
+                        NPC.direction = num94;
+                        NPC.netUpdate = true;
+                        nPC4.ai[0] = 4f;
+                        nPC4.ai[1] = num89;
+                        nPC4.ai[2] = NPC.whoAmI;
+                        nPC4.direction = -num94;
+                        nPC4.netUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else if (NPC.CanTalk && flag16 && NPC.ai[0] == 0f && effectivelyOnGround && Main.rand.Next(1800) == 0)
+            {
+                int num95 = 420;
+                num95 = ((Main.rand.Next(2) != 0) ? (num95 * Main.rand.Next(1, 3)) : (num95 * Main.rand.Next(1, 4)));
+                int num96 = 100;
+                int num97 = 20;
+                for (int num98 = 0; num98 < 200; num98++)
+                {
+                    NPC nPC5 = Main.npc[num98];
+                    bool flag19 = (nPC5.ai[0] == 1f && nPC5.closeDoor) || (nPC5.ai[0] == 1f && nPC5.ai[1] > 200f) || nPC5.ai[0] > 1f || nPC5.wet;
+                    if (nPC5 != NPC && nPC5.active && nPC5.CanBeTalkedTo && !NPCID.Sets.IsTownPet[nPC5.type] && !flag19 && nPC5.Distance(NPC.Center) < num96 && nPC5.Distance(NPC.Center) > num97 && Collision.CanHit(NPC.Center, 0, 0, nPC5.Center, 0, 0))
+                    {
+                        int num99 = (NPC.position.X < nPC5.position.X).ToDirectionInt();
+                        NPC.ai[0] = 16f;
+                        NPC.ai[1] = num95;
+                        NPC.ai[2] = num98;
+                        NPC.localAI[2] = Main.rand.Next(4);
+                        NPC.localAI[3] = Main.rand.Next(3 - (int)NPC.localAI[2]);
+                        NPC.direction = num99;
+                        NPC.netUpdate = true;
+                        nPC5.ai[0] = 17f;
+                        nPC5.ai[1] = num95;
+                        nPC5.ai[2] = NPC.whoAmI;
+                        nPC5.localAI[2] = 0f;
+                        nPC5.localAI[3] = 0f;
+                        nPC5.direction = -num99;
+                        nPC5.netUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else if (flag16 && NPC.ai[0] == 0f && effectivelyOnGround && Main.rand.Next(1800) == 0)
+            {
+                NPC.ai[0] = 2f;
+                NPC.ai[1] = 45 * Main.rand.Next(1, 2);
+                NPC.netUpdate = true;
+            }
+            else if (flag16 && NPC.ai[0] == 0f && effectivelyOnGround && Main.rand.Next(1200) == 0)
+            {
+                int num107 = 220;
+                int num108 = 150;
+                for (int num109 = 0; num109 < 255; num109++)
+                {
+                    Player player3 = Main.player[num109];
+                    if (player3.CanBeTalkedTo && player3.Distance(NPC.Center) < num108 && Collision.CanHitLine(NPC.Top, 0, 0, player3.Top, 0, 0))
+                    {
+                        int direction4 = (NPC.position.X < player3.position.X).ToDirectionInt();
+                        NPC.ai[0] = 7f;
+                        NPC.ai[1] = num107;
+                        NPC.ai[2] = num109;
+                        NPC.direction = direction4;
+                        NPC.netUpdate = true;
+                        break;
+                    }
+                }
+            }
+            else if (flag16 && NPC.ai[0] == 1f && effectivelyOnGround && num > 0 && Main.rand.Next(num) == 0)
+            {
+                Point b = (NPC.Bottom + Vector2.UnitY * -2f).ToTileCoordinates();
+                b = new Point(b.X, num58);
+                bool flag20 = WorldGen.InWorld(b.X, b.Y, 1);
+                if (flag20)
+                {
+                    for (int num110 = 0; num110 < 200; num110++)
+                    {
+                        if (Main.npc[num110].active && Main.npc[num110].aiStyle == 7 && Main.npc[num110].townNPC && Main.npc[num110].ai[0] == 5f && (Main.npc[num110].Bottom + Vector2.UnitY * -2f).ToTileCoordinates() == b)
+                        {
+                            flag20 = false;
+                            break;
+                        }
+                    }
+                    for (int num111 = 0; num111 < 255; num111++)
+                    {
+                        if (Main.player[num111].active && Main.player[num111].sitting.isSitting && Main.player[num111].Center.ToTileCoordinates() == b)
+                        {
+                            flag20 = false;
+                            break;
+                        }
+                    }
+                }
+                if (flag20)
+                {
+                    Tile tile2 = Main.tile[b.X, b.Y];
+                    flag20 = tile2.TileType == 15 || tile2.TileType == 497;
+                    if (flag20 && tile2.TileType == 15 && tile2.TileFrameY >= 1080 && tile2.TileFrameY <= 1098)
+                    {
+                        flag20 = false;
+                    }
+                    if (flag20)
+                    {
+                        NPC.ai[0] = 5f;
+                        NPC.ai[1] = 900 + Main.rand.Next(10800);
+                        NPC.direction = ((tile2.TileFrameX != 0) ? 1 : (-1));
+                        NPC.Bottom = new Vector2(b.X * 16 + 8 + 2 * NPC.direction, b.Y * 16 + 16);
+                        NPC.velocity = Vector2.Zero;
+                        NPC.localAI[3] = 0f;
+                        NPC.netUpdate = true;
+                    }
+                }
+            }
+            else if (flag16 && NPC.ai[0] == 1f && effectivelyOnGround && Main.rand.Next(600) == 0 && Utils.PlotTileLine(NPC.Top, NPC.Bottom, NPC.width, DelegateMethods.SearchAvoidedByNPCs))
+            {
+                Point point = (NPC.Center + new Vector2(NPC.direction * 10, 0f)).ToTileCoordinates();
+                bool flag21 = WorldGen.InWorld(point.X, point.Y, 1);
+                if (flag21)
+                {
+                    Tile tileSafely6 = Framing.GetTileSafely(point.X, point.Y);
+                    if (!tileSafely6.HasUnactuatedTile || !TileID.Sets.InteractibleByNPCs[tileSafely6.TileType])
+                    {
+                        flag21 = false;
+                    }
+                }
+                if (flag21)
+                {
+                    NPC.ai[0] = 9f;
+                    NPC.ai[1] = 40 + Main.rand.Next(90);
+                    NPC.velocity = Vector2.Zero;
+                    NPC.localAI[3] = 0f;
+                    NPC.netUpdate = true;
+                }
+            }
+
+            if (NPC.ai[0] != 5)
+            {
+                if (doWeHover)
+                {
+                    NPC.velocity.Y += Math.Clamp((support - 1.5f) * 0.1f, -0.1f, 0.1f);
+                    //kick to prevent slowing down
+                    if (Math.Abs((support - 1.5f)) < 0.05f)
+                    {
+                        NPC.velocity.Y *= 1.025f;
+                    }
+                }
+                else
+                {
+                    NPC.velocity.Y += 0.1f;
+                }
+            }
+
+            NPC.velocity *= 0.99f;
+
+            if (NPC.velocity.Y < -2)
+            {
+                NPC.velocity.Y = -2;
+            }
+            if (NPC.velocity.Y > 2)
+            {
+                NPC.velocity.Y = 2;
+            }
+            NPC.rotation = NPC.velocity.X * 0.05f;
+
+            return false;
+        }
+        */
+
         public override void FindFrame(int frameHeight)
         {
             int num = frameHeight;

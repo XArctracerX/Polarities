@@ -114,6 +114,7 @@ Mods: {
 
 			BookTile.MapEntry: Book
 			BannerTile.MapEntry: Banner Tile
+			CrateTile.MapEntry: Crate Tile
 		}
 
 		WorldGenPass: {
@@ -1337,22 +1338,22 @@ Mods: {
 			}
 
 			ConvectiveHelmetMagic: {
-				DisplayName: Convective Helmet Magic
+				DisplayName: Convective Hood
 				Tooltip: 6% increased magic damage and critical strike chance
 			}
 
 			ConvectiveHelmetMelee: {
-				DisplayName: Convective Helmet Melee
+				DisplayName: Convective Faceplate
 				Tooltip: 6% increased melee damage and critical strike chance
 			}
 
 			ConvectiveHelmetRanged: {
-				DisplayName: Convective Helmet Ranged
+				DisplayName: Convective Visor
 				Tooltip: 6% increased ranged damage and critical strike chance
 			}
 
 			ConvectiveHelmetSummon: {
-				DisplayName: Convective Helmet Summon
+				DisplayName: Convective Mask
 				Tooltip:
 					'''
 					6% increased summon damage
@@ -3071,8 +3072,13 @@ Mods: {
 				Tooltip: ""
 			}
 
-			FractalWorkbench: {
-				DisplayName: Fractal Workbench
+			FractalWorkBench: {
+				DisplayName: Fractal Work Bench
+				Tooltip: ""
+			}
+
+			FractalFence: {
+				DisplayName: Fractal Fence
 				Tooltip: ""
 			}
 
@@ -3245,7 +3251,11 @@ Mods: {
 			//Books
 			StrangeObituary: {
 				DisplayName: Strange Obituary
-				Tooltip: Makes you die in one hit\nDoes not count as a book buff
+				Tooltip:
+					'''
+					Makes you die in one hit
+					Does not count as a book buff
+					'''
 			}
 
 			BetsyBook: {
@@ -3655,13 +3665,13 @@ Mods: {
 				Tooltip: Unlocks one locked fractal chest or lock box
 			}
 
-			FractalWorkBench: {
-				DisplayName: Fractal Work Bench
+			SaltCrate: {
+				DisplayName: Salt Crate
 				Tooltip: ""
 			}
 
-			FractalFence: {
-				DisplayName: Fractal Fence
+			PickledHerring: {
+				DisplayName: Pickled Herring
 				Tooltip: ""
 			}
 		}
@@ -4290,7 +4300,7 @@ Mods: {
 
 		Bestiary: {
 			StormCloudfish: A rather aggressive, predatory life form composed entirely of turbulent thunder clouds. It employs rain clouds, lightning, and even transparency as a last resort.
-			DormantConstruct: Fallen from the heavens, this enigmatic machine silently waits to be awoken from it�s idle state.
+			DormantConstruct: Fallen from the heavens, this enigmatic machine silently waits to be awoken from it s idle state.
 			StarConstruct: With violently flinging chained hooks and blood-curdling shrieks, this entity blurs the line between organic and automaton.
 			Gigabat: Reinforced with its own posse of bat companions, this positively enormous bat employs echolocation and its overwhelming numbers to hunt.
 			GigabatMinion: A single pawn utilized by Gigabat. As soon as one falls, another takes its place, as if nothing had happened at all.
@@ -4303,7 +4313,7 @@ Mods: {
 			//Magneton: A member of the electromagnetic duo, this creature is armed to the teeth with homing rockets, mines, and latent magnetism. It works in perfect tandem with its companion.
 			//Electris:A member of the electromagnetic duo, this creature uses its powerful electricity to attack with deathrays, bolts, and deadly auras. It synchronizes its attacks to deadly effect with its companion.
 			Zombat: There are bats, there are zombies. Sometimes, there are zombie bats. This feeble creature does its best to perform its batty duties in spite of zombification.
-			Rattler: This small, poisonous snake prefers dry climates. It loudly rattles to ward off any predators, but it�s just too cute to avoid!
+			Rattler: This small, poisonous snake prefers dry climates. It loudly rattles to ward off any predators, but it s just too cute to avoid!
 			NestGuardian: Utilizing powerful venom, it bites anyone who approaches. In its dying moments, it unleashes its adorable, but nonetheless harmful offspring onto the world.
 			BrineFly: Individually harmless, in large clouds they prove a dizzying nuisance. Some organisms get their entire water intake from eating these flies in large quantities!
 			Mussel: Fortified with a hard shell, the Mussel waits for an opportune time to fling pearls to attack! They also have dozens of eyes on the edge of their shells. Just a fun fact.
@@ -4311,7 +4321,7 @@ Mods: {
 			AlkaliSpirit: A lesser spirit inhabiting the crumbling Limestone Caves, it's rather fragile and corporeal due to building its body from cave minerals.
 			StalagBeetle: A horned beetle specially adapted to the Limestone Caves. It's exceptionally sharp horn and hard shell pierce prey and protect itself from falling rocks respectively.
 			StellatedSlime: After having absorbed its own fallen star, it leaps high in the sky to pounce on any unsuspecting bystanders. Performing such leaps is considered a sign of greatness by the slime community.
-			BatSlime: Is it a bat, is it a slime? It doesn�t matter! It occasionally sprouts wings for greatly enhanced (for slime standards) locomotion.
+			BatSlime: Is it a bat, is it a slime? It doesn t matter! It occasionally sprouts wings for greatly enhanced (for slime standards) locomotion.
 			BloodBat: Even the bats are riled up from the horrible energy of the Blood Moon! Upon being exposed to its red light, cave dwelling bats become permanently warped.
 			Limeshell: Protected by a shell composed of the more durable materials in the caverns, the Limeshell comfortably flings itself at whatever it pleases, with some lasers for good measure.
 			Alkalabomination: Empowered by the release of the spirits of light and dark, this ghostly creature is able to accumulate much more alkaline material than before.
@@ -4321,7 +4331,7 @@ Mods: {
 			Kraken: Powerful tentacles allow this large cephalopod to stand up against creatures of similar size. It can quickly jet towards any prey using its siphon.
 			GreatStellatedSlime: Its bigger, its greater, it's... much the same as its smaller counterpart, safe for the rain of falling stars it unleashes at its prey.
 			Euryopter: A hovering arthropod-like lifeform, it is reminiscent of long extinct creatures. On close inspection, its claws appear to branch endlessly down in scale...
-			FractalFern: Its debatable whether this entity categorizes as an animal or a plant. It�s firmly rooted in place, yet spontaneously warps to different locations, and it seems to possess some form of special awareness.
+			FractalFern: Its debatable whether this entity categorizes as an animal or a plant. It s firmly rooted in place, yet spontaneously warps to different locations, and it seems to possess some form of special awareness.
 			SparkCrawler: One of the many uncanny creatures inhabiting the Fractal Dimension, this one prefers locomotion by latching onto surrounding strands with its four extendable hooks.
 			Amphisbaena: Perhaps the most familiar life form amongst the overwhelmingly alien biosphere of the Fractal Dimension. Double the heads means double the danger however, meaning it offers little comfort to weary adventurers.
 			MegaMenger: A mechanical organism seemingly bound to the four cardinal directions. Its surface area appears to be infinite, and within this infinity lies an immense amount of energy. It relentlessly hunts weakened prey with its predictable but fatal methods of locomotion, invariably sapping its victim of all energy.

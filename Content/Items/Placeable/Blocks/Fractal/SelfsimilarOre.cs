@@ -128,15 +128,16 @@ namespace Polarities.Content.Items.Placeable.Blocks.Fractal
 
             					float speed = Main.rand.NextFloat(2, 6);
             					if (player.GetModPlayer<PolaritiesPlayer>().selfsimilarHits == 15) speed = Main.rand.NextFloat(2, 12);
-            					//HyperbolicWisp.NewProjectile(worldPosition, localTransform, new Vector2(speed, 0), 0, 0, extraUpdates: 3, ai0: Main.rand.NextFloat(-0.01f, 0.01f));
+            					HyperbolicWisp.NewProjectile(new EntitySource_TileUpdate(i, j), worldPosition, localTransform, new Vector2(speed, 0), 0, 0, extraUpdates: 3, ai0: Main.rand.NextFloat(-0.01f, 0.01f));
             				}
             			}
 
             			HyperbolicTransform transform = HyperbolicTransform.FromPosition((position - worldPosition) / SelfsimilarSentinel.ARENA_RADIUS) * HyperbolicTransform.Rotation((position - worldPosition).ToRotation() + Main.rand.NextFloat(-0.5f, 0.5f));
 
-            			//HyperbolicWisp.NewProjectile(worldPosition, transform, new Vector2(Main.rand.NextFloat(2, 6), 0), 0, 0, extraUpdates: 3, ai0: Main.rand.NextFloat(-0.01f, 0.01f));
+                        //HyperbolicWisp.NewProjectile(Projectile.GetSource_FromThis(), worldPosition, transform, new Vector2(Main.rand.NextFloat(2, 6), 0), 0, 0, extraUpdates: 3, ai0: Main.rand.NextFloat(-0.01f, 0.01f));
+                        HyperbolicWisp.NewProjectile(new EntitySource_TileUpdate(i, j), worldPosition, transform, new Vector2(Main.rand.NextFloat(2, 6), 0), 0, 0, extraUpdates: 3, ai0: Main.rand.NextFloat(-0.01f, 0.01f));
 
-            			player.GetModPlayer<PolaritiesPlayer>().selfsimilarHits++;
+                        player.GetModPlayer<PolaritiesPlayer>().selfsimilarHits++;
             			player.GetModPlayer<PolaritiesPlayer>().selfsimilarHitTimer = 60;
 
             			if (player.GetModPlayer<PolaritiesPlayer>().selfsimilarHits >= 16)
@@ -147,7 +148,7 @@ namespace Polarities.Content.Items.Placeable.Blocks.Fractal
             					{
             						HyperbolicTransform localTransform = HyperbolicTransform.FromPosition((point - worldPosition) / SelfsimilarSentinel.ARENA_RADIUS) * HyperbolicTransform.Rotation((point - worldPosition).ToRotation() + Main.rand.NextFloat(-1f, 1f));
 
-            						//SentinelOreChunk.NewProjectile(worldPosition, localTransform, new Vector2(Main.rand.NextFloat(2, 16), 0), 0, 0, ai0: Main.rand.NextFloat(MathHelper.TwoPi));
+            						SentinelOreChunk.NewProjectile(new EntitySource_TileUpdate(i, j), worldPosition, localTransform, new Vector2(Main.rand.NextFloat(2, 16), 0), 0, 0, ai0: Main.rand.NextFloat(MathHelper.TwoPi));
             					}
             				}
 

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Polarities.Global;
 using Polarities.Content.Items.Placeable.Blocks;
-using Polarities.Content.Items.Materials.PreHardmode;
+using Polarities.Content.Items.Fish;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
