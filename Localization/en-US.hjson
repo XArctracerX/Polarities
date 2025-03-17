@@ -749,7 +749,7 @@ Mods: {
 			}
 
 			GigabatSummonItem: {
-				DisplayName: Gigabat Summon Item
+				DisplayName: Bat Whistle
 				Tooltip:
 					'''
 					Summons Gigabat when used in the caverns
@@ -3652,6 +3652,11 @@ Mods: {
 				DisplayName: Strand Key
 				Tooltip: Unlocks one locked fractal chest or lock box
 			}
+
+			MagnetonElectrisSummonItem: {
+				DisplayName: Supercharged Battery
+				Tooltip: Summons the Polarities
+			}
 		}
 
 		NPCs: {
@@ -3868,7 +3873,12 @@ Mods: {
 			Kraken.DisplayName: Kraken
 			KrakenTentacle.DisplayName: Kraken Tentacle
 			SeaSerpent.DisplayName: Sea Serpent
-			Eclipxie.DisplayName: Eclipxie
+
+			Eclipxie: {
+				DisplayName: Eclipxie
+				BossChecklistIntegration.SpawnInfo: Use a [i:Polarities/SunPixieSummonItem] during an Eclipse.
+			}
+
 			LunaButterfly.DisplayName: Luna Butterfly
 			SolMoth.DisplayName: Sol Moth
 			Hemorrphage.DisplayName: Hemorrphage
@@ -3903,7 +3913,11 @@ Mods: {
 			OrthoconicHitbox.DisplayName: Orthoconic Hitbox
 			Instability.DisplayName: Instability
 			Electris.DisplayName: Electris
-			Magneton.DisplayName: Magneton
+
+			Magneton: {
+				DisplayName: Magneton
+				BossChecklistIntegration.EntryName: Magneton Electris
+			}
 		}
 
 		Projectiles: {
@@ -4426,6 +4440,24 @@ Mods: {
 		Misc: {
 			UnboundHotkey: an unbound hotkey
 			Extra: ""
+		}
+
+		BossChecklistIntegration: {
+			Mods: {
+				Polarities: {
+					BiomeName: {
+						HallowInvasion: {
+							EntryName: "{$Mods.Polarities.BiomeName.HallowInvasion}"
+							SpawnInfo: Use a [i:5944], or wait after defeating any mechanical boss.
+						}
+
+						WorldEvilInvasion: {
+							EntryName: "{$Mods.Polarities.BiomeName.WorldEvilInvasion}"
+							SpawnInfo: Use a [i:5946], or wait after defeating every mechanical boss.
+						}
+					}
+				}
+			}
 		}
 	}
 }
