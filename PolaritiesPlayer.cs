@@ -86,6 +86,7 @@ namespace Polarities
         public int incineration;
         public int incinerationResistanceTime;
         public bool coneVenom;
+		public bool magnetized;
         public float runSpeedBoost;
         public float spawnRate;
         public bool solarEnergizer;
