@@ -162,4 +162,21 @@ namespace Polarities.Content.Items.Placeable.Bars
                 .Register();
         }
     }
+
+    public class PolarizedBar : BarBase
+    {
+        public override int BarIndex => 5;
+        public override int? DustIndex => DustType<MantellarDust>();
+
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+
+            Item.width = 30;
+            Item.height = 36;
+
+            Item.value = 10000;
+            Item.rare = ItemRarityID.Red;
+        }
+    }
 }
