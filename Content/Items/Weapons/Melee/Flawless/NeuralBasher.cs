@@ -31,7 +31,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Flawless
 
             Item.useTime = 20;
             Item.useAnimation = 20;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = 5;
             Item.noMelee = true;
             Item.noUseGraphic = true;
             Item.UseSound = SoundID.Item1;

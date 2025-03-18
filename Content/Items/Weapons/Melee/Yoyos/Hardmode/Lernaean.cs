@@ -27,7 +27,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Yoyos.Hardmode
             Item.SetWeaponValues(35, 4, 0);
             Item.DamageType = DamageClass.Melee;
 
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = 5;
             Item.width = 34;
             Item.height = 38;
             Item.useAnimation = 25;

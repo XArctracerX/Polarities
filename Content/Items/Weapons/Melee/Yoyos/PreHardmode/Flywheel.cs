@@ -30,7 +30,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Yoyos.PreHardmode
             Item.width = 44;
             Item.height = 38;
 
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = 5;
             Item.useAnimation = 25;
             Item.useTime = 25;
             Item.shootSpeed = 16f;
