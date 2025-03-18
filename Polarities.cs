@@ -173,14 +173,53 @@ namespace Polarities
 			//boss checklist support
 			if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
 			{
-				bossChecklist.Call("AddEvent", this, "$Mods.Polarities.BiomeName.HallowInvasion",
+				bossChecklist.Call(
+					"LogEvent", 
+					this, 
+					"Rapture",
+					11.4f,
+					() => PolaritiesSystem.downedHallowInvasion,
+					new List<int> { ModContent.NPCType<Pegasus>(), ModContent.NPCType<IlluminantScourer>(), ModContent.NPCType<SunServitor>(), ModContent.NPCType<Aequorean>(), ModContent.NPCType<SunKnight>(), ModContent.NPCType<Trailblazer>(), ModContent.NPCType<Painbow>() },
+					new Dictionary<string,object>()
+					{
+						["spawnItems"] = ModContent.ItemType<HallowInvasionSummonItem>()
+					}
+				);
+				
+				bossChecklist.Call(
+					"LogEvent", 
+					this, 
+					"Pestilence",
+					11.6f,
+					() => PolaritiesSystem.downedWorldEvilInvasion,
+					new List<int> { ModContent.NPCType<RavenousCursed>(), ModContent.NPCType<LivingSpine>(), ModContent.NPCType<LightEater>(), ModContent.NPCType<Crimago>(), ModContent.NPCType<TendrilAmalgam>(), ModContent.NPCType<Uraraneid>() },
+					new Dictionary<string,object>()
+					{
+						["spawnItems"] = ModContent.ItemType<WorldEvilInvasionSummonItem>(),
+						["collectibles"] = new List<int> { ModContent.ItemType<PestilenceMusicBox>() },
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) => {
+							Texture2D texture = Request<Texture2D>("Polarities/Textures/BossChecklist/WorldEvilInvasion").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						}
+					}
+				);
+				
+				/*bossChecklist.Call(
+					"AddEvent", 
+					this, 
+					"$Mods.Polarities.BiomeName.HallowInvasion",
 					new List<int> { NPCType<Pegasus>(), NPCType<IlluminantScourer>(), NPCType<SunServitor>(), NPCType<Aequorean>(), NPCType<SunKnight>(), NPCType<Trailblazer>(), NPCType<Painbow>() }, //enemies
 					11.4f, () => PolaritiesSystem.downedHallowInvasion, () => true,
 					new List<int> { }, //collection
 					ModContent.ItemType<HallowInvasionSummonItem>(), //spawning
 					"Use a [i:" + ItemType<HallowInvasionSummonItem>() + "], or wait after defeating any mechanical boss."
 				);
-				bossChecklist.Call("AddEvent", this, "$Mods.Polarities.BiomeName.WorldEvilInvasion",
+				
+				bossChecklist.Call(
+					"AddEvent", 
+					this, 
+					"$Mods.Polarities.BiomeName.WorldEvilInvasion",
 					new List<int> { NPCType<RavenousCursed>(), NPCType<LivingSpine>(), NPCType<LightEater>(), NPCType<Crimago>(), NPCType<TendrilAmalgam>(), NPCType<Uraraneid>() }, //enemies
 					11.6f, () => PolaritiesSystem.downedWorldEvilInvasion, () => true,
 					new List<int> { ItemType<PestilenceMusicBox>() }, //collection
@@ -192,7 +231,7 @@ namespace Polarities
 						Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
 						sb.Draw(texture, centered, color);
 					}
-				);
+				);*/
 
 				bossChecklist.Call(
 					"LogBoss",
