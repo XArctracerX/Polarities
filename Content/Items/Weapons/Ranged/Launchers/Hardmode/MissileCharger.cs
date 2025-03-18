@@ -62,18 +62,13 @@ namespace Polarities.Content.Items.Weapons.Ranged.Launchers.Hardmode
 			return false;
 		}
 
-		public override Vector2? HoldoutOffset() {
-			return Vector2.Zero;
-		}
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-19, -3);
+        }
 
-        public override void AddRecipes() {
-            //    ModRecipe recipe = new ModRecipe(mod);
-            //    recipe.AddIngredient(ItemID.RocketLauncher);
-            //    recipe.AddIngredient(ItemType<Items.Placeable.PolarizedBar>(),13);
-            //    recipe.AddIngredient(ItemType<SmiteSoul>(),6);
-            //    recipe.AddTile(TileID.MythrilAnvil);
-            //    recipe.SetResult(this);
-            //    recipe.AddRecipe();
+        public override void AddRecipes() 
+        {
             CreateRecipe()
                     .AddIngredient(ItemID.RocketLauncher)
                     .AddIngredient(ItemType<Placeable.Bars.PolarizedBar>(), 13)

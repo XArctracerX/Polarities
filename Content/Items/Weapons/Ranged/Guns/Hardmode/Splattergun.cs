@@ -26,7 +26,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
             Item.useTime = 48;
             Item.useAnimation = 48;
 
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = 5;
             Item.noMelee = true;
 
             Item.value = Item.sellPrice(gold: 5);

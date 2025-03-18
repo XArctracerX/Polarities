@@ -41,7 +41,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
             Item.autoReuse = true;
 
             Item.useAmmo = AmmoID.Bullet;
-            Item.shoot = ProjectileID.PurificationPowder;
+            Item.shoot = 10;
             Item.shootSpeed = 8f;
         }
 

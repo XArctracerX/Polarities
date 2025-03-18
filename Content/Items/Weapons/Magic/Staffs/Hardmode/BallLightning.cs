@@ -119,7 +119,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Staffs.Hardmode
             return true;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             SoundEngine.PlaySound(SoundID.NPCDeath14, Projectile.Center);
@@ -185,7 +185,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Staffs.Hardmode
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 4; i++)
             {

@@ -34,6 +34,7 @@ namespace Polarities.Global
     public class PlanteraFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { Color.Lime, Color.HotPink }; }
     public class BetsyFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { new Color(188, 62, 68), new Color(137, 85, 169), new Color(255, 254, 182) }; }
     public class EmpressFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { Color.Magenta, Color.White, Color.Yellow, Color.White, Color.Cyan, Color.White }; }
+    public class ConvectiveWandererFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { new Color(255, 156, 32), Color.White, new Color(5, 227, 255), Color.White }; }
 
     //an overly complex random walk-based rarity that doesn't actually look that good in this instance
     //could be good to try things like this for other rarities though

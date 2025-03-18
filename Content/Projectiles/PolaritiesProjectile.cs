@@ -176,11 +176,21 @@ namespace Polarities.Content.Projectiles
 
         public bool candyCaneAtlatl;
         public bool bloodsplosion = false;
+        public int railgunShockwaves;
 
+        int railgunTimer;
         public override bool PreAI(Projectile projectile)
         {
             if (generalHitCooldown > 0) generalHitCooldown--;
             if (projectileHitCooldown > 0) projectileHitCooldown--;
+
+            if (railgunShockwaves > 0)
+            {
+                if (railgunTimer++ % railgunShockwaves == 0)
+                {
+                    Projectile.NewProjectile(projectile.GetSource_FromAI(), projectile.Center, Vector2.Zero, ProjectileType<RailgunShockwave>(), projectile.damage, projectile.knockBack, projectile.owner);
+                }
+            }
 
             if (projectile.aiStyle == 7)
             {
@@ -197,7 +207,7 @@ namespace Polarities.Content.Projectiles
                         int num538 = 3;
                         for (int num539 = 0; num539 < num537; num539++)
                         {
-                            Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Enchanted_Pink, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 150, default(Color), 1.2f);
+                            Dust.NewDust(projectile.position, projectile.width, projectile.height, 58, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 150, default(Color), 1.2f);
                         }
                         for (int num540 = 0; num540 < num538; num540++)
                         {
@@ -206,7 +216,7 @@ namespace Polarities.Content.Projectiles
                         }
                         for (int num542 = 0; num542 < 4; num542++)
                         {
-                            Dust.NewDust(projectile.position + new Vector2(Main.rand.Next(projectile.width - 16), Main.rand.Next(projectile.height - 16)), projectile.width, projectile.height, DustID.Enchanted_Gold, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 150, default(Color), 1.2f);
+                            Dust.NewDust(projectile.position + new Vector2(Main.rand.Next(projectile.width - 16), Main.rand.Next(projectile.height - 16)), projectile.width, projectile.height, 57, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 150, default(Color), 1.2f);
                         }
                         for (int num543 = 0; num543 < 3; num543++)
                         {
@@ -310,16 +320,6 @@ namespace Polarities.Content.Projectiles
 
             Player player = Main.player[projectile.owner];
 
-            if (bloodsplosion)
-            {
-                bloodsplosion = false;
-                Projectile.NewProjectile(projectile.GetSource_FromAI(), target.Center, Main.player[projectile.owner].velocity, ProjectileType<Bloodsplosion>(), 6, 2, projectile.owner, Main.rand.NextFloat(MathHelper.Pi * 2), projectile.whoAmI);
-                for (int i = 0; i < 4; i++)
-                {
-                    Projectile.NewProjectile(projectile.GetSource_FromAI(), target.Center, Main.player[projectile.owner].velocity, ProjectileType<Bloodsplosion>(), 6, 2, projectile.owner, Main.rand.NextFloat(MathHelper.Pi * 2), projectile.whoAmI); ;
-                }
-            }
-
             if (candyCaneAtlatl)
             {
                 candyCaneAtlatl = false;
@@ -328,6 +328,16 @@ namespace Polarities.Content.Projectiles
                 if (player.GetModPlayer<PolaritiesPlayer>().candyCaneAtlatlBoost >= 60 * 15)
                 {
                     player.GetModPlayer<PolaritiesPlayer>().candyCaneAtlatlBoost = 60 * 15;
+                }
+            }
+
+            if (bloodsplosion)
+            {
+                bloodsplosion = false;
+                Projectile.NewProjectile(projectile.GetSource_FromAI(), target.Center, Main.player[projectile.owner].velocity, ProjectileType<Bloodsplosion>(), 6, 2, projectile.owner, Main.rand.NextFloat(MathHelper.Pi * 2), projectile.whoAmI);
+                for (int i = 0; i < 4; i++)
+                {
+                    Projectile.NewProjectile(projectile.GetSource_FromAI(), target.Center, Main.player[projectile.owner].velocity, ProjectileType<Bloodsplosion>(), 6, 2, projectile.owner, Main.rand.NextFloat(MathHelper.Pi * 2), projectile.whoAmI); ;
                 }
             }
 

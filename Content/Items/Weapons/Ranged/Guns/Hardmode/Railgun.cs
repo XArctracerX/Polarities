@@ -26,9 +26,9 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
 			trueDamage = 400;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 60;
-			Item.height = 20;
+			Item.height = 50;
 			Item.useTime = 33;
-			Item.useAnimation = 33	;
+			Item.useAnimation = 33;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.noMelee = true;
 			Item.knockBack = 20;
@@ -66,7 +66,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
 
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref System.Int32 type, ref System.Int32 damage, ref System.Single knockback)
         {
-			position += new Vector2(Item.width, 0).RotatedBy(velocity.ToRotation());
+			position += new Vector2(Item.width, 5).RotatedBy(velocity.ToRotation());
         }
 
         public override System.Boolean Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, System.Int32 type, System.Int32 damage, System.Single knockback)
@@ -115,18 +115,8 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
 		}
 
 		public override Vector2? HoldoutOffset() {
-			return Vector2.Zero;
-		}
-
-   //     public override void AddRecipes() {
-   //         ModRecipe recipe = new ModRecipe(mod);
-			//recipe.AddIngredient(ItemID.SniperRifle);
-			//recipe.AddIngredient(ItemType<Items.Placeable.PolarizedBar>(),13);
-   //         recipe.AddIngredient(ItemType<SmiteSoul>(),6);
-   //         recipe.AddTile(TileID.MythrilAnvil);
-   //         recipe.SetResult(this);
-   //         recipe.AddRecipe();
-   //     }
+            return new Vector2(-17, -3);
+        }
 	}
 
 	public class RailgunShockwave : ModProjectile

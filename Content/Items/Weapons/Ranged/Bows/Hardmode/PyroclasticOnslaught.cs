@@ -38,7 +38,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Bows.Hardmode
             Item.UseSound = SoundID.Item5;
             Item.autoReuse = true;
 
-            Item.shoot = ProjectileID.PurificationPowder;
+            Item.shoot = 10;
             Item.shootSpeed = 12f;
 
             Item.value = 100000;
