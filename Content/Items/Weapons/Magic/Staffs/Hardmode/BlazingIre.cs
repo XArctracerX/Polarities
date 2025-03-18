@@ -30,12 +30,12 @@ namespace Polarities.Content.Items.Weapons.Magic.Staffs.Hardmode
             Item.height = 64;
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useStyle = 1;
             Item.noMelee = true;
             Item.noUseGraphic = true;
 
             Item.value = Item.sellPrice(gold: 5);
-            Item.rare = ItemRarityID.LightPurple;
+            Item.rare = 6;
 
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
@@ -52,13 +52,13 @@ namespace Polarities.Content.Items.Weapons.Magic.Staffs.Hardmode
         {
             if (player.altFunctionUse == 2)
             {
-                Item.useStyle = ItemUseStyleID.Thrust;
+                Item.useStyle = 3;
                 Item.shootSpeed = 2.5f;
                 Item.shoot = ProjectileType<BlazingIreSpear>();
             }
             else
             {
-                Item.useStyle = ItemUseStyleID.Swing;
+                Item.useStyle = 1;
                 Item.shootSpeed = 20f;
                 Item.shoot = ProjectileType<BlazingIreJavelin>();
             }
@@ -177,7 +177,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Staffs.Hardmode
                 float r = Main.rand.NextFloat(6f);
                 float theta = Main.rand.NextFloat(MathHelper.TwoPi);
                 Vector2 dustVel = new Vector2((float)Math.Cos(theta) * r, -(float)Math.Sin(theta) * r);
-                Dust dust = Main.dust[Dust.NewDust(dustPos, 0, 0, DustID.Firework_Yellow, dustVel.X, dustVel.Y)];
+                Dust dust = Main.dust[Dust.NewDust(dustPos, 0, 0, 133, dustVel.X, dustVel.Y)];
                 dust.noGravity = true;
                 dust.scale = 1.2f;
             }
