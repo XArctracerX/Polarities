@@ -100,21 +100,9 @@ Mods: {
 			FractalOreTile.MapEntry: Fractal Ore
 			SelfsimilarOreTile.MapEntry: Selfsimilar Ore
 			FractalBiomeChestTile.MapEntry: Fractal Biome Chest
-
-			FractalAssemblerTile: {
-				DisplayName: Fractal Assembler
-				MapEntry: Fractal Assembler
-			}
-
-			FractalChestTile: {
-				MapEntry: Fractal Chest
-				MapEntry0: Fractal Chest
-				MapEntry1: Fractal Chest
-			}
-
+			FractalChestTile.MapEntry: Fractal Chest
 			BookTile.MapEntry: Book
 			BannerTile.MapEntry: Banner Tile
-			CrateTile.MapEntry: Crate Tile
 		}
 
 		WorldGenPass: {
@@ -317,7 +305,7 @@ Mods: {
 			}
 
 			DestroyerBookBuff: {
-				DisplayName: A Fight to Remember
+				DisplayName: A Fight To Remember
 				Description: You have ultimate mining and building abilities
 			}
 
@@ -342,12 +330,12 @@ Mods: {
 			}
 
 			LunaticCultistBookBuff: {
-				DisplayName: The Haunter of the Stars
+				DisplayName: The Haunter Of The Stars
 				Description: Class damage is increased when near the celestial pillar corresponding to that class
 			}
 
 			MoonLordBookBuff: {
-				DisplayName: The Call of the Moon Lord
+				DisplayName: The Call Of The Moon Lord
 				Description: Your attacks have lifesteal
 			}
 
@@ -367,7 +355,7 @@ Mods: {
 			}
 
 			SunPixieBookBuff: {
-				DisplayName: The Wings on Our Star
+				DisplayName: The Wings On Our Star
 				Description: You leave behind a solar trail
 			}
 
@@ -392,7 +380,7 @@ Mods: {
 			}
 
 			EyeOfCthulhuBookBuff: {
-				DisplayName: A Throng of Eyes and Fliers
+				DisplayName: A Throng Of Eyes And Fliers
 				Description: Being hit summons demon eyes to protect you
 			}
 
@@ -407,7 +395,7 @@ Mods: {
 			}
 
 			QueenBeeBookBuff: {
-				DisplayName: Queen of the Bees
+				DisplayName: Queen Of The Bees
 				Description: Summons a ring of bees around the cursor
 			}
 
@@ -417,7 +405,7 @@ Mods: {
 			}
 
 			StarConstructBookBuff: {
-				DisplayName: The Construct out of Space
+				DisplayName: The Construct Out Of Space
 				Description: Defense is boosted while latched via a hook
 			}
 
@@ -436,12 +424,10 @@ Mods: {
 			}
 
 			WallOfFleshBookBuff: {
-				DisplayName: The Perks of Being a Wall Tower
+				DisplayName: The Perks Of Being A Wall Tower
 				Description: Max life is boosted
 			}
 
-			//
-			
 			ToxicShock: {
 				DisplayName: Toxic Shock
 				Description: "'Shocking'"
@@ -467,27 +453,27 @@ Mods: {
 
 			PhagocyteBuff: {
 				DisplayName: Phagocyte Buff
-				Description: ""
+				Description: Mods.Polarities.Buffs.PhagocyteBuff.Description
 			}
 
 			Observed: {
 				DisplayName: Observed
-				Description: ""
-			}
-
-			CloakofPocketsCooldown: {
-				DisplayName: Cloak Of Pockets Cooldown
-				Description: You have seen too much
+				Description: Mods.Polarities.Buffs.Observed.Description
 			}
 
 			SolarEyeBuff: {
 				DisplayName: Solar Eye Buff
-				Description: The solar eye will watch over you
+				Description: The solar eye will fight for you
 			}
 
-			SolarCalibratorBuff: {
-				DisplayName: Solar Calibrator Buff
-				Description: All attacks are guaranteed to crit
+			MagnetArrowBuff: {
+				DisplayName: Magnet Arrow Buff
+				Description: YEAH, -----! MAGNETS!
+			}
+
+			Polariminis: {
+				DisplayName: Polariminis
+				Description: The polariminis will fight for you
 			}
 		}
 
@@ -712,25 +698,6 @@ Mods: {
 					'''
 			}
 
-			CloakofPockets: {
-				DisplayName: Cloak Of Pockets
-				Tooltip: ""
-			}
-
-			SentinelsHeart: {
-				DisplayName: Sentinels Heart
-				Tooltip:
-					'''
-					Grants the player additional health, and a boost to defense while this additional health is retained
-					When this additional health is lost, released homing wisps to damage enemies
-					'''
-			}
-
-			SolarCalibrator: {
-				DisplayName: Solar Calibrator
-				Tooltip: Gives the player a guarantee to crit enemies for a short time after dealing a certain amount of damage
-			}
-
 			//Summon Items
 			AltBiomeMimicSummon: {
 				DisplayName: Weird Key of Night
@@ -752,7 +719,7 @@ Mods: {
 			}
 
 			GigabatSummonItem: {
-				DisplayName: Bat Whistle
+				DisplayName: Gigabat Summon Item
 				Tooltip:
 					'''
 					Summons Gigabat when used in the caverns
@@ -853,27 +820,7 @@ Mods: {
 				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
 			}
 
-			RiftDenizenBag: {
-				DisplayName: Treasure Bag (Rift Denizen)
-				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
-			}
-
-			SelfsimilarSentinelBag: {
-				DisplayName: Treasure Bag (Selfsimilar Sentinel)
-				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
-			}
-
-			EclipxieBag: {
-				DisplayName: Treasure Bag (EclipxieBag)
-				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
-			}
-
 			//Materials
-			EclipxieDust: {
-				DisplayName: Eclipxie Dust
-				Tooltip: ""
-			}
-
 			AlkalineFluid: {
 				DisplayName: Alkaline Fluid
 				Tooltip: ""
@@ -895,7 +842,7 @@ Mods: {
 			}
 
 			EvilDNA: {
-				DisplayName: Evil D N A
+				DisplayName: Evil DNA
 				Tooltip: ""
 			}
 
@@ -1054,17 +1001,6 @@ Mods: {
 				Tooltip: Spews ducks
 			}
 
-			//Pickaxes
-			FractalPickaxe: {
-				DisplayName: Fractal Pickaxe
-				Tooltip: ""
-			}
-
-			SelfsimilarPickaxe: {
-				DisplayName: Selfsimilar Pickaxe
-				Tooltip: ""
-			}
-
 			//Multi
 			SunplateHamaxe: {
 				DisplayName: Sunplate Hamaxe
@@ -1088,7 +1024,7 @@ Mods: {
 
 			PhagefootHook: {
 				DisplayName: Phagefoot Hook
-				Tooltip: ""
+				Tooltip: Throws esophageous hooks that lift you
 			}
 
 			EndlessHook: {
@@ -1155,16 +1091,6 @@ Mods: {
 
 			RiftDenizenMask: {
 				DisplayName: Rift Denizen Mask
-				Tooltip: ""
-			}
-
-			SelfsimilarSentinelMask: {
-				DisplayName: Selfsimilar Sentinel Mask
-				Tooltip: ""
-			}
-
-			EclipxieMask: {
-				DisplayName: Eclipxie Mask
 				Tooltip: ""
 			}
 
@@ -1338,22 +1264,22 @@ Mods: {
 			}
 
 			ConvectiveHelmetMagic: {
-				DisplayName: Convective Hood
+				DisplayName: Convective Helmet Magic
 				Tooltip: 6% increased magic damage and critical strike chance
 			}
 
 			ConvectiveHelmetMelee: {
-				DisplayName: Convective Faceplate
+				DisplayName: Convective Helmet Melee
 				Tooltip: 6% increased melee damage and critical strike chance
 			}
 
 			ConvectiveHelmetRanged: {
-				DisplayName: Convective Visor
+				DisplayName: Convective Helmet Ranged
 				Tooltip: 6% increased ranged damage and critical strike chance
 			}
 
 			ConvectiveHelmetSummon: {
-				DisplayName: Convective Mask
+				DisplayName: Convective Helmet Summon
 				Tooltip:
 					'''
 					6% increased summon damage
@@ -1388,82 +1314,6 @@ Mods: {
 					10% increased movement speed
 					Grants the ability to swim
 					'''
-			}
-
-			FractalHelmetMage: {
-				DisplayName: Fractal Hood
-				Tooltip:
-					'''
-					Maximum life lost to fractalization is divided by 1.25
-					10% increased magic damage
-					'''
-			}
-
-			FractalHelmetMelee: {
-				DisplayName: Fractal Faceplate
-				Tooltip:
-					'''
-					Maximum life lost to fractalization is divided by 1.25
-					10% increased melee damage
-					'''
-			}
-
-			FractalHelmetRanger: {
-				DisplayName: Fractal Visor
-				Tooltip:
-					'''
-					Maximum life lost to fractalization is divided by 1.25
-					10% increased ranged damage
-					'''
-			}
-
-			FractalHelmetSummoner: {
-				DisplayName: Fractal Mask
-				Tooltip:
-					'''
-					Maximum life lost to fractalization is divided by 1.25
-					10% increased minion damage
-					'''
-			}
-
-			FractalBreastplate: {
-				DisplayName: Fractal Breastplate
-				Tooltip: Maximum life lost to fractalization is divided by 1.33
-			}
-
-			FractalGreaves: {
-				DisplayName: Fractal Greaves
-				Tooltip: Maximum life lost to fractalization is divided by 1.2
-			}
-
-			SelfsimilarHelmetMage: {
-				DisplayName: Selfsimilar Hood
-				Tooltip: ""
-			}
-
-			SelfsimilarHelmetMelee: {
-				DisplayName: Selfsimilar Faceplate
-				Tooltip: ""
-			}
-
-			SelfsimilarHelmetRanger: {
-				DisplayName: Selfsimilar Visor
-				Tooltip: ""
-			}
-
-			SelfsimilarHelmetSummoner: {
-				DisplayName: Selfsimilar Mask
-				Tooltip: ""
-			}
-
-			SelfsimilarBreastplate: {
-				DisplayName: Selfsimilar Breastplate
-				Tooltip: ""
-			}
-
-			SelfsimilarGreaves: {
-				DisplayName: Selfsimilar Greaves
-				Tooltip: ""
 			}
 
 			//Weapons
@@ -1864,7 +1714,7 @@ Mods: {
 
 			GliderGun: {
 				DisplayName: Glider Gun
-				Tooltip: ""
+				Tooltip: When a glider hits a target, all other gliders will target it
 			}
 
 			Flarecaller: {
@@ -2308,93 +2158,6 @@ Mods: {
 					'''
 			}
 
-			Radial: {
-				DisplayName: Radial
-				Tooltip: Creates a swarm of radial blades around the cursor which ignore up to 20 enemy defense
-			}
-
-			CosmicDiscs: {
-				DisplayName: Cosmic Discs
-				Tooltip: ""
-			}
-
-			MoonDisc: {
-				DisplayName: Lunarang
-				Tooltip: ""
-			}
-
-			SunDisc: {
-				DisplayName: Solarang
-				Tooltip: ""
-			}
-
-			BlackLight: {
-				DisplayName: Black Light
-				Tooltip:
-					'''
-					'Where does it end?' 
-					'Doesn't.'
-					'''
-			}
-
-			FractalScythe: {
-				DisplayName: Fractal Scythe
-				Tooltip: Shoots a wave of fractal energy that splits on hitting enemies
-			}
-
-			FractalSword: {
-				DisplayName: Fractal Sword
-				Tooltip:
-					'''
-					Inflicts chaos state on striking enemies
-					Deals double damage to enemies with chaos state
-					'''
-			}
-
-			SelfsimilarSlasher: {
-				DisplayName: Selfsimilar Slasher
-				Tooltip: Shoots a splitting wave of selfsimilar energy
-			}
-
-			SelfsimilarSword: {
-				DisplayName: Selfsimilar Sword
-				Tooltip:
-					'''
-					Inflicts chaos state on striking enemies
-					Deals double damage to enemies with chaos state
-					'''
-			}
-
-			FractalBow: {
-				DisplayName: Fractal Bow
-				Tooltip: Shoots a mini fractal bow which fires an arrow at the cursor
-			}
-
-			SelfsimilarBow: {
-				DisplayName: Selfsimilar Bow
-				Tooltip: Shoots four mini selfsimilar bows, which fire arrows at the cursor
-			}
-
-			Sunsliver: {
-				DisplayName: Sunsliver
-				Tooltip: Fires streams of arrows at varying speeds
-			}
-
-			CantorShot: {
-				DisplayName: Cantor Shot
-				Tooltip: Shoots a fractal spray of bullets
-			}
-
-			Iterator: {
-				DisplayName: Iterator
-				Tooltip: Shoots a fractal spread of bullets which cause the weapon to shoot more bullets on hitting enemies
-			}
-
-			SolarEyeStaff: {
-				DisplayName: Solar Eye Staff
-				Tooltip: Summons a solar eye to protect you
-			}
-
 			//Critter Items
 			BabyWandererItem: {
 				DisplayName: Baby Wanderer
@@ -2508,16 +2271,6 @@ Mods: {
 				Tooltip: ""
 			}
 
-			SelfsimilarSentinelRelic: {
-				DisplayName: Selfsimilar Sentinel Relic
-				Tooltip: ""
-			}
-
-			EclipxieRelic: {
-				DisplayName: Eclipxie Relic
-				Tooltip: ""
-			}
-
 			//Trophies
 			ConvectiveWandererTrophy: {
 				DisplayName: Convective Wanderer Trophy
@@ -2559,16 +2312,6 @@ Mods: {
 				Tooltip: ""
 			}
 
-			SelfsimilarSentinelTrophy: {
-				DisplayName: Selfsimilar Sentinel Trophy
-				Tooltip: ""
-			}
-
-			EclipxieTrophy: {
-				DisplayName: Eclipxie Trophy
-				Tooltip: ""
-			}
-
 			//Ammo
 			ChlorophyteDart: {
 				DisplayName: Chlorophyte Dart
@@ -2601,7 +2344,7 @@ Mods: {
 			}
 
 			WoodenDartEndless: {
-				DisplayName: Wooden Dart Endless
+				DisplayName: Endless Wooden Dart Bag
 				Tooltip: ""
 			}
 
@@ -3072,13 +2815,8 @@ Mods: {
 				Tooltip: ""
 			}
 
-			FractalWorkBench: {
-				DisplayName: Fractal Work Bench
-				Tooltip: ""
-			}
-
-			FractalFence: {
-				DisplayName: Fractal Fence
+			FractalWorkbench: {
+				DisplayName: Fractal Workbench
 				Tooltip: ""
 			}
 
@@ -3251,11 +2989,7 @@ Mods: {
 			//Books
 			StrangeObituary: {
 				DisplayName: Strange Obituary
-				Tooltip:
-					'''
-					Makes you die in one hit
-					Does not count as a book buff
-					'''
+				Tooltip: Makes you die in one hit\nDoes not count as a book buff
 			}
 
 			BetsyBook: {
@@ -3665,14 +3399,197 @@ Mods: {
 				Tooltip: Unlocks one locked fractal chest or lock box
 			}
 
-			SaltCrate: {
-				DisplayName: Salt Crate
-				Tooltip: ""
+			Sunsliver: {
+				DisplayName: Sunsliver
+				Tooltip: Fires eclipse arrows that burst into piercing and explosive arrows
 			}
 
-			PickledHerring: {
-				DisplayName: Pickled Herring
-				Tooltip: ""
+			SunDisc: {
+				DisplayName: Solarang
+				Tooltip: Throws a Sun Disc that shoots fire and orbits enemies
+			}
+
+			MoonDisc: {
+				DisplayName: Moon Disc
+				Tooltip: Throws a Moon Disc that targets enemies and pulses with cold flames
+			}
+
+			CosmicDiscs: {
+				DisplayName: Cosmic Discs
+				Tooltip: Throws a Sun Disc and Moon Disc simultaneously
+			}
+
+			SolarEyeStaff: {
+				DisplayName: Solar Eye Staff
+				Tooltip: Summons solar eyes to fight for you
+			}
+
+			BlackLight: {
+				DisplayName: Black Light
+				Tooltip: "'May cause vision problems. And third degree burns.'"
+			}
+
+			FractalScythe: {
+				DisplayName: Fractal Scythe
+				Tooltip: Fires a splitting beam of energy
+			}
+
+			SelfsimilarSlasher: {
+				DisplayName: Selfsimilar Slasher
+				Tooltip: Fires a splitting beam of energy
+			}
+
+			FractalSword: {
+				DisplayName: Fractal Sword
+				Tooltip: Summons ghost swords to attack enemies on hit
+			}
+
+			SelfsimilarSword: {
+				DisplayName: Selfsimilar Sword
+				Tooltip:
+					'''
+					Summons ghost swords to attack enemies on hit
+					Ghost swords can summon up to three additional copies
+					'''
+			}
+
+			FractalBow: {
+				DisplayName: Fractal Bow
+				Tooltip: Shoots a bow that shoots an arrow
+			}
+
+			SelfsimilarBow: {
+				DisplayName: Selfsimilar Bow
+				Tooltip: Shoots four bows that shoot arrows
+			}
+
+			CantorShot: {
+				DisplayName: Cantor Shot
+				Tooltip: Fires a line of bullets that travel at different speeds
+			}
+
+			Iterator: {
+				DisplayName: Iterator
+				Tooltip:
+					'''
+					Fires a line of bullets that travel at different speeds
+					Fires additional bullets on hit
+					'''
+			}
+
+			Radial: {
+				DisplayName: Radial
+				Tooltip:
+					'''
+					Creates a swarm of radial blades
+					Blades ignore up to 20 points of enemy defense
+					'''
+			}
+
+			ElectricArrow: {
+				DisplayName: Electric Arrow
+				Tooltip: Creates an electric field upon impact
+			}
+
+			MagneticArrow: {
+				DisplayName: Magnetic Arrow
+				Tooltip: Homes in on enemies
+			}
+
+			ArcBolter: {
+				DisplayName: Arc Bolter
+				Tooltip:
+					'''
+					Summons a ring of arrows around the cursor
+					Electrifies and magnetizes wooden arrows
+					'''
+			}
+
+			BallLightning: {
+				DisplayName: Ball Lightning
+				Tooltip: Summons a ball of lightning that shoots nearby enemies
+			}
+
+			DiamagneticDischarge: {
+				DisplayName: Diamagnetic Discharge
+				Tooltip: Fires bolts of lightning and homing magnetic projectiles
+			}
+
+			DipoleStaff: {
+				DisplayName: Dipole Staff
+				Tooltip: Summons miniature polarities to protect you
+			}
+
+			ElectricEdge: {
+				DisplayName: Electric Edge
+				Tooltip: "'Rain lightning upon your foes'"
+			}
+
+			EMP: {
+				DisplayName: E.M.P.
+				Tooltip: Releases an electromagnetic pulse that can redirect projectiles
+			}
+
+			MagneticStreams: {
+				DisplayName: Magnetic Streams
+				Tooltip:
+					'''
+					Fires arcing beams of light
+					'Hey look! It's the Polarities Mod!'
+					'''
+			}
+
+			Orbital: {
+				DisplayName: Orbital
+				Tooltip: Creates electron clouds
+			}
+
+			Railgun: {
+				DisplayName: Railgun
+				Tooltip:
+					'''
+					Accelerates bullets to insane speeds via the power of magnets, causing them to produce shockwaves
+					While not firing, the weapon increases in power
+					'''
+			}
+
+			MissileCharger: {
+				DisplayName: Missile Charger
+				Tooltip: Magnetizes fired rockets
+			}
+
+			WandererFlawless: {
+				DisplayName: Superheated Carver
+				Tooltip:
+					'''
+					Consumes blocks to release incinerating tendrils
+					Right-click to toggle mining mode
+					Hold DOWN to stop releasing tendrils
+					'''
+			}
+
+			ForceProjector: {
+				DisplayName: Force Projector
+				Tooltip: Encases thrown darts in force fields
+			}
+
+			DeathAttractor: {
+				DisplayName: Death Attractor
+				Tooltip:
+					'''
+					Attracts shards of metal from offscreen
+					'He's right behind me, isn't he?'
+					'''
+			}
+
+			SmiteSoul: {
+				DisplayName: Soul of Smite
+				Tooltip: "'The essence of electricity'"
+			}
+
+			PolarizedBar: {
+				DisplayName: Polarized Bar
+				Tooltip: "'Emits a deep magnetic hum'"
 			}
 		}
 
@@ -3950,7 +3867,6 @@ Mods: {
 			Instability.DisplayName: Instability
 			Electris.DisplayName: Electris
 			Magneton.DisplayName: Magneton
-			PlanetPixie.DisplayName: Planet Pixie
 		}
 
 		Projectiles: {
@@ -4262,45 +4178,49 @@ Mods: {
 			ObserverOrbMinion.DisplayName: Observer Orb Minion
 			StardustPillarMinion.DisplayName: Stardust Pillar Minion
 			StardustWeaverMinion.DisplayName: Stardust Weaver Minion
-			FractalMagicSword.DisplayName: Fractal Magic Sword
-			FractalMeleeShield.DisplayName: Fractal Melee Shield
-			FractalRangerTarget.DisplayName: Fractal Ranger Target
-			FractalSummonerOrb.DisplayName: Fractal Summoner Orb
-			SentinelHeartWisp.DisplayName: Sentinel Heart Wisp
-			SelfsimilarMagicSword.DisplayName: Selfsimilar Magic Sword
-			SelfsimilarMagicSwordMini.DisplayName: Selfsimilar Magic Sword Mini
-			SelfsimilarMeleeShield.DisplayName: Selfsimilar Melee Shield
-			SelfsimilarRangerTarget.DisplayName: Selfsimilar Ranger Target
-			SelfsimilarSummonerOrb.DisplayName: Selfsimilar Summoner Orb
-			RadialBlade.DisplayName: Radial Blade
-			Lunarang.DisplayName: Lunarang
 			Solarang.DisplayName: Solarang
-			BlackLightProjectile.DisplayName: Black Light Projectile
+			SunDiscFire.DisplayName: Sun Disc Fire
+			Lunarang.DisplayName: Lunarang
+			SolarEye.DisplayName: Solar Eye
+			SolarEyeSpark.DisplayName: Solar Eye Spark
+			BlackLightProjectile.DisplayName: Blacklight
 			FractalScytheSlash.DisplayName: Fractal Scythe Slash
 			SelfsimilarScytheSlash.DisplayName: Selfsimilar Scythe Slash
 			SelfsimilarSwordShot.DisplayName: Selfsimilar Sword Shot
-			FractalBowMini.DisplayName: Fractal Bow Mini
-			SelfsimilarBowMini.DisplayName: Selfsimilar Bow Mini
-			SolarEye.DisplayName: Solar Eye
-			SolarEyeSpark.DisplayName: Solar Eye Spark
-			AncientStarlight.DisplayName: Ancient Starlight
-			EclipseFlare.DisplayName: Eclipse Flare
-			EclipseFlareBolt.DisplayName: Eclipse Flare Bolt
-			EclipxieDeathray.DisplayName: Eclipxie Deathray
-			LunarCorona.DisplayName: Lunar Corona
-			MoonButterflyDeathray.DisplayName: Moon Butterfly Deathray
-			MoonButterflyScythe.DisplayName: Moon Butterfly Scythe
-			MoonButterflyTrail.DisplayName: Moon Butterfly Trail
-			PlanetPixieRay.DisplayName: Planet Pixie Ray
-			PlanetPixieScythe.DisplayName: Planet Pixie Scythe
-			SolarCorona.DisplayName: Solar Corona
-			SolarScythe.DisplayName: Solar Scythe
-			SunMothDeathray.DisplayName: Sun Moth Deathray
+			FractalBowMini.DisplayName: Fractal Mini-Bow
+			SelfsimilarBowMini.DisplayName: Selfsimilar Mini-Bow
+			RadialBlade.DisplayName: Radial Blade
+			ElectricArrowProjectile.DisplayName: Electric Arrow Projectile
+			MagneticArrowProjectile.DisplayName: Magnetic Arrow Projectile
+			BallLightningOrb.DisplayName: Ball Lightning Orb
+			BallLightningProjectile.DisplayName: Ball Lightning Projectile
+			ElectricDischarge.DisplayName: Electric Discharge
+			MagneticDischarge.DisplayName: Magnetic Discharge
+			ElectriMini.DisplayName: Electrimini
+			ElectriminiLaser.DisplayName: Electrimini Laser
+			MagnetoMini.DisplayName: Magnetomini
+			MagnetominiRocket.DisplayName: Magnetomini Rocket
+			LightningSwordArc.DisplayName: Electric Arc
+			LightningSwordHead.DisplayName: Electric Arc
+			EMPProjectile.DisplayName: E.M.P
+			MagneticStreamsLaser.DisplayName: Magnetic Stream
+			OrbitalOrbital.DisplayName: Orbital
+			OrbitalProjectile.DisplayName: Orbital Cloud
+			RailgunShockwave.DisplayName: Railgun Shockwave
+			MissileChargerRocket.DisplayName: Magnetized Rocket
+			WandererDrill.DisplayName: Superheated Carver
+			WandererProjectile.DisplayName: Superheated Tendril
+			FractalSwordShot.DisplayName: Fractal Sword
+			EclipseArrow.DisplayName: Eclipse Arrow
+			MoonArrow.DisplayName: Moon Arrow
+			SunArrow.DisplayName: Sun Arrow
+			ForceProjectile.DisplayName: Force Projectile
+			DeathAttractorShard.DisplayName: Death Attractor Shard
 		}
 
 		Bestiary: {
 			StormCloudfish: A rather aggressive, predatory life form composed entirely of turbulent thunder clouds. It employs rain clouds, lightning, and even transparency as a last resort.
-			DormantConstruct: Fallen from the heavens, this enigmatic machine silently waits to be awoken from it s idle state.
+			DormantConstruct: Fallen from the heavens, this enigmatic machine silently waits to be awoken from it�s idle state.
 			StarConstruct: With violently flinging chained hooks and blood-curdling shrieks, this entity blurs the line between organic and automaton.
 			Gigabat: Reinforced with its own posse of bat companions, this positively enormous bat employs echolocation and its overwhelming numbers to hunt.
 			GigabatMinion: A single pawn utilized by Gigabat. As soon as one falls, another takes its place, as if nothing had happened at all.
@@ -4309,11 +4229,11 @@ Mods: {
 			Eclipxie: Wish upon a shooting star, and you may just get your wish granted. Wish upon the darkened sun of an Eclipse, and it may just descend from the skies to personally meet you.
 			SolMoth: In a desperate attempt for survival, the Eclipxie may sunder itself in two. Searing rays and bright light make up just one half of the Eclipse after all.
 			LunaButterfly: In a desperate attempt for survival, the Eclipxie may sunder itself in two. The deep darkness disturbing the peaceful light of day created the Eclipses historical reputation of being a harbinger of doom.
-			PlanetPixie: The Eclipxie is never alone. When not splitting itself in two so that it can be its own companion, it may conjure up small, winged flashes of light to keep itself company. Please do not try to use your friends as bullet shields at home.
+			//PlanetPixie: The Eclipxie is never alone. When not splitting itself in two so that it can be its own companion, it may conjure up small, winged flashes of light to keep itself company. Please do not try to use your friends as bullet shields at home.
 			//Magneton: A member of the electromagnetic duo, this creature is armed to the teeth with homing rockets, mines, and latent magnetism. It works in perfect tandem with its companion.
 			//Electris:A member of the electromagnetic duo, this creature uses its powerful electricity to attack with deathrays, bolts, and deadly auras. It synchronizes its attacks to deadly effect with its companion.
 			Zombat: There are bats, there are zombies. Sometimes, there are zombie bats. This feeble creature does its best to perform its batty duties in spite of zombification.
-			Rattler: This small, poisonous snake prefers dry climates. It loudly rattles to ward off any predators, but it s just too cute to avoid!
+			Rattler: This small, poisonous snake prefers dry climates. It loudly rattles to ward off any predators, but it�s just too cute to avoid!
 			NestGuardian: Utilizing powerful venom, it bites anyone who approaches. In its dying moments, it unleashes its adorable, but nonetheless harmful offspring onto the world.
 			BrineFly: Individually harmless, in large clouds they prove a dizzying nuisance. Some organisms get their entire water intake from eating these flies in large quantities!
 			Mussel: Fortified with a hard shell, the Mussel waits for an opportune time to fling pearls to attack! They also have dozens of eyes on the edge of their shells. Just a fun fact.
@@ -4321,7 +4241,7 @@ Mods: {
 			AlkaliSpirit: A lesser spirit inhabiting the crumbling Limestone Caves, it's rather fragile and corporeal due to building its body from cave minerals.
 			StalagBeetle: A horned beetle specially adapted to the Limestone Caves. It's exceptionally sharp horn and hard shell pierce prey and protect itself from falling rocks respectively.
 			StellatedSlime: After having absorbed its own fallen star, it leaps high in the sky to pounce on any unsuspecting bystanders. Performing such leaps is considered a sign of greatness by the slime community.
-			BatSlime: Is it a bat, is it a slime? It doesn t matter! It occasionally sprouts wings for greatly enhanced (for slime standards) locomotion.
+			BatSlime: Is it a bat, is it a slime? It doesn�t matter! It occasionally sprouts wings for greatly enhanced (for slime standards) locomotion.
 			BloodBat: Even the bats are riled up from the horrible energy of the Blood Moon! Upon being exposed to its red light, cave dwelling bats become permanently warped.
 			Limeshell: Protected by a shell composed of the more durable materials in the caverns, the Limeshell comfortably flings itself at whatever it pleases, with some lasers for good measure.
 			Alkalabomination: Empowered by the release of the spirits of light and dark, this ghostly creature is able to accumulate much more alkaline material than before.
@@ -4331,7 +4251,7 @@ Mods: {
 			Kraken: Powerful tentacles allow this large cephalopod to stand up against creatures of similar size. It can quickly jet towards any prey using its siphon.
 			GreatStellatedSlime: Its bigger, its greater, it's... much the same as its smaller counterpart, safe for the rain of falling stars it unleashes at its prey.
 			Euryopter: A hovering arthropod-like lifeform, it is reminiscent of long extinct creatures. On close inspection, its claws appear to branch endlessly down in scale...
-			FractalFern: Its debatable whether this entity categorizes as an animal or a plant. It s firmly rooted in place, yet spontaneously warps to different locations, and it seems to possess some form of special awareness.
+			FractalFern: Its debatable whether this entity categorizes as an animal or a plant. It�s firmly rooted in place, yet spontaneously warps to different locations, and it seems to possess some form of special awareness.
 			SparkCrawler: One of the many uncanny creatures inhabiting the Fractal Dimension, this one prefers locomotion by latching onto surrounding strands with its four extendable hooks.
 			Amphisbaena: Perhaps the most familiar life form amongst the overwhelmingly alien biosphere of the Fractal Dimension. Double the heads means double the danger however, meaning it offers little comfort to weary adventurers.
 			MegaMenger: A mechanical organism seemingly bound to the four cardinal directions. Its surface area appears to be infinite, and within this infinity lies an immense amount of energy. It relentlessly hunts weakened prey with its predictable but fatal methods of locomotion, invariably sapping its victim of all energy.
@@ -4344,7 +4264,7 @@ Mods: {
 			LightEater: If the Eater of Souls truly did consume souls, logically Light Eaters similarly consume light. This would explain their near ineffable hunting strategy of conjuring illusional copies of itself.
 			Crimago: Soaring about on fell wings, this living nightmare hunts with its scythe-like claws. Close inspection reveals their claws to be literal bone matter erupting from their flesh... yet the Crimago cares not, the Crimson has long since stolen the sensation of true pain from all of its children.
 			//MoltenSpirit: Hotter than hot, this demons origins lie in the worlds core. It is capable of vaporizing flesh in an instant.
-			ConvectiveWanderer: This immense magma-dweller can tolerate the extreme temperatures of the Earth's core, using its tentacle-like gills both to drill through solid metal and to protect is more vulnerable head. Highly protective of its much smaller offspring.
+			ConvectiveWanderer: A grand serpent with exceptional eyesight, this demon swims through the molten seas. Upon spotting prey, it wraps itself around the victim, cooking them well done in mere moments.
 			CloudCichlid: These small, fish-like creatures are composed entirely of clouds and swim through the rainy skies as if they were water.
 			StormcloudCichlid: Composed of dark, stormy clouds, these fish-like creatures feed on airborne bacteria brought down from the skies in raindrops.
 			AmberGemfly: Their luster has become even greater with gemstones affixed to their bodies. That pretty glow in the dark is likely to be spotted by a large predator when underground.
@@ -4438,7 +4358,6 @@ Mods: {
 		Keybinds: {
 			"Convective Set Bonus.DisplayName": Convective Set Bonus
 			"Convective Dash.DisplayName": Convective Dash
-			"Rift Dodge.DisplayName": Rift  Dodge
 		}
 
 		Conditions: {
