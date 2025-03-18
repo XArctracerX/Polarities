@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace Polarities.Content.Items.Placeable.Furniture.Fractal
 {
-    public class FractalWorkBench : WorkBenchBase
+    public class FractalWorkbench : WorkBenchBase
     {
         public override int PlaceTile => ModContent.TileType<FractalWorkbenchTile>();
 
@@ -24,6 +24,6 @@ namespace Polarities.Content.Items.Placeable.Furniture.Fractal
     public class FractalWorkbenchTile : WorkBenchTileBase
     {
         public override int MyDustType => ModContent.DustType<FractalMatterDust>();
-        public override int DropItem => ModContent.ItemType<FractalWorkBench>();
+        public override int DropItem => ModContent.ItemType<FractalWorkbench>();
     }
 }
