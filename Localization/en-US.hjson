@@ -4686,6 +4686,9 @@ Mods: {
 					}
 				}
 			}
+
+			Rapture.EntryName: Rapture
+			Pestilence.EntryName: Pestilence
 		}
 	}
 }
