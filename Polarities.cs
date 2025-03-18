@@ -458,7 +458,8 @@ namespace Polarities
 					ModContent.NPCType<Eclipxie>(),			
 					new Dictionary<string, object>()
 					{
-						["spawnItems"] = ModContent.ItemType<SunPixieSummonItem>()
+						["spawnItems"] = ModContent.ItemType<SunPixieSummonItem>(),
+						["collectibles"] = new List<int> { ModContent.ItemType<EclipxieTrophy>(), ModContent.ItemType<EclipxieMask>(), ModContent.ItemType<EclipxieRelic>() },
 					}
 				);
 
@@ -492,7 +493,7 @@ namespace Polarities
 					{
 						["spawnItems"] = ModContent.ItemType<MagnetonElectrisSummonItem>(),
 						["displayName"] = Language.GetText("The Polarities"),
-						["collectibles"] = new List<int>{ ModContent.ItemType<MagnetonMask>(), ModContent.ItemType<ElectrisMask>(), ModContent.ItemType<PolaritiesTrophy>() }, // Needs a relic/flawless/pet
+						["collectibles"] = new List<int>{  }, // Needs masks/relic/flawless/trophy
 						["spawnInfo"] = Language.GetText("Use a [i:Polarities/MagnetonElectrisSummonItem].") // Localisation is tougher for duos
 					}
 				);
