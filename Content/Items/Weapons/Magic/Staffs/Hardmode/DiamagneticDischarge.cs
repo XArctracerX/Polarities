@@ -129,7 +129,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Staffs.Hardmode
             Projectile.Kill();
             return false;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			for (int i=0; i<6; i++) {
 				Main.dust[Dust.NewDust(Projectile.position-new Vector2(10,10),Projectile.width+20,Projectile.height+20, DustID.Electric ,newColor:Color.LightBlue, Scale:2f)].noGravity = true;
@@ -224,7 +224,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Staffs.Hardmode
             Projectile.Kill();
             return false;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			for (int i=0; i<6; i++) {
 				Main.dust[Dust.NewDust(Projectile.position-new Vector2(10,10),Projectile.width+20,Projectile.height+20, 235 ,newColor:Color.Red, Scale:2f)].noGravity = true;

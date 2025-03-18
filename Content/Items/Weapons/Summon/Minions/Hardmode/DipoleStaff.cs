@@ -543,7 +543,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.Hardmode
 			return false;
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.Item92, Projectile.Center);
 			for (int i = 0; i < 5; i++)

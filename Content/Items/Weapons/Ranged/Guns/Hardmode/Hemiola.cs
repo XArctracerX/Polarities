@@ -29,12 +29,12 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
             Item.height = 32;
             Item.useTime = 20;
             Item.useAnimation = 20;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = 5;
             Item.noMelee = true;
             Item.value = Item.sellPrice(gold: 10);
             Item.rare = ItemRarityID.LightPurple;
             Item.autoReuse = true;
-            Item.shoot = ProjectileID.PurificationPowder;
+            Item.shoot = 10;
             Item.shootSpeed = 10f;
         }
 

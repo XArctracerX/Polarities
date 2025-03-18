@@ -33,12 +33,12 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
 
             Item.useTime = 15;
             Item.useAnimation = 15;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = 5;
             Item.noMelee = true;
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = false;
 
-            Item.shoot = ProjectileID.PurificationPowder;
+            Item.shoot = 10;
             Item.shootSpeed = 12f;
 
             Item.value = 100000;

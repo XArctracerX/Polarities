@@ -81,7 +81,7 @@ namespace Polarities.Content.Items.Consumables.Summons.Hardmode
         {
             if (Main.eclipse)
             {
-                TooltipLine line = new TooltipLine(Mod, "Tooltip1", Language.GetTextValue("Mods.Polarities.Items.SunPixieBag.Extra"));
+                TooltipLine line = new TooltipLine(Mod, "Tooltip1", Language.GetTextValue("Mods.Polarities.Items.SunPixieSummonItem.Extra"));
                 tooltips.Add(line);
             }
         }

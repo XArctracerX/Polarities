@@ -868,7 +868,7 @@ namespace Polarities
 
             if (limestoneSetBonusHitCooldown > 0)
             {
-                //Player.statDefense = 0;
+                Player.statDefense -= 40;
             }
 
             //update bubby vanity wing frames

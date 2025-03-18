@@ -31,14 +31,14 @@ namespace Polarities.Content.Items.Weapons.Ranged.Bows.Hardmode
 
             Item.useTime = 40;
             Item.useAnimation = 39;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = 5;
             Item.autoReuse = true;
 
             Item.value = Item.sellPrice(gold: 5);
             Item.rare = ItemRarityID.LightPurple;
 
             Item.UseSound = SoundID.Item5;
-            Item.shoot = ProjectileID.PurificationPowder;
+            Item.shoot = 10;
             Item.shootSpeed = 6f;
         }
 

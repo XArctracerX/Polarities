@@ -80,7 +80,7 @@ namespace Polarities.Content.Items.Ammo.Hardmode
             Projectile.Kill();
             return false;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
 		{
 			Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
 			SoundEngine.PlaySound(SoundID.Item94, Projectile.position);
