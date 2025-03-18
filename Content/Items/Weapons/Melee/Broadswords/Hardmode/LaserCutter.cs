@@ -30,9 +30,9 @@ namespace Polarities.Content.Items.Weapons.Melee.Broadswords.Hardmode
             Item.height = 24;
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = 5;
             Item.value = Item.sellPrice(gold: 5);
-            Item.rare = ItemRarityID.LightPurple;
+            Item.rare = 6;
             Item.UseSound = SoundID.Item15;
             Item.autoReuse = true;
             Item.noUseGraphic = true;

@@ -28,7 +28,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Misc
 
             Item.useTime = 20;
             Item.useAnimation = 20;
-            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.useStyle = 5;
             Item.noMelee = true;
             Item.noUseGraphic = false;
             Item.UseSound = SoundID.Item5;
