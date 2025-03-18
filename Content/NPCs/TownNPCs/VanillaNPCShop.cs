@@ -4,6 +4,8 @@ using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
 using Polarities.Content.Items.Ammo.PreHardmode;
 using Polarities.Content.Items.Weapons.Summon.Orbs.PreHardmode;
 using Polarities.Content.NPCs.TownNPCs.PreHardmode;
+using Polarities.Content.Items.Weapons.Ranged.Throwables.Hardmode;
+using Polarities.Content.Items.Placeable.Furniture.Fractal;
 using System;
 using System.Reflection;
 using Terraria;
@@ -34,17 +36,16 @@ namespace Polarities.Content.NPCs.TownNPCs
                     }
                     break;
                 case NPCID.Painter:
-                    /*TODO: if (Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().hasBeenInFractalSubworld)
-					{
-						shop.item[nextSlot].SetDefaults(ItemType<WarpedLandscape>());
-						nextSlot++;
-					}*/
+                    //if (Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().hasBeenInFractalDimension)
+                    //{
+                        //shop.Add(ItemType<WarpedLandscape>());
+                    //}
                     break;
                 case NPCID.Demolitionist:
-                    //if (Main.LocalPlayer.HasItem(ItemType<Flarecaller>()))
-                    //{
-                        //shop.Add(ItemType<Flarecaller>());
-                    //}
+                    if (Main.LocalPlayer.HasItem(ItemType<Flarecaller>()))
+                    {
+                        shop.Add(ItemType<Flarecaller>());
+                    }
                     break;
                 case NPCID.Dryad:
                     if (Main.LocalPlayer.HasItem(ItemType<BatArrow>()))
@@ -83,7 +84,7 @@ namespace Polarities.Content.NPCs.TownNPCs
                                 //shop.item[i].SetDefaults(WorldGen.crimson ? ItemID.PurpleSolution : ItemID.RedSolution);
                                 //break;
                             //}
-                        //
+                        //}
                     //}
                     break;
             }

@@ -31,7 +31,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Sentries.PreHardmode
 
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.UseSound = SoundID.Item44;
             Item.autoReuse = true;
@@ -40,7 +40,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Sentries.PreHardmode
             Item.shootSpeed = 0f;
 
             Item.value = 5000;
-            Item.rare = 2;
+            Item.rare = ItemRarityID.Green;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

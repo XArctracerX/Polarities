@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace Polarities.Content.Buffs.PreHardmode
 {
@@ -20,7 +21,7 @@ namespace Polarities.Content.Buffs.PreHardmode
                 int numDusts = 20;
                 for (int i = 0; i < numDusts; i++)
                 {
-                    int dust = Dust.NewDust(player.Center, 0, 0, 92, Scale: 1.5f);
+                    int dust = Dust.NewDust(player.Center, 0, 0, DustID.Frost, Scale: 1.5f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].noLight = true;
                     Main.dust[dust].velocity = new Vector2(4, 0).RotatedBy(i * MathHelper.TwoPi / numDusts);
@@ -35,7 +36,7 @@ namespace Polarities.Content.Buffs.PreHardmode
                 int numDusts = 20;
                 for (int i = 0; i < numDusts; i++)
                 {
-                    int dust = Dust.NewDust(npc.Center, 0, 0, 92, Scale: 1.5f);
+                    int dust = Dust.NewDust(npc.Center, 0, 0, DustID.Frost, Scale: 1.5f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].noLight = true;
                     Main.dust[dust].velocity = new Vector2(4, 0).RotatedBy(i * MathHelper.TwoPi / numDusts);

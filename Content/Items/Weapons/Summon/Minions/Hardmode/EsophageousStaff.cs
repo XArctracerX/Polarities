@@ -29,7 +29,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.Hardmode
             Item.mana = 10;
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.knockBack = 1f;
             Item.value = 10000 * 5;
@@ -145,7 +145,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.Hardmode
                 if (player.ownedProjectileCounts[ProjectileType<EsophminiClaw>()] >= 2 && (targetPosition - Projectile.Center).Length() < 128)
                 {
                     Projectile.ai[0]++;
-                    if (Main.netMode != 1 && Projectile.ai[0] % 20 == 0)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && Projectile.ai[0] % 20 == 0)
                     {
                         Projectile.NewProjectile(Projectile.GetSource_FromAI(), Projectile.Center + new Vector2(Main.rand.NextFloat(-8f, 8f), 8), new Vector2(Main.rand.NextFloat(-0.5f, 0.5f), 4), ProjectileType<IchorDrop>(), 1, 0, Projectile.owner);
                     }
@@ -355,10 +355,10 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.Hardmode
 
         public override void AI()
         {
-            int dust = Dust.NewDust(Projectile.Center - new Vector2(3, 3), 0, 0, 64, Scale: 1.4f);
+            int dust = Dust.NewDust(Projectile.Center - new Vector2(3, 3), 0, 0, DustID.YellowTorch, Scale: 1.4f);
             Main.dust[dust].velocity = Main.rand.NextFloat(0.5f, 1f) * Projectile.velocity + new Vector2(Main.rand.NextFloat(0f, 1f), 0).RotatedByRandom(MathHelper.Pi);
             Main.dust[dust].noGravity = true;
-            dust = Dust.NewDust(Projectile.Center - new Vector2(3, 3), 0, 0, 64, Scale: 1.4f);
+            dust = Dust.NewDust(Projectile.Center - new Vector2(3, 3), 0, 0, DustID.YellowTorch, Scale: 1.4f);
             Main.dust[dust].velocity = Main.rand.NextFloat(0.5f, 1f) * Projectile.velocity + new Vector2(Main.rand.NextFloat(0f, 1f), 0).RotatedByRandom(MathHelper.Pi);
             Main.dust[dust].noGravity = true;
         }

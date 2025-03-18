@@ -3,6 +3,7 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Polarities.Content.NPCs.Critters.PreHardmode;
 using static Terraria.ModLoader.ModContent;
+using Terraria.ID;
 
 namespace Polarities.Content.Items.Materials.PreHardmode
 {
@@ -20,7 +21,7 @@ namespace Polarities.Content.Items.Materials.PreHardmode
             Item.height = 18;
             Item.maxStack = 9999;
             Item.value = 50;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
         }
 
         public override void AddRecipes()

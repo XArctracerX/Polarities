@@ -46,7 +46,7 @@ namespace Polarities.Content.NPCs.Critters.PreHardmode
             NPC.ai[0]++;
             if (NPC.ai[0] == 240)
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     NPC.ai[0] = Main.rand.Next(60);
                     NPC.ai[1] = NPC.ai[0];

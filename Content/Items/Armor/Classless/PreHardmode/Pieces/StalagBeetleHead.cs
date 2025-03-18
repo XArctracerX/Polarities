@@ -16,7 +16,7 @@ namespace Polarities.Content.Items.Armor.Classless.PreHardmode.Pieces
         {
             Item.width = 32;
             Item.height = 24;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.defense = 10;
             Item.value = 2000;
         }

@@ -36,7 +36,7 @@ namespace Polarities.Content.NPCs.Enemies.LavaOcean
             };
             // NPCID.Sets.DebuffImmunitySets/* tModPorter Removed: See the porting notes in https://github.com/tModLoader/tModLoader/pull/3453 */.Add(Type, debuffData);
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 Rotation = -3 * MathHelper.PiOver4
             };
@@ -154,7 +154,7 @@ namespace Polarities.Content.NPCs.Enemies.LavaOcean
             {
                 for (int num473 = 0; num473 < NPC.damage / NPC.lifeMax * 50.0; num473++)
                 {
-                    int num474 = Dust.NewDust(NPC.position, NPC.width, NPC.height, 31, 0f, 0f, 0, default(Color), 1.5f);
+                    int num474 = Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Smoke, 0f, 0f, 0, default(Color), 1.5f);
                     Main.dust[num474].noGravity = true;
                 }
                 return;

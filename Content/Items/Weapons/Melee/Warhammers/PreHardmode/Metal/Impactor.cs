@@ -122,12 +122,12 @@ namespace Polarities.Content.Items.Weapons.Melee.Warhammers.PreHardmode.Metal
             }
             for (int num230 = 0; num230 < 10; num230++)
             {
-                int num220 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 6, 0f, 0f, 100, default(Color), 2.5f);
+                int num220 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 100, default(Color), 2.5f);
                 Main.dust[num220].noGravity = true;
                 Dust dust74 = Main.dust[num220];
                 Dust dust362 = dust74;
                 dust362.velocity *= 5f;
-                num220 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 6, 0f, 0f, 100, default(Color), 1.5f);
+                num220 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, DustID.Torch, 0f, 0f, 100, default(Color), 1.5f);
                 dust74 = Main.dust[num220];
                 dust362 = dust74;
                 dust362.velocity *= 3f;

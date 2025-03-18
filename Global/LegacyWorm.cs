@@ -51,7 +51,7 @@ namespace Polarities.Global
             {
                 NPC.timeLeft = 300;
             }
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (!tail && NPC.ai[0] == 0f)
                 {
@@ -87,9 +87,9 @@ namespace Polarities.Global
                     NPC.life = 0;
                     NPC.HitEffect(0, 10.0);
                 }
-                if (!NPC.active && Main.netMode == 2)
+                if (!NPC.active && Main.netMode == NetmodeID.Server)
                 {
-                    NetMessage.SendData(28, -1, -1, null, NPC.whoAmI, -1f, 0f, 0f, 0, 0, 0);
+                    NetMessage.SendData(MessageID.DamageNPC, -1, -1, null, NPC.whoAmI, -1f, 0f, 0f, 0, 0, 0);
                 }
             }
             int num180 = (int)(NPC.position.X / 16f) - 1;
@@ -131,7 +131,7 @@ namespace Polarities.Global
                                 {
                                     WorldGen.KillTile(num184, num185, true, true, false);
                                 }
-                                if (Main.netMode != 1 && Main.tile[num184, num185].TileType == 2)
+                                if (Main.netMode != NetmodeID.MultiplayerClient && Main.tile[num184, num185].TileType == 2)
                                 {
                                     ushort arg_BFCA_0 = Main.tile[num184, num185 - 1].TileType;
                                 }
@@ -297,7 +297,7 @@ namespace Polarities.Global
                         }
                         if (flag20)
                         {
-                            if (Main.netMode != 1 && NPC.position.Y / 16f > (Main.rockLayer + Main.maxTilesY) / 2.0)
+                            if (Main.netMode != NetmodeID.MultiplayerClient && NPC.position.Y / 16f > (Main.rockLayer + Main.maxTilesY) / 2.0)
                             {
                                 NPC.active = false;
                                 int num200 = (int)NPC.ai[0];
@@ -306,15 +306,15 @@ namespace Polarities.Global
                                     int num201 = (int)Main.npc[num200].ai[0];
                                     Main.npc[num200].active = false;
                                     NPC.life = 0;
-                                    if (Main.netMode == 2)
+                                    if (Main.netMode == NetmodeID.Server)
                                     {
-                                        NetMessage.SendData(23, -1, -1, null, num200, 0f, 0f, 0f, 0, 0, 0);
+                                        NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, num200, 0f, 0f, 0f, 0, 0, 0);
                                     }
                                     num200 = num201;
                                 }
-                                if (Main.netMode == 2)
+                                if (Main.netMode == NetmodeID.Server)
                                 {
-                                    NetMessage.SendData(23, -1, -1, null, NPC.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                                    NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, NPC.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                                 }
                             }
                             num191 = 0f;

@@ -28,14 +28,14 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
             Item.height = 24;
             Item.useTime = 32;
             Item.useAnimation = 33;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 5;
             Item.value = Item.sellPrice(gold: 10);
             Item.rare = ItemRarityID.Yellow;
             Item.UseSound = SoundID.Item40;
             Item.autoReuse = true;
-            Item.shoot = 10;
+            Item.shoot = ProjectileID.PurificationPowder;
             Item.useAmmo = AmmoID.Bullet;
             Item.shootSpeed = 10f;
 		}

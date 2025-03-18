@@ -15,6 +15,7 @@ using Polarities.Content.Items.Placeable.Relics;
 using Polarities.Content.Items.Placeable.Trophies;
 using Polarities.Content.Items.Weapons.Magic.Guns.Hardmode;
 using Polarities.Content.Items.Weapons.Melee.Broadswords.Hardmode;
+using Polarities.Content.Items.Weapons.Melee.Flawless;
 using Polarities.Content.Projectiles;
 using Polarities.Content.NPCs.Bosses.PreHardmode.StarConstruct;
 using ReLogic.Content;
@@ -140,13 +141,19 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             //group with other bosses
             NPCID.Sets.BossBestiaryPriority.Add(Type);
 
-            NPC.buffImmune[BuffID.Confused] = true;
-            NPC.buffImmune[BuffID.OnFire] = true;
-            NPC.buffImmune[BuffID.OnFire3] = true;
-            NPC.buffImmune[BuffID.Frostburn] = true;
-            NPC.buffImmune[BuffID.ShadowFlame] = true;
-            NPC.buffImmune[BuffID.CursedInferno] = true;
-            NPC.buffImmune[ModContent.BuffType<Incinerating>()] = true;
+            //NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
+            //{
+                //SpecificallyImmuneTo = new int[] {
+                    //BuffID.Confused,
+                    //BuffID.OnFire,
+                    //BuffID.Frostburn,
+                    //BuffID.OnFire3,
+                    //BuffID.ShadowFlame,
+                    //BuffID.CursedInferno,
+                    //BuffType<Incinerating>()
+                //}
+            //};
+            //NPCID.Sets.DebuffImmunitySets/* tModPorter Removed: See the porting notes in https://github.com/tModLoader/tModLoader/pull/3453 */.Add(Type, debuffData);
 
             NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
@@ -194,8 +201,6 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             NPC.hide = true;
 
             SpawnModBiomes = new int[1] { GetInstance<LavaOcean>().Type };
-
-            Music = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/EvenDeeperBurns");
 
             numSegments = 40;
             segmentPositions = new Vector2[numSegments * segmentsPerHitbox + segmentsTailTendrils + 3];
@@ -2001,6 +2006,8 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<MantellarOre>(), 1, 40, 60));
             notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<WormSpewer>(), 10));
             npcLoot.Add(notExpertRule);
+
+            npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<WandererFlawless>()));
         }
         #endregion
 

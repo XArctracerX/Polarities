@@ -26,7 +26,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.Hardmode
             Item.useTime = 30;
             Item.useAnimation = 30;
             Item.noMelee = true;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
 
             Item.UseSound = SoundID.Item44;
             Item.autoReuse = true;
@@ -35,7 +35,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Minions.Hardmode
             Item.shootSpeed = 12f;
 
             Item.value = Item.sellPrice(gold: 5);
-            Item.rare = 6;
+            Item.rare = ItemRarityID.LightPurple;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

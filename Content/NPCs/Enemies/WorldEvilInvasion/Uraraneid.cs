@@ -112,7 +112,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
                         {
                             NPC.velocity = new Vector2(9 * NPC.direction, -18);
 
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 NPC.ai[0] = Main.rand.Next(2, 4);
                             }
@@ -135,7 +135,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
                         }
                         if (NPC.ai[1] == 90)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 if (Main.rand.NextBool())
                                 {
@@ -164,7 +164,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
                             NPC.frame.X = NPC.frame.Width * 2;
                             NPC.frame.Y = 0;
                         }
-                        if (Main.netMode != 1)
+                        if (Main.netMode != NetmodeID.MultiplayerClient)
                         {
                             if (NPC.ai[1] >= 60)
                             {
@@ -181,7 +181,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
                         NPC.ai[1]++;
                         if (NPC.ai[1] == 210)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 NPC.ai[0] = (2 + Main.rand.Next(1, 4)) % 4;
                             }
@@ -208,7 +208,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
 
                         if (NPC.ai[1] == 60)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 for (int i = 0; i < 24; i++)
                                 {
@@ -258,7 +258,7 @@ namespace Polarities.Content.NPCs.Enemies.WorldEvilInvasion
 
                         if (NPC.ai[1] == 70)
                         {
-                            if (Main.netMode != 1)
+                            if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
                                 NPC.ai[0] = (3 + Main.rand.Next(1, 4)) % 4;
                             }

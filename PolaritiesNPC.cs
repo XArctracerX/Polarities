@@ -7,6 +7,9 @@ using Polarities.Global;
 using Polarities.Core;
 using Polarities.Content.Biomes;
 using Polarities.Content.Events;
+using Polarities.Content.Buffs.Hardmode;
+using Polarities.Content.Items.Tools.Books.Hardmode;
+using Polarities.Content.Items.Weapons.Magic.Staffs.Hardmode;
 using Polarities.Content.Items.Consumables.Summons.Hardmode;
 using Polarities.Content.Items.Weapons.Ranged.Atlatls.Hardmode;
 using Polarities.Content.Items.Weapons.Ranged.Flawless;
@@ -14,6 +17,7 @@ using Polarities.Content.Items.Weapons.Melee.Flawless;
 using Polarities.Content.Items.Weapons.Magic.Flawless;
 using Polarities.Content.Items.Weapons.Summon.Flawless;
 using Polarities.Content.Items.Armor.Flawless.MechaMayhemArmor;
+using Polarities.Content.Items.Materials.PreHardmode;
 using Polarities.Content.Items.Accessories.Movement.Hardmode;
 using Polarities.Content.NPCs.TownNPCs.PreHardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
@@ -43,7 +47,6 @@ namespace Polarities
         public override bool InstancePerEntity => true;
 
         public Dictionary<int, int> hammerTimes;
-
         public bool flawless = true;
 
         public bool usesProjectileHitCooldowns = false;
@@ -89,14 +92,14 @@ namespace Polarities
 
         public override void Load()
         {
-            //Terraria.On_NPC.GetNPCColorTintedByBuffs += NPC_GetNPCColorTintedByBuffs;
+            Terraria.On_NPC.GetNPCColorTintedByBuffs += NPC_GetNPCColorTintedByBuffs;
 
             //Terraria.IL_NPC.StrikeNPC += NPC_StrikeNPC;
 
             //counts weird critters
-            //Terraria.GameContent.Bestiary.IL_BestiaryDatabaseNPCsPopulator.AddEmptyEntries_CrittersAndEnemies_Automated += BestiaryDatabaseNPCsPopulator_AddEmptyEntries_CrittersAndEnemies_Automated;
-            //Terraria.GameContent.Bestiary.IL_NPCWasNearPlayerTracker.ScanWorldForFinds += NPCWasNearPlayerTracker_ScanWorldForFinds;
-            //Terraria.On_NPC.HittableForOnHitRewards += NPC_HittableForOnHitRewards;
+            Terraria.GameContent.Bestiary.IL_BestiaryDatabaseNPCsPopulator.AddEmptyEntries_CrittersAndEnemies_Automated += BestiaryDatabaseNPCsPopulator_AddEmptyEntries_CrittersAndEnemies_Automated;
+            Terraria.GameContent.Bestiary.IL_NPCWasNearPlayerTracker.ScanWorldForFinds += NPCWasNearPlayerTracker_ScanWorldForFinds;
+            Terraria.On_NPC.HittableForOnHitRewards += NPC_HittableForOnHitRewards;
 
             //avoid bad spawns
             //IL_ChooseSpawn += PolaritiesNPC_IL_ChooseSpawn;
@@ -105,11 +108,11 @@ namespace Polarities
             //Terraria.On_NPC.Transform += NPC_Transform;
 
             //force counts things for the radar
-            //Terraria.IL_Main.DrawInfoAccs += Main_DrawInfoAccs;
+            Terraria.IL_Main.DrawInfoAccs += Main_DrawInfoAccs;
 
             //allows npcs to spawn in lava
             //moves prismatic lacewings to post-sun-pixie
-            //Terraria.IL_NPC.SpawnNPC += NPC_SpawnNPC;
+            Terraria.IL_NPC.SpawnNPC += NPC_SpawnNPC;
         }
 
         public override void Unload()
@@ -128,12 +131,12 @@ namespace Polarities
         {
             hammerTimes = new Dictionary<int, int>();
 
-            //switch (npc.type)
-            //{
-            //case NPCID.DungeonGuardian:
-            //npc.buffImmune[BuffType<Incinerating>()] = true;
-            //break;
-            //}
+            switch (npc.type)
+            {
+                case NPCID.DungeonGuardian:
+                    npc.buffImmune[BuffType<Incinerating>()] = true;
+                break;
+            }
         }
 
         private void Main_DrawInfoAccs(ILContext il)
@@ -183,7 +186,74 @@ namespace Polarities
             c.Emit(OpCodes.Brtrue, label);
         }
 
+        /*private static event ILContext.Manipulator IL_ChooseSpawn
+        {
+            add => MonoModHooks.Modify(typeof(NPCLoader).GetMethod("ChooseSpawn", BindingFlags.Public | BindingFlags.Static), value);
+            remove => HookEndpointManager.Unmodify(typeof(NPCLoader).GetMethod("ChooseSpawn", BindingFlags.Public | BindingFlags.Static), value);
+        }*/
+
         public static bool lavaSpawnFlag;
+
+        private void NPC_SpawnNPC(ILContext il)
+        {
+            //allows npcs to spawn in lava
+            var c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.After,
+                i => i.MatchLdcI4(0),
+                i => i.MatchStloc(55),
+                i => i.MatchBr(out _)
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location 1");
+                return;
+            }
+
+            c.Index += 10;
+
+            c.EmitDelegate<Action>(() => { lavaSpawnFlag = false; });
+
+            ILLabel label = null;
+
+            if (!c.TryGotoNext(MoveType.After,
+                i => i.MatchStloc(2),
+                i => i.MatchBr(out _),
+                //we shouldn't need any of the stuff before here but tile method matching is awful
+                i => i.MatchLdsflda(typeof(Main).GetField("tile", BindingFlags.Public | BindingFlags.Static)),
+                i => i.MatchLdloc(63),
+                i => i.MatchLdloc(64),
+                i => i.MatchCall(typeof(Tilemap).GetProperty("Item", new Type[] { typeof(int), typeof(int) }).GetGetMethod()),
+                i => i.MatchStloc(41),
+                i => i.MatchLdloca(41),
+                i => i.MatchCall(out _), //this SHOULD be able to just be typeof(Tile).GetMethod("lava", new Type[] { }), but NO
+                i => i.MatchBrfalse(out label)
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location 2");
+                return;
+            }
+
+            //we're in lava
+            c.EmitDelegate<Action>(() => { lavaSpawnFlag = true; });
+            //go to label
+            c.Emit(OpCodes.Br, label);
+
+            //change lacewing spawn criterion
+            if (!c.TryGotoNext(MoveType.After,
+                i => i.MatchLdloc(27),
+                i => i.MatchLdcI4(164),
+                i => i.MatchBneUn(out _),
+                i => i.MatchLdsfld(typeof(NPC).GetField("downedPlantBoss", BindingFlags.Public | BindingFlags.Static))
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location 3");
+                return;
+            }
+
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldsfld, typeof(PolaritiesSystem).GetField("downedSunPixie", BindingFlags.Public | BindingFlags.Static));
+        }
+
 
         private void PolaritiesNPC_IL_ChooseSpawn(ILContext il)
         {
@@ -297,21 +367,180 @@ namespace Polarities
             });
         }
 
+        public override void SpawnNPC(int npc, int tileX, int tileY)
+        {
+            //rapture enemies cannot spawn naturally if past their cap
+            NPC realNPC = Main.npc[npc];
+            if (npcTypeCap.ContainsKey(realNPC.type))
+            {
+                int npcsOfType = 0;
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    if (Main.npc[i].active && Main.npc[i].type == realNPC.type)
+                    {
+                        npcsOfType++;
+                        if (npcsOfType > npcTypeCap[realNPC.type])
+                        {
+                            realNPC.active = false;
+                            return;
+                        }
+                    }
+                }
+            }
+            if (customNPCCapSlot.ContainsKey(realNPC.type))
+            {
+                //count enemies
+                float customNPCCapSlotCount = 0;
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    if (Main.npc[i].active && customNPCCapSlot.ContainsKey(Main.npc[i].type) && customNPCCapSlot[Main.npc[i].type] == customNPCCapSlot[realNPC.type] && !Main.npc[i].dontCountMe)
+                    {
+                        customNPCCapSlotCount += Main.npc[i].npcSlots;
+                    }
+                }
+                if (customNPCCapSlotCount > customNPCCapSlotCaps[customNPCCapSlot[realNPC.type]])
+                {
+                    realNPC.active = false;
+                    return;
+                }
+            }
+        }
+
         private static bool? IsBestiaryCritter(int npcType)
         {
             return bestiaryCritter.ContainsKey(npcType) ? bestiaryCritter[npcType] : null;
         }
 
-        //public override void NPC_Transform(Terraria.On_NPC.orig_Transform orig, NPC self, int newType)
-        //{
-            //bool flawless = self.GetGlobalNPC<PolaritiesNPC>().flawless;
-            //Dictionary<int, int> hammerTimes = self.GetGlobalNPC<PolaritiesNPC>().hammerTimes;
+        private void BestiaryDatabaseNPCsPopulator_AddEmptyEntries_CrittersAndEnemies_Automated(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
 
-            //orig(self, newType);
+            if (!c.TryGotoNext(MoveType.After,
+                i => i.MatchLdloca(3),
+                i => i.MatchCall(typeof(KeyValuePair<int, NPC>).GetProperty("Value", BindingFlags.Public | BindingFlags.Instance).GetGetMethod()),
+                i => i.MatchCallvirt(typeof(NPC).GetProperty("CountsAsACritter", BindingFlags.Public | BindingFlags.Instance).GetGetMethod())
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location");
+                return;
+            }
 
-            //self.GetGlobalNPC<PolaritiesNPC>().flawless = flawless;
-            //self.GetGlobalNPC<PolaritiesNPC>().hammerTimes = hammerTimes;
-        //}
+            c.Emit(OpCodes.Ldloca, 3);
+            c.Emit(OpCodes.Call, typeof(KeyValuePair<int, NPC>).GetProperty("Value", BindingFlags.Public | BindingFlags.Instance).GetGetMethod());
+            c.EmitDelegate<Func<bool, NPC, bool>>((defaultCritterValue, npc) =>
+            {
+                return IsBestiaryCritter(npc.type) ?? defaultCritterValue;
+            });
+        }
+
+        private void NPCWasNearPlayerTracker_ScanWorldForFinds(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.After,
+                i => i.MatchLdloc(3),
+                i => i.MatchCallvirt(typeof(NPC).GetProperty("CountsAsACritter", BindingFlags.Public | BindingFlags.Instance).GetGetMethod())
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location");
+                return;
+            }
+
+            c.Emit(OpCodes.Ldloc, 3);
+            c.EmitDelegate<Func<bool, NPC, bool>>((defaultCritterValue, npc) =>
+            {
+                return IsBestiaryCritter(npc.type) ?? defaultCritterValue;
+            });
+        }
+
+        private bool NPC_HittableForOnHitRewards(Terraria.On_NPC.orig_HittableForOnHitRewards orig, NPC self)
+        {
+            if (IsBestiaryCritter(self.type) == true) return false;
+            if (IsBestiaryCritter(self.type) == false && !self.immortal) return true;
+            return orig(self);
+        }
+
+        private Color NPC_GetNPCColorTintedByBuffs(Terraria.On_NPC.orig_GetNPCColorTintedByBuffs orig, NPC self, Color npcColor)
+        {
+            npcColor = orig(self, npcColor);
+            if (self.GetGlobalNPC<PolaritiesNPC>().hammerTimes.Count > 0)
+            {
+                npcColor = NPC.buffColor(npcColor, 0.6f, 0.6f, 0.6f, 1f);
+            }
+            return npcColor;
+        }
+
+        private void NPC_StrikeNPC(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+
+            //modify defense values
+            if (!c.TryGotoNext(MoveType.Before,
+                i => i.MatchLdarg(0),
+                i => i.MatchLdfld(typeof(NPC).GetField("defense", BindingFlags.Public | BindingFlags.Instance)),
+                i => i.MatchStloc(2),
+                i => i.MatchLdarg(0),
+                i => i.MatchLdfld(typeof(NPC).GetField("ichor", BindingFlags.Public | BindingFlags.Instance)),
+                i => i.MatchBrfalse(out _)
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location");
+                return;
+            }
+
+            c.Index += 3;
+
+            c.Emit(OpCodes.Ldarg, 0);
+            c.EmitDelegate<Func<NPC, int>>((NPC npc) =>
+            {
+                int defense = npc.defense;
+                npc.GetGlobalNPC<PolaritiesNPC>().ModifyDefense(npc, ref defense);
+                return defense;
+            });
+            c.Emit(OpCodes.Stloc, 2);
+
+            //modify combat text color
+            if (!c.TryGotoNext(MoveType.After,
+                i => i.MatchLdarg(4),
+                i => i.MatchBrtrue(out _),
+                i => i.MatchLdsfld(typeof(CombatText).GetField("DamagedHostile", BindingFlags.Public | BindingFlags.Static)),
+                i => i.MatchBr(out _),
+                i => i.MatchLdsfld(typeof(CombatText).GetField("DamagedHostileCrit", BindingFlags.Public | BindingFlags.Static)),
+                i => i.MatchStloc(4)
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location");
+                return;
+            }
+
+            c.Emit(OpCodes.Ldloc, 4);
+            c.Emit(OpCodes.Ldarg, 4);
+            c.EmitDelegate<Func<Color, bool, Color>>((defaultColor, crit) =>
+            {
+                if (Main.LocalPlayer.HasBuff(BuffType<EmpressOfLightBookBuff>()))
+                {
+                    if (crit)
+                    {
+                        return Main.DiscoColor;
+                    }
+                    //desaturated for non-crits
+                    return Main.hslToRgb(Main.rgbToHsl(Main.DiscoColor) * new Vector3(1f, 0.25f, 1.5f));
+                }
+                return defaultColor;
+            });
+            c.Emit(OpCodes.Stloc, 4);
+        }
+
+        /*public override void NPC_Transform(Terraria.On_NPC.orig_Transform orig, NPC self, int newType)
+        {
+            bool flawless = self.GetGlobalNPC<PolaritiesNPC>().flawless;
+            Dictionary<int, int> hammerTimes = self.GetGlobalNPC<PolaritiesNPC>().hammerTimes;
+
+            orig(self, newType);
+
+            self.GetGlobalNPC<PolaritiesNPC>().flawless = flawless;
+            self.GetGlobalNPC<PolaritiesNPC>().hammerTimes = hammerTimes;
+        }*/
 
         public override void ResetEffects(NPC npc)
         {
@@ -351,6 +580,39 @@ namespace Polarities
             spiritBite = false;
 
             observers = 0;
+        }
+
+        public override bool PreAI(NPC npc)
+        {
+            if (npc.HasBuff(BuffID.Slow) && npc.knockBackResist != 0f)
+            {
+                float slowingAmount = 2 * Math.Max(0, Math.Min(0.45f, npc.knockBackResist));
+                npc.position -= npc.velocity * slowingAmount;
+            }
+
+            switch (npc.type)
+            {
+                //despawn betsy if no crystal exists
+                case NPCID.DD2Betsy:
+                    if (Main.LocalPlayer.dead && !NPC.AnyNPCs(NPCID.DD2EterniaCrystal))
+                    {
+                        npc.ai[0] = -1;
+                    }
+
+                    if (npc.ai[0] == -1)
+                    {
+                        npc.velocity.Y += -0.1f;
+                        if (npc.Distance(Main.LocalPlayer.Center) > 12000)
+                        {
+                            npc.active = false;
+                            return false;
+                        }
+                    }
+
+                    break;
+            }
+
+            return true;
         }
 
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
@@ -500,7 +762,72 @@ namespace Polarities
                 }
             }
 
-            //UpdateCustomSoulDrain(npc);
+            UpdateCustomSoulDrain(npc);
+        }
+
+        private void UpdateCustomSoulDrain(NPC npc)
+        {
+            if (!npc.soulDrain)
+            {
+                return;
+            }
+            int num3 = 1100;
+            for (int i = 0; i < 255; i++)
+            {
+                if (!Main.player[i].active || Main.player[i].dead)
+                {
+                    continue;
+                }
+                Vector2 val = npc.Center - Main.player[i].position;
+                if (val.Length() < num3 && Main.player[i].ownedProjectileCounts[ProjectileType<LifeGrasperAura>()] > 0)
+                {
+                    if (i == Main.myPlayer)
+                    {
+                        Main.player[i].soulDrain++;
+                    }
+                    if (!Main.rand.NextBool(3))
+                    {
+                        Vector2 center = npc.Center;
+                        center.X += Main.rand.Next(-100, 100) * 0.05f;
+                        center.Y += Main.rand.Next(-100, 100) * 0.05f;
+                        center += npc.velocity;
+                        int num2 = Dust.NewDust(center, 1, 1, DustID.LifeDrain);
+                        Dust obj = Main.dust[num2];
+                        obj.velocity *= 0f;
+                        Main.dust[num2].scale = Main.rand.Next(70, 85) * 0.01f;
+                        Main.dust[num2].fadeIn = i + 1;
+                    }
+                }
+            }
+        }
+
+        public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
+        {
+            if (player.InModBiome(GetInstance<HallowInvasion>()))
+            {
+                spawnRate = spawnRate / 2;
+            }
+
+            spawnRate = (int)(spawnRate * player.GetModPlayer<PolaritiesPlayer>().spawnRate);
+
+            //no enemy spawning while a boss is alive unless during pillars
+            if (!player.ZoneTowerNebula && !player.ZoneTowerSolar && !player.ZoneTowerStardust && !player.ZoneTowerVortex)
+            {
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    if (Main.npc[i].boss && Main.npc[i].active && Main.npc[i].type != NPCID.MartianSaucerCore)
+                    {
+                        maxSpawns = 0;
+                        return;
+                    }
+                }
+            }
+
+            if (PolaritiesSystem.esophageSpawnTimer > 0 || PolaritiesSystem.sunPixieSpawnTimer > 0)
+            {
+                maxSpawns = 0;
+                return;
+            }
         }
 
         public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -635,7 +962,7 @@ namespace Polarities
             {
                 case NPCID.GraniteFlyer:
                 case NPCID.GraniteGolem:
-                    //TODO: npcLoot.Add(ItemDropRule.Common(ItemType<BlueQuartz>(), 2, 1, 2));
+                    npcLoot.Add(ItemDropRule.Common(ItemType<BlueQuartz>(), 2, 1, 2));
                     break;
 
                 //bosses (mostly flawless stuff)

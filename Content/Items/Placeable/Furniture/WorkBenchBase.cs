@@ -40,7 +40,7 @@ namespace Polarities.Content.Items.Placeable.Furniture
             TileID.Sets.DisableSmartCursor[Type] = true;
 
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x1);
-            TileObjectData.newTile.CoordinateHeights = new[] { 16 };
+            TileObjectData.newTile.CoordinateHeights = new[] { 18 };
             TileObjectData.addTile(Type);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
 

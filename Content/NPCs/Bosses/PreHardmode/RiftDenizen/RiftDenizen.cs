@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Polarities.Global;
 using Polarities.Core;
 using Polarities.Assets;
+using Polarities.Content.Buffs.Hardmode;
 using Polarities.Content.Biomes.Fractal;
 using Polarities.Content.Items.Placeable.Trophies;
 using Polarities.Content.Items.Placeable.Relics;
@@ -42,7 +43,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             NPC.buffImmune[BuffID.Confused] = true;
             NPC.buffImmune[BuffID.OnFire] = true;
 
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Assets/BossChecklist/RiftDenizen", };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { CustomTexturePath = "Polarities/Assets/BossChecklist/RiftDenizen", };
         }
 
         public override void SetDefaults()
@@ -95,7 +96,6 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             return;
         }
 
-
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(new FlawlessOrRandomDropRule(ItemType<RiftDenizenTrophy>(), 10));
@@ -104,6 +104,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             
             //normal mode loot
             npcLoot.Add(ItemDropRule.Common(ItemType<FractalAssembler>(), 1));
+            npcLoot.Add(ItemDropRule.Common(ItemType<FractalAltar>(), 1));//TEMP DELETE WHEN IT GENERATES
             LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
             notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<RiftDenizenMask>(), 7));
             notExpertRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ItemType<EndlessHook>(), ItemType<DimensionalAnchor>()));
@@ -639,14 +640,14 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                 SoundEngine.PlaySound(Polarities.GetSound("ParallaxRay", 0.75f), player.Center);
             }
 
-            if (NPC.ai[1] == 60 && Main.netMode != 1)
+            if (NPC.ai[1] == 60 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 Projectile.NewProjectile(NPC.GetSource_FromAI(), player.Center, Vector2.Zero, ProjectileType<ParallaxRay>(), 40, 0f, Main.myPlayer, player.whoAmI);
                 Projectile.NewProjectile(NPC.GetSource_FromAI(), player.Center, Vector2.Zero, ProjectileType<ParallaxRayBehindTiles>(), 40, 0f, Main.myPlayer, player.whoAmI);
             }
 
             //faster for the desperation attack
-            if (((NPC.ai[0] == 8 && NPC.ai[1] % 60 == 30) || (NPC.ai[0] == 9 && NPC.ai[1] % 40 == 30)) && NPC.ai[1] >= 150 && NPC.ai[1] < 630 && Main.netMode != 1)
+            if (((NPC.ai[0] == 8 && NPC.ai[1] % 60 == 30) || (NPC.ai[0] == 9 && NPC.ai[1] % 40 == 30)) && NPC.ai[1] >= 150 && NPC.ai[1] < 630 && Main.netMode != NetmodeID.MultiplayerClient)
             {
                 for (int i = 1; i < 4; i++)
                 {
@@ -697,7 +698,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             {
                 if (!PolaritiesSystem.downedRiftDenizen)
                 {
-                    //PolaritiesSystem.GenFractalAltar();
+                    PolaritiesSystem.GenFractalAltar();
 
                     PolaritiesSystem.downedRiftDenizen = true;
                 }
@@ -726,61 +727,6 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             });
         }
 
-        public override void OnKill()
-        {
-            //if (Main.rand.NextBool(10) || NPC.GetGlobalNPC<PolaritiesNPC>().noHit)
-            //{
-            //	Item.NewItem(NPC.Hitbox, ItemType<RiftDenizenTrophy>());
-            //}
-            //if (NPC.GetGlobalNPC<PolaritiesNPC>().noHit)
-            //{
-            //	NPC.DropItemInstanced(NPC.position, NPC.Size, ItemType<BeyondBow>());
-            //}
-            //if (Main.expertMode)
-            //{
-            //	NPC.DropBossBags();
-            //	/*if (Main.rand.NextBool(4))
-            //	{
-            //		Item.NewItem(npc.getRect(), ItemType<?>());
-            //	}*/
-            //}
-            //else
-            //{
-            //	if (Main.rand.NextBool(7))
-            //	{
-            //		Item.NewItem(NPC.Hitbox, ItemType<RiftDenizenMask>());
-            //	}
-
-            //	Item.NewItem(NPC.Hitbox, ItemType<Tiles.Furniture.FractalAssemblerItem>());
-
-            //	switch (Main.rand.Next(2))
-            //	{
-            //		case 0:
-            //			Item.NewItem(NPC.Hitbox, ItemType<EndlessHookItem>());
-            //			break;
-            //		case 1:
-            //			Item.NewItem(NPC.Hitbox, ItemType<Items.Accessories.DimensionalAnchor>());
-            //			break;
-            //	}
-
-            //	switch (Main.rand.Next(4))
-            //	{
-            //		case 0:
-            //			Item.NewItem(NPC.Hitbox, ItemType<InstabilityScepter>());
-            //			break;
-            //		case 1:
-            //			Item.NewItem(NPC.Hitbox, ItemType<Parallaxian>());
-            //			break;
-            //		case 2:
-            //			Item.NewItem(NPC.Hitbox, ItemType<RiftonaStick>());
-            //			break;
-            //		case 3:
-            //			Item.NewItem(NPC.Hitbox, ItemType<ObserverOrb>());
-            //			break;
-            //	}
-            //}
-        }
-
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             return false;
@@ -792,7 +738,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 1;
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true, };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true, };
         }
 
         public override void SetDefaults()
@@ -861,7 +807,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         NPC.rotation = (player.Center - NPC.Center).ToRotation();
                     }
 
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         if (NPC.localAI[0] == 70)
                         {
@@ -891,7 +837,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         NPC.rotation = (player.Center - NPC.Center).ToRotation();
                     }
 
-                    if (Main.netMode != 1 && NPC.localAI[0] == 60)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && NPC.localAI[0] == 60)
                     {
                         for (int i = 0; i < 4; i++)
                         {
@@ -911,7 +857,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         NPC.rotation = (player.Center - NPC.Center).ToRotation();
                     }
 
-                    if (Main.netMode != 1 && (NPC.localAI[0] == 60 || NPC.localAI[0] == 70 || NPC.localAI[0] == 80))
+                    if (Main.netMode != NetmodeID.MultiplayerClient && (NPC.localAI[0] == 60 || NPC.localAI[0] == 70 || NPC.localAI[0] == 80))
                     {
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, (player.Center - NPC.Center).SafeNormalize(Vector2.Zero) * 16, ProjectileType<RiftBolt>(), 15, 2f, Main.myPlayer, ai0: 600);
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, (player.Center - NPC.Center).SafeNormalize(Vector2.Zero) * 20, ProjectileType<RiftBolt>(), 15, 2f, Main.myPlayer, ai0: 600);
@@ -930,7 +876,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         NPC.rotation = NPC.ai[3] + MathHelper.Pi;
                     }
 
-                    if (NPC.localAI[0] == 30 && Main.netMode != 1)
+                    if (NPC.localAI[0] == 30 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         for (int i = 0; i <= ((int)NPC.ai[2] / 2 - 1); i++)
                         {
@@ -955,7 +901,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         NPC.rotation = (player.Center - NPC.Center).ToRotation();
                     }
 
-                    if (Main.netMode != 1 && NPC.localAI[0] == 60)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && NPC.localAI[0] == 60)
                     {
                         for (int i = 0; i < 8; i++)
                         {
@@ -993,7 +939,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
                         time = 35;
                     }
 
-                    if (NPC.localAI[0] == 20 && Main.netMode != 1)
+                    if (NPC.localAI[0] == 20 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         for (int i = -(int)NPC.ai[0]; i <= (int)NPC.ai[0]; i++)
                         {
@@ -1035,8 +981,8 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
-                //target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+                target.AddBuff(BuffType<Fractalizing>(), 600);
+                target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
 
@@ -1137,7 +1083,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 1;
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true, };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true, };
         }
 
         public override void SetDefaults()
@@ -1206,7 +1152,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
+                target.AddBuff(BuffType<Fractalizing>(), 600);
                 target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
@@ -1644,7 +1590,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             if (Projectile.localAI[0] == 45)
             {
                 //Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().AddScreenShake(60, 60);
-                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 60;
+                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 8;
                 Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 60;
                 SoundEngine.PlaySound(SoundID.Zombie104, Projectile.Center);
             }
@@ -1661,7 +1607,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 2400);
+                target.AddBuff(BuffType<Fractalizing>(), 600);
                 target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
@@ -1751,7 +1697,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
             if (Projectile.localAI[0] == 45)
             {
                 //Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().AddScreenShake(60, 60);
-                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 60;
+                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 8;
                 Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 60;
                 SoundEngine.PlaySound(SoundID.Zombie104, Projectile.Center);
             }
@@ -1768,8 +1714,8 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 2400);
-                //target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+                target.AddBuff(BuffType<Fractalizing>(), 600);
+                target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
 
@@ -1900,8 +1846,8 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
-                //target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+                target.AddBuff(BuffType<Fractalizing>(), 600);
+                target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
 
@@ -1955,7 +1901,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
 
             if (Projectile.localAI[0] <= 65 && Projectile.localAI[0] >= 55)
             {
-                texture = ModContent.Request<Texture2D>("Terraria/Images/Projectile_644", AssetRequestMode.ImmediateLoad).Value;
+                texture = TextureAssets.Projectile[644].Value;
                 frame = texture.Frame();
 
                 float scale = Math.Max(0, 1 - (60 - Projectile.localAI[0]) * (60 - Projectile.localAI[0]) / 25f);
@@ -2103,8 +2049,8 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
-                //target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+                target.AddBuff(BuffType<Fractalizing>(), 600);
+                target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
 
@@ -2205,8 +2151,8 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
-                //target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
+                target.AddBuff(BuffType<Fractalizing>(), 600);
+                target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }
 
@@ -2353,7 +2299,7 @@ namespace Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen
         {
             if (Main.expertMode)
             {
-                //target.AddBuff(BuffType<FractalSubworldDebuff>(), 600);
+                target.AddBuff(BuffType<Fractalizing>(), 600);
                 target.GetModPlayer<PolaritiesPlayer>().suddenFractalizationChange = true;
             }
         }

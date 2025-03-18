@@ -26,7 +26,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
 
             Polarities.customNPCGlowMasks[Type] = TextureAssets.Npc[Type];
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 SpriteDirection = 1
             };
@@ -100,7 +100,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.PreHardmode
 
                             for (int i = 0; i < 10; i++)
                             {
-                                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, 74, Scale: 1.75f)].noGravity = true;
+                                Main.dust[Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.GreenFairy, Scale: 1.75f)].noGravity = true;
                             }
                             SoundEngine.PlaySound(SoundID.NPCHit54, NPC.position);
                         }

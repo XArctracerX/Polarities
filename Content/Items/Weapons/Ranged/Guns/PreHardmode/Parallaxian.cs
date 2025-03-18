@@ -39,7 +39,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.PreHardmode
             Item.value = Item.sellPrice(gold: 3);
             Item.rare = ItemRarityID.LightRed;
             Item.UseSound = SoundID.Item11;
-            Item.shoot = 10;
+            Item.shoot = ProjectileID.PurificationPowder;
 			Item.shootSpeed = 10f;
 		}
 

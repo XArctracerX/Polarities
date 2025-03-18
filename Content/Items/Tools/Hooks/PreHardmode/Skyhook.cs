@@ -21,7 +21,7 @@ namespace Polarities.Content.Items.Tools.Hooks.PreHardmode
             Item.noUseGraphic = true;
             Item.damage = 0;
             Item.knockBack = 7f;
-            Item.useStyle = 5;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.shootSpeed = 16f;
             Item.shoot = ProjectileType<SkyhookProjectile>();
             Item.width = 36;
@@ -29,7 +29,7 @@ namespace Polarities.Content.Items.Tools.Hooks.PreHardmode
             Item.UseSound = SoundID.Item1;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.noMelee = true;
             Item.value = 10000;
         }

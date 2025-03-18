@@ -20,7 +20,7 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
 {
     public class Painbow : ModNPC
     {
-        public override string Texture => "Terraria/Images/Projectile_644";
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.RainbowCrystalExplosion;
 
         public override void SetStaticDefaults()
         {
@@ -190,7 +190,7 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
                     {
                         NPC.ai[2] = 128 * (float)Math.Sin((NPC.ai[1] - 120) / 30 * MathHelper.Pi);
                     }
-                    if (NPC.ai[1] == 120 && Main.netMode != 1)
+                    if (NPC.ai[1] == 120 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         for (int i = 0; i < 3; i++)
                         {
@@ -402,7 +402,7 @@ namespace Polarities.Content.NPCs.Enemies.HallowInvasion
 
     public class PainbowHitbox : ModProjectile
     {
-        public override string Texture => "Terraria/Images/Projectile_644";
+        public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.RainbowCrystalExplosion;
 
         public override void SetDefaults()
         {

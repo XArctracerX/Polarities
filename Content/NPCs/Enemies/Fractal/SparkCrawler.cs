@@ -29,7 +29,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 8;
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Assets/Bestiary/SparkCrawler", };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { CustomTexturePath = "Polarities/Assets/Bestiary/SparkCrawler", };
         }
 
         public override void SetDefaults()
@@ -135,7 +135,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
 
             if (NPC.ai[0] == 0 && Collision.CanHit(NPC.position, NPC.width, NPC.height, player.position, player.width, player.height))
             {
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     if (Main.rand.NextBool())
                     {
@@ -510,7 +510,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
                 SoundEngine.PlaySound(SoundID.Item122, Projectile.position);
                 for (int i = 0; i < 128; i++)
                 {
-                    Dust dust = Main.dust[Dust.NewDust(Projectile.position - new Vector2(32, 32), 64, 64, 226, 0f, 0f, 0, new Color(63, 63, 255), 2f)];
+                    Dust dust = Main.dust[Dust.NewDust(Projectile.position - new Vector2(32, 32), 64, 64, DustID.Electric, 0f, 0f, 0, new Color(63, 63, 255), 2f)];
                     dust.noGravity = true;
                     dust.scale = 1.2f;
                 }

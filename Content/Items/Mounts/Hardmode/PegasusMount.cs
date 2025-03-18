@@ -20,7 +20,7 @@ namespace Polarities.Content.Items.Mounts.Hardmode
             Item.height = 32;
             Item.useTime = 20;
             Item.useAnimation = 20;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
 
             Item.value = Item.sellPrice(gold: 5);
             Item.rare = ItemRarityID.LightPurple;

@@ -354,7 +354,7 @@ namespace Polarities.Content.NPCs.Enemies.LimestoneCaves.Hardmode
 
         public override void OnKill(int timeLeft)
         {
-            Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 74, Scale: 1f)].noGravity = true;
+            Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GreenFairy, Scale: 1f)].noGravity = true;
         }
 
         public override bool PreDraw(ref Color lightColor)

@@ -26,7 +26,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Knives.Hardmode
 
             Item.useTime = 18;
             Item.useAnimation = 18;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
             Item.noUseGraphic = true;
 

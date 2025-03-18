@@ -25,7 +25,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 1;
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { CustomTexturePath = "Polarities/Assets/Bestiary/Bisector", };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { CustomTexturePath = "Polarities/Assets/Bestiary/Bisector", };
         }
 
         public override void SetDefaults()
@@ -139,7 +139,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
                 Vector2 spot = NPC.Center + NPC.velocity + new Vector2(0, -h * (54 / hitBoxSegmentIds.Length)).RotatedBy(NPC.rotation); //QwertyMethods.PolarVector((totalLength - bladeLength - 18) + h * (bladeLength / (hitBoxSegmentIds.Length + 1)) + bladeWidth / 2, npc.rotation);
                 if (hitBoxSegmentIds[h] == -1 || !Main.npc[hitBoxSegmentIds[h]].active || Main.npc[hitBoxSegmentIds[h]].type != NPCType<BisectorHeadHitbox>())
                 {
-                    if (Main.netMode != 1)
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         hitBoxSegmentIds[h] = NPC.NewNPC(NPC.GetSource_FromThis(), (int)spot.X, (int)spot.Y, NPCType<BisectorHeadHitbox>(), ai0: NPC.whoAmI);
                         NPC.netUpdate = true;
@@ -215,7 +215,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
 
         public override void SetStaticDefaults()
         {
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true, };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true, };
         }
 
         public override void SetDefaults()
@@ -321,7 +321,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 1;
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true, };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true, };
         }
 
         public override void SetDefaults()
@@ -385,7 +385,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 1;
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true, };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true, };
         }
         public override void SetDefaults()
         {
@@ -447,7 +447,7 @@ namespace Polarities.Content.NPCs.Enemies.Fractal
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = 1;
-            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers(0) { Hide = true, };
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = new NPCID.Sets.NPCBestiaryDrawModifiers() { Hide = true, };
         }
         public override void SetDefaults()
         {

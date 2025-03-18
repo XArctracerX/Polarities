@@ -9,8 +9,10 @@ using Polarities.Content.Events;
 using Polarities.Content.NPCs.TownNPCs.PreHardmode;
 //using Polarities.Items;
 using Polarities.Content.Items.Placeable.Blocks;
+using Polarities.Content.Items.Placeable.Blocks.Fractal;
 using Polarities.Content.Items.Consumables.Summons.PreHardmode;
 using Polarities.Content.Items.Placeable.Furniture.Salt;
+using Polarities.Content.Items.Placeable.Furniture.Fractal;
 using Polarities.Content.Items.Placeable.Walls;
 //using Polarities.NPCs.ConvectiveWanderer;
 using Polarities.Content.NPCs.Bosses.PreHardmode.RiftDenizen;
@@ -1854,6 +1856,104 @@ namespace Polarities
                 spriteBatch.Draw(texture2D4, r3.Left() + Vector2.UnitX * num18 * 8f, null, Color.White * Main.invasionProgressAlpha, 0f, new Vector2(0f, texture2D4.Height / 2), num18 * 0.8f, 0, 0f);
                 Utils.DrawBorderString(spriteBatch, text7, r3.Right() + Vector2.UnitX * num18 * -22f, Color.White * Main.invasionProgressAlpha, num18 * 0.9f, 1f, 0.4f);
             }
+        }
+
+        public static void GenFractalAltar()
+        {
+            int scale = 32;
+
+            for (int ind = 0; ind < 1000; ind++)
+            {
+                bool success = true;
+
+                int centerX = Main.maxTilesX / 2 + (int)(Main.maxTilesX * WorldGen.genRand.NextFloat(-1, 1) * (ind + 200) / 2400f);
+                int centerY = Main.maxTilesY / 16 + WorldGen.genRand.Next(Main.maxTilesY / 12);
+                for (int x = centerX - scale * 2; x < centerX + scale * 2; x++)
+                {
+                    for (int y = centerY - scale * 2; y < centerY + scale * 2; y++)
+                    {
+                        if (Main.tile[x, y].HasTile)
+                        {
+                            success = false;
+                            break;
+                        }
+                    }
+                    if (!success) break;
+                }
+                if (success)
+                {
+                    float rot = Main.rand.NextFloat(-0.1f, 0.1f);
+                    float center = -1.3107026413368328836f;
+                    float rad = -center - 1.25f;
+                    Vector2 vars = new Vector2(center, 0) + new Vector2(rad, 0).RotatedByRandom(MathHelper.PiOver2);
+
+                    float varX = vars.X;
+                    float varY = vars.Y;
+
+                    for (int i = Math.Max(0, centerX - scale * 2); i <= Math.Min(Main.maxTilesX - 1, centerX + scale * 2); i++)
+                    {
+                        for (int j = Math.Max(0, centerY - scale * 2); j <= Math.Min(Main.maxTilesY - 1, centerY + scale * 2); j++)
+                        {
+                            double x = (centerX - i) / (double)scale * Math.Cos(rot) - (centerY - j) / (double)scale * Math.Sin(rot);
+                            double y = (centerY - j) / (double)scale * Math.Cos(rot) + (centerX - i) / (double)scale * Math.Sin(rot);
+
+                            for (int iterations = 0; iterations < 32; iterations++)
+                            {
+                                double newX = x * x - y * y + varX;
+                                double newY = 2 * x * y + varY;
+                                x = newX;
+                                y = newY;
+
+                                if (x * x + y * y > 4)
+                                {
+                                    break;
+                                }
+                            }
+                            if (x * x + y * y < 4)
+                            {
+                                WorldGen.PlaceTile(i, j, TileType<FractalMatterTile>(), forced: true);
+                            }
+                        }
+                    }
+
+                    for (int tries = 0; tries < 100; tries++)
+                    {
+                        int x = centerX + Main.rand.Next(scale) - scale / 2;
+                        for (int y = centerY - scale * 2; y < centerY + scale * 2; y++)
+                        {
+                            if (Main.tile[x, y].HasTile && Main.tile[x + 1, y].HasTile && Main.tile[x + 2, y].HasTile && Main.tile[x + 3, y].HasTile)
+                            {
+                                for (int i = x - 1; i < x + 5; i++)
+                                {
+                                    for (int j = y - 5; j < y + 1; j++)
+                                    {
+                                        if ((i != x - 1 || j != y - 5) && (i != x - 1 || j != y + 1) && (i != x + 5 || j != y - 5) && (i != x + 5 || j != y + 1))
+                                            //Main.tile[i, j].HasTile = false;
+                                            WorldGen.KillTile(i, j, noItem: true);
+                                            Main.tile[i, j].ClearTile();
+                                    }
+                                    if (i > x - 1 && i < x + 4)
+                                    {
+                                        WorldGen.PlaceTile(i, y, TileType<FractalMatterTile>(), forced: true);
+                                    }
+                                }
+
+                                WorldGen.PlaceObject(x, y - 3, TileType<FractalAltarTile>());
+                                //WorldGen.PlaceTile(x, y - 3, TileType<FractalAltarTile>(), forced: true);
+
+                                Main.NewText("A chaotic rift has formed in the sky!", 60, 161, 199);
+                                return;
+                            }
+                        }
+                    }
+                    return;
+                }
+            }
+
+            //just give the player the altar if generation fails
+            Main.NewText("No space for altar generation found, have this instead", 60, 161, 199);
+            //Main.LocalPlayer.QuickSpawnItem(ModContent.ItemType<FractalAltar>());
+            //Main.LocalPlayer.QuickSpawnItem(GetSource_FromThisMod(), ModContent.ItemType<FractalAltar>());
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Sentries.Hardmode
 
             Item.useTime = 30;
             Item.useAnimation = 30;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.autoReuse = true;
             Item.noMelee = true;
             Item.UseSound = SoundID.Item44;

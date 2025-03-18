@@ -115,7 +115,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
         {
             for (int i = 0; i < 6; i++)
             {
-                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 134, newColor: Color.Pink, Scale: 1f)].noGravity = true;
+                Main.dust[Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Firework_Pink, newColor: Color.Pink, Scale: 1f)].noGravity = true;
             }
         }
 

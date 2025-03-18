@@ -127,7 +127,7 @@ namespace Polarities.Content.Events
             {
                 foreach (Player player in Main.player)
                 {
-                    if (Main.netMode != 1 && player.active && !player.dead)
+                    if (Main.netMode != NetmodeID.MultiplayerClient && player.active && !player.dead)
                     {
                         Esophage.SpawnOn(player);
 

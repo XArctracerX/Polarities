@@ -26,10 +26,10 @@ namespace Polarities.Content.Items.Consumables.Summons.Hardmode
             Item.width = 30;
             Item.height = 28;
             Item.maxStack = 1;
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.useAnimation = 30;
             Item.useTime = 30;
-            Item.useStyle = 4;
+            Item.useStyle = ItemUseStyleID.HoldUp;
             Item.consumable = false;
         }
 

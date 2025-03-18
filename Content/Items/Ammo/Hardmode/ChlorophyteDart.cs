@@ -51,11 +51,6 @@ namespace Polarities.Content.Items.Ammo.Hardmode
     {
         public override string Texture => "Polarities/Content/Items/Ammo/Hardmode/ChlorophyteDart";
 
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("{$Mods.Polarities.ItemName.ChlorophyteDart}");
-        }
-
         public override void SetDefaults()
         {
             Projectile.aiStyle = -1;

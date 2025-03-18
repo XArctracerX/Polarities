@@ -25,7 +25,7 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
         //TODO: Custom bestiary image, proper bestiary loot drops
         public override void SetStaticDefaults()
         {
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 SpriteDirection = 1
             };
@@ -72,7 +72,7 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
             {
                 NPC.localAI[0] = 1;
 
-                if (Main.netMode != 1)
+                if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
                     NPC.NewNPC(NPC.GetSource_FromAI(), (int)NPC.Center.X, (int)NPC.Center.Y, NPCType<HydraHead>(), ai0: NPC.whoAmI);
 
@@ -137,7 +137,7 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
 
             Main.npcFrameCount[NPC.type] = 2;
 
-            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            var drawModifier = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 //don't show up in bestiary
                 Hide = true
@@ -236,7 +236,7 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
                     {
                         NPC.ai[2] = 0;
 
-                        if (Main.netMode != 1 && (player.Center - rootPosition).Length() < 1200 && Collision.CanHit(NPC.position, NPC.width, NPC.height, player.position, player.width, player.height))
+                        if (Main.netMode != NetmodeID.MultiplayerClient && (player.Center - rootPosition).Length() < 1200 && Collision.CanHit(NPC.position, NPC.width, NPC.height, player.position, player.width, player.height))
                         {
                             NPC.ai[1] = Main.rand.Next(1, 4);
                         }
@@ -287,7 +287,7 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
                         NPC.rotation += MathHelper.Pi;
                     }
 
-                    if (NPC.ai[2] >= 100 && NPC.ai[2] % 5 == 0 && Main.netMode != 1)
+                    if (NPC.ai[2] >= 100 && NPC.ai[2] % 5 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, 16 * (player.Center - NPC.Center).SafeNormalize(Vector2.Zero).RotatedByRandom(0.05f), ProjectileType<HydraVenom>(), 20, 1f, Main.myPlayer);
                     }
@@ -347,7 +347,7 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
                         NPC.rotation += MathHelper.Pi;
                     }
 
-                    if (NPC.ai[2] >= 100 && NPC.ai[2] % 5 == 0 && Main.netMode != 1)
+                    if (NPC.ai[2] >= 100 && NPC.ai[2] % 5 == 0 && Main.netMode != NetmodeID.MultiplayerClient)
                     {
                         Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, 16 * (NPC.Center - rootPosition).SafeNormalize(Vector2.Zero), ProjectileType<HydraVenom>(), 20, 1f, Main.myPlayer);
                     }
@@ -525,6 +525,7 @@ namespace Polarities.Content.NPCs.Enemies.MarbleCaves.Hardmode
 
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
+            if (NPC.whoAmI == 0) return true;
             drawColor = NPC.GetNPCColorTintedByBuffs(drawColor);
 
             NPC owner = Main.npc[(int)NPC.ai[0]];

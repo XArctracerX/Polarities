@@ -24,15 +24,15 @@ namespace Polarities.Content.Items.Pets.Hardmode
 		public override void SetDefaults()
 		{
 			Item.damage = 0;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
             Item.shoot = ProjectileType<BloodSpider>();
             Item.width = 30;
             Item.height = 36;
             Item.UseSound = SoundID.Item2;
             Item.useAnimation = 20;
             Item.useTime = 20;
-            Item.rare = ItemRarityID.Expert;
-            Item.expert = true;
+            Item.rare = ItemRarityID.Master;
+            Item.master = true;
             Item.noMelee = true;
             Item.value = Item.sellPrice(0, 5, 0, 0);
             Item.buffType = BuffType<BloodSpiderBuff>();

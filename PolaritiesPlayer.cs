@@ -3,6 +3,9 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using Polarities.Core;
 using Polarities.Global;
+using Polarities.Content.Biomes;
+using Polarities.Content.Items.Consumables.Crates;
+using Polarities.Content.Items.Fish;
 using Polarities.Content.Buffs;
 using Polarities.Content.Buffs.PreHardmode;
 using Polarities.Content.Buffs.Hardmode;
@@ -15,12 +18,20 @@ using Polarities.Content.Items.Armor.Summon.PreHardmode.StormcloudArmor;
 using Polarities.Content.Items.Armor.MultiClass.Hardmode.FractalArmor;
 using Polarities.Content.Items.Armor.MultiClass.Hardmode.SelfsimilarArmor;
 using Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode;
+using Polarities.Content.Items.Weapons.Melee.Warhammers.PreHardmode.Other;
+using Polarities.Content.Items.Weapons.Ranged.Atlatls.PreHardmode;
+using Polarities.Content.Items.Weapons.Summon.Minions.Hardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.PreHardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
 using Polarities.Content.Items.Vanity.DevSets.BubbySet;
 using Polarities.Content.Items.Vanity.DevSets.TuringSet;
 using Polarities.Content.Items.Vanity.DevSets.ElectroManiacSet;
+using Polarities.Content.Items.Placeable.Blocks;
+using Polarities.Content.Items.Placeable.Bars;
+using Polarities.Content.Items.Placeable.Walls;
+using Polarities.Content.Projectiles;
 using Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer;
+using Polarities.Content.NPCs.Bosses.Hardmode.Eclipxie;
 using Polarities.Content.Items.Accessories.ExpertMode.PreHardmode;
 using Polarities.Content.Items.Accessories.ExpertMode.Hardmode;
 using System;
@@ -40,6 +51,20 @@ namespace Polarities
 {
 	public partial class PolaritiesPlayer : ModPlayer
 	{
+        public override void Load()
+        {
+            //allow crits from enemies
+            Terraria.IL_Player.Update_NPCCollision += Player_Update_NPCCollision;
+            //modify color of damage text for crits from enemies
+            //Terraria.IL_Player.Hurt += Player_Hurt;
+            //modify damage numbers for negative life regen effects
+            Terraria.IL_Player.UpdateLifeRegen += Player_UpdateLifeRegen;
+            //dev armor
+            Terraria.On_Player.TryGettingDevArmor += Player_TryGettingDevArmor;
+            //customskies
+            Terraria.IL_Player.UpdateBiomes += Player_UpdateBiomes;
+        }
+
         public int warhammerDefenseBoost = 0;
         public int warhammerTimeBoost = 0;
 
@@ -171,6 +196,10 @@ namespace Polarities
 
         public int bubbyWingFrameCounter;
         public int bubbyWingFrame;
+
+        public override void Initialize()
+        {
+        }
 
         public override void UpdateDead()
         {
@@ -305,6 +334,21 @@ namespace Polarities
 
             //screenshakeRandomSeed = Main.rand.Next();
 
+            if (!Player.mount.Active && !Player.sleeping.isSleeping)
+            {
+                Player.fullRotation *= 0.9f;
+
+                Player.fullRotationOrigin = Player.Size / 2;
+                if (Player.velocity.Y == 0)
+                {
+                    Player.fullRotationOrigin.Y += Player.height / 3.5f * Player.gravDir;
+                }
+            }
+            else if (Player.controlMount)
+            {
+                Player.fullRotation = 0f;
+            }
+
             dashIndex = 0;
             if (Player.controlRight && Player.releaseRight && Player.doubleTapCardinalTimer[DashRight] < 15)
             {
@@ -329,79 +373,6 @@ namespace Polarities
         public override void PostUpdateBuffs()
         {
             maxBookSlots = 1f;
-        }
-
-
-        public static void HookPlayerSpawn(ILContext il)
-        {
-            var c = new ILCursor(il);
-
-            if (!c.TryGotoNext(i => i.MatchLdarg(0)))
-                return; //hook not found
-
-            c.Index--;
-
-            c.EmitDelegate<Action>(() => {
-                if (FractalSubworld.Active)
-                {
-                    if (!Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().fractalDimensionRespawn || !Main.LocalPlayer.dead)
-                    {
-                        if (!FractalSubworld.entering)
-                        {
-                            FractalSubworld.DoExit();
-                        }
-                    }
-                    else
-                    {
-                        FractalSubworld.ResetDimension();
-                    }
-                }
-            });
-        }
-
-        public override void PostUpdateEquips()
-        {
-            if (Player.HasBuff<GolemBookBuff>() && Player.wingsLogic == 0)
-            {
-                Player.noFallDmg = true;
-                Player.jumpSpeedBoost += 16;
-                Player.statDefense += 6;
-            }
-
-            canJumpAgain_Sail_Extra = false;
-            if (Player.HasBuff(BuffType<KingSlimeBookBuff>()))
-            {
-                if (Player.GetJumpState(ExtraJump.TsunamiInABottle).Enabled) { canJumpAgain_Sail_Extra = true; }
-                Player.GetJumpState(ExtraJump.TsunamiInABottle).Enable();
-            }
-
-            if (stargelAmulet)
-            {
-                float amountOfDay;
-                if (Main.dayTime)
-                {
-                    amountOfDay = 1f - (float)Math.Abs(Main.time - Main.dayLength / 2) / (float)Main.dayLength;
-                }
-                else
-                {
-                    amountOfDay = (float)Math.Abs(Main.time - Main.nightLength / 2) / (float)Main.nightLength;
-                }
-                Player.GetDamage(DamageClass.Generic) += 0.12f * amountOfDay;
-                Player.endurance *= 1 - 0.1f * (1 - amountOfDay);
-            }
-
-            //wing time boost
-            Player.wingTimeMax += wingTimeBoost;
-
-            //run speed boost
-            Player.maxRunSpeed *= runSpeedBoost;
-            Player.accRunSpeed *= runSpeedBoost;
-
-            //custom slimes
-            foreach (int i in PolaritiesNPC.customSlimes)
-            {
-                Player.npcTypeNoAggro[i] = Player.npcTypeNoAggro[NPCID.BlueSlime];
-            }
         }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -616,17 +587,62 @@ namespace Polarities
             }
         }
 
+        public override void PostUpdateEquips()
+        {
+            if (Player.HasBuff<GolemBookBuff>() && Player.wingsLogic == 0)
+            {
+                Player.noFallDmg = true;
+                Player.jumpSpeedBoost += 16;
+                Player.statDefense += 6;
+            }
+
+            canJumpAgain_Sail_Extra = false;
+            if (Player.HasBuff(BuffType<KingSlimeBookBuff>()))
+            {
+                if (Player.GetJumpState(ExtraJump.TsunamiInABottle).Enabled) { canJumpAgain_Sail_Extra = true; }
+                Player.GetJumpState(ExtraJump.TsunamiInABottle).Enable();
+            }
+
+            if (stargelAmulet)
+            {
+                float amountOfDay;
+                if (Main.dayTime)
+                {
+                    amountOfDay = 1f - (float)Math.Abs(Main.time - Main.dayLength / 2) / (float)Main.dayLength;
+                }
+                else
+                {
+                    amountOfDay = (float)Math.Abs(Main.time - Main.nightLength / 2) / (float)Main.nightLength;
+                }
+                Player.GetDamage(DamageClass.Generic) += 0.12f * amountOfDay;
+                Player.endurance *= 1 - 0.1f * (1 - amountOfDay);
+            }
+
+            //wing time boost
+            Player.wingTimeMax += wingTimeBoost;
+
+            //run speed boost
+            Player.maxRunSpeed *= runSpeedBoost;
+            Player.accRunSpeed *= runSpeedBoost;
+
+            //custom slimes
+            foreach (int i in PolaritiesNPC.customSlimes)
+            {
+                Player.npcTypeNoAggro[i] = Player.npcTypeNoAggro[NPCID.BlueSlime];
+            }
+        }
+
         public override void PostUpdate()
-		{
+        {
             if (hopperCrystal && Player.justJumped)
             {
                 Player.velocity.X = (Player.velocity.X > 0 ? 1 : -1) * Math.Min(2 * Player.maxRunSpeed, Math.Abs(2 * Player.velocity.X));
             }
 
             if (stormcore && 0.2f + Player.slotsMinions <= Player.maxMinions && Main.rand.NextBool(60))
-			{
-				Main.projectile[Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center.X + 500 * (2 * (float)Main.rand.NextDouble() - 1), Player.Center.Y - 500, 0, 0, ProjectileType<StormcoreMinion>(), 1, Player.GetTotalKnockback(DamageClass.Summon).ApplyTo(0.5f), Player.whoAmI, 0, 0)].originalDamage = 1;
-			}
+            {
+                Main.projectile[Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center.X + 500 * (2 * (float)Main.rand.NextDouble() - 1), Player.Center.Y - 500, 0, 0, ProjectileType<StormcoreMinion>(), 1, Player.GetTotalKnockback(DamageClass.Summon).ApplyTo(0.5f), Player.whoAmI, 0, 0)].originalDamage = 1;
+            }
 
             if (fractalSummonerOrbs)
             {
@@ -699,8 +715,8 @@ namespace Polarities
                     int numProjectiles = Main.rand.Next(3, 7);
                     for (int i = 0; i < numProjectiles; i++)
                     {
-                        Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, Vector2.Zero, ProjectileType<SentinelHeartWisp>(), 15, 2f, Player.whoAmI);
-                        //Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, new Vector2(Main.rand.NextFloat(1, 4), 0).RotatedByRandom(MathHelper.TwoPi), ProjectileType<SentinelHeartWisp>(), (int)(baseDamage * Player.GetDamage(DamageClass.Generic) * Player.GetDamage(DamageClass.Generic) / numProjectiles), 2f, Player.whoAmI, ai1: Main.rand.Next(1000));
+                        //Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, Vector2.Zero, ProjectileType<SentinelHeartWisp>(), 15, 2f, Player.whoAmI);
+                        Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center, new Vector2(Main.rand.NextFloat(1, 4), 0).RotatedByRandom(MathHelper.TwoPi), ProjectileType<SentinelHeartWisp>(), baseDamage, 2f, Player.whoAmI, ai1: Main.rand.Next(1000));
                     }
                 }
                 mostRecentSentinelHeartHealth = newMostRecentSentinelHeartHealth;
@@ -882,6 +898,33 @@ namespace Polarities
             Lighting.AddLight(Player.Center, light);
         }
 
+        public static void HookPlayerSpawn(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+            if (!c.TryGotoNext(i => i.MatchLdarg(0)))
+                return; //hook not found
+
+            c.Index--;
+
+            c.EmitDelegate<Action>(() => {
+                if (FractalSubworld.Active)
+                {
+                    if (!Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().fractalDimensionRespawn || !Main.LocalPlayer.dead)
+                    {
+                        if (!FractalSubworld.entering)
+                        {
+                            FractalSubworld.DoExit();
+                        }
+                    }
+                    else
+                    {
+                        FractalSubworld.ResetDimension();
+                    }
+                }
+            });
+        }
+            
         public override void OnConsumeMana(Item item, int manaConsumed)
         {
             if (fractalMageSwords)
@@ -907,22 +950,6 @@ namespace Polarities
             }
         }
 
-        //public void AddScreenShake(float magnitude, float timeLeft)
-        //{
-        //if (magnitude > 0 && timeLeft > 0)
-        //{
-        //float endTime = timeLeft + PolaritiesSystem.timer;
-        //if (screenShakes.ContainsKey(endTime))
-        //{
-        //screenShakes[endTime] += magnitude / timeLeft;
-        //}
-        //else
-        //{
-        //screenShakes.Add(endTime, magnitude / timeLeft);
-        //}
-        //}
-        //}
-
         public override void ModifyScreenPosition()
         {
             screenshakeTimer--;
@@ -932,31 +959,119 @@ namespace Polarities
             }
         }
 
-        //public override void ModifyScreenPosition()
-        //{
-        //if (screenShakes.Keys.Count > 0)
-        //{
-        //List<float> removeTimesLeft = new List<float>();
+        public override void HideDrawLayers(PlayerDrawSet drawInfo)
+        {
+            if (drawInfo.drawPlayer?.HeldItem?.ModItem != null && drawInfo.drawPlayer.HeldItem.ModItem is IDrawHeldItem drawHeldItem)
+            {
+                if (!drawHeldItem.DoVanillaDraw())
+                    PlayerDrawLayers.HeldItem.Hide();
+            }
+            if (ArmorMasks.headIndexToArmorDraw.ContainsKey(drawInfo.drawPlayer.head))
+            {
+                if (!ArmorMasks.headIndexToArmorDraw[drawInfo.drawPlayer.head].DoVanillaDraw())
+                {
+                    PlayerDrawLayers.Head.Hide();
+                }
+            }
+            if (ArmorMasks.legIndexToArmorDraw.ContainsKey(drawInfo.drawPlayer.legs))
+            {
+                if (!ArmorMasks.legIndexToArmorDraw[drawInfo.drawPlayer.legs].DoVanillaDraw())
+                {
+                    PlayerDrawLayers.Leggings.Hide();
+                }
+            }
+            if (ArmorMasks.wingIndexToArmorDraw.ContainsKey(drawInfo.drawPlayer.wings))
+            {
+                if (!ArmorMasks.wingIndexToArmorDraw[drawInfo.drawPlayer.wings].DoVanillaDraw())
+                {
+                    PlayerDrawLayers.Wings.Hide();
+                }
+            }
+        }
 
-        //Polarities.preGeneratedRand.SetIndex(screenshakeRandomSeed);
-        //foreach (float timeLeft in screenShakes.Keys)
-        //{
-        //if (timeLeft <= PolaritiesSystem.timer)
-        //{
-        //removeTimesLeft.Add(timeLeft);
-        //}
-        //else
-        //{
-        //Main.screenPosition += new Vector2(Polarities.preGeneratedRand.NextNormallyDistributedFloat(screenShakes[timeLeft] * (timeLeft - PolaritiesSystem.timer)), 0).RotatedBy(Polarities.preGeneratedRand.NextFloat(MathHelper.TwoPi));
-        //}
-        //}
-        //foreach (float timeLeft in removeTimesLeft) screenShakes.Remove(timeLeft);
-        //}
+        public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
+        {
+            if (attempt.veryrare && !attempt.inLava && !attempt.inHoney && !attempt.crate && Player.ZoneForest)
+            {
+                if (Main.rand.NextBool(3))
+                {
+                    itemDrop = ItemType<Axolatl>();
+                }
+            }
+            if (attempt.veryrare && !attempt.inLava && !attempt.inHoney && !attempt.crate && Player.ZoneBeach)
+            {
+                if (Main.rand.NextBool(4))
+                {
+                    itemDrop = ItemType<Warhammerhead>();
+                }
+            }
+            if (Player.InModBiome(GetInstance<SaltCave>()) && !attempt.inLava && !attempt.inHoney)
+            {
+                if (attempt.crate)
+                {
+                    if (attempt.uncommon)
+                        itemDrop = ItemType<SaltCrate>();
+                    return;
+                }
+                if (!attempt.common && !attempt.uncommon && !attempt.rare && !attempt.veryrare && !attempt.legendary || Main.rand.NextBool())
+                {
+                    switch (Main.rand.Next(2))
+                    {
+                        case 0:
+                            itemDrop = ItemID.OldShoe;
+                            return;
+                        case 1:
+                            itemDrop = ItemID.TinCan;
+                            return;
+                    }
+                }
+                if (attempt.questFish == ItemType<PickledHerring>() && Main.rand.NextBool(3))
+                {
+                    itemDrop = attempt.questFish;
+                    return;
+                }
+                if (attempt.common)
+                {
+                    itemDrop = ItemType<Salt>();
+                }
+                if (attempt.uncommon)
+                {
+                    itemDrop = ItemType<SaltCrystals>();
+                }
+                if (attempt.rare)
+                {
+                    itemDrop = ItemType<BrineShrimp>();
+                }
+                if (attempt.veryrare)
+                {
+                    if (Main.hardMode) itemDrop = ItemType<SaltKillifishStaff>();
+                }
+                if (attempt.legendary)
+                {
 
-        //to prevent jittering of some things
-        //Main.screenPosition.X = (int)Main.screenPosition.X;
-        //Main.screenPosition.Y = (int)Main.screenPosition.Y;
-        //}
+                }
+            }
+        }
+
+        public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
+        {
+            if (item.useAmmo == AmmoID.Dart)
+            {
+                damage *= dartDamage.Additive * dartDamage.Multiplicative;
+                damage.Base += dartDamage.Base;
+                damage.Flat += dartDamage.Flat;
+            }
+        }
+
+        public override bool? CanHitNPCWithItem(Item item, NPC target)
+        {
+            if (target.GetGlobalNPC<PolaritiesNPC>().usesProjectileHitCooldowns && itemHitCooldown > 0)
+            {
+                return false;
+            }
+
+            return base.CanHitNPCWithItem(item, target);
+        }
 
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Item, consider using OnHitNPC instead */
         {
@@ -1089,6 +1204,69 @@ namespace Polarities
             hydraHideTime = 120;
 
             justHit = true;
+        }
+
+        public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
+        {
+            if (ArmorMasks.bodyIndexToBodyMaskColor.ContainsKey(Player.body))
+            {
+                Color bodyMaskColor = ArmorMasks.bodyIndexToBodyMaskColor[Player.body].BodyColor(ref drawInfo);
+                drawInfo.bodyGlowColor = bodyMaskColor;
+                drawInfo.armGlowColor = bodyMaskColor;
+            }
+        }
+
+        public override void PreUpdate()
+        {
+            //check for incineration by tile
+            bool incinerating = false;
+            for (int i = (int)((Player.position.X - 1) / 16); i < (int)((Player.position.X + 1 + Player.width) / 16) + 1; i++)
+            {
+                for (int j = (int)((Player.position.Y - 1) / 16); j < (int)((Player.position.Y + 1 + Player.height) / 16) + 1; j++)
+                {
+                    if (Main.tile[i, j].TileType == TileType<MantellarOreTile>() || Main.tile[i, j].TileType == TileType<BarTile>() && Main.tile[i, j].TileFrameX == 18)
+                    {
+                        incinerating = true;
+                    }
+                }
+            }
+            if (incinerating)
+            {
+                Player.AddBuff(BuffType<Incinerating>(), Main.rand.Next(1, 3));
+            }
+
+
+            if (Main.expertMode && Framing.GetTileSafely(Player.Center.ToTileCoordinates()).WallType == WallType<RockSaltWallNatural>() && Player.wet && Player.adjWater)
+            {
+                Player.AddBuff(BuffType<Desiccating>(), 2);
+            }
+
+            if (Framing.GetTileSafely(Player.Center.ToTileCoordinates()).WallType == WallType<LimestoneWallNatural>())
+            {
+                if (Main.rand.NextBool(60) && Main.netMode != 1)
+                {
+                    int positionX = (int)(Player.Center.X + Main.rand.Next(-600, 600)) / 16;
+                    int positionY = (int)Player.Center.Y / 16 - 10;
+
+                    if (!Main.tile[positionX, positionY].HasUnactuatedTile)
+                    {
+                        for (int i = 0; i < Math.Min(1000, positionY); i++)
+                        {
+                            if (Main.tile[positionX, positionY - i].HasUnactuatedTile)
+                            {
+                                if (Main.tile[positionX, positionY - i].TileType == TileType<LimestoneTile>())
+                                {
+                                    Projectile.NewProjectile(null, new Vector2(16 * positionX + 8, 16 * (positionY - i) + 16), Vector2.Zero, ProjectileType<Stalactite>(), Main.hardMode ? 24 : 12, 5f, Main.myPlayer);
+                                }
+                                if (Main.tileSolid[Main.tile[positionX, positionY - i].TileType])
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         public override void PreUpdateBuffs()
@@ -1237,6 +1415,16 @@ namespace Polarities
             if (Player.HasBuff(BuffType<Pinpointed>()) && Main.rand.NextBool()) crit = true;
         }
 
+        /*public override void ModifyHurt(ref Player.HurtModifiers modifiers) tModPorter Override ImmuneTo, FreeDodge or ConsumableDodge instead to prevent taking damage
+        {
+            if (crit && !pvp)
+            {
+                damage = (int)Main.CalculateDamagePlayersTake(damage, Player.statDefense) * 2;
+                customDamage = true;
+            }
+            return true;
+        } */
+
         public override bool CanBeHitByNPC(NPC npc, ref int cooldownSlot)
         {
             if (riftDodgeTimer > 0)
@@ -1257,10 +1445,114 @@ namespace Polarities
             return base.CanBeHitByProjectile(proj);
         }
 
-
         public int GetFractalization()
         {
             return fractalization;
+        }
+
+        private void Player_Update_NPCCollision(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.After,
+                i => i.MatchLdarg(0),
+                i => i.MatchLdloc(1),
+                i => i.MatchCall(typeof(PlayerDeathReason).GetMethod("ByNPC", BindingFlags.Public | BindingFlags.Static)),
+                i => i.MatchLdloc(11),
+                i => i.MatchLdloc(10),
+                i => i.MatchLdcI4(0),
+                i => i.MatchLdcI4(0),
+                i => i.MatchLdcI4(0)
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location");
+                return;
+            }
+
+            //replace current stack thing with crit
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldloc, 14);
+        }
+
+        private static readonly Color DamagedFriendlyCritFromEnemyColor = new Color(255, 0, 0);
+        private void Player_Hurt(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.After,
+                i => i.MatchLdarg(6),
+                i => i.MatchBrtrue(out _),
+                i => i.MatchLdsfld(typeof(CombatText).GetField("DamagedFriendly", BindingFlags.Public | BindingFlags.Static)),
+                i => i.MatchBr(out _),
+                i => i.MatchLdsfld(typeof(CombatText).GetField("DamagedFriendlyCrit", BindingFlags.Public | BindingFlags.Static)),
+                i => i.MatchStloc(8)
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location");
+                return;
+            }
+
+            c.Emit(OpCodes.Ldloc, 8); //defaultColor
+            c.Emit(OpCodes.Ldarg, 6); //Crit
+            c.Emit(OpCodes.Ldarg, 4); //pvp
+            c.EmitDelegate((Color defaultColor, bool Crit, bool pvp) =>
+            {
+                return Crit && !pvp ? DamagedFriendlyCritFromEnemyColor : defaultColor;
+            });
+            c.Emit(OpCodes.Stloc, 8);
+        }
+
+        private void Player_UpdateBiomes(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.After,
+                i => i.MatchLdarg(0),
+                i => i.MatchLdstr("MoonLord"),
+                i => i.MatchLdcI4(398),
+                i => i.MatchCall(typeof(NPC).GetMethod("AnyNPCs", BindingFlags.Public | BindingFlags.Static)),
+                i => i.MatchLdloca(17),
+                i => i.MatchInitobj<Vector2>(),
+                i => i.MatchLdloc(17)
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location");
+                return;
+            }
+
+            c.Emit(OpCodes.Ldarg, 0);
+            c.EmitDelegate((Player player) =>
+            {
+                //WARNING CHECK THIS MAY NOT WORK
+                player.ManageSpecialBiomeVisuals("Polarities:EclipxieSky", NPC.AnyNPCs(NPCType<Eclipxie>()));
+            });
+        }
+
+        public override void UpdateLifeRegen()
+        {
+            if (hydraHide && hydraHideTime > 0)
+            {
+                Player.lifeRegen += 10;
+                Player.lifeRegenTime = 3600;
+                Player.bleed = false; //force regen
+            }
+            UpdateFractalHP();
+        }
+
+        public override void NaturalLifeRegen(ref float regen)
+        {
+            bool ignoreMovementPenalty = false;
+
+            if (hydraHide && hydraHideTime > 0)
+            {
+                regen *= 2f;
+                ignoreMovementPenalty = true;
+            }
+
+            if (ignoreMovementPenalty && Player.velocity.X != 0f && Player.grappling[0] <= 0)
+            {
+                regen *= 2.5f;
+            }
         }
 
         public override void UpdateBadLifeRegen()
@@ -1341,6 +1633,40 @@ namespace Polarities
             }
 
             return true;
+        }
+
+        private void Player_UpdateLifeRegen(ILContext il)
+        {
+            ILCursor c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.Before,
+                i => i.MatchLdarg(0),
+                i => i.MatchLdfld(typeof(Player).GetField("burned", BindingFlags.Public | BindingFlags.Instance)),
+                i => i.MatchBrtrue(out _),
+                i => i.MatchLdarg(0),
+                i => i.MatchLdfld(typeof(Player).GetField("suffocating", BindingFlags.Public | BindingFlags.Instance)),
+                i => i.MatchBrtrue(out _),
+                i => i.MatchLdarg(0),
+                i => i.MatchLdfld(typeof(Player).GetField("tongued", BindingFlags.Public | BindingFlags.Instance)),
+                i => i.MatchBrfalse(out _),
+                i => i.MatchCall(typeof(Main).GetProperty("expertMode", BindingFlags.Public | BindingFlags.Static).GetGetMethod()),
+                i => i.MatchBrfalse(out _)
+                ))
+            {
+                GetInstance<Polarities>().Logger.Debug("Failed to find patch location");
+                return;
+            }
+
+            ILLabel label = c.DefineLabel();
+            label.Target = c.Next;
+
+            c.Emit(OpCodes.Ldarg, 0);
+            c.EmitDelegate<Func<Player, bool>>((player) =>
+            {
+                return player.GetModPlayer<PolaritiesPlayer>().DoUpdateBadLifeRegen();
+            });
+            c.Emit(OpCodes.Brtrue, label);
+            c.Emit(OpCodes.Ret);
         }
 
         //modded dev items

@@ -35,7 +35,7 @@ namespace Polarities.Content.NPCs.Enemies.Desert.PreHardmode
         {
             Main.npcFrameCount[NPC.type] = 23;
 
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
             {
                 SpriteDirection = 1
             };

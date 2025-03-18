@@ -26,7 +26,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Atlatls.PreHardmode
             Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = true;
 
-            Item.shoot = 10;
+            Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 16f;
             Item.useAmmo = AmmoID.Dart;
 

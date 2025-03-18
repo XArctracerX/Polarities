@@ -3323,7 +3323,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.SelfsimilarSentinel
 
 	public class HyperbolicWisp : ModProjectile
 	{
-        public override string Texture => "Terraria/Projectile_"+ProjectileID.RainbowCrystalExplosion;
+        public override string Texture => "Terraria/Images/Projectile_"+ProjectileID.RainbowCrystalExplosion;
 
         public override void SetStaticDefaults()
 		{

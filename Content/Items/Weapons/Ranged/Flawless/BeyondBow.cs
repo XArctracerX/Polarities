@@ -41,7 +41,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Flawless
 			Item.value = Item.sellPrice(gold: 5);
 			Item.channel = true;
 			Item.autoReuse = true;
-			Item.shoot = 10;
+			Item.shoot = ProjectileID.PurificationPowder;
 			Item.shootSpeed = 16f;
 			Item.useAmmo = AmmoID.Arrow;
 

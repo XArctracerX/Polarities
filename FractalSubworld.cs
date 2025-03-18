@@ -6,6 +6,7 @@ using Polarities.Content.Items.Placeable.Blocks.Fractal;
 using Polarities.Content.Items.Placeable.Furniture;
 using Polarities.Content.Items.Placeable.Furniture.Fractal;
 using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
+using Polarities.Content.Items.Weapons.Melee.Broadswords.Hardmode;
 using Polarities.Tiles;
 using SubworldLibrary;
 using System;
@@ -2063,6 +2064,8 @@ namespace Polarities
                         {
                             //var selfsim = Main.tile[i, j];
                             //selfsim.SelfsimilarOreTile = false;
+                            WorldGen.KillTile(i, j, noItem: true);
+                            Main.tile[i, j].ClearTile();
                         }
                     }
                 }
@@ -2125,30 +2128,30 @@ namespace Polarities
 
                     //fix later when sprite has
                     //Generate columns if needed
-                    //if (!genLeft || !genMiddle)
-                    //{
-                        //int i = (int)(cavePosition.X - ARENA_RADIUS / 3) / 16;
-                        //int j2 = (a == -1) ? (j - 1) : j;
+                    if (!genLeft || !genMiddle)
+                    {
+                        int i = (int)(cavePosition.X - ARENA_RADIUS / 3) / 16;
+                        int j2 = (a == -1) ? (j - 1) : j;
 
                         //generate column
-                        //while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].WallType == 0)
-                        //{
-                            //Main.tile[i, j2].WallType = (ushort)WallType<FractalFence>();
-                            //j2 += a;
-                        //}
-                    //}
-                    //if (!genRight || !genMiddle)
-                    //{
-                        //int i = (int)(cavePosition.X + ARENA_RADIUS / 3) / 16;
-                        //int j2 = (a == -1) ? (j - 1) : j;
+                        while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].WallType == 0)
+                        {
+                            Main.tile[i, j2].WallType = (ushort)WallType<FractalFenceTile>();
+                            j2 += a;
+                        }
+                    }
+                    if (!genRight || !genMiddle)
+                    {
+                        int i = (int)(cavePosition.X + ARENA_RADIUS / 3) / 16;
+                        int j2 = (a == -1) ? (j - 1) : j;
 
                         //generate column
-                        //while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].WallType == 0)
-                        //{
-                            //Main.tile[i, j2].WallType = (ushort)WallType<FractalFence>();
-                            //j2 += a;
-                        //}
-                    //}
+                        while (j2 < Main.maxTilesY - 1 && j2 > 0 && Main.tile[i, j2].WallType == 0)
+                        {
+                            Main.tile[i, j2].WallType = (ushort)WallType<FractalFenceTile>();
+                            j2 += a;
+                        }
+                    }
                 }
             }
         }
@@ -2572,7 +2575,8 @@ namespace Polarities
             unlockedChestItemIndex = 0;
             lockedChestItemIndex = 0;
             itemsToPlaceInUnlockedFractalChests = new int[] {
-                ItemID.Zenith,
+                ItemType<FractalSword>()
+                //ItemID.Zenith,
                 //ItemType<Items.Weapons.Sawrang>(),
                 //    ItemType<Items.Weapons.Gosperian>(),
                 //    ItemType<Items.Accessories.FractalAntenna>(),

@@ -253,7 +253,7 @@ namespace Polarities.Content.Items.Weapons.Summon.Orbs.Hardmode
             {
                 if (Main.rand.NextBool(5))
                 {
-                    Main.dust[Dust.NewDust(npc.position, npc.width, npc.height, 88, newColor: Color.Transparent, Scale: 1f)].noGravity = true;
+                    Main.dust[Dust.NewDust(npc.position, npc.width, npc.height, DustID.GemSapphire, newColor: Color.Transparent, Scale: 1f)].noGravity = true;
                 }
             }
         }

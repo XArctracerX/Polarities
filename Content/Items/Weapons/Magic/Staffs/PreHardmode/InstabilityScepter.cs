@@ -27,7 +27,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Staffs.PreHardmode
 			Item.height = 48;
 			Item.useTime = 20;
 			Item.useAnimation = 20;
-			Item.useStyle = 1;
+			Item.useStyle = ItemUseStyleID.Swing;
 			Item.noMelee = true;
 			Item.knockBack = 3;
 			Item.value = Item.sellPrice(gold: 3);

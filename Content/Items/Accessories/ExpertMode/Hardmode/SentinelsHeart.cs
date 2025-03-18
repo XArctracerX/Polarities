@@ -45,7 +45,7 @@ namespace Polarities.Content.Items.Accessories.ExpertMode.Hardmode
 
 	public class SentinelHeartWisp : ModProjectile
 	{
-		public override string Texture => "Terraria/Projectile_" + ProjectileID.RainbowCrystalExplosion;
+		public override string Texture => "Terraria/Images/Projectile_" + ProjectileID.RainbowCrystalExplosion;
 
 		public override void SetStaticDefaults()
 		{
