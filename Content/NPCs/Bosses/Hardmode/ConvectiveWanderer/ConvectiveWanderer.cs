@@ -421,7 +421,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                         }
 
                         //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(2 * deathAnimProgress, 10);
-                        player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 2 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                        player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(2 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                         player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 60; // 1 seconds
 
                         NPC.ai[1]++;
@@ -448,7 +448,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                             }
 
                             //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(36, 30);
-                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 36 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(36 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                             player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 120;
                             SoundEngine.PlaySound(Sounds.ConvectiveMegaBoom, NPC.Center);
 
@@ -526,7 +526,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                             angleSpeed = NPC.velocity.Length() * 0.03f * tentacleAngleMultiplier;
 
                             //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(1, part2Time);
-                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 1 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(1 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                             player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 30;
                         }
                         else
@@ -708,7 +708,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                                     SoundEngine.PlaySound(new SoundStyle("Polarities/Assets/Sounds/ConvectiveWandererRoar") { Pitch = 1.5f }, player.Center + (NPC.Center - player.Center).SafeNormalize(Vector2.Zero) * Math.Min(600f, (NPC.Center - player.Center).Length()));
 
                                     //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(40, 120);
-                                    player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 40 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                                    player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(40 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                                     player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 180;
                                 }
 
@@ -779,7 +779,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                             }
 
                             //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(0.25f * NPC.velocity.Length() / Math.Max(NPC.Distance(player.Center) / 200f, 1f), 10);
-                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 20 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(20 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                             player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 60;
 
                             tendrilOutwardness = 1 - timeLeft / totalAttackStoppedTime;
@@ -918,7 +918,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                             }
 
                             //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(0.25f * NPC.velocity.Length() / Math.Max(NPC.Distance(player.Center) / 200f, 1f), 10);
-                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 40 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(40 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                             player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 120;
                         }
 
@@ -1075,7 +1075,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                                     }
 
                                     //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(3f * (NPC.ai[1] - (setupStartTime + setupMidTimePart1)) / setupMidTimePart2, 10);
-                                    player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 20 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                                    player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(20 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                                     player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 240;
                                 }
 
@@ -1098,7 +1098,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                                 }
 
                                 //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(3, 10);
-                                player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 3 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                                player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(3 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                                 player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 30;
                             }
                             else
@@ -1505,7 +1505,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                                 NPC.velocity *= 0.5f;
 
                                 //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(36, 30);
-                                player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 36 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                                player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(36 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                                 player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 60;
                             }
 
@@ -1553,7 +1553,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                             }
 
                             //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(0.25f * NPC.velocity.Length() / Math.Max(NPC.Distance(player.Center) / 200f, 1f), 10);
-                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 26 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(26 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                             player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 120;
                         }
                         else
@@ -1573,7 +1573,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                             tentacleCurveAmount = 4f * animProgressLeft * (1 - animProgressLeft) * (1 - tentacleCompression);
 
                             //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(0.25f * NPC.velocity.Length() / Math.Max(NPC.Distance(player.Center) / 200f, 1f), 10);
-                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 26 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                            player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(26 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                             player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 120;
 
                             if (timeLeft == 1)
@@ -1678,7 +1678,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                                 SoundEngine.PlaySound(Sounds.ConvectiveWandererFlamethrowerStart, player.Center + (NPC.Center - player.Center).SafeNormalize(Vector2.Zero) * Math.Min(600f, (NPC.Center - player.Center).Length()));
 
                                 //player.GetModPlayer<PolaritiesPlayer>().AddScreenShake(40, 120);
-                                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 40 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(40 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                                 Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 120;
 
                                 NPC.velocity = new Vector2(32, 0).RotatedBy(NPC.rotation);
@@ -2906,7 +2906,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             }
 
             //Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().AddScreenShake(2f * Projectile.scale * Projectile.scale / Math.Max((Main.LocalPlayer.Center - Projectile.Center).Length() / (Projectile.width / 2), 1f), 10);
-            Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 26 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+            Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(26 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
             Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 90;
         }
 
@@ -2954,7 +2954,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             }
 
             //Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().AddScreenShake(48, 60);
-            Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 48 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+            Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(48 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
             Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 60;
 
             SoundEngine.PlaySound(Sounds.ConvectiveMegaBoom, Vector2.Lerp(Projectile.Center, Main.LocalPlayer.Center, 0.5f));
@@ -3134,7 +3134,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                 if (Projectile.ai[0] == 0)
                 {
                     //Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().AddScreenShake(10, 60);
-                    Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 10 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                    Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(10 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                     Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 60;
                     SoundEngine.PlaySound(Sounds.ConvectiveFlamePillar, Main.LocalPlayer.Center);
                 }
@@ -3246,7 +3246,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
             if (Projectile.timeLeft >= 10)
             {
                 //Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().AddScreenShake(8 * widthMult, 10);
-                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 20 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(20 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                 Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 60;
             }
         }
@@ -3324,7 +3324,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                 //Projectile.Center = owner.GetGlobalNPC<MultiHitboxNPC>().preModifyDataCenter + 240 * Projectile.velocity;
 
                 //Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().AddScreenShake(Projectile.scale, 10);
-                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 20 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(20 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                 Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 10;
 
                 if (Projectile.timeLeft == 719)
@@ -3386,7 +3386,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
                     }
 
                     //Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().AddScreenShake(36, 30);
-                    Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 36 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+                    Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(36 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
                     Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 60;
 
                     Projectile.Kill();
@@ -3497,7 +3497,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.ConvectiveWanderer
 
             float dist = Math.Abs(Vector2.Dot(Main.LocalPlayer.Center - Projectile.Center, Projectile.velocity));
             //Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().AddScreenShake(Projectile.scale / 128f * 60 / (dist + 60), 10);
-            Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = 40 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER;
+            Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (int)(40 * ModContent.GetInstance<Global.ClientConfigurations>().CW_SCREENSHAKE_MULTIPLIER);
             Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 240;
         }
 

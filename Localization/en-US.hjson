@@ -4690,5 +4690,16 @@ Mods: {
 			Rapture.EntryName: Rapture
 			Pestilence.EntryName: Pestilence
 		}
+
+		Configs: {
+			ClientConfigurations: {
+				DisplayName: Client Configurations
+
+				CW_SCREENSHAKE_MULTIPLIER: {
+					Label: Convective Wanderer Screenshake
+					Tooltip: Controls the amount of screenshake that Convective Wanderer applies.
+				}
+			}
+		}
 	}
 }
