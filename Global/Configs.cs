@@ -17,11 +17,5 @@ namespace Polarities.Global
         [Tooltip("Controls the amount of screenshake that Convective Wanderer applies.")]
         [DefaultValue(1f)]
         public float CW_SCREENSHAKE_MULTIPLIER;
-
-        [Label("Railgun Screenshake")]
-        [Tooltip("Controls the amount of screenshake that Railgun applies.")]
-        [DefaultValue(1f)]
-        public float RAILGUN_SCREENSHAKE_MULTIPLIER;
-
     }
 }
