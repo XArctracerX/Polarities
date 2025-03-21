@@ -135,6 +135,7 @@ namespace Polarities
         public int stormcloudArmorCooldown;
         public int tolerancePotionDelayTime = 3600;
         public float ammoChance;
+        public bool energyLanceLunge;
 
         public bool solarCalibrator;
         public int solarCalibratorDamageTick;
@@ -170,6 +171,9 @@ namespace Polarities
         public int riftDodgeTimer;
         public const int RIFT_DODGE_MAX_LENGTH = 600;
         public const int RIFT_DODGE_COOLDOWN = 3600;
+
+        public int energyLanceLungeTime;
+        public Vector2 energyLanceLungeDir;
 
         //public bool fractalDimensionRespawn;
 
@@ -584,6 +588,19 @@ namespace Polarities
                 }
 
                 if (!convectiveDash) convectiveDashCharge = 0;
+            }
+
+            if (energyLanceLungeTime > 0)
+            {
+                energyLanceLungeTime--;
+                Player.velocity = energyLanceLungeDir;
+                for (int i = 0; i < 16; i++)
+                {
+                    float angle = i * MathHelper.TwoPi / 16;
+                    Vector2 offset = new Vector2(6 * (float)Math.Sin(angle), 12 * (float)Math.Cos(angle)).RotatedBy(energyLanceLungeDir.ToRotation());
+
+                    Dust.NewDustPerfect(Player.Center - Player.velocity + offset, DustID.Electric, Velocity: Vector2.Zero, Scale: 0.5f).noGravity = true;
+                }
             }
         }
 
