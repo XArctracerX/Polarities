@@ -498,6 +498,11 @@ Mods: {
 				DisplayName: Pegasus Mount Buff
 				Description: Warranty void if used to summit mountains
 			}
+
+			DendriteStaffBuff: {
+				DisplayName: Mini Mandelbrot
+				Description: The mini mandelbrot will fight for you
+			}
 		}
 
 		Items: {
@@ -2545,6 +2550,126 @@ Mods: {
 					'''
 			}
 
+			MindTwister: {
+				DisplayName: Mind Twister
+				Tooltip:
+					'''
+					Surrounds you in a minefield of confusing energy whorls
+					Getting hit breaks your concentration, dispelling the minefield
+					'''
+			}
+
+			BinaryFlux: {
+				DisplayName: Binary Flux
+				Tooltip: Shoots an irregularly-spaced row of energy vortices
+			}
+
+			FractalBlaster: {
+				DisplayName: Fractal Blaster
+				Tooltip: Shoots a piercing laser that splits upon hitting enemies and bounces off tiles
+			}
+
+			BifurcationStaff: {
+				DisplayName: Bifurcator
+				Tooltip: Enemy hits release additional lightning bolts which jump to other enemies within range
+			}
+
+			EnergyLash: {
+				DisplayName: Energy Lash
+				Tooltip: Shoots a branching beam of fractal energy
+			}
+
+			JuliaShard: {
+				DisplayName: Julia Shard
+				Tooltip: ""
+			}
+
+			OrthogonalStaff: {
+				DisplayName: Orthogonal Staff
+				Tooltip: ""
+			}
+
+			TrueBlazingIre: {
+				DisplayName: True Blazing Ire
+				Tooltip:
+					'''
+					Left click to use as a javelin, right click to use as a spear
+					Critical strikes and melee hits summon additional javelins
+					'''
+			}
+
+			Sawrang: {
+				DisplayName: Sawrang
+				Tooltip: ""
+			}
+
+			CaliperBlades: {
+				DisplayName: Caliper Blades
+				Tooltip:
+					'''
+					Summons blades to dash at the cursor upon striking enemies
+					'Measure once, cut twice'
+					'''
+			}
+
+			EnergyLance: {
+				DisplayName: Energy Lance
+				Tooltip:
+					'''
+					Attack to lunge towards the cursor
+					Striking enemies grants a substantial period of invulnerability
+					Cannot lunge multiple times in the air
+					'''
+			}
+
+			PythagoreanHammer: {
+				DisplayName: Pythagorean Hammer
+				Tooltip:
+					'''
+					Reduces enemy defense by 24 for 20 seconds
+					Right click to use as a boomerang
+					'''
+			}
+
+			Gosperian: {
+				DisplayName: Gosperian
+				Tooltip: Releases waves of spikes
+			}
+
+			Fractlatl: {
+				DisplayName: Fractlatl
+				Tooltip: Shoots additional projectiles horizontally and vertically
+			}
+
+			CBow: {
+				DisplayName: C-Bow
+				Tooltip: Arrows split up to two times on hitting their target
+			}
+
+			ChaosShot: {
+				DisplayName: Chaos Shot
+				Tooltip:
+					'''
+					Shoots a chaotic spray of armor-piercing bullets
+					50% chance to not consume ammo
+					'''
+			}
+
+			FractalBomb: {
+				DisplayName: Fractal Bomb
+				Tooltip: Splits into more bombs on exploding
+			}
+
+			FractalGrenade: {
+				DisplayName: Fractal Grenade
+				Tooltip: Splits into more grenades on exploding
+			}
+
+			DendriteStaff: {
+				DisplayName: Dendrite Staff
+				Tooltip: Summons a mini mandelbrot
+			}
+
 			//Critter Items
 			BabyWandererItem: {
 				DisplayName: Baby Wanderer
@@ -2752,6 +2877,21 @@ Mods: {
 
 			WoodenDartEndless: {
 				DisplayName: Endless Wooden Dart Bag
+				Tooltip: ""
+			}
+
+			BlacksunBullet: {
+				DisplayName: Blacksun Bullet
+				Tooltip: Splits into two orbiting bullets upon being fired
+			}
+
+			SpectralDart: {
+				DisplayName: Spectral Dart
+				Tooltip: ""
+			}
+
+			FlareRocket: {
+				DisplayName: Flare Rocket
 				Tooltip: ""
 			}
 
@@ -4478,6 +4618,33 @@ Mods: {
 			SolarCorona.DisplayName: Solar Corona
 			SolarScythe.DisplayName: Solar Scythe
 			SunMothDeathray.DisplayName: Sun Moth Deathray
+			MoonBullet.DisplayName: Moon Bullet
+			SpectralDartProjectile.DisplayName: Spectral Dart Projectile
+			SunBullet.DisplayName: Sun Bullet
+			MindTwisterProjectile.DisplayName: Mind Twister Projectile
+			BinaryFluxProjectile.DisplayName: Binary Flux Projectile
+			BinaryFluxShot.DisplayName: Binary Flux Shot
+			FractalBlasterShot.DisplayName: Fractal Blaster Shot
+			BifurcatingLightning.DisplayName: Bifurcating Lightning
+			EnergyLashProjectile.DisplayName: Energy Lash Projectile
+			JuliaShardExplosion.DisplayName: Julia Shard Explosion
+			JuliaShardProjectile.DisplayName: Julia Shard Projectile
+			OrthogonalStaffProjectile.DisplayName: Orthogonal Staff Projectile
+			TrueBlazingIreJavelin.DisplayName: True Blazing Ire Javelin
+			TrueBlazingIreSpear.DisplayName: True Blazing Ire Spear
+			SawrangProjectile.DisplayName: Sawrang Projectile
+			CaliperBlade1.DisplayName: Caliper Blade1
+			CaliperBlade2.DisplayName: Caliper Blade2
+			EnergyLanceHelper.DisplayName: Energy Lance Helper
+			PythagoreanHammerProjectile.DisplayName: Pythagorean Hammer Projectile
+			GosperianProjectile.DisplayName: Gosperian Projectile
+			GosperianSpike.DisplayName: Gosperian Spike
+			FlareRocketProjectile.DisplayName: Flare Rocket Projectile
+			EclipseFlareFriendly.DisplayName: Eclipse Flare Friendly
+			FractalBombProjectile.DisplayName: Fractal Bomb Projectile
+			FractalGrenadeProjectile.DisplayName: Fractal Grenade Projectile
+			DendriteStaffMinion.DisplayName: Dendrite Staff Minion
+			MandelbrotMinionLightning.DisplayName: Mandelbrot Minion Lightning
 		}
 
 		Bestiary: {
