@@ -35,6 +35,33 @@ namespace Polarities.Global
     public class BetsyFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { new Color(188, 62, 68), new Color(137, 85, 169), new Color(255, 254, 182) }; }
     public class EmpressFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { Color.Magenta, Color.White, Color.Yellow, Color.White, Color.Cyan, Color.White }; }
     public class ConvectiveWandererFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { new Color(255, 156, 32), Color.White, new Color(5, 227, 255), Color.White }; }
+    public class GolemFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { new Color(141, 56, 0), new Color(141, 56, 0), new Color(255, 230, 87)};
+}
+    public class QS_RW_FlawlessRarity : ModRarity
+    {
+        static float lastUpdateTime = 0;
+        static float rarityWalkVal = 0f;
+
+        public override Color RarityColor
+        {
+            get
+            {
+                float currentTime = (float)Main.GlobalTimeWrappedHourly * 60f;
+                float elapsedTime = currentTime - lastUpdateTime;
+                lastUpdateTime = currentTime;
+
+                rarityWalkVal += Main.rand.NextFloat(elapsedTime / 360f);
+                rarityWalkVal = (rarityWalkVal % 1 + 1) % 1;
+                return ModUtils.ColorLerpCycle(rarityWalkVal, 1f, Color.Magenta, Color.Silver, Color.Cyan, Color.Purple);
+            }
+        }
+
+        public override int GetPrefixedRarity(int offset, float valueMult)
+        {
+            return Type;
+        }
+    }
+
 
     //an overly complex random walk-based rarity that doesn't actually look that good in this instance
     //could be good to try things like this for other rarities though

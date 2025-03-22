@@ -61,6 +61,7 @@ namespace Polarities
         public int contagunPhages;
         public int boneShards;
         public bool phagocytes;
+        public int qsFlawlessCrystal = -1;
 
         public int desiccation;
         public int incineration;
@@ -590,6 +591,18 @@ namespace Polarities
                 npc.position -= npc.velocity * slowingAmount;
             }
 
+            // crystal slowing
+            if (qsFlawlessCrystal > -1)
+            {
+                Projectile crystal = Main.projectile[qsFlawlessCrystal];
+                float scale = (crystal.scale - 0.7f) / 0.3f;
+                // i am so sorry for this
+                // but i have no documentation nor intellisense
+                float slowingAmount = 1;
+                for (int i = 0; i < scale; i++) { slowingAmount *= 0.8f; }
+                npc.position -= npc.velocity * (1 - slowingAmount);
+            }
+
             switch (npc.type)
             {
                 //despawn betsy if no crystal exists
@@ -993,6 +1006,9 @@ namespace Polarities
                 case NPCID.WallofFlesh:
                     npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<MawOfFlesh>()));
                     break;
+                case NPCID.QueenSlimeBoss:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<QSFlawless>()));
+                    break;
                 case NPCID.TheDestroyer:
                     npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<FlawlessMechTail>()));
                     break;
@@ -1014,6 +1030,9 @@ namespace Polarities
                         LeadingConditionRule leadingConditionRule = new LeadingConditionRule(new Conditions.NotExpert());
                         leadingConditionRule.OnSuccess(ItemDropRule.Common(ItemType<JunglesRage>(), 4));
                     }
+                    break;
+                case NPCID.Golem:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<GolemFlawless>()));
                     break;
                 case NPCID.Everscream:
                     {

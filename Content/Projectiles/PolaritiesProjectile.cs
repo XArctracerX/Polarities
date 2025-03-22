@@ -273,6 +273,19 @@ namespace Polarities.Content.Projectiles
             return true;
         }
 
+        public bool justCollidedWithGround = false;
+
+        public override void PostAI(Projectile projectile)
+        {
+            justCollidedWithGround = false;
+        }
+
+        public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
+        {
+            justCollidedWithGround = true;
+            return base.OnTileCollide(projectile, oldVelocity);
+        }
+
         private void Player_UpdateMaxTurrets(Terraria.On_Player.orig_UpdateMaxTurrets orig, Player self)
         {
             List<Projectile> list = new List<Projectile>();
