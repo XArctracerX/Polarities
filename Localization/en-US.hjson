@@ -3960,6 +3960,11 @@ Mods: {
 				DisplayName: Pickled Herring
 				Tooltip: ""
 			}
+
+			SunplateDrill: {
+				DisplayName: Sunplate Drill
+				Tooltip: ""
+			}
 		}
 
 		NPCs: {
@@ -4645,6 +4650,7 @@ Mods: {
 			FractalGrenadeProjectile.DisplayName: Fractal Grenade Projectile
 			DendriteStaffMinion.DisplayName: Dendrite Staff Minion
 			MandelbrotMinionLightning.DisplayName: Mandelbrot Minion Lightning
+			SunplateDrillProj.DisplayName: Sunplate Drill Proj
 		}
 
 		Bestiary: {
