@@ -2536,6 +2536,25 @@ Mods: {
 					'''
 			}
 
+			QSFlawless: {
+				DisplayName: Lapidary Lacerator
+				Tooltip:
+					'''
+					Throws darts encased in slowing crystals that embed in enemies
+					Strike embedded enemies to increase the crystal size
+					Crystals explode into shards after a delay
+					'''
+			}
+
+			GolemFlawless: {
+				DisplayName: Sunspot Quiver
+				Tooltip:
+					'''
+					Holds an endless amount of sunspot arrows
+					Sunspot arrows create miniature suns that burn enemies
+					'''
+			}
+
 			ForceProjector: {
 				DisplayName: Force Projector
 				Tooltip: Encases thrown darts in force fields
