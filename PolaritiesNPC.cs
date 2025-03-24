@@ -1031,6 +1031,9 @@ namespace Polarities
                         leadingConditionRule.OnSuccess(ItemDropRule.Common(ItemType<JunglesRage>(), 4));
                     }
                     break;
+                case NPCID.DukeFishron:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<SurfaceTension>()));
+                    break;
                 case NPCID.Golem:
                     npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<GolemFlawless>()));
                     break;
