@@ -53,8 +53,8 @@ namespace Polarities.Content.Items.Tools.Hooks.PreHardmode
         public override void SetDefaults()
         {
             Projectile.netImportant = true;
-            Projectile.width = 26;
-            Projectile.height = 26;
+            Projectile.width = 18;
+            Projectile.height = 22;
 
             Projectile.aiStyle = 7;
             Projectile.friendly = true;
@@ -122,8 +122,8 @@ namespace Polarities.Content.Items.Tools.Hooks.PreHardmode
 
                 //Draw chain
                 Main.spriteBatch.Draw(ChainTexture.Value, new Vector2(center.X - Main.screenPosition.X, center.Y - Main.screenPosition.Y),
-                    new Rectangle(0, 0, 10, 16), Color.White, projRotation,
-                    new Vector2(10 * 0.5f, 16 * 0.5f), 1f, SpriteEffects.None, 0f);
+                    new Rectangle(0, 0, 6, 16), Color.White, projRotation,
+                    new Vector2(6 * 0.5f, 16 * 0.5f), 1f, SpriteEffects.None, 0f);
             }
             return false;
         }

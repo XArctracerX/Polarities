@@ -179,10 +179,23 @@ namespace Polarities.Content.Projectiles
         public int railgunShockwaves;
 
         int railgunTimer;
+
+        public int eclipxieBulletOrbit = -1;
+        float orbitSpeed = 6;
+        float orbitPos = 0;
+
         public override bool PreAI(Projectile projectile)
         {
             if (generalHitCooldown > 0) generalHitCooldown--;
             if (projectileHitCooldown > 0) projectileHitCooldown--;
+
+            if (eclipxieBulletOrbit != -1)
+            {
+                Projectile sun = Main.projectile[eclipxieBulletOrbit];
+                if (!sun.active) projectile.Kill();
+                projectile.position = sun.position + new Vector2(30, 0).RotatedBy(orbitPos);
+                orbitPos += MathHelper.ToRadians(orbitSpeed);
+            }
 
             if (railgunShockwaves > 0)
             {
@@ -260,6 +273,19 @@ namespace Polarities.Content.Projectiles
             return true;
         }
 
+        public bool justCollidedWithGround = false;
+
+        public override void PostAI(Projectile projectile)
+        {
+            justCollidedWithGround = false;
+        }
+
+        public override bool OnTileCollide(Projectile projectile, Vector2 oldVelocity)
+        {
+            justCollidedWithGround = true;
+            return base.OnTileCollide(projectile, oldVelocity);
+        }
+
         private void Player_UpdateMaxTurrets(Terraria.On_Player.orig_UpdateMaxTurrets orig, Player self)
         {
             List<Projectile> list = new List<Projectile>();
@@ -305,9 +331,21 @@ namespace Polarities.Content.Projectiles
 
         public Item recurShotItem = null;
         public bool hasRecurred = false;
+        public int cBow;
 
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
+            if (cBow > 0)
+            {
+                cBow--;
+                Projectile pUp = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.position, projectile.velocity.RotatedBy(MathHelper.ToRadians(-15)), projectile.type, projectile.damage, projectile.knockBack, projectile.owner);
+                Projectile pDown = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.position, projectile.velocity.RotatedBy(MathHelper.ToRadians(15)), projectile.type, projectile.damage, projectile.knockBack, projectile.owner);
+                pUp.GetGlobalProjectile<PolaritiesProjectile>().cBow = cBow;
+                pDown.GetGlobalProjectile<PolaritiesProjectile>().cBow = cBow;
+                pUp.noDropItem = true;
+                pDown.noDropItem = true;
+            }
+
             if (target.GetGlobalNPC<PolaritiesNPC>().usesProjectileHitCooldowns)
             {
                 projectileHitCooldown = target.GetGlobalNPC<PolaritiesNPC>().projectileHitCooldownTime;
