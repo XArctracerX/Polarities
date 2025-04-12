@@ -765,7 +765,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Eclipxie
             {
                 for (int i = 1; i <= 2; i++)
                 {
-                    NPC.DeathGore($"LunaButterfly{i}");
+                    NPC.DeathGore($"EclipxieGore{i}");
                 }
             }
 
@@ -858,6 +858,23 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Eclipxie
             NPC.buffImmune[BuffID.OnFire] = true;
 
             Music = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/Eclipxie");
+        }
+
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(new FlawlessOrRandomDropRule(ItemType<EclipxieTrophy>(), 10));
+            npcLoot.Add(ItemDropRule.BossBag(ItemType<EclipxieBag>()));
+            npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ItemType<EclipxieRelic>()));
+            //TODO: npcLoot.Add(ModUtils.MasterModeDropOnAllPlayersOrFlawless(ItemType<EsophagePetItem>(), 4));
+
+            //normal mode loot
+            LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+            notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<EclipxieMask>(), 7));
+            notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<EclipxieDust>(), 1, 10, 20));
+            notExpertRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ItemType<BlackLight>(), ItemType<SolarEyeStaff>(), ItemType<Sunsliver>(), ItemType<MoonDisc>(), ItemType<SunDisc>()));
+            npcLoot.Add(notExpertRule);
+
+            //npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<Contagun>()));
         }
 
         public override void ModifyHitByItem(Player player, Item item, ref NPC.HitModifiers modifiers)

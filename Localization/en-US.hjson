@@ -3984,6 +3984,16 @@ Mods: {
 				DisplayName: Sunplate Drill
 				Tooltip: ""
 			}
+
+			SurfaceTension: {
+				DisplayName: Surface Tension
+				Tooltip: ""
+			}
+
+			HemorrphageFlawless: {
+				DisplayName: Hemorrphage Flawless
+				Tooltip: ""
+			}
 		}
 
 		NPCs: {
@@ -4670,6 +4680,14 @@ Mods: {
 			DendriteStaffMinion.DisplayName: Dendrite Staff Minion
 			MandelbrotMinionLightning.DisplayName: Mandelbrot Minion Lightning
 			SunplateDrillProj.DisplayName: Sunplate Drill Proj
+			DukeBubble.DisplayName: Duke Bubble
+			HemorrphageFlawlessOffshoot.DisplayName: Hemorrphage Flawless Offshoot
+			HemorrphageFlawlessProjectile.DisplayName: Hemorrphage Flawless Projectile
+			HemorrphageFlawlessVertebra.DisplayName: Hemorrphage Flawless Vertebra
+			GolemFlawlessArrow.DisplayName: Golem Flawless Arrow
+			GolemFlawlessSun.DisplayName: Golem Flawless Sun
+			QSFlawlessCrystal.DisplayName: Q S Flawless Crystal
+			QSFlawlessShard.DisplayName: Q S Flawless Shard
 		}
 
 		Bestiary: {

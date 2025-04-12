@@ -24,7 +24,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
 
 		public override void SetDefaults()
 		{
-			Item.damage = 0;
+			Item.damage = 2;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 72;
 			Item.height = 46;
