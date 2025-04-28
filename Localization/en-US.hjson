@@ -1380,7 +1380,7 @@ Mods: {
 			}
 
 			ConvectiveHelmetMagic: {
-				DisplayName: Convective Helmet Hood
+				DisplayName: Convective Hood
 				Tooltip: 6% increased magic damage and critical strike chance
 			}
 
