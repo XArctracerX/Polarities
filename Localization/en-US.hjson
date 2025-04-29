@@ -1100,7 +1100,7 @@ Mods: {
 
 			SelfsimilarPickaxe: {
 				DisplayName: Selfsimilar Pickaxe
-				Tooltip: "Can safely mine selfsimilar ore"
+				Tooltip: Can safely mine selfsimilar ore
 			}
 
 			//Multi
@@ -1749,7 +1749,7 @@ Mods: {
 
 			SaltShaker: {
 				DisplayName: Salt Shaker
-				Tooltip: 
+				Tooltip:
 					'''
 					Uses salt for ammo
 					'Ideal for family Thanksgivings'
@@ -2405,7 +2405,7 @@ Mods: {
 			}
 
 			BlackLight: {
-				DisplayName: Black Light
+				DisplayName: Blacklight
 				Tooltip: "'May cause vision problems. And third degree burns.'"
 			}
 
@@ -3957,7 +3957,7 @@ Mods: {
 			}
 
 			FractalSpiritBanner: {
-				DisplayName: Fractal Spirit Banner
+				DisplayName: Phantobrot Banner
 				Tooltip: ""
 			}
 
@@ -4275,7 +4275,7 @@ Mods: {
 			Euryopter.DisplayName: Euryopter
 			FractalSlimeLarge.DisplayName: Fractal Slime
 			FractalSlimeMedium.DisplayName: Fractal Slime
-			FractalSlimeSmall.DisplayName: Fractal Slime 
+			FractalSlimeSmall.DisplayName: Fractal Slime
 			SeaAnomaly.DisplayName: Sea Anomaly
 			SeaAnomalyHitbox.DisplayName: Sea Anomaly
 			Shockflake.DisplayName: Shockflake
@@ -4284,7 +4284,7 @@ Mods: {
 			ChaosCrawler.DisplayName: Chaos Crawler
 			ChaosCrawlerHitbox.DisplayName: Chaos Crawler
 			FractalPoint.DisplayName: Fractal Point
-			FractalSpirit.DisplayName: Fractal Spirit
+			FractalSpirit.DisplayName: Phantobrot
 			MegaMenger.DisplayName: Mega Menger
 			Orthoconic.DisplayName: Orthoconic
 			OrthoconicHitbox.DisplayName: Orthoconic
@@ -4553,8 +4553,8 @@ Mods: {
 			MandelbrotOrbMinionHomingShot.DisplayName: Mandelbrot Orb Minion Homing Shot
 			MandelbrotOrbMinionOscillatingRay.DisplayName: Mandelbrot Orb Minion Oscillating Ray
 			ChaosBolt.DisplayName: Chaos Bolt
-			FractalSpiritLightning.DisplayName: Fractal Spirit Lightning
-			FractalSpiritSpark.DisplayName: Fractal Spirit Spark
+			FractalSpiritLightning.DisplayName: Phantobrot Lightning
+			FractalSpiritSpark.DisplayName: Phantobrot Spark
 			MegaMengerLaser.DisplayName: Mega Menger Laser
 			OrthoconicEllipse.DisplayName: Orthoconic Ellipse
 			OrthoconicParabola.DisplayName: Orthoconic Parabola
@@ -4722,8 +4722,12 @@ Mods: {
 			BrineFly: Individually harmless, in large clouds they prove a dizzying nuisance. Some organisms get their entire water intake from eating these flies in large quantities!
 			Mussel: Fortified with a hard shell, the Mussel waits for an opportune time to fling pearls to attack! They also have dozens of eyes on the edge of their shells. Just a fun fact.
 			Salthopper: A specialized slime with high halotolerance, the Salthopper can rapidly sap any adventurer of bodily moisture.
+			BrineDweller: These salt-encrusted fish normally feed on the microscopic shrimp that flourish in their briny habitat, but they won't turn down bigger prey.
 			AlkaliSpirit: A lesser spirit inhabiting the crumbling Limestone Caves, it's rather fragile and corporeal due to building its body from cave minerals.
 			StalagBeetle: A horned beetle specially adapted to the Limestone Caves. Its exceptionally sharp horn and hard shell pierce prey and protect itself from falling rocks respectively.
+			FlowWorm: These stretched-out alkali spirits smoothly burrow their way through the rock, rapidly eroding anything in their path.
+			GlowWorm: Dangling amongst the stalactites of cave ceilings, their lights cast an eerie glow that their insect prey find irresistible.
+			Slimey: A seemingly-placid grazer of the microbes that grow in the limestone caves, this odd snail reacts with great fury to any disturbance.
 			StellatedSlime: After having absorbed its own fallen star, it leaps high in the sky to pounce on any unsuspecting bystanders. Performing such leaps is considered a sign of greatness by the slime community.
 			BatSlime: Is it a bat, is it a slime? It doesn't matter! It occasionally sprouts wings for greatly enhanced (for slime standards) locomotion.
 			BloodBat: Even the bats are riled up from the horrible energy of the Blood Moon! Upon being exposed to its red light, cave-dwelling bats become permanently warped.
@@ -4739,7 +4743,7 @@ Mods: {
 			SparkCrawler: One of the many uncanny creatures inhabiting the Fractal Dimension, this one prefers locomotion by latching onto surrounding strands with its three extendable hooks.
 			Amphisbaena: Perhaps the most familiar life form amongst the overwhelmingly alien biosphere of the Fractal Dimension. Double the heads means double the danger, however, meaning it offers little comfort to weary adventurers.
 			MegaMenger: A mechanical organism seemingly bound to the four cardinal directions. Its surface area appears to be infinite, and within this infinity lies an immense amount of energy. It relentlessly hunts weakened prey with its predictable but fatal methods of locomotion, invariably sapping its victim of all energy.
-			Phantobrot: An apex predator of the Fractal Dimension, its overwhelming speed and relentless assault are a good motivator to keep a low profile in its natural habitat.
+			FractalSpirit: An apex predator of the Fractal Dimension, its overwhelming speed and relentless assault are a good motivator to keep a low profile in its natural habitat.
 			FractalPoint: A curious little friend. Direct contact may result in complete obliteration, so tread with caution. Its nature as a fractal entity becomes frighteningly apparent when observing its reproductive capability.
 			RavenousCursed: The favorite spawns of the Corruption are no doubt the worms it frequently births. Dreadful fire surges through its body as if it were blood.
 			LivingSpine: No biomass goes to waste in the Crimson, even bones belonging to long since decayed bodies are welcomed into the Crimson's collective. As such, even solitary spines dutifully burrow through the blood caked earth, expanding their regions territory.
@@ -4749,24 +4753,20 @@ Mods: {
 			Crimago: Soaring about on fell wings, this living nightmare hunts with its scythe-like claws. Close inspection reveals their claws to be literal bone matter erupting from their flesh... yet the Crimago cares not, for the Crimson has long since stolen the sensation of true pain from all of its children.
 			//MoltenSpirit: Hotter than hot, this demon's origins lie in the worlds core. It is capable of vaporizing flesh in an instant.
 			InfernalArrow: Empowered by the fiery will of beings that dwell below even the underworld, this animated chunk of rock pursues any trespassers that enter its infernal abode.
+			MantleOWar: This strange creature may look like a bizarre, molten jellyfish, but in fact it is a colonial organism made up of numerous smaller units called zooids.
 			ConvectiveWanderer: This immense magma-dweller can tolerate the extreme temperatures of the Earth's core, using its tentacle-like gills both to drill through solid metal and to protect its more vulnerable head. Highly protective of its much smaller offspring.
-			BabyWanderer: Unable to tolerate hotter temperatures at this age, the first part of their lives is spent in the Earth's upper mantle. They may seem vulnerable, but rarely is anything in nature truly defenseless. 
+			BabyWanderer: Unable to tolerate hotter temperatures at this age, the first part of their lives is spent in the Earth's upper mantle. They may seem vulnerable, but rarely is anything in nature truly defenseless.
 			CloudCichlid: These small, fish-like creatures are composed entirely of clouds and swim through the rainy skies as if they were water.
 			StormcloudCichlid: Composed of dark, stormy clouds, these fish-like creatures feed on airborne bacteria brought down from the skies in raindrops.
-			AmberGemfly: Their luster has become even greater with gemstones affixed to their bodies. That pretty glow in the dark is likely to be spotted by a large predator when underground...
-			AmethystGemfly: Their luster has become even greater with gemstones affixed to their bodies. That pretty glow in the dark is likely to be spotted by a large predator when underground...
-			TopazGemfly: Their luster has become even greater with gemstones affixed to their bodies. That pretty glow in the dark is likely to be spotted by a large predator when underground...
-			DiamondGemfly: Their luster has become even greater with gemstones affixed to their bodies. That pretty glow in the dark is likely to be spotted by a large predator when underground...
-			SapphireGemfly: Their luster has become even greater with gemstones affixed to their bodies. That pretty glow in the dark is likely to be spotted by a large predator when underground...
-			RubyGemfly: Their luster has become even greater with gemstones affixed to their bodies. That pretty glow in the dark is likely to be spotted by a large predator when underground...
-			EmeraldGemfly: Their luster has become even greater with gemstones affixed to their bodies. That pretty glow in the dark is likely to be spotted by a large predator when underground...
+			Gemfly: Their luster has become even greater with gemstones affixed to their bodies. That pretty glow in the dark is likely to be spotted by a large predator when underground...
 			SeaLily: Rooted into the ground, these creatures wave pleasantly in the ocean current. They may not exactly look the part, but they're related to starfish and sea urchins!
 			Sunfish: These notably large fish have a bizarre body plan, but pose no threat to adventurers. They're easy pickings for parasites and other aquatic predators, however.
 			GraniteCrawler: An unsettling amalgamate of granite energies collecting rocks into a familiar shape, it scurries across the caves at high speed while shielding its vulnerable core-eye from damage.
-			Hydra: The legendary beast appears at last! Remove one head, and two more will take its place... or you could simply take out the body supporting them instead.
-			FractalSlime: A slime in name only, this fractal ooze ricochets freely around the alien landscape and splits when attacked. Watch out for the perfect corner bounce!
+			GraniteStomper: A construct of granite enclosing a brilliant but fragile refractive crystal, the stomper shelters within its pillar-like legs, only emerging to fend off threats.
+			HydraBody: The legendary beast appears at last! Remove one head, and two more will take its place... or you could simply take out the body supporting them instead.
+			FractalSlimeLarge: A slime in name only, this fractal ooze ricochets freely around the alien landscape and splits when attacked. Watch out for the perfect corner bounce!
 			DustSprite: Animate particulates inhabiting the barren fractal deserts, they attack by swarming targets and overwhelming their senses. May entitle you to financial compensation if inhaled.
-			Bisector: Worm-like creatures found deep in the fractal wastes, they tunnel at high speed through the porous caves and cleave prey in two at the atomic level with their infinitely sharp exoskeletons.
+			BisectorHead: Worm-like creatures found deep in the fractal wastes, they tunnel at high speed through the porous caves and cleave prey in two at the atomic level with their infinitely sharp exoskeletons.
 			SeaAnomaly: Don't let its surprisingly terrestrial appearance fool you: this fractal creature is as deadly as any other, launching rays of energy to fry unlucky divers.
 			TurbulenceSpark: A chaotic well of fractal energy, barely keeping itself stable with the water's pressure. Any disruption will send it careening towards the source, disrupting logical momentum with its alien forces.
 			Shockflake: As if dendritic energy wasn't perilous enough, now it's come alive! It haphazardly whirls through the fractal skies, launching electrical bolts to defend its territory.
@@ -4892,6 +4892,14 @@ Mods: {
 		Misc: {
 			UnboundHotkey: an unbound hotkey
 			Extra: ""
+		}
+
+		DropConditions: {
+			Flawless: Drops when the boss is defeated without taking damage
+			SunPixieSummonItem: Drops from the final enemy defeated in the Rapture
+			EsophageSummonItem: Drops from the final enemy defeated in the Pestilence
+			SunKnightMount: Drops when riding a Pegasus
+			PegasusMount: Drops when ridden by a Sun Knight
 		}
 
 		BossChecklistIntegration: {
