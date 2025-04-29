@@ -29,6 +29,7 @@ using Polarities.Content.Items.Placeable.Trophies;
 using Polarities.Content.Items.Placeable.MusicBoxes;
 using Polarities.Content.NPCs.Enemies.WorldEvilInvasion;
 using Polarities.Content.NPCs.Enemies.HallowInvasion;
+using Polarities.Content.NPCs.Enemies.BloodMoon.PreHardmode;
 using Polarities.Content.Items.Consumables.Summons.Hardmode;
 using Polarities.Content.Items.Consumables.Summons.PreHardmode;
 using Polarities.Content.Items.Vanity.Hardmode;
@@ -212,7 +213,15 @@ namespace Polarities
 				//{ "Terraria MartianMadness", ModContent.ItemType<Gelthrower>() },
 				//{ "Terraria MartianSaucer", ModContent.ItemType<Gelthrower>() }
 				}
-);
+				);
+
+				bossChecklist.Call(
+				"SubmitEventNPCs",
+				this,
+				new Dictionary<string, object>() {
+				{ "Terraria BloodMoon", new List<int> { ModContent.NPCType<BloodBat>() } }
+				}
+				);
 
 				bossChecklist.Call(
 					"LogEvent", 
@@ -421,7 +430,7 @@ namespace Polarities
 					"LogBoss",
 					this,
 					"SelfsimilarSentinel",
-					13.9f,
+					12.9f,
 					() => PolaritiesSystem.downedSelfsimilarSentinel,
 					ModContent.NPCType<SelfsimilarSentinel>(),
 					new Dictionary<string, object>() {
@@ -470,7 +479,7 @@ namespace Polarities
 						"LogBoss",
 						this,
 						"ConvectiveWanderer",
-						13.8f,
+						12.8f,
 						() => PolaritiesSystem.downedConvectiveWanderer,
 						ModContent.NPCType<ConvectiveWanderer>(),
 						new Dictionary<string, object>()
