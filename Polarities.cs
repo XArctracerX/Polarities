@@ -364,7 +364,7 @@ namespace Polarities
 					ModContent.NPCType<Gigabat>(),
 					new Dictionary<string, object>()
 					{
-						["spawnItems"] = ModContent.ItemType<GigabatSummonItem>(),
+						["spawnItems"] = new List<int> { ModContent.ItemType<AmethystGemflyItem>(), ModContent.ItemType<TopazGemflyItem>(), ModContent.ItemType<SapphireGemflyItem>(), ModContent.ItemType<EmeraldGemflyItem>(), ModContent.ItemType<RubyGemflyItem>(), ModContent.ItemType<AmberGemflyItem>(), ModContent.ItemType<DiamondGemflyItem>(), ModContent.ItemType<GigabatSummonItem>() },
 						["collectibles"] = new List<int> { ModContent.ItemType<GigabatTrophy>(), ModContent.ItemType<GigabatMask>(), ModContent.ItemType<GigabatRelic>(), ModContent.ItemType<GigabatPetItem>(), ModContent.ItemType<GigabatMusicBox>(), ModContent.ItemType<Batastrophe>() }
 					}
 				);

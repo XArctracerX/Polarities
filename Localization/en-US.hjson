@@ -4157,7 +4157,7 @@ Mods: {
 
 				BossChecklistIntegration: {
 					EntryName: "{$Mods.Polarities.NPCs.Gigabat.DisplayName}"
-					SpawnInfo: Release Gemflies and wait, or use a [i:Polarities/GigabatSummonItem], while underground.
+					SpawnInfo: Release Gemflies and wait, or use a [i:Polarities/GigabatSummonItem] that drops from Bat Slimes that spawn after the boss is defeated, while underground.
 				}
 			}
 
@@ -4288,7 +4288,7 @@ Mods: {
 
 				BossChecklistIntegration: {
 					EntryName: "{$Mods.Polarities.NPCs.SelfsimilarSentinel.DisplayName}"
-					SpawnInfo: Attempt to mine naturally-generated [i:Polarities/SelfsimilarOre] in the Fractal Dimension.
+					SpawnInfo: Attempt to mine naturally-generated [i:Polarities/SelfsimilarOre] in the Fractal Dimension with anything other than a [i:Polarities/SelfsimilarPickaxe].
 				}
 			}
 
