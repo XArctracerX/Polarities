@@ -4133,7 +4133,7 @@ Mods: {
 
 				BossChecklistIntegration: {
 					EntryName: "{$Mods.Polarities.NPCs.StormCloudfish.DisplayName}"
-					SpawnInfo: Fly a Worm on a Kite as high as you can at the surface.
+					SpawnInfo: Fly a [i:Polarities/StormCloudfishSummonItem] as high as you can at the surface.
 				}
 			}
 
@@ -4146,7 +4146,7 @@ Mods: {
 
 				BossChecklistIntegration: {
 					EntryName: "{$Mods.Polarities.NPCs.StarConstruct.DisplayName}"
-					SpawnInfo: Wait for a Dormant Construct to spawn at night while the player has at least 300 maximum life, or use a Stellar Remote at the surface.
+					SpawnInfo: Wait for a Dormant Construct to spawn at night while the player has at least 300 maximum life, or use a [i:Polarities/StarConstructSummonItem] at the surface.
 				}
 			}
 
@@ -4157,7 +4157,7 @@ Mods: {
 
 				BossChecklistIntegration: {
 					EntryName: "{$Mods.Polarities.NPCs.Gigabat.DisplayName}"
-					SpawnInfo: Release Gemflies and wait, or use a Bat Whistle, while underground.
+					SpawnInfo: Release Gemflies and wait, or use a [i:Polarities/GigabatSummonItem], while underground.
 				}
 			}
 
@@ -4200,7 +4200,7 @@ Mods: {
 
 				BossChecklistIntegration: {
 					EntryName: "{$Mods.Polarities.NPCs.SunPixie.DisplayName}"
-					SpawnInfo: Reach the end of the Rapture, or use a Hallowed Star anywhere.
+					SpawnInfo: Reach the end of the Rapture, or use a [i:Polarities/SunPixieSummonItem] anywhere.
 				}
 			}
 
@@ -4217,7 +4217,7 @@ Mods: {
 
 				BossChecklistIntegration: {
 					EntryName: "{$Mods.Polarities.NPCs.Esophage.DisplayName}"
-					SpawnInfo: Reach the end of the Pestilence, or use a Fleshy Capsid anywhere.
+					SpawnInfo: Reach the end of the Pestilence, or use a [i:Polarities/EsophageSummonItem] anywhere.
 				}
 			}
 
@@ -4235,7 +4235,7 @@ Mods: {
 
 				BossChecklistIntegration: {
 					EntryName: "{$Mods.Polarities.NPCs.ConvectiveWanderer.DisplayName}"
-					SpawnInfo: Kill a Baby Wanderer, or use a Seismophone, at the Lava Ocean.
+					SpawnInfo: Kill a [i:Polarities/BabyWandererItem], or use a [i:Polarities/ConvectiveWandererSummonItem], at the Lava Ocean.
 				}
 			}
 
@@ -4252,19 +4252,46 @@ Mods: {
 
 				BossChecklistIntegration: {
 					EntryName: "{$Mods.Polarities.NPCs.Eclipxie.DisplayName}"
-					SpawnInfo: Use a Hallowed Star during a Solar Eclipse.
+					SpawnInfo: Use a [i:Polarities/SunPixieSummonItem] during a Solar Eclipse.
 				}
 			}
 
 			LunaButterfly.DisplayName: Luna Butterfly
 			SolMoth.DisplayName: Sol Moth
-			Hemorrphage.DisplayName: Hemorrphage
+
+			Hemorrphage: {
+				DisplayName: Hemorrphage
+
+				BossChecklistIntegration: {
+					EntryName: "{$Mods.Polarities.NPCs.Hemorrphage.DisplayName}"
+					SpawnInfo: Use a [i:Polarities/EsophageSummonItem] during a Blood Moon.
+				}
+			}
+
 			HemorrphageLeg.DisplayName: Hemorrphage Leg
 			HemorrphageTentacle.DisplayName: Hemorrphage Tentacle
-			RiftDenizen.DisplayName: Rift Denizen
+
+			RiftDenizen: {
+				DisplayName: Rift Denizen
+
+				BossChecklistIntegration: {
+					EntryName: "{$Mods.Polarities.NPCs.RiftDenizen.DisplayName}"
+					SpawnInfo: Use an [i:Polarities/RiftDenizenSummon] after catching it in the Space layer.
+				}
+			}
+
 			RiftOpening.DisplayName: Rift
 			RiftOpeningHitbox.DisplayName: Rift
-			SelfsimilarSentinel.DisplayName: Selfsimilar Sentinel
+
+			SelfsimilarSentinel: {
+				DisplayName: Selfsimilar Sentinel
+
+				BossChecklistIntegration: {
+					EntryName: "{$Mods.Polarities.NPCs.SelfsimilarSentinel.DisplayName}"
+					SpawnInfo: Attempt to mine naturally-generated [i:Polarities/SelfsimilarOre] in the Fractal Dimension.
+				}
+			}
+
 			Amphisbaena.DisplayName: Amphisbaena
 			BisectorBody1.DisplayName: Bisector
 			BisectorBody2.DisplayName: Bisector
@@ -4919,8 +4946,15 @@ Mods: {
 				}
 			}
 
-			Rapture.EntryName: Rapture
-			Pestilence.EntryName: Pestilence
+			Rapture: {
+				EntryName: The Rapture
+				SpawnInfo: Use a [i:Polarities/HallowInvasionSummonItem], or wait after defeating any mechanical boss.
+			}
+
+			Pestilence: {
+				EntryName: The Pestilence
+				SpawnInfo: Use a [i:Polarities/WorldEvilInvasionSummonItem], or wait after defeating every mechanical boss.
+			}
 		}
 
 		Configs: {

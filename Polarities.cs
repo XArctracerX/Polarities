@@ -43,6 +43,9 @@ using Polarities.Content.Items.Weapons.Ranged.Flawless;
 using Polarities.Content.Items.Weapons.Melee.Flawless;
 using Polarities.Content.Items.Weapons.Magic.Flawless;
 using Polarities.Content.Items.Weapons.Summon.Flawless;
+using Polarities.Content.Items.Accessories.Movement.Hardmode;
+using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
+using Polarities.Content.Items.Armor.Flawless.MechaMayhemArmor;
 using Polarities.Content.NPCs.Critters.PreHardmode;
 using Polarities.Content.NPCs.Critters.Hardmode;
 using Polarities.Content.NPCs.Bosses.Hardmode.SunPixie;
@@ -173,20 +176,65 @@ namespace Polarities
 			//boss checklist support
 			if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
 			{
+
+				bossChecklist.Call(
+				"SubmitEntryCollectibles",
+				this,
+				new Dictionary<string, object>() {
+				{ "Terraria KingSlime", ModContent.ItemType<Gelthrower>() },
+				{ "Terraria EyeofCthulhu", ModContent.ItemType<Eyeruption>() },
+				{ "Terraria EaterofWorlds", ModContent.ItemType<ConsumptionCannon>() },
+				{ "Terraria BrainofCthulhu", ModContent.ItemType<NeuralBasher>() },
+				{ "Terraria QueenBee", ModContent.ItemType<RoyalOrb>() },
+				{ "Terraria Skeletron", ModContent.ItemType<BonyBackhand>() },
+				//{ "Terraria DeerClops", ModContent.ItemType<Gelthrower>() },
+				{ "Terraria WallofFlesh", ModContent.ItemType<MawOfFlesh>() },
+				{ "Terraria QueenSlimeBoss", ModContent.ItemType<QSFlawless>() },
+				{ "Terraria TheTwins", ModContent.ItemType<FlawlessMechMask>() },
+				{ "Terraria TheDestroyer", ModContent.ItemType<FlawlessMechTail>() },
+				{ "Terraria SkeletronPrime", ModContent.ItemType<FlawlessMechChestplate>() },
+				{ "Terraria Plantera", ModContent.ItemType<UnfoldingBlossom>() },
+				{ "Terraria Golem", ModContent.ItemType<GolemFlawless>() },
+				{ "Terraria DukeFishron", ModContent.ItemType<SurfaceTension>() },
+				{ "Terraria HallowBoss", ItemID.EmpressBlade },
+				//{ "Terraria CultistBoss", ModContent.ItemType<EntropicSeal>() },
+				//{ "Terraria MoonLordCore", ModContent.ItemType<Gelthrower>() },
+
+				//{ "Terraria TorchGod", ModContent.ItemType<Gelthrower>() },
+				{ "Terraria OldOnesArmy", ModContent.ItemType<WyvernsNest>() },
+				{ "Terraria DD2Betsy", ModContent.ItemType<WyvernsNest>() }
+				//{ "Terraria PirateInvasion", ModContent.ItemType<Gelthrower>() },
+				//{ "Terraria PirateShip", ModContent.ItemType<Gelthrower>() },
+				//{ "Terraria PumpkinMoon", ModContent.ItemType<Gelthrower>() },
+				//{ "Terraria Pumpking", ModContent.ItemType<Gelthrower>() },
+				//{ "Terraria FrostMoon", ModContent.ItemType<Gelthrower>() },
+				//{ "Terraria IceQueen", ModContent.ItemType<Gelthrower>() },
+				//{ "Terraria MartianMadness", ModContent.ItemType<Gelthrower>() },
+				//{ "Terraria MartianSaucer", ModContent.ItemType<Gelthrower>() }
+				}
+);
+
 				bossChecklist.Call(
 					"LogEvent", 
 					this, 
 					"Rapture",
-					11.4f,
+					9.5f,
 					() => PolaritiesSystem.downedHallowInvasion,
 					new List<int> { ModContent.NPCType<Pegasus>(), ModContent.NPCType<IlluminantScourer>(), ModContent.NPCType<SunServitor>(), ModContent.NPCType<Aequorean>(), ModContent.NPCType<SunKnight>(), ModContent.NPCType<Trailblazer>(), ModContent.NPCType<Painbow>() },
 					new Dictionary<string,object>()
 					{
-						["spawnItems"] = ModContent.ItemType<HallowInvasionSummonItem>()
+						["spawnItems"] = ModContent.ItemType<HallowInvasionSummonItem>(),
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) => {
+							Texture2D texture = Request<Texture2D>("Polarities/Textures/BossChecklist/HallowInvasion").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						},
+						["overrideHeadTextures"] = "Polarities/Content/Events/HallowInvasion_EventIcon",
 					}
 				);
 				
 				bossChecklist.Call(
+
 					"LogEvent", 
 					this, 
 					"Pestilence",
@@ -201,7 +249,8 @@ namespace Polarities
 							Texture2D texture = Request<Texture2D>("Polarities/Textures/BossChecklist/WorldEvilInvasion").Value;
 							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
 							sb.Draw(texture, centered, color);
-						}
+						},
+						["overrideHeadTextures"] = "Polarities/Content/Events/WorldEvilInvasion_EventIcon"
 					}
 				);
 				
@@ -340,7 +389,7 @@ namespace Polarities
 					"LogBoss",
 					this,
 					"SunPixie",
-					11.41f,
+					9.51f,
 					() => PolaritiesSystem.downedSunPixie,
 					ModContent.NPCType<SunPixie>(),
 					new Dictionary<string, object>()
@@ -368,15 +417,15 @@ namespace Polarities
 					}
 				);*/
 
-				bossChecklist.Call( // Needs a custom portrait (this one's from the wiki.gg page)
+				bossChecklist.Call(
 					"LogBoss",
 					this,
 					"SelfsimilarSentinel",
-					11.39f,
+					13.9f,
 					() => PolaritiesSystem.downedSelfsimilarSentinel,
 					ModContent.NPCType<SelfsimilarSentinel>(),
 					new Dictionary<string, object>() {
-						["collectibles"] = new List<int> { ItemType<SelfsimilarSentinelTrophy>(), ItemType<SelfsimilarSentinelMask>(), ItemType<SelfsimilarSentinelRelic>() }, // Missing flawless
+						["collectibles"] = new List<int> { ItemType<SelfsimilarSentinelTrophy>(), ItemType<SelfsimilarSentinelMask>(), ItemType<SentinelP1MusicBox>(), ItemType<SentinelP2MusicBox>(), ItemType<SelfsimilarSentinelRelic>() }, // Missing flawless
 						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) => {
 							Texture2D texture = Request<Texture2D>("Polarities/Textures/BossChecklist/SelfsimilarSentinel").Value;
 							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
@@ -421,13 +470,13 @@ namespace Polarities
 						"LogBoss",
 						this,
 						"ConvectiveWanderer",
-						12.99f,
+						13.8f,
 						() => PolaritiesSystem.downedConvectiveWanderer,
 						ModContent.NPCType<ConvectiveWanderer>(),
 						new Dictionary<string, object>()
 						{
 							["spawnItems"] = ModContent.ItemType<ConvectiveWandererSummonItem>(),
-							["collectibles"] = new List<int> { ModContent.ItemType<ConvectiveWandererTrophy>(), ModContent.ItemType<ConvectiveWandererMask>(), ModContent.ItemType<ConvectiveWandererRelic>() }, // Missing flawless
+							["collectibles"] = new List<int> { ModContent.ItemType<ConvectiveWandererTrophy>(), ModContent.ItemType<ConvectiveWandererMask>(), ModContent.ItemType<ConvectiveWandererRelic>(), ItemType<ConvectiveWandererMusicBox>(), ModContent.ItemType<WandererFlawless>() },
 							["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) => {
 								Texture2D texture = Request<Texture2D>("Polarities/Textures/BossChecklist/ConvectiveWanderer").Value;
 								Vector2 centered = new Vector2(rect.X + (rect.Width / 2), rect.Y + (rect.Height / 2));
@@ -449,33 +498,38 @@ namespace Polarities
 					}
 				);*/
 
-				bossChecklist.Call( // Needs a custom portrait
+				bossChecklist.Call(
 					"LogBoss",
 					this,
 					"Eclipxie",
-					13.98f,
+					16.5f,
 					() => PolaritiesSystem.downedEclipxie,
 					ModContent.NPCType<Eclipxie>(),			
 					new Dictionary<string, object>()
 					{
 						["spawnItems"] = ModContent.ItemType<SunPixieSummonItem>(),
-						["collectibles"] = new List<int> { ModContent.ItemType<EclipxieTrophy>(), ModContent.ItemType<EclipxieMask>(), ModContent.ItemType<EclipxieRelic>() },
+						["collectibles"] = new List<int> { ModContent.ItemType<EclipxieTrophy>(), ModContent.ItemType<EclipxieMask>(), ModContent.ItemType<EclipxieRelic>(), ModContent.ItemType<EclipxieMusicBox>() },
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) => {
+							Texture2D texture = Request<Texture2D>("Polarities/Textures/BossChecklist/Eclipxie").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						}
 					}
 				);
 
-				bossChecklist.Call( // Needs a custom portrait (this one's from the wiki.gg page)
+				bossChecklist.Call(
 					"LogBoss",
 					this,
 					"Hemorrphage",
-					13.98f,
+					16.6f,
 					() => PolaritiesSystem.downedHemorrphage,
 					ModContent.NPCType<Hemorrphage>(),
 					new Dictionary<string, object>()
 					{
 						["spawnItems"] = ModContent.ItemType<EsophageSummonItem>(),
-						["collectibles"] = new List<int> { ModContent.ItemType<HemorrphageTrophy>(), ModContent.ItemType<HemorrphageMask>(), ModContent.ItemType<HemorrphageRelic>(), ModContent.ItemType<BloodyBloodCell>() },
+						["collectibles"] = new List<int> { ModContent.ItemType<HemorrphageTrophy>(), ModContent.ItemType<HemorrphageMask>(), ModContent.ItemType<HemorrphageRelic>(), ModContent.ItemType<BloodyBloodCell>(), ModContent.ItemType<HemorrphageMusicBox>(), ModContent.ItemType<HemorrphageFlawless>() },
 						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) => {
-							Texture2D texture = Request<Texture2D>("Polarities/Textures/BossChecklist/Esophage").Value;
+							Texture2D texture = Request<Texture2D>("Polarities/Textures/BossChecklist/Hemorrphage").Value;
 							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
 							sb.Draw(texture, centered, color);
 						}
@@ -493,8 +547,13 @@ namespace Polarities
 					{
 						["spawnItems"] = ModContent.ItemType<MagnetonElectrisSummonItem>(),
 						["displayName"] = Language.GetText("The Polarities"),
-						["collectibles"] = new List<int>{  }, // Needs masks/relic/flawless/trophy
-						["spawnInfo"] = Language.GetText("Use a [i:Polarities/MagnetonElectrisSummonItem].") // Localisation is tougher for duos
+						["collectibles"] = new List<int>{ ItemType<PolaritiesMusicBox>() }, // Needs masks/relic/flawless/trophy
+						["spawnInfo"] = Language.GetText("Use a [i:Polarities/MagnetonElectrisSummonItem]."), // Localisation is tougher for duos
+						["customPortrait"] = (SpriteBatch sb, Rectangle rect, Color color) => {
+							Texture2D texture = Request<Texture2D>("Polarities/Textures/BossChecklist/Polarities").Value;
+							Vector2 centered = new Vector2(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+							sb.Draw(texture, centered, color);
+						}
 					}
 				);
 			}
