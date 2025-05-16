@@ -115,26 +115,27 @@ namespace Polarities
 			GameShaders.Misc["Polarities:DrawWavy"] = new MiscShaderData(miscEffectsRef, "DrawWavyPass");
 		}
 
-		public override void Unload()
-		{
-			ModUtils.Unload();
+        public override void Unload()
+        {
+            ModUtils.Unload();
 
-			customNPCBestiaryStars = null;
-			customTileGlowMasks = null;
-			customNPCGlowMasks = null;
-			preGeneratedRand = null;
+            customNPCBestiaryStars = null;
+            customTileGlowMasks = null;
+            customNPCGlowMasks = null;
+            preGeneratedRand = null;
 
-			//reset to vanilla size
-			//Array.Resize<Asset<Texture2D>>(ref TextureAssets.GlowMask, Main.maxGlowMasks);
+            //reset to vanilla size
+            //Array.Resize<Asset<Texture2D>>(ref TextureAssets.GlowMask, Main.maxGlowMasks);
 
-			//IL_ResizeArrays -= Polarities_IL_ResizeArrays;
+            //IL_ResizeArrays -= Polarities_IL_ResizeArrays;
 
-			//unload hotkeys
-			ArmorSetBonusHotkey = null;
-			ConvectiveDashHotkey = null;
-		}
+            //unload hotkeys
+            ArmorSetBonusHotkey = null;
+            ConvectiveDashHotkey = null;
+            RiftDodgeHotKey = null; // Add this line
+        }
 
-		/*private void Polarities_IL_ResizeArrays(ILContext il)
+        /*private void Polarities_IL_ResizeArrays(ILContext il)
 		{
 			ILCursor c = new ILCursor(il);
 
@@ -161,7 +162,7 @@ namespace Polarities
 			remove => HookEndpointManager.Unmodify(typeof(ModContent).GetMethod("ResizeArrays", BindingFlags.NonPublic | BindingFlags.Static), value);
 		}*/
 
-		public override void PostSetupContent()
+        public override void PostSetupContent()
 		{
 			short maskIndex = (short)TextureAssets.GlowMask.Length;
 
