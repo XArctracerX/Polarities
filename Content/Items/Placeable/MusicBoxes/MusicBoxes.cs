@@ -15,9 +15,13 @@ namespace Polarities.Content.Items.Placeable.MusicBoxes
         public abstract string MusicName { get; }
         public virtual Vector3 ActiveLight => Vector3.Zero;
 
+        // The autoloader already loads music files from Assets/Sounds/Music
+        // This is causing duplicate registration
         public override void Load()
         {
-            MusicLoader.AddMusic(Mod, "Assets/Sounds/Music/" + MusicName);
+            // Music is already loaded via autoloading, so don't register it again here
+            // Instead, just ensure the music slot is accessible
+            int musicSlot = MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/" + MusicName);
         }
 
         public override void SetStaticDefaults()
