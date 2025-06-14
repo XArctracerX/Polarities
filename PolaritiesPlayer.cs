@@ -23,6 +23,7 @@ using Polarities.Content.Items.Weapons.Ranged.Atlatls.PreHardmode;
 using Polarities.Content.Items.Weapons.Summon.Minions.Hardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.PreHardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
+using Polarities.Content.Items.Accessories.Flawless;
 using Polarities.Content.Items.Vanity.DevSets.BubbySet;
 using Polarities.Content.Items.Vanity.DevSets.TuringSet;
 using Polarities.Content.Items.Vanity.DevSets.ElectroManiacSet;
@@ -49,8 +50,8 @@ using static Terraria.ModLoader.ModContent;
 
 namespace Polarities
 {
-	public partial class PolaritiesPlayer : ModPlayer
-	{
+    public partial class PolaritiesPlayer : ModPlayer
+    {
         public override void Load()
         {
             //allow crits from enemies
@@ -84,14 +85,18 @@ namespace Polarities
         public int royalOrbHitCount;
         public Vector2 velocityMultiplier;
         public bool strangeObituary;
+        public bool diedWithObituary;
         public float usedBookSlots;
         public float maxBookSlots;
         public bool canJumpAgain_Sail_Extra;
         public bool jumpAgain_Sail_Extra;
         public bool hasGlide;
+        public bool hasDive;
+        public bool hasInstantDeceleration;
         public int skeletronBookCooldown;
         public int beeRingTimer;
         public bool stormcore;
+        public bool lightningCore;
         public bool stargelAmulet;
         public bool hopperCrystal;
         public bool limestoneShield;
@@ -111,7 +116,7 @@ namespace Polarities
         public int incineration;
         public int incinerationResistanceTime;
         public bool coneVenom;
-		public bool magnetized;
+        public bool magnetized;
         public float runSpeedBoost;
         public float spawnRate;
         public bool solarEnergizer;
@@ -126,6 +131,7 @@ namespace Polarities
         public StatModifier nonMagicDamage;
         public bool hydraHide;
         public float hydraHideTime = 0;
+        public bool fractalAntenna;
         public bool convectiveDash;
         public int convectiveDashCharge;
         public Vector2 convectiveDashVelocity = Vector2.Zero;
@@ -136,6 +142,14 @@ namespace Polarities
         public int tolerancePotionDelayTime = 3600;
         public float ammoChance;
         public bool energyLanceLunge;
+        public bool solarPendant;
+        public int solarPendantTime;
+        public bool splashOfVenom;
+        public bool antoineCharm;
+        public bool entropicSeal;
+        public bool hemorrphageTeleport;
+        public bool electrodynamicTunnel;
+        bool[] controlsPressed = new bool[4];
 
         public bool solarCalibrator;
         public int solarCalibratorDamageTick;
@@ -207,11 +221,50 @@ namespace Polarities
 
         public override void UpdateDead()
         {
+            if (FractalSubworld.Active
+             && !ModUtils.Contains(Player.inventory, ItemType<Content.Items.Accessories.Information.PreHardmode.DimensionalAnchor>())
+             && !ModUtils.Contains(Player.armor, ItemType<Content.Items.Accessories.Information.PreHardmode.DimensionalAnchor>())
+             && Player.respawnTimer < 2)
+            {
+                FractalSubworld.DoExit();
+            }
+
             fractalization = 0;
+            if (diedWithObituary)
+            {
+                foreach (Projectile p in Main.projectile)
+                {
+                    if (!p.active) continue;
+                    if (p.DistanceSQ(Player.position) > 400) continue;
+                    if (p.type == ProjectileID.Tombstone
+                     || p.type == ProjectileID.GraveMarker
+                     || p.type == ProjectileID.CrossGraveMarker
+                     || p.type == ProjectileID.Headstone
+                     || p.type == ProjectileID.Gravestone
+                     || p.type == ProjectileID.Obelisk
+                     || p.type == ProjectileID.RichGravestone1
+                     || p.type == ProjectileID.RichGravestone2
+                     || p.type == ProjectileID.RichGravestone3
+                     || p.type == ProjectileID.RichGravestone4
+                     || p.type == ProjectileID.RichGravestone5)
+                        p.Kill();
+                }
+                bool quickRespawn = true;
+                foreach (NPC npc in Main.npc)
+                {
+                    if (npc.active && npc.life > 0 && npc.boss)
+                    {
+                        quickRespawn = false;
+                        break;
+                    }
+                }
+
+                if (quickRespawn && Player.respawnTimer > 180) Player.respawnTimer = 179;
+            }
         }
 
         public override void ResetEffects()
-		{
+        {
             selfsimilarMining = false;
             if (selfsimilarHitTimer > 0)
             {
@@ -240,8 +293,12 @@ namespace Polarities
             manaStarMultiplier = 1f;
             orbMinionSlots = 1f;
             strangeObituary = false;
+            diedWithObituary = false;
             usedBookSlots = 0f;
             hasGlide = false;
+            hasDive = false;
+            hasInstantDeceleration = false;
+            lightningCore = false;
             stormcore = false;
             stargelAmulet = false;
             hopperCrystal = false;
@@ -250,6 +307,8 @@ namespace Polarities
             skeletronBook = false;
             bloodBearer = false;
             volatileHeart = false;
+            fractalSubworldDebuffRate = Main.expertMode ? 2 : 1;
+            fractalSubworldDebuffIgnoreTicks = 0;
 
             wingTimeBoost = 0;
             critDamageBoostMultiplier = 1f;
@@ -259,6 +318,7 @@ namespace Polarities
             incineration = 0;
             incinerationResistanceTime = 0;
             coneVenom = false;
+            fractalAntenna = false;
             runSpeedBoost = 1f;
             spawnRate = 1f;
             solarEnergizer = false;
@@ -274,6 +334,13 @@ namespace Polarities
             stormcloudArmor = false;
             ammoChance = 1f;
 
+            solarPendant = false;
+            splashOfVenom = false;
+            antoineCharm = false;
+            hemorrphageTeleport = false;
+            electrodynamicTunnel = false;
+            entropicSeal = false;
+            controlsPressed = new bool[4];
             solarCalibrator = false;
 
             fractalSetBonusTier = 0;
@@ -387,6 +454,20 @@ namespace Polarities
                 {
                     Player.maxFallSpeed = 1f;
                 }
+
+                if (Player.controlDown && hasDive && !ModUtils.IsOnGroundPrecise(Player))
+                {
+                    Player.maxFallSpeed = 20f;
+                    if (Player.velocity.Y < 15f) Player.velocity = new Vector2(Player.velocity.X, 15f);
+                }
+
+                if (hasInstantDeceleration)
+                {
+                    if ((Player.controlRight && Player.velocity.X < 0) || (Player.controlLeft && Player.velocity.X > 0))
+                    {
+                        Player.velocity = new Vector2(-Player.velocity.X, Player.velocity.Y);
+                    }
+                }
             }
 
             //target via orbs
@@ -409,6 +490,97 @@ namespace Polarities
                     Player.AddBuff(BuffType<CloakofPocketsCooldown>(), RIFT_DODGE_COOLDOWN);
                 }
             }
+
+            // antoine's charm hotkey
+            if (Polarities.AntoinesCharmHotKey.JustPressed && antoineCharm && Player.statLife > 0)
+            {
+                Vector2 tpPos = (Player.Center.DirectionTo(Main.MouseWorld) * 160) + Player.position;
+                bool validTp = true;
+                for (int i = 0; i < 2; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        int x = (int)(tpPos.X / 16) + i;
+                        int y = (int)(tpPos.Y / 16) + j;
+                        if (Main.tile[x, y].TileType != 0)
+                        {
+                            validTp = false;
+                            break;
+                        }
+                    }
+                }
+                if (validTp)
+                {
+                    if (Player.HasBuff(BuffID.ChaosState))
+                    {
+                        int dir = Main.MouseWorld.X - Player.Center.X > 0 ? 1 : -1;
+                        int dmg = (Player.statLife / 2) + 20;
+                        if (dmg < 40) dmg = 40;
+                        Player.statLife -= dmg;
+                        Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + "'s physics broke."), 1, dir, out Player.HurtInfo hurt);
+                        Player.immuneTime = 0;
+                    }
+
+                    Player.AddBuff(BuffID.ChaosState, 60);
+
+                    Vector2 ogPos = Player.Center;
+                    Player.Teleport((Player.Center.DirectionTo(Main.MouseWorld) * 160) + Player.position, -1);
+                    for (int i = 0; i < 12; i++)
+                    {
+                        Dust.NewDustPerfect(Vector2.Lerp(ogPos, Player.Center, i / 12f), DustID.Electric).noGravity = true;
+                    }
+                }
+            }
+
+            // last blood teleport
+            if (Polarities.HemorrphageTeleportHotKey.JustPressed && hemorrphageTeleport && Player.statLife > 0)
+            {
+                if (ModUtils.IsOnGroundPrecise(Player))
+                {
+                    if (Player.HasBuff(BuffID.ChaosState))
+                    {
+                        int dir = Main.MouseWorld.X - Player.Center.X > 0 ? 1 : -1;
+                        int dmg = (Player.statLife / 2) + 20;
+                        if (dmg < 40) dmg = 40;
+                        Player.statLife -= dmg;
+                        Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + "'s blood didn't last."), 1, dir, out Player.HurtInfo hurt);
+                        Player.immuneTime = 0;
+                    }
+
+                    Player.AddBuff(BuffID.ChaosState, 300);
+
+                    for (int i = 0; i < 12; i++)
+                    {
+                        Dust.NewDustDirect(Player.position, Player.width, Player.height, DustID.Blood).noGravity = true;
+                    }
+                    Player.Teleport(Main.MouseWorld, -1);
+                    for (int i = 0; i < 12; i++)
+                    {
+                        Dust.NewDustDirect(Player.position, Player.width, Player.height, DustID.Blood).noGravity = true;
+                    }
+                }
+            }
+
+            if (Polarities.ElectrodynamicTunnelHotkey.JustPressed && electrodynamicTunnel && Player.statLife > 0)
+            {
+                if (Player.HasBuff(BuffID.ChaosState))
+                {
+                    int dir = Main.MouseWorld.X - Player.Center.X > 0 ? 1 : -1;
+                    int dmg = (Player.statLifeMax2 * 2) / 7;
+                    Player.statLife -= dmg;
+                    Player.Hurt(PlayerDeathReason.ByCustomReason(Player.name + "'s electrons got reshuffled."), dmg, dir, out Player.HurtInfo hurt);
+                    Player.immuneTime = 0;
+                }
+                else
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Main.MouseWorld.DirectionTo(Player.Center) * Player.Center.Distance(Main.MouseWorld), ProjectileType<Content.Items.Accessories.Movement.Hardmode.PolaritiesTeleportBeam>(), 400, 0f, Player.whoAmI);
+                    Player.Teleport(Player.Center + (Main.MouseWorld.DirectionTo(Player.Center) * Player.Center.Distance(Main.MouseWorld)), -1);
+                    Player.AddBuff(BuffID.ChaosState, 300);
+                }
+
+            }
+
+
 
             if (stargelAmulet)
             {
@@ -606,6 +778,20 @@ namespace Polarities
 
         public override void PostUpdateEquips()
         {
+            if (solarPendant && solarPendantTime > 0)
+            {
+                solarPendantTime--;
+                Player.endurance = 1 - (1 - Player.endurance) / 2;
+                Player.GetDamage(DamageClass.Generic) += 1;
+                for (int i = 0; i < 12; i++)
+                {
+                    Vector2 pos = Player.Center + Main.rand.NextVector2CircularEdge(30, 30);
+                    Dust d = Dust.NewDustPerfect(pos, DustID.Torch);
+                    d.noGravity = true;
+                    d.velocity = pos.DirectionTo(Player.Center) * 4;
+                }
+            }
+
             if (Player.HasBuff<GolemBookBuff>() && Player.wingsLogic == 0)
             {
                 Player.noFallDmg = true;
@@ -651,6 +837,7 @@ namespace Polarities
 
         public override void PostUpdate()
         {
+            if (!Player.dead) diedWithObituary = false;
             if (hopperCrystal && Player.justJumped)
             {
                 Player.velocity.X = (Player.velocity.X > 0 ? 1 : -1) * Math.Min(2 * Player.maxRunSpeed, Math.Abs(2 * Player.velocity.X));
@@ -659,6 +846,11 @@ namespace Polarities
             if (stormcore && 0.2f + Player.slotsMinions <= Player.maxMinions && Main.rand.NextBool(60))
             {
                 Main.projectile[Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center.X + 500 * (2 * (float)Main.rand.NextDouble() - 1), Player.Center.Y - 500, 0, 0, ProjectileType<StormcoreMinion>(), 1, Player.GetTotalKnockback(DamageClass.Summon).ApplyTo(0.5f), Player.whoAmI, 0, 0)].originalDamage = 1;
+            }
+
+            if (lightningCore && 0.2f + Player.slotsMinions <= Player.maxMinions && Main.rand.NextBool(60))
+            {
+                Main.projectile[Projectile.NewProjectile(Player.GetSource_FromAI(), Player.Center.X + 500 * (2 * (float)Main.rand.NextDouble() - 1), Player.Center.Y - 500, 0, 0, ProjectileType<LightningCoreMinion>(), 30, Player.GetTotalKnockback(DamageClass.Summon).ApplyTo(0.5f), Player.whoAmI, 0, 0)].originalDamage = 30;
             }
 
             if (fractalSummonerOrbs)
@@ -941,7 +1133,7 @@ namespace Polarities
                 }
             });
         }
-            
+
         public override void OnConsumeMana(Item item, int manaConsumed)
         {
             if (fractalMageSwords)
@@ -1022,6 +1214,68 @@ namespace Polarities
                     itemDrop = ItemType<Warhammerhead>();
                 }
             }
+
+            if (FractalSubworld.Active && !attempt.inLava && !attempt.inHoney)
+            {
+                if (attempt.crate && attempt.uncommon)
+                {
+                    if (Player.GetFractalization() < FractalSubworld.POST_SENTINEL_TIME)
+                    {
+                        itemDrop = ItemType<FractalCrate>();
+                    }
+                    else
+                    {
+                        itemDrop = ItemType<SelfsimilarCrate>();
+                    }
+                }
+                else
+                {
+                    if (!attempt.common && !attempt.uncommon && !attempt.rare && !attempt.veryrare && !attempt.legendary || Main.rand.NextBool())
+                    {
+                        switch (Main.rand.Next(2))
+                        {
+                            case 0:
+                                itemDrop = ItemType<FractalWeeds>();
+                                return;
+                            case 1:
+                                itemDrop = ItemType<BranchedTwig>();
+                                return;
+                        }
+                    }
+                    if (attempt.questFish == ItemType<BudFish>() && Main.rand.NextBool(3))
+                    {
+                        itemDrop = attempt.questFish;
+                        return;
+                    }
+                    if (attempt.uncommon)
+                    {
+                        itemDrop = ItemType<Mirrorfish>();
+                    }
+                    if (attempt.rare)
+                    {
+                        if (Player.GetFractalization() > FractalSubworld.POST_SENTINEL_TIME)
+                        {
+                            itemDrop = ItemType<SelfsimilarScabbardfish>();
+                        }
+                        else
+                        {
+                            itemDrop = ItemType<Regularfish>();
+                        }
+                    }
+                    if (attempt.veryrare)
+                    {
+                        if (Main.rand.NextBool())
+                        {
+                            itemDrop = ItemType<Manyfin>();
+                        }
+                        else
+                        {
+                            itemDrop = ItemType<Trilobiter>();
+                        }
+                    }
+                }
+            }
+
             if (Player.InModBiome(GetInstance<SaltCave>()) && !attempt.inLava && !attempt.inHoney)
             {
                 if (attempt.crate)
@@ -1094,6 +1348,12 @@ namespace Polarities
         {
             //OnHitNPCWithAnything(target, damage, knockback, crit, item.DamageType);
 
+            if (splashOfVenom)
+            {
+                target.AddBuff(BuffID.Venom, 2 * 60);
+                target.AddBuff(BuffID.Poisoned, 5 * 60);
+            }
+
             if (target.GetGlobalNPC<PolaritiesNPC>().usesProjectileHitCooldowns)
             {
                 itemHitCooldown = target.GetGlobalNPC<PolaritiesNPC>().projectileHitCooldownTime;
@@ -1107,11 +1367,11 @@ namespace Polarities
             if (volatileHeart && volatileHeartCooldown == 0 && Main.rand.NextBool(5))
             {
                 volatileHeartCooldown = 20;
-                Projectile.NewProjectile(Player.GetSource_FromAI(), target.Center, Vector2.Zero, ProjectileType<Bloodsplosion>(), 6, 2, Player.whoAmI, Main.rand.NextFloat(MathHelper.Pi * 2)); 
+                Projectile.NewProjectile(Player.GetSource_FromAI(), target.Center, Vector2.Zero, ProjectileType<Bloodsplosion>(), 6, 2, Player.whoAmI, Main.rand.NextFloat(MathHelper.Pi * 2));
                 for (int i = 0; i < 4; i++)
                 {
                     //Projectile.NewProjectile(Player.GetSource_FromAI(), Main.MouseWorld, Vector2.Zero, ProjectileType<BloodBearerTentacle>(), 8, 0.5f, Player.whoAmI, Main.rand.NextFloat(0, 2 * MathHelper.Pi));
-                    Projectile.NewProjectile(Player.GetSource_FromAI(), target.Center, Vector2.Zero, ProjectileType<Bloodsplosion>(), 6, 2, Player.whoAmI, Main.rand.NextFloat(MathHelper.Pi * 2)); 
+                    Projectile.NewProjectile(Player.GetSource_FromAI(), target.Center, Vector2.Zero, ProjectileType<Bloodsplosion>(), 6, 2, Player.whoAmI, Main.rand.NextFloat(MathHelper.Pi * 2));
                 }
             }
         }
@@ -1119,6 +1379,12 @@ namespace Polarities
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)/* tModPorter If you don't need the Projectile, consider using OnHitNPC instead */
         {
             //OnHitNPCWithAnything(target, damage, knockback, crit, proj.DamageType);
+
+            if (splashOfVenom)
+            {
+                target.AddBuff(BuffID.Venom, 2 * 60);
+                target.AddBuff(BuffID.Poisoned, 5 * 60);
+            }
 
             if (proj.IsTypeSummon())
             {
@@ -1134,6 +1400,12 @@ namespace Polarities
 
         public void OnHitNPCWithAnything(NPC target, int damage, float knockback, bool crit, DamageClass damageClass)
         {
+            if (splashOfVenom)
+            {
+                target.AddBuff(BuffID.Venom, 2 * 60);
+                target.AddBuff(BuffID.Poisoned, 5 * 60);
+            }
+
             if (snakescaleSetBonus && crit)
             {
                 target.AddBuff(BuffID.Venom, 5 * 60);
@@ -1155,13 +1427,13 @@ namespace Polarities
                 switch (fractalSetBonusTier)
                 {
                     case 0:
-                            //Projectile.NewProjectile(Main.MouseWorld, Vector2.Zero, ProjectileType<FractalRangerTarget>(), (int)(80 * Player.rangedDamage * Player.rangedDamageMult * Player.allDamage * Player.allDamageMult), 0f, player.whoAmI);
-                            Projectile.NewProjectile(Player.GetSource_FromAI(), Main.MouseWorld, Vector2.Zero, ProjectileType<FractalRangerTarget>(), 8, 0f, Player.whoAmI);
+                        //Projectile.NewProjectile(Main.MouseWorld, Vector2.Zero, ProjectileType<FractalRangerTarget>(), (int)(80 * Player.rangedDamage * Player.rangedDamageMult * Player.allDamage * Player.allDamageMult), 0f, player.whoAmI);
+                        Projectile.NewProjectile(Player.GetSource_FromAI(), Main.MouseWorld, Vector2.Zero, ProjectileType<FractalRangerTarget>(), 8, 0f, Player.whoAmI);
                         break;
                     case 1:
                         for (int i = 0; i < 6; i++)
                             Projectile.NewProjectile(Player.GetSource_FromAI(), Main.MouseWorld, Vector2.Zero, ProjectileType<SelfsimilarRangerTarget>(), 8, 0f, Player.whoAmI);
-                            //Projectile.NewProjectile(Main.MouseWorld + new Vector2((float)Math.Sqrt(i) * 256f, 0).RotatedByRandom(MathHelper.TwoPi), Vector2.Zero, ProjectileType<Items.Armor.SelfsimilarArmor.SelfsimilarRangerTarget>(), (int)(150 * player.rangedDamage * player.rangedDamageMult * player.allDamage * player.allDamageMult), 0f, player.whoAmI);
+                        //Projectile.NewProjectile(Main.MouseWorld + new Vector2((float)Math.Sqrt(i) * 256f, 0).RotatedByRandom(MathHelper.TwoPi), Vector2.Zero, ProjectileType<Items.Armor.SelfsimilarArmor.SelfsimilarRangerTarget>(), (int)(150 * player.rangedDamage * player.rangedDamageMult * player.allDamage * player.allDamageMult), 0f, player.whoAmI);
                         break;
                 }
                 fractalRangerTargetCooldown = 30;
@@ -1183,8 +1455,28 @@ namespace Polarities
             }
         }
 
+        public override void ModifyHurt(ref Player.HurtModifiers modifiers)
+        {
+            if (solarPendant && solarPendantTime <= 0)
+            {
+                solarPendantTime = 600;
+                modifiers.FinalDamage /= 2;
+            }
+        }
+
         public override void OnHurt(Player.HurtInfo info)
         {
+            if (fractalAntenna && info.Damage % 4 == 0)
+            {
+                Player.statLife += (int)(0.75f * info.Damage);
+                for (int i = 0; i < 6; i++)
+                {
+                    Dust d = Dust.NewDustDirect(Player.position, Player.width, Player.height, DustID.Electric, Scale: 2f);
+                    d.noGravity = true;
+                    d.velocity = Main.rand.NextVector2CircularEdge(5, 5);
+                }
+            }
+
             //TODO: (MAYBE) Replace with source propagation system once supported/if it doesn't end up being trivially supported, also move terraprisma to be obtained on any flawless run if/when this system is added
             for (int i = 0; i < Main.maxNPCs; i++)
             {
@@ -1194,6 +1486,7 @@ namespace Polarities
 
             if (strangeObituary)
             {
+                diedWithObituary = true;
                 Player.KillMe(PlayerDeathReason.ByCustomReason(Language.GetTextValueWith("Mods.Polarities.DeathMessage.StrangeObituary", new { PlayerName = Player.name })), 1.0, 0, false);
                 return;
             }
@@ -1293,6 +1586,22 @@ namespace Polarities
 
         public override void PreUpdateMovement()
         {
+            // entropic seal stuff
+            if (entropicSeal && Player.statLife > 0)
+            {
+                if (Player.HasBuff(BuffID.ChaosState)) Player.ClearBuff(BuffID.ChaosState);
+                Player.velocity = Vector2.Zero;
+
+                if (Player.controlUp && !controlsPressed[0]) Player.Teleport(Player.position + new Vector2(0, -240), -1); controlsPressed[0] = true;
+                if (Player.controlLeft && !controlsPressed[1]) Player.Teleport(Player.position + new Vector2(-240, 0), -1); controlsPressed[1] = true;
+                if (Player.controlDown && !controlsPressed[2]) Player.Teleport(Player.position + new Vector2(0, 240), -1); controlsPressed[2] = true;
+                if (Player.controlRight && !controlsPressed[3]) Player.Teleport(Player.position + new Vector2(240, 0), -1); controlsPressed[3] = true;
+            }
+            if (!Player.controlUp) controlsPressed[0] = false;
+            if (!Player.controlLeft) controlsPressed[1] = false;
+            if (!Player.controlDown) controlsPressed[2] = false;
+            if (!Player.controlRight) controlsPressed[3] = false;
+
             Turbulence.Update(Player);
 
             //if rift dodging, freeze in place
@@ -1464,7 +1773,7 @@ namespace Polarities
 
         public int GetFractalization()
         {
-            return fractalization;
+            return Player.HasBuff(ModContent.BuffType<Fractalizing>()) ? Player.buffTime[Player.FindBuffIndex(ModContent.BuffType<Fractalizing>())] : -1;
         }
 
         private void Player_Update_NPCCollision(ILContext il)

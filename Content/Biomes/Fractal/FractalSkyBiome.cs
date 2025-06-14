@@ -7,7 +7,7 @@ namespace Polarities.Content.Biomes.Fractal
     {
         public override bool IsBiomeActive(Player player)
         {
-            return player.InModBiome<FractalBiome>() && player.Center.ToTileCoordinates().Y < FractalSubworld.skyHeight;
+            return FractalSubworld.Active && player.Center.ToTileCoordinates().Y < FractalSubworld.skyHeight;
         }
 
         public override float GetWeight(Player player)
@@ -19,6 +19,6 @@ namespace Polarities.Content.Biomes.Fractal
         public override string BackgroundPath => MapBackground;
         public override string BestiaryIcon => "Polarities/Content/Biomes/Fractal/FractalSkyBestiaryIcon";
 
-        public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/FractalPalace");
+        public override int Music => MusicLoader.GetMusicSlot(Mod, "Assets/Sounds/Music/FractalSky");
     }
 }

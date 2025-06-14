@@ -37,20 +37,20 @@ namespace Polarities.Content.Items.Weapons.Melee.Knives.Hardmode
             Item.autoReuse = true;
             Item.shoot = ProjectileType<TwistedTendrilProjectile>();
             Item.shootSpeed = 16f;
-            Item.maxStack = 3;
+            //Item.maxStack = 3;
         }
 
         public override void UpdateInventory(Player player)
         {
-            Item.maxStack = 3;
+            //Item.maxStack = 3;
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             float angle = Main.rand.NextFloat(MathHelper.TwoPi);
-            for (int i = 0; i < Item.stack; i++)
+            for (int i = 0; i < 3; i++)
             {
-                Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, angle + MathHelper.TwoPi * i / Item.stack, 0);
+                Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, angle + MathHelper.TwoPi * i / 3, 0);
             }
             return false;
         }

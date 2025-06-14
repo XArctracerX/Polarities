@@ -53,8 +53,8 @@ namespace Polarities.Content.Items.Weapons.Ranged.Bows.Hardmode
 		public override void AddRecipes()
 		{
 			CreateRecipe()
-				.AddIngredient(ItemType<Content.Items.Materials.Hardmode.FractalResidue>(), 3)
-				.AddIngredient(ItemType<Content.Items.Placeable.Bars.FractalBar>(), 16)
+				.AddIngredient(ItemType<Materials.Hardmode.FractalResidue>(), 3)
+				.AddIngredient(ItemType<Placeable.Bars.FractalBar>(), 16)
 				.AddTile(TileType<Placeable.Furniture.Fractal.FractalAssemblerTile>())
 				.Register();
 		}

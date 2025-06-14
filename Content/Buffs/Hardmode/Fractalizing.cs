@@ -3,6 +3,8 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Polarities.Core;
 using Polarities.Global;
+using Microsoft.Xna.Framework;
+using static Terraria.ModLoader.ModContent;
 
 namespace Polarities.Content.Buffs.Hardmode
 {
@@ -14,13 +16,22 @@ namespace Polarities.Content.Buffs.Hardmode
             Main.buffNoSave[Type] = true;
         }
 
+        public override void Update(Player player, ref int buffIndex)
+        {
+            if (FractalSubworld.Active && player.HasBuff(ModContent.BuffType<Fractalizing>()))
+            {
+                player.buffTime[player.FindBuffIndex(ModContent.BuffType<Fractalizing>())] += player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffRate;
+            }
+        }
+
         public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
         {
+            var player = Main.LocalPlayer;
+
             if (!FractalSubworld.Active)
             {
                 return;
             }
-            var player = Main.LocalPlayer;
             int time = player.GetFractalization();
             if (time > FractalSubworld.HARDMODE_DANGER_TIME)
             {
@@ -33,6 +44,10 @@ namespace Polarities.Content.Buffs.Hardmode
             if (time > FractalSubworld.POST_SENTINEL_TIME)
             {
                 tip += $"\n{Language.GetTextValue("Mods.Polarities.Buffs.Fractalizing.PostSentinel")}";
+            }
+            if (player.HasBuff(ModContent.BuffType<Items.Consumables.Potions.Hardmode.FractalAntidoteBuff>()))
+            {
+                tip += $"\n{Language.GetTextValue("Mods.Polarities.Buffs.Fractalizing.FractalAntidote")}";
             }
         }
 

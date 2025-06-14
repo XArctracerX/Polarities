@@ -166,32 +166,6 @@ namespace Polarities.Global
                     }
                 }
 
-                if (!item.social && item.prefix > 0)
-                {
-                    if (Main.tooltipPrefixComparisonItem != null && item.autoReuse != Main.tooltipPrefixComparisonItem.autoReuse) //TODO: This doesn't seem to work?
-                    {
-                        if (item.autoReuse)
-                        {
-                            TooltipLine line = new TooltipLine(Mod, "PrefixAutomated", Language.GetTextValue("Mods.Polarities.ItemTooltip.AutomaticPrefix"))
-                            {
-                                IsModifier = true
-                            };
-                            tooltips.Insert(i, line);
-                            i++;
-                        }
-                        else
-                        {
-                            TooltipLine line = new TooltipLine(Mod, "PrefixAutomated", Language.GetTextValue("Mods.Polarities.ItemTooltip.ManualPrefix"))
-                            {
-                                IsModifier = true,
-                                IsModifierBad = true
-                            };
-                            tooltips.Insert(i, line);
-                            i++;
-                        }
-                    }
-                }
-
                 if (IsFlawless.Contains(item.type))
                 {
                     tooltips.Insert(i, new TooltipLine(Mod, "Flawless", Language.GetTextValue("Mods.Polarities.ItemTooltip.TooltipFlawless")));

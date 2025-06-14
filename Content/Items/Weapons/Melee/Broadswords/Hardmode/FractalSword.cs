@@ -52,6 +52,15 @@ namespace Polarities.Content.Items.Weapons.Melee.Broadswords.Hardmode
 			Projectile p = Projectile.NewProjectileDirect(player.GetSource_FromThis(), position, velocity, Item.shoot, Item.damage, Item.knockBack, player.whoAmI);
 			p.ai[0] = player.direction;
 		}
+
+		public override void AddRecipes()
+		{
+			CreateRecipe()
+				.AddIngredient(ItemType<Materials.Hardmode.FractalResidue>(), 3)
+				.AddIngredient(ItemType<Placeable.Bars.FractalBar>(), 15)
+				.AddTile(TileType<Placeable.Furniture.Fractal.FractalAssemblerTile>())
+				.Register();
+		}
 	}
 
 	public class SelfsimilarSword : ModItem
@@ -94,6 +103,15 @@ namespace Polarities.Content.Items.Weapons.Melee.Broadswords.Hardmode
 			Projectile p = Projectile.NewProjectileDirect(player.GetSource_FromThis(), position, velocity, Item.shoot, Item.damage, Item.knockBack, player.whoAmI);
 			p.ai[0] = player.direction;
 			p.ai[1] = target.whoAmI;
+		}
+
+		public override void AddRecipes()
+		{
+			CreateRecipe()
+				.AddIngredient(ItemType<FractalSword>())
+				.AddIngredient(ItemType<Placeable.Bars.SelfsimilarBar>(), 10)
+				.AddTile(TileType<Placeable.Furniture.Fractal.FractalAssemblerTile>())
+				.Register();
 		}
 	}
 

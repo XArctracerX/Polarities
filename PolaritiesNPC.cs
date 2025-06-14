@@ -12,6 +12,7 @@ using Polarities.Content.Items.Tools.Books.Hardmode;
 using Polarities.Content.Items.Weapons.Magic.Staffs.Hardmode;
 using Polarities.Content.Items.Consumables.Summons.Hardmode;
 using Polarities.Content.Items.Weapons.Ranged.Atlatls.Hardmode;
+using Polarities.Content.Items.Accessories.Flawless;
 using Polarities.Content.Items.Weapons.Ranged.Flawless;
 using Polarities.Content.Items.Weapons.Melee.Flawless;
 using Polarities.Content.Items.Weapons.Magic.Flawless;
@@ -1037,6 +1038,9 @@ namespace Polarities
                 case NPCID.Golem:
                     npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<GolemFlawless>()));
                     break;
+                case NPCID.CultistBoss:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<EntropicSeal>()));
+                    break;
                 case NPCID.Everscream:
                     {
                         //adds the candy cane atlatl
@@ -1066,6 +1070,9 @@ namespace Polarities
                     break;
                 case NPCID.DD2Betsy:
                     npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<WyvernsNest>()));
+                    break;
+                case NPCID.MartianSaucerCore:
+                    npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<BrokenWarpDrive>()));
                     break;
             }
 

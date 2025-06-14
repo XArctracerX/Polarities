@@ -228,7 +228,9 @@ namespace Polarities.Content.Items.Weapons.Melee.Flawless
 
 	public class WandererProjectile : ModProjectile
     {
-        public override void SetStaticDefaults()
+		public override string Texture => "Terraria/Images/Projectile_644";
+
+		public override void SetStaticDefaults()
         {
 			ProjectileID.Sets.TrailCacheLength[Type] = 999;
 			ProjectileID.Sets.TrailingMode[Type] = 2;
@@ -308,6 +310,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Flawless
 				Projectile.position = Vector2.Lerp(bezPos1, bezPos2, progress);
 				positions[(int)Projectile.ai[0] % ticksToExtend] = Projectile.position;
 			}
+			Projectile.rotation = Projectile.oldPos[0].AngleTo(Projectile.position) + MathHelper.PiOver2;
         }
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
@@ -322,6 +325,11 @@ namespace Polarities.Content.Items.Weapons.Melee.Flawless
 				else target.AddBuff(BuffType<Buffs.Hardmode.Incinerating>(), 180);
             }
 			if (progress < 1) ticksToExtend = (int)Projectile.ai[0];
+        }
+
+		public float Sine(float x)
+        {
+			return new Vector2(1, 0).RotatedBy(x).Y;
         }
 
         public override bool PreDraw(ref Color lightColor)
@@ -348,11 +356,12 @@ namespace Polarities.Content.Items.Weapons.Melee.Flawless
 
 			Color mainColor = Color.Lerp(mainColor1, mainColor2, MathHelper.Max(0, progress - 1));
 			Color fringeColor = Color.Lerp(fringeColor1, fringeColor2, progress / 2);
+			mainColor = Color.White;
 
 			int positionToReference = ticksToExtend - ((int)Projectile.ai[0] % ticksToExtend);
-			for (int i = 1; i < positions.Length; i++)
+			for (int i = 0; i < positions.Length - 1; i++)
             {
-				if (i == ticksToExtend) continue;
+				if (i == 0 || i == ticksToExtend) continue;
 				if (progress >= 1f && i >= positionToReference) continue;
 				if (progress > 1.99f) continue;
 				Vector2 position = positions[i];
@@ -365,8 +374,9 @@ namespace Polarities.Content.Items.Weapons.Melee.Flawless
 					fringeColor = Color.YellowGreen;
 				}*/
 
-				Main.spriteBatch.Draw(texture, Projectile.Center - Projectile.position + position - Main.screenPosition, new Rectangle(0, Projectile.frame * texture.Height / Main.projFrames[Projectile.type], texture.Width, texture.Height / Main.projFrames[Projectile.type]), fringeColor, Projectile.rotation, new Vector2(texture.Width / 2, texture.Height / Main.projFrames[Projectile.type] / 2), Projectile.scale * scale, SpriteEffects.None, 0f);
-				Main.spriteBatch.Draw(texture, Projectile.Center - Projectile.position + position - Main.screenPosition, new Rectangle(0, Projectile.frame * texture.Height / Main.projFrames[Projectile.type], texture.Width, texture.Height / Main.projFrames[Projectile.type]), mainColor, Projectile.rotation, new Vector2(texture.Width / 2, texture.Height / Main.projFrames[Projectile.type] / 2), Projectile.scale * scale / 2, SpriteEffects.None, 0f);
+				float rotation = (positions[i + 1] - positions[i]).ToRotation() + MathHelper.PiOver2;
+				Main.spriteBatch.Draw(texture, Projectile.Center - Projectile.position + position - Main.screenPosition, new Rectangle(0, Projectile.frame * texture.Height / Main.projFrames[Projectile.type], texture.Width, texture.Height / Main.projFrames[Projectile.type]), fringeColor, rotation, new Vector2(texture.Width / 2, texture.Height / Main.projFrames[Projectile.type] / 2), Projectile.scale * (scale * 1.5f + (0.1f * Sine(MathHelper.ToRadians(2f * i)))), SpriteEffects.None, 0f);
+				Main.spriteBatch.Draw(texture, Projectile.Center - Projectile.position + position - Main.screenPosition, new Rectangle(0, Projectile.frame * texture.Height / Main.projFrames[Projectile.type], texture.Width, texture.Height / Main.projFrames[Projectile.type]), mainColor, rotation, new Vector2(texture.Width / 2, texture.Height / Main.projFrames[Projectile.type] / 2), Projectile.scale * scale, SpriteEffects.None, 0f);
 				Lighting.AddLight(position, fringeColor.ToVector3());
 			}
 

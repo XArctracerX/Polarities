@@ -26,6 +26,28 @@ namespace Polarities.Core
 {
     public static class ModUtils
     {
+        public static bool Contains(Item[] arr, int id)
+        {
+            foreach (Item i in arr)
+            {
+                if (i.type == id) return true;
+            }
+            return false;
+        }
+        public static bool IsOnGroundPrecise(Player player)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                var tileX = Main.tile[(int)((player.position.X + (player.width * i / 2f)) / 16f), (int)((player.position.Y + (player.gravDir == 1 ? player.height + 1 : -1)) / 16f)];
+
+                if (tileX.HasTile && (Main.tileSolid[tileX.TileType] || Main.tileSolidTop[tileX.TileType]) && player.velocity.Y == 0f)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public static void Load()
         {
             try

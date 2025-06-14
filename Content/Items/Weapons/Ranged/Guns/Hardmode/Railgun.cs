@@ -77,7 +77,7 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
 				SoundEngine.PlaySound(SoundID.Item96, player.position);
             }
 
-			player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = ((Item.damage / 100) - 2);
+			player.GetModPlayer<PolaritiesPlayer>().screenshakeMagnitude = (Item.damage / 100) - 2;
 			player.GetModPlayer<PolaritiesPlayer>().screenshakeTimer = 5 + Item.damage / 50;
 
 			int dustLength = 16;

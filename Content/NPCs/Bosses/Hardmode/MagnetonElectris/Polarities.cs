@@ -102,7 +102,28 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 
 		private float[] playerOffset = { -600f, 0f, 0f };
 
-        public override void BossHeadRotation(ref float rotation)
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
+			npcLoot.Add(new FlawlessOrRandomDropRule(ItemType<PolaritiesTrophy>(), 10));
+			npcLoot.Add(ItemDropRule.BossBag(ItemType<Items.Consumables.TreasureBags.Hardmode.PolaritiesBag>()));
+			npcLoot.Add(ItemDropRule.MasterModeCommonDrop(ItemType<EsophageRelic>()));
+
+			npcLoot.Add(ItemDropRule.Common(ItemType<Items.Vanity.Hardmode.ElectrisMask>(), 7));
+			//TODO: npcLoot.Add(ModUtils.MasterModeDropOnAllPlayersOrFlawless(ItemType<EsophagePetItem>(), 4));
+
+			//normal mode loot
+			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+			notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<Items.Accessories.Wings.ElectricWings>(), 15));
+			notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<Items.Weapons.Magic.Staffs.Hardmode.DiamagneticDischarge>(), 3));
+			notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<Items.Weapons.Magic.Books.Hardmode.MagneticStreams>(), 3));
+			notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<Items.Materials.Hardmode.SmiteSoul>(), 1, 20, 39));
+
+			npcLoot.Add(notExpertRule);
+
+			//npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<Contagun>()));
+		}
+
+		public override void BossHeadRotation(ref float rotation)
         {
 			rotation = NPC.rotation - MathHelper.PiOver2;
         }
@@ -179,6 +200,14 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 				{
 					NPC.life = 0;
 					NPC.boss = false;
+					foreach (NPC npc in Main.npc)
+                    {
+						if (npc.type == NPCType<Magneton>())
+                        {
+							npc.life = 0;
+							npc.boss = false;
+                        }
+                    }
 					Main.NewText("The Polarities have been defeated!", 171, 64, 255);
 					NPC.checkDead();
 				}
@@ -839,6 +868,23 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.MagnetonElectris
 		//}
 
 		private float[] playerOffset = { 600f, 0f, 0f };
+
+		public override void ModifyNPCLoot(NPCLoot npcLoot)
+		{
+			npcLoot.Add(ItemDropRule.Common(ItemType<Items.Vanity.Hardmode.MagnetonMask>(), 7));
+			//TODO: npcLoot.Add(ModUtils.MasterModeDropOnAllPlayersOrFlawless(ItemType<EsophagePetItem>(), 4));
+
+			//normal mode loot
+			LeadingConditionRule notExpertRule = new LeadingConditionRule(new Conditions.NotExpert());
+			notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<Items.Weapons.Melee.Misc.EMP>(), 3));
+			notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<Items.Weapons.Ranged.Bows.Hardmode.ArcBolter>(), 3));
+			notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<Items.Weapons.Summon.Minions.Hardmode.DipoleStaff>(), 3));
+			notExpertRule.OnSuccess(ItemDropRule.Common(ItemType<Items.Placeable.Bars.PolarizedBar>(), 1, 15, 29));
+
+			npcLoot.Add(notExpertRule);
+
+			//npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<Contagun>()));
+		}
 
 		public override void BossHeadRotation(ref float rotation)
 		{

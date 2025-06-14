@@ -87,6 +87,8 @@ namespace Polarities.Global
     public class ConvectiveWandererFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { new Color(255, 156, 32), Color.White, new Color(5, 227, 255), Color.White }; }
     public class GolemFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { new Color(141, 56, 0), new Color(141, 56, 0), new Color(255, 230, 87) }; }
     public class DukeFishronFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { new Color(16, 243, 140), new Color(16, 243, 140), new Color(14, 87, 215) }; }
+    public class LunaticCultistFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { new Color(59, 96, 184), new Color(59, 96, 184), new Color(240, 240, 240), new Color(219, 189, 53) }; }
+    public class MartianSaucerFlawlessRarity : ColorLerpCycleRarity { public override Color[] ColorCycle => new Color[] { new Color(210, 210, 210), new Color(110, 254, 125), new Color(97, 200, 225) }; }
 }
 
 

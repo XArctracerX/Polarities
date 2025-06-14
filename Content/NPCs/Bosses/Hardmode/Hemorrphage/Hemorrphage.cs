@@ -15,6 +15,7 @@ using Polarities.Content.Items.Weapons.Melee.Boomerangs.Hardmode;
 using Polarities.Content.Items.Weapons.Magic.Staffs.Hardmode;
 using Polarities.Content.Items.Weapons.Magic.Books.Hardmode;
 using Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode;
+using Polarities.Content.Items.Weapons.Melee.Flawless;
 using ReLogic.Content;
 using System;
 using System.Collections.Generic;
@@ -847,7 +848,7 @@ namespace Polarities.Content.NPCs.Bosses.Hardmode.Hemorrphage
             notExpertRule.OnSuccess(ItemDropRule.OneFromOptionsNotScalingWithLuck(1, ItemType<BleedingSky>(), ItemType<BloodDicer>(), ItemType<Hemophobia>(), ItemType<Phagocyte>()));
             npcLoot.Add(notExpertRule);
 
-            //npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<Contagun>()));
+            npcLoot.Add(ItemDropRule.ByCondition(new FlawlessDropCondition(), ItemType<HemorrphageFlawless>()));
         }
 
         public override void SendExtraAI(BinaryWriter writer)

@@ -21,7 +21,6 @@ namespace Polarities.Content.Items.Weapons.Melee.Knives.PreHardmode
         {
             Item.SetWeaponValues(10, 1, 0);
             Item.DamageType = DamageClass.Melee;
-            Item.maxStack = 5;
 
             Item.noMelee = true;
             Item.noUseGraphic = true;
@@ -33,8 +32,8 @@ namespace Polarities.Content.Items.Weapons.Melee.Knives.PreHardmode
             Item.width = 32;
             Item.height = 30;
 
-            Item.useTime = 40;
-            Item.useAnimation = 40;
+            Item.useTime = 8;
+            Item.useAnimation = 8;
 
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = SoundID.Item1;
@@ -43,16 +42,9 @@ namespace Polarities.Content.Items.Weapons.Melee.Knives.PreHardmode
             Item.rare = ItemRarityID.Blue;
         }
 
-        public override void UpdateInventory(Player player)
-        {
-            Item.maxStack = 5;
-            Item.useTime = (int)Math.Ceiling(40f / Item.stack);
-            Item.useAnimation = (int)Math.Ceiling(40f / Item.stack);
-        }
-
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (player.ownedProjectileCounts[Item.shoot] < Item.stack)
+            if (player.ownedProjectileCounts[Item.shoot] < 5)
             {
                 Projectile.NewProjectile(source, position, Vector2.Zero, type, damage, knockback, player.whoAmI, 0, 40);
             }

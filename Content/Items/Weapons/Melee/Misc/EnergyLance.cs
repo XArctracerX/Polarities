@@ -5,6 +5,7 @@ using Terraria.ObjectData;
 using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
 using Polarities.Projectiles;
+using Polarities.Core;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
@@ -53,7 +54,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Misc
 
 		public override void UpdateInventory(Player player)
         {
-			if (player.TouchedTiles.Count > 0) lungable = true;
+			if (ModUtils.IsOnGroundPrecise(player)) lungable = true;
         }
 
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)

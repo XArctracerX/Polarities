@@ -17,14 +17,14 @@ namespace Polarities.Content.Items.Weapons.Ranged.Guns.Hardmode
 		public override void SetStaticDefaults()
 		{
 			Item.ResearchUnlockCount = 1;
-			//Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
+			Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
 			//DisplayName.SetDefault("Chaos Shot");
 			//Tooltip.SetDefault("Shoots a chaotic spray of armor-piercing bullets"+"\n50% chance not to consume ammo");
 		}
 
 		public override void SetDefaults()
 		{
-			Item.damage = 2;
+			Item.damage = 0;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 72;
 			Item.height = 46;

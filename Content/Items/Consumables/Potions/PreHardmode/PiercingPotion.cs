@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Polarities.Content.Buffs.Hardmode;
 using Polarities.Content.Items.Materials.PreHardmode;
 using Terraria;
 using Terraria.ID;
@@ -29,7 +30,7 @@ namespace Polarities.Content.Items.Consumables.Potions.PreHardmode
             Item.consumable = true;
             Item.rare = ItemRarityID.Blue;
             Item.value = Item.sellPrice(silver: 2);
-            Item.buffType = BuffType<PiercingPotionBuff>();
+            Item.buffType = BuffType<Fractalizing>();
             Item.buffTime = 28800;
         }
 

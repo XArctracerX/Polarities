@@ -25,8 +25,8 @@ namespace Polarities.Content.Items.Weapons.Melee.Shortswords.PreHardmode
             Item.SetWeaponValues(20, 1f, 0);
             Item.DamageType = DamageClass.Melee;
 
-            Item.width = 30;
-            Item.height = 46;
+            Item.width = 28;
+            Item.height = 28;
 
             Item.useTime = 20;
             Item.useAnimation = 20;
@@ -84,7 +84,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Shortswords.PreHardmode
 
         public override void SetDefaults()
         {
-            Projectile.Size = new Vector2(30);
+            Projectile.Size = new Vector2(18);
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
@@ -126,8 +126,8 @@ namespace Polarities.Content.Items.Weapons.Melee.Shortswords.PreHardmode
 
         private void SetVisualOffsets()
         {
-            const int HalfSpriteWidth = 30 / 2;
-            const int HalfSpriteHeight = 46 / 2;
+            const int HalfSpriteWidth = 28 / 2;
+            const int HalfSpriteHeight = 28 / 2;
 
             int HalfProjWidth = Projectile.width / 2;
             int HalfProjHeight = Projectile.height / 2;
@@ -161,7 +161,7 @@ namespace Polarities.Content.Items.Weapons.Melee.Shortswords.PreHardmode
 
     public class StardusterSkyProjectile : ModProjectile
     {
-        public override string Texture => "Polarities/Content/Items/Weapons/Melee/Shortswords/PreHardmode/StardusterProjectile";
+        public override string Texture => "Polarities/Content/Items/Weapons/Melee/Shortswords/PreHardmode/Starduster";
 
         private Vector2 direction;
 

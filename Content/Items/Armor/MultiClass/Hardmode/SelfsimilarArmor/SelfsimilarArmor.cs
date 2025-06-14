@@ -51,7 +51,7 @@ namespace Polarities.Content.Items.Armor.MultiClass.Hardmode.SelfsimilarArmor
 		{
 			player.pickSpeed *= 0.95f;
 			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffLifeLossResistance *= 4 / 3f;
-			//player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffResistance += FractalSubworld.POST_GOLEM_TIME * 4 / 10;
+			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffIgnoreTicks += FractalSubworld.POST_SENTINEL_TIME * 4 / 10;
 		}
 
 		public override void AddRecipes()
@@ -92,7 +92,7 @@ namespace Polarities.Content.Items.Armor.MultiClass.Hardmode.SelfsimilarArmor
 		{
 			player.pickSpeed *= 0.95f;
 			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffLifeLossResistance *= 6 / 5f;
-			//player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffResistance += FractalSubworld.POST_GOLEM_TIME * 3 / 10;
+			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffIgnoreTicks += FractalSubworld.POST_SENTINEL_TIME * 3 / 10;
 		}
 
 		public override void AddRecipes()
@@ -133,7 +133,7 @@ namespace Polarities.Content.Items.Armor.MultiClass.Hardmode.SelfsimilarArmor
         {
 			player.GetDamage(DamageClass.Melee) += 0.1f;
 			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffLifeLossResistance *= 5 / 4f;
-			//player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffResistance += FractalSubworld.POST_GOLEM_TIME * 3 / 10;
+			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffIgnoreTicks += FractalSubworld.POST_SENTINEL_TIME * 3 / 10;
 		}
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -189,7 +189,7 @@ namespace Polarities.Content.Items.Armor.MultiClass.Hardmode.SelfsimilarArmor
 		{
 			player.GetDamage(DamageClass.Ranged) += 0.1f;
 			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffLifeLossResistance *= 5 / 4f;
-			//player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffResistance += FractalSubworld.POST_GOLEM_TIME * 3 / 10;
+			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffIgnoreTicks += FractalSubworld.POST_SENTINEL_TIME * 3 / 10;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -245,7 +245,7 @@ namespace Polarities.Content.Items.Armor.MultiClass.Hardmode.SelfsimilarArmor
 		{
 			player.GetDamage(DamageClass.Magic) += 0.1f;
 			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffLifeLossResistance *= 5 / 4f;
-			//player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffResistance += FractalSubworld.POST_GOLEM_TIME * 3 / 10;
+			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffIgnoreTicks += FractalSubworld.POST_SENTINEL_TIME * 3 / 10;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -302,7 +302,7 @@ namespace Polarities.Content.Items.Armor.MultiClass.Hardmode.SelfsimilarArmor
 		{
 			player.GetDamage(DamageClass.Summon) += 0.1f;
 			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffLifeLossResistance *= 5 / 4f;
-			//player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffResistance += FractalSubworld.POST_GOLEM_TIME * 3 / 10;
+			player.GetModPlayer<PolaritiesPlayer>().fractalSubworldDebuffIgnoreTicks += FractalSubworld.POST_SENTINEL_TIME * 3 / 10;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

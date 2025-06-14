@@ -10,9 +10,13 @@ namespace Polarities.Global
         virtual bool DoVanillaDraw() => true;
     }
 
+    /*
     public class HeldItemDrawLayer : PlayerDrawLayer
     {
-        public override Position GetDefaultPosition() => new Between(PlayerDrawLayers.ArmOverItem, PlayerDrawLayers.HeldItem);
+        //public override Position GetDefaultPosition() => new Between(PlayerDrawLayers.ArmOverItem, PlayerDrawLayers.HeldItem);
+        //public override Position GetDefaultPosition() => new BeforeParent(PlayerDrawLayers.HeldItem);
+        public override Position GetDefaultPosition() => null;
+
 
         public override bool GetDefaultVisibility(PlayerDrawSet drawInfo)
         {
@@ -24,5 +28,6 @@ namespace Polarities.Global
             (drawInfo.drawPlayer.HeldItem.ModItem as IDrawHeldItem)?.DrawHeldItem(ref drawInfo);
         }
     }
+    */
 }
 

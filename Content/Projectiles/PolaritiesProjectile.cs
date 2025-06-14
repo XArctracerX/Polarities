@@ -184,8 +184,15 @@ namespace Polarities.Content.Projectiles
         float orbitSpeed = 6;
         float orbitPos = 0;
 
+        bool saucerBookSpeedAdded = false;
         public override bool PreAI(Projectile projectile)
         {
+            if (!saucerBookSpeedAdded && Main.player[projectile.owner].HasBuff(BuffType<SaucerBookBuff>()) && Main.player[projectile.owner].mount.Active)
+            {
+                saucerBookSpeedAdded = true;
+                projectile.extraUpdates++;
+            }
+
             if (generalHitCooldown > 0) generalHitCooldown--;
             if (projectileHitCooldown > 0) projectileHitCooldown--;
 

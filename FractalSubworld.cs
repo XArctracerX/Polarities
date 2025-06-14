@@ -5,7 +5,11 @@ using Polarities.Content.Items.Placeable.Bars;
 using Polarities.Content.Items.Placeable.Blocks.Fractal;
 using Polarities.Content.Items.Placeable.Furniture;
 using Polarities.Content.Items.Placeable.Furniture.Fractal;
+using Polarities.Content.Items.Weapons;
+using Polarities.Content.Items.Accessories.Movement.Hardmode;
 using Polarities.Content.Items.Accessories.Combat.Offense.Hardmode;
+using Polarities.Content.Items.Accessories.Combat.Defense.Hardmode;
+using Polarities.Content.Items.Accessories.Wings;
 using Polarities.Content.Items.Weapons.Melee.Broadswords.Hardmode;
 using Polarities.Tiles;
 using SubworldLibrary;
@@ -345,8 +349,10 @@ namespace Polarities
         {
             if (Main.netMode != NetmodeID.Server)
             {
-                Main.LocalPlayer.ClearBuff(ModContent.BuffType<Fractalizing>());
-                Main.LocalPlayer.GetModPlayer<PolaritiesPlayer>().fractalization = 0;
+                if (!Main.LocalPlayer.HasBuff(ModContent.BuffType<Fractalizing>()))
+                {
+                    Main.LocalPlayer.AddBuff(ModContent.BuffType<Fractalizing>(), 3);
+                }
             }
         }
 
@@ -2575,25 +2581,23 @@ namespace Polarities
             unlockedChestItemIndex = 0;
             lockedChestItemIndex = 0;
             itemsToPlaceInUnlockedFractalChests = new int[] {
-                ItemType<FractalSword>()
-                //ItemID.Zenith,
-                //ItemType<Items.Weapons.Sawrang>(),
-                //    ItemType<Items.Weapons.Gosperian>(),
-                //    ItemType<Items.Accessories.FractalAntenna>(),
-                //    ItemType<Items.Accessories.AntoinesCharm>(),
-                //    ItemType<Items.Accessories.TwistedMirror>(),
-                //    ItemType<Items.Weapons.OrthogonalStaff>(),
-                //    ItemType<Items.Weapons.MindTwister>(),
-                //    ItemType<Items.Weapons.Fractlatl>()
+                    ItemType<Content.Items.Weapons.Melee.Boomerangs.Hardmode.Sawrang>(),
+                    ItemType<Content.Items.Weapons.Melee.Yoyos.Hardmode.Gosperian>(),
+                    ItemType<FractalAntenna>(),
+                    ItemType<AntoinesCharm>(),
+                    ItemType<Content.Items.Tools.Misc.Hardmode.TwistedMirror>(),
+                    ItemType<Content.Items.Weapons.Magic.Staffs.Hardmode.OrthogonalStaff>(),
+                    ItemType<Content.Items.Weapons.Magic.Books.Hardmode.MindTwister>(),
+                    ItemType<Content.Items.Weapons.Ranged.Atlatls.Hardmode.Fractlatl>()
                 };
             itemsToPlaceInLockedFractalChests = new int[] {
-                //ItemType<Items.Accessories.Wings.FractalWings>(),
-                //    ItemType<Items.Weapons.CBow>(),
-                //    ItemType<Items.Weapons.EnergyLash>(),
-                //    ItemType<Items.Accessories.FractalEye>(),
-                //    ItemType<Items.Weapons.BinaryFlux>(),
-                //    ItemType<Items.Weapons.CaliperBlades>(),
-                //    ItemType<Items.Accessories.FractalAbsorber>(),
+                    ItemType<FractalWings>(),
+                    ItemType<Content.Items.Weapons.Ranged.Bows.Hardmode.CBow>(),
+                    ItemType<Content.Items.Weapons.Magic.Staffs.Hardmode.EnergyLash>(),
+                    ItemType<FractalEye>(),
+                    ItemType<Content.Items.Weapons.Magic.Guns.Hardmode.BinaryFlux>(),
+                    ItemType<CaliperBlades>(),
+                    ItemType<FractalAbsorber>(),
                     ItemType<ChaosFlower>()
                 };
         }

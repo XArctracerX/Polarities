@@ -41,6 +41,11 @@ namespace Polarities.Content.Items.Weapons.Magic.Flawless
 			Item.shootSpeed = 10f;
 		}
 
+        public override bool AltFunctionUse(Player player)
+        {
+            return player.ownedProjectileCounts[Item.shoot] > 0;
+        }
+
         public override void ModifyManaCost(Player player, ref float reduce, ref float mult)
         {
             //if (player.GetModPlayer<PolaritiesPlayer>().fractalManaReduction)
@@ -69,13 +74,15 @@ namespace Polarities.Content.Items.Weapons.Magic.Flawless
         }
 
         public List<Vector2> bubblePoints;
+        Vector2 smoothedCenter;
+        float smoothedScale;
 
         public override void SetDefaults()
         {
             Projectile.width = 2;
             Projectile.height = 2;
             Projectile.aiStyle = -1;
-            Projectile.friendly = false;
+            Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.DamageType = DamageClass.Magic;
             Projectile.timeLeft = 600;
@@ -85,6 +92,8 @@ namespace Polarities.Content.Items.Weapons.Magic.Flawless
             {
                 bubblePoints.Add(Projectile.position + new Vector2(16, 0).RotatedBy(2 * MathHelper.Pi * i / 36));
             }
+            smoothedCenter = Projectile.position;
+            smoothedScale = 1 / 16f;
         }
 
         bool playedSound;
@@ -97,6 +106,8 @@ namespace Polarities.Content.Items.Weapons.Magic.Flawless
                 {
                     bubblePoints[i] = Projectile.position + new Vector2(16, 0).RotatedBy(2 * MathHelper.Pi * i / bubblePoints.Count);
                 }
+                smoothedCenter = Projectile.position;
+                smoothedScale = Projectile.ai[1] / 256;
                 Projectile.localAI[0] = 1;
             }
 
@@ -127,7 +138,9 @@ namespace Polarities.Content.Items.Weapons.Magic.Flawless
                     if (!npc.active) continue;
                     if (npc.boss) continue;
                     if (npc.Center.Distance(Projectile.Center) > Projectile.ai[1]) continue;
-                    npc.position -= npc.velocity * npc.knockBackResist / 3f;
+                    float quot = 1.5f;
+                    if (npc.lifeMax < 1000) quot = 1.01f;
+                    npc.position -= npc.velocity * npc.knockBackResist / quot;
                 }
 
                 foreach (Projectile p in Main.projectile)
@@ -135,6 +148,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Flawless
                     if (!p.active) continue;
                     if (p.type == Projectile.type)
                     {
+                        if (p.localAI[0] == 0) continue;
                         if (p.whoAmI == Projectile.whoAmI) continue;
                         if (p.Center.Distance(Projectile.Center) > p.ai[1] + Projectile.ai[1]) continue;
 
@@ -166,7 +180,7 @@ namespace Polarities.Content.Items.Weapons.Magic.Flawless
                 }
             }
 
-            Projectile.friendly = Projectile.timeLeft < 2;
+            popped = Projectile.timeLeft < 2;
             if (!playedSound && Projectile.timeLeft < 2)
             {
                 SoundEngine.PlaySound(SoundID.Item54, Projectile.position);
@@ -181,6 +195,8 @@ namespace Polarities.Content.Items.Weapons.Magic.Flawless
                 bubblePoints[i] += Main.rand.NextVector2Circular(0.3f, 0.3f);
                 bubblePoints[i] += Main.rand.NextVector2Circular(0.1f, 0.1f) * 0.01f * (600f - Projectile.timeLeft);
             }
+            smoothedCenter = Vector2.Lerp(smoothedCenter, Projectile.position, 0.2f);
+            smoothedScale = MathHelper.Lerp(smoothedScale, Projectile.ai[1] / 256, 0.2f);
             Projectile.ai[0]++;
         }
 
@@ -221,14 +237,29 @@ namespace Polarities.Content.Items.Weapons.Magic.Flawless
 			}
 		}
 
+        bool popped = false;
         public override bool? Colliding(Rectangle useless, Rectangle target)
         {
-            return (Projectile.Center.Distance(target.Center.ToVector2()) < Projectile.ai[1]);
+            if (popped) return Projectile.Center.Distance(target.Center.ToVector2()) < Projectile.ai[1];
+            float dist = Projectile.Center.Distance(target.Center.ToVector2()) - Projectile.ai[1];
+            if (dist < 0) dist *= -1;
+            return dist <= target.Width;
+        }
+
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (!popped) modifiers.FinalDamage /= 8;
         }
 
         public override bool PreDraw(ref Color lightColor)
         {
             DrawLoop(bubblePoints, Color.Cyan, Color.Magenta, Color.Yellow, Color.LimeGreen);
+
+            Texture2D specular = Request<Texture2D>("Polarities/Content/Items/Weapons/Magic/Flawless/FishronSpecular").Value;
+            Vector2 specPosition = smoothedCenter + new Vector2(-Projectile.ai[1] * 0.1f, -Projectile.ai[1] * 0.95f);
+            //Vector2 subspecPosition = smoothedCenter + new Vector2(0.8f * Projectile.ai[1], 0).RotatedBy(-3 * MathHelper.PiOver2);
+            Main.EntitySpriteDraw(specular, specPosition - Main.screenPosition, specular.Frame(), Color.White, 0, new Vector2(specular.Frame().Width / 2, 2), Vector2.One * smoothedScale, SpriteEffects.None, 0);
+            //Main.EntitySpriteDraw(specular, subspecPosition - Main.screenPosition, specular.Frame(), Color.White * 0.5f, 0, new Vector2(specular.Frame().Width / 2, 2), Vector2.One * Projectile.ai[1] / 400, SpriteEffects.None, 0);
             return false;
         }
     }

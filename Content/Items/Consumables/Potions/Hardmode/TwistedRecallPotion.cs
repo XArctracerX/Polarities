@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Polarities.Content.Items.Materials.Hardmode;
+using Polarities.Content.Items.Fish;
 using Polarities.Content.Items.Placeable.Blocks.Fractal;
 using Polarities.Content.Buffs.Hardmode;
 using Terraria;
@@ -203,6 +203,8 @@ namespace Polarities.Content.Items.Consumables.Potions.Hardmode
                 Main.screenPosition.X = player.position.X + player.width / 2 - Main.screenWidth / 2;
                 Main.screenPosition.Y = player.position.Y + player.height / 2 - Main.screenHeight / 2;
             }
+
+            player.ClearBuff(ModContent.BuffType<Fractalizing>());
         }
     }
 }
