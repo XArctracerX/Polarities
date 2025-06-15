@@ -573,8 +573,8 @@ namespace Polarities
                 }
                 else
                 {
-                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Main.MouseWorld.DirectionTo(Player.Center) * Player.Center.Distance(Main.MouseWorld), ProjectileType<Content.Items.Accessories.Movement.Hardmode.PolaritiesTeleportBeam>(), 400, 0f, Player.whoAmI);
-                    Player.Teleport(Player.Center + (Player.Center.DirectionTo(Main.MouseWorld) * Player.Center.Distance(Main.MouseWorld)), -1);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Player.Center.DirectionTo(Main.MouseWorld) * Player.Center.Distance(Main.MouseWorld) * 2, ProjectileType<Content.Items.Accessories.Movement.Hardmode.PolaritiesTeleportBeam>(), 400, 0f, Player.whoAmI);
+                    Player.Teleport(Player.Center + (Player.Center.DirectionTo(Main.MouseWorld) * Player.Center.Distance(Main.MouseWorld) * 2), -1);
                     Player.AddBuff(BuffID.ChaosState, 300);
                 }
 
